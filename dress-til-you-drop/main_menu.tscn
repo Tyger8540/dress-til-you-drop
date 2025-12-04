@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://d3xyr42qadnyl"]
+
+[node name="MainMenu" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Main menu for  dress til you drop!"
