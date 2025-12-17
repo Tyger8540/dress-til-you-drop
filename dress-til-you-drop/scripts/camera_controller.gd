@@ -14,6 +14,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	#rotation = rotation.move_toward(global_position - player.global_position, delta * SWIVEL_SPEED)
 	look_at(player.global_position)
+	player.rotation.y = rotation.y
 
 
 func set_cam(cam: Camera3D) -> void:

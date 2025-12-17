@@ -5,7 +5,11 @@ extends CharacterBody3D
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
+@export var current_cam: Camera3D
+
 var move_direction: Vector3
+var locked_cam_orientation: float = 0.0
+var move_orientation_locked: bool = false
 
 
 func _physics_process(delta: float) -> void:
@@ -19,16 +23,21 @@ func _physics_process(delta: float) -> void:
 
 	move_direction.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	move_direction.z = Input.get_action_strength("move_backward") - Input.get_action_strength("move_forward")
-	#move_direction = move_direction.rotated()
 	
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
+	if velocity.is_zero_approx():
+		move_orientation_locked = false
 	
 	if move_direction:
+		if not move_orientation_locked:
+			locked_cam_orientation = current_cam.rotation.y
+			move_orientation_locked = true
+		
+		move_direction = move_direction.rotated(Vector3.UP, locked_cam_orientation)
+		
 		velocity.x = move_direction.x * SPEED
 		velocity.z = move_direction.z * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
-
+	
 	move_and_slide()
