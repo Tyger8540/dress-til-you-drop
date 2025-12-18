@@ -1,0 +1,116 @@
+[gd_scene load_steps=11 format=3 uid="uid://b2qv6wtnbfwv2"]
+
+[ext_resource type="Script" uid="uid://cm5tsyihtd36p" path="res://scripts/camera_controller.gd" id="1_qleev"]
+[ext_resource type="Script" uid="uid://qsno6d2p6op7" path="res://scripts/cam_zone.gd" id="2_ryno3"]
+[ext_resource type="PackedScene" uid="uid://bmd45oqbmm5e" path="res://scenes/player.tscn" id="3_se1vi"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_o7nab"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_qleev"]
+sky_material = SubResource("ProceduralSkyMaterial_o7nab")
+
+[sub_resource type="Environment" id="Environment_ryno3"]
+background_mode = 2
+sky = SubResource("Sky_qleev")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ryno3"]
+size = Vector3(4, 4, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1yurb"]
+size = Vector3(4, 4, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_se1vi"]
+size = Vector3(4, 4, 0.1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ryno3"]
+
+[node name="SampleRoom" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ryno3")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Player" parent="." node_paths=PackedStringArray("current_cam") instance=ExtResource("3_se1vi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.700001, 2.2, 0.5)
+current_cam = NodePath("../Camera3D")
+
+[node name="CameraController" type="Node" parent="."]
+
+[node name="CamZone" type="Area3D" parent="CameraController" node_paths=PackedStringArray("player", "previous_cam", "next_cam")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.5, 2.5, 0)
+script = ExtResource("2_ryno3")
+player = NodePath("../../Player")
+previous_cam = NodePath("../../Camera3D")
+next_cam = NodePath("../../Camera3D2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CameraController/CamZone"]
+shape = SubResource("BoxShape3D_ryno3")
+debug_color = Color(0, 0.6, 0.69803923, 1)
+
+[node name="PreviousZone" type="Area3D" parent="CameraController/CamZone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.6)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CameraController/CamZone/PreviousZone"]
+shape = SubResource("BoxShape3D_1yurb")
+
+[node name="NextZone" type="Area3D" parent="CameraController/CamZone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.6)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CameraController/CamZone/NextZone"]
+shape = SubResource("BoxShape3D_se1vi")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.6, 0)
+use_collision = true
+size = Vector3(1.9, 10.6, 10.1)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGBox3D"]
+transform = Transform3D(-4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0, 1, 0, 1.4, 0)
+operation = 2
+radius = 1.3000001
+height = 5.4
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.35, 0)
+operation = 2
+size = Vector3(3.6000001, 3.7, 2.4)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+use_collision = true
+size = Vector3(51.3, 1, 10.1)
+
+[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("player")]
+transform = Transform3D(0.38268346, 0.46193975, -0.8001031, 0, 0.8660254, 0.5, 0.92387956, -0.19134173, 0.33141357, -17.800001, 8.4, 4.5)
+current = true
+script = ExtResource("1_qleev")
+player = NodePath("../Player")
+
+[node name="Camera3D2" type="Camera3D" parent="." node_paths=PackedStringArray("player")]
+transform = Transform3D(-2.8734846e-08, 0.7660445, -0.6427875, 3.4244856e-08, 0.6427875, 0.7660445, 1, 3.5527135e-15, -4.4703484e-08, 0.8, 8, 0)
+script = ExtResource("1_qleev")
+player = NodePath("../Player")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="."]
+transform = Transform3D(0.64278764, 0.76604444, 0, -0.76604444, 0.64278764, 0, 0, 0, 1, -18.303484, 2.2575555, -0.6)
+use_collision = true
+size = Vector3(3.5, 1, 1)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.8, 4, -0.7)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("SphereShape3D_ryno3")
+
+[connection signal="body_entered" from="CameraController/CamZone" to="CameraController/CamZone" method="_on_body_entered"]
+[connection signal="body_exited" from="CameraController/CamZone" to="CameraController/CamZone" method="_on_body_exited"]
+[connection signal="body_entered" from="CameraController/CamZone/PreviousZone" to="CameraController/CamZone" method="_on_previous_zone_body_entered"]
+[connection signal="body_exited" from="CameraController/CamZone/PreviousZone" to="CameraController/CamZone" method="_on_previous_zone_body_exited"]
+[connection signal="body_entered" from="CameraController/CamZone/NextZone" to="CameraController/CamZone" method="_on_next_zone_body_entered"]
+[connection signal="body_exited" from="CameraController/CamZone/NextZone" to="CameraController/CamZone" method="_on_next_zone_body_exited"]
