@@ -1,10 +1,16 @@
-[gd_scene load_steps=14 format=3 uid="uid://drq47eo7tin14"]
+[gd_scene load_steps=17 format=3 uid="uid://drq47eo7tin14"]
+
+[ext_resource type="Script" uid="uid://cm5tsyihtd36p" path="res://scripts/camera_controller.gd" id="1_h81ti"]
+[ext_resource type="PackedScene" uid="uid://bmd45oqbmm5e" path="res://scenes/player.tscn" id="1_owcqv"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_u0cnw"]
 size = Vector3(1, 1, 2)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_owcqv"]
 albedo_color = Color(0.15980142, 0.1207295, 0.13674569, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h81ti"]
+size = Vector3(1, 1, 2)
 
 [sub_resource type="BoxMesh" id="BoxMesh_h81ti"]
 size = Vector3(2, 3, 1)
@@ -43,9 +49,15 @@ albedo_color = Color(0.3497979, 0.4258602, 0.46528435, 1)
 [node name="Hallway" type="Node3D"]
 
 [node name="floor" type="MeshInstance3D" parent="."]
-transform = Transform3D(-5.438396e-07, 0, 3.2, 0, 0.02000001, 0, -12.4416, 0, -1.3987645e-07, 3, 0, 4)
+transform = Transform3D(-5.438396e-07, 0, 3.1999998, 0, 0.02000001, 0, -12.441598, 0, -1.3987643e-07, 3, 0, 4)
 mesh = SubResource("BoxMesh_u0cnw")
 surface_material_override/0 = SubResource("StandardMaterial3D_owcqv")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="floor"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor/StaticBody3D"]
+transform = Transform3D(1.0000002, 0, 3.5527137e-15, 0, 1, 0, 4.2632564e-14, 0, 0.9999995, 0, 0, 0)
+shape = SubResource("BoxShape3D_h81ti")
 
 [node name="walls" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.19999999, 0, 0, 0, 1, 0, 0, 0, 12.746572, -0.19077909, 1.5, 4.063181)
@@ -97,3 +109,12 @@ transform = Transform3D(-2.920535e-08, 0, -1.6118424, 0, 1, 0, 0.66814053, 0, -7
 mesh = SubResource("BoxMesh_nlnob")
 skeleton = NodePath("../minigame3")
 surface_material_override/0 = SubResource("StandardMaterial3D_52g5x")
+
+[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("player")]
+transform = Transform3D(0.7071068, 0, 0.7071068, 0, 1, 0, -0.7071068, 0, 0.7071068, 5.8, 2.6, 10.000001)
+script = ExtResource("1_h81ti")
+player = NodePath("../Player")
+
+[node name="Player" parent="." node_paths=PackedStringArray("current_cam") instance=ExtResource("1_owcqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.8, 1.1, 8.6)
+current_cam = NodePath("../Camera3D")
