@@ -1,0 +1,99 @@
+[gd_scene load_steps=14 format=3 uid="uid://drq47eo7tin14"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_u0cnw"]
+size = Vector3(1, 1, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_owcqv"]
+albedo_color = Color(0.15980142, 0.1207295, 0.13674569, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_h81ti"]
+size = Vector3(2, 3, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u7i40"]
+albedo_color = Color(0.14122704, 0.16735661, 0.17698273, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3w3tr"]
+albedo_color = Color(0.14117648, 0.16862746, 0.1764706, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1k2v8"]
+albedo_color = Color(0.14117648, 0.16862746, 0.1764706, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_txc3n"]
+albedo_color = Color(0.14117648, 0.16862746, 0.1764706, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yjeik"]
+albedo_color = Color(0.7823088, 0.27937153, 0.3990216, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_nlnob"]
+material = SubResource("StandardMaterial3D_yjeik")
+size = Vector3(0.2, 2.2, 1.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w57m6"]
+albedo_color = Color(0.7823088, 0.27937153, 0.3990216, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_drbwl"]
+albedo_color = Color(0.7823088, 0.27937153, 0.3990216, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hwv8p"]
+albedo_color = Color(0.3497979, 0.4258602, 0.46528435, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_52g5x"]
+albedo_color = Color(0.3497979, 0.4258602, 0.46528435, 1)
+
+[node name="Hallway" type="Node3D"]
+
+[node name="floor" type="MeshInstance3D" parent="."]
+transform = Transform3D(-5.438396e-07, 0, 3.2, 0, 0.02000001, 0, -12.4416, 0, -1.3987645e-07, 3, 0, 4)
+mesh = SubResource("BoxMesh_u0cnw")
+surface_material_override/0 = SubResource("StandardMaterial3D_owcqv")
+
+[node name="walls" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.19999999, 0, 0, 0, 1, 0, 0, 0, 12.746572, -0.19077909, 1.5, 4.063181)
+mesh = SubResource("BoxMesh_h81ti")
+surface_material_override/0 = SubResource("StandardMaterial3D_u7i40")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="walls"]
+transform = Transform3D(-4.3711378e-08, 0, 30.028076, 0, 1, 0, -0.015690487, 0, -2.0594854e-08, 15.84459, 0, -0.50829244)
+mesh = SubResource("BoxMesh_h81ti")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_3w3tr")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="walls"]
+transform = Transform3D(-4.3711378e-08, 0, 31.892908, 0, 1, 0, -0.015690485, 0, -2.187385e-08, 15.84459, 0, 0.49536818)
+mesh = SubResource("BoxMesh_h81ti")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1k2v8")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="walls"]
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 1.0089478, 31.523125, 0, -0.00042414665)
+mesh = SubResource("BoxMesh_h81ti")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_txc3n")
+
+[node name="minigame2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.36, 0, 0, 0, 1, 0, 0, 0, 1, 0.054007888, 1.1, 1.5950569)
+mesh = SubResource("BoxMesh_nlnob")
+skeleton = NodePath("../minigame3")
+surface_material_override/0 = SubResource("StandardMaterial3D_w57m6")
+
+[node name="photoshoot" type="MeshInstance3D" parent="."]
+transform = Transform3D(-2.9815407e-08, 0, 1.5976653, 0, 1, 0, -0.682097, 0, -6.983617e-08, 2.9852827, 1.1, -2.1891255)
+mesh = SubResource("BoxMesh_nlnob")
+skeleton = NodePath("../minigame3")
+surface_material_override/0 = SubResource("StandardMaterial3D_drbwl")
+
+[node name="minigame1" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.36, 0, 0, 0, 1, 0, 0, 0, 1, 0.052167475, 1.1, 6.3925757)
+mesh = SubResource("BoxMesh_nlnob")
+skeleton = NodePath("../minigame3")
+surface_material_override/0 = SubResource("StandardMaterial3D_hwv8p")
+
+[node name="minigame3" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.6, 0, 0, 0, 1, 0, 0, 0, 1, 5.919, 1.1, 2.604409)
+mesh = SubResource("BoxMesh_nlnob")
+
+[node name="closet" type="MeshInstance3D" parent="."]
+transform = Transform3D(-2.920535e-08, 0, -1.6118424, 0, 1, 0, 0.66814053, 0, -7.045587e-08, 2.9895635, 1.1, 10.143596)
+mesh = SubResource("BoxMesh_nlnob")
+skeleton = NodePath("../minigame3")
+surface_material_override/0 = SubResource("StandardMaterial3D_52g5x")
