@@ -1,7 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://drq47eo7tin14"]
+[gd_scene load_steps=19 format=3 uid="uid://drq47eo7tin14"]
 
 [ext_resource type="Script" uid="uid://cm5tsyihtd36p" path="res://scripts/camera_controller.gd" id="1_h81ti"]
 [ext_resource type="PackedScene" uid="uid://bmd45oqbmm5e" path="res://scenes/player.tscn" id="1_owcqv"]
+[ext_resource type="PackedScene" uid="uid://f6sftetqaoh1" path="res://interaction/interaction area/interaction_area.tscn" id="1_u7i40"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_u0cnw"]
 size = Vector3(1, 1, 2)
@@ -36,6 +37,9 @@ size = Vector3(0.2, 2.2, 1.2)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w57m6"]
 albedo_color = Color(0.7823088, 0.27937153, 0.3990216, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3w3tr"]
+size = Vector3(1.020359, 2.1911926, 1.1984863)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_drbwl"]
 albedo_color = Color(0.7823088, 0.27937153, 0.3990216, 1)
@@ -88,11 +92,25 @@ mesh = SubResource("BoxMesh_nlnob")
 skeleton = NodePath("../minigame3")
 surface_material_override/0 = SubResource("StandardMaterial3D_w57m6")
 
+[node name="InteractionArea2" parent="minigame2" instance=ExtResource("1_u7i40")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0051122606, 0, -0.0010012388)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="minigame2/InteractionArea2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.40878734, 0.014877319, -0.0010986328)
+shape = SubResource("BoxShape3D_3w3tr")
+
 [node name="photoshoot" type="MeshInstance3D" parent="."]
 transform = Transform3D(-2.9815407e-08, 0, 1.5976653, 0, 1, 0, -0.682097, 0, -6.983617e-08, 2.9852827, 1.1, -2.1891255)
 mesh = SubResource("BoxMesh_nlnob")
 skeleton = NodePath("../minigame3")
 surface_material_override/0 = SubResource("StandardMaterial3D_drbwl")
+
+[node name="InteractionArea" parent="photoshoot" instance=ExtResource("1_u7i40")]
+transform = Transform3D(-1.0000001, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="photoshoot/InteractionArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, -7.1054274e-15, 0, 1, 0.45536017, 0.014877319, -0.0010986328)
+shape = SubResource("BoxShape3D_3w3tr")
 
 [node name="minigame1" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.36, 0, 0, 0, 1, 0, 0, 0, 1, 0.052167475, 1.1, 6.3925757)
@@ -100,15 +118,36 @@ mesh = SubResource("BoxMesh_nlnob")
 skeleton = NodePath("../minigame3")
 surface_material_override/0 = SubResource("StandardMaterial3D_hwv8p")
 
+[node name="InteractionArea" parent="minigame1" instance=ExtResource("1_u7i40")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6441581, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="minigame1/InteractionArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0273799, 0.014877319, -0.0010986328)
+shape = SubResource("BoxShape3D_3w3tr")
+
 [node name="minigame3" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.6, 0, 0, 0, 1, 0, 0, 0, 1, 5.919, 1.1, 2.604409)
 mesh = SubResource("BoxMesh_nlnob")
+
+[node name="InteractionArea3" parent="minigame3" instance=ExtResource("1_u7i40")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.005112648, 0, -0.0010011196)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="minigame3/InteractionArea3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.40878734, 0.014877319, -0.0010986328)
+shape = SubResource("BoxShape3D_3w3tr")
 
 [node name="closet" type="MeshInstance3D" parent="."]
 transform = Transform3D(-2.920535e-08, 0, -1.6118424, 0, 1, 0, 0.66814053, 0, -7.045587e-08, 2.9895635, 1.1, 10.143596)
 mesh = SubResource("BoxMesh_nlnob")
 skeleton = NodePath("../minigame3")
 surface_material_override/0 = SubResource("StandardMaterial3D_52g5x")
+
+[node name="InteractionArea" parent="closet" instance=ExtResource("1_u7i40")]
+transform = Transform3D(-1, 0, 8.7422784e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="closet/InteractionArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3951559, 0.014877319, -0.0010986328)
+shape = SubResource("BoxShape3D_3w3tr")
 
 [node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("player")]
 transform = Transform3D(0.7071068, 0, 0.7071068, 0, 1, 0, -0.7071068, 0, 0.7071068, 5.8, 2.6, 10.000001)
