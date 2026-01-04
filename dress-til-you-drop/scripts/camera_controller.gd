@@ -11,7 +11,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	#rotation = rotation.move_toward(global_position - player.global_position, delta * SWIVEL_SPEED)
 	look_at(player.global_position)
 	player.rotation.y = rotation.y
