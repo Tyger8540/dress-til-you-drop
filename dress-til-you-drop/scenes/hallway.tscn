@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://drq47eo7tin14"]
+[gd_scene load_steps=28 format=3 uid="uid://drq47eo7tin14"]
 
 [ext_resource type="Script" uid="uid://cm5tsyihtd36p" path="res://scripts/camera_controller.gd" id="1_h81ti"]
 [ext_resource type="PackedScene" uid="uid://bmd45oqbmm5e" path="res://scenes/player.tscn" id="1_owcqv"]
@@ -29,10 +29,6 @@ size = Vector3(0.2, 2.2, 1.2)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_drbwl"]
 albedo_color = Color(0.7823088, 0.27937153, 0.3990216, 1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_3w3tr"]
-size = Vector3(1.020359, 2.1911926, 1.1984863)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_drbwl"]
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_txc3n"]
 data = PackedVector3Array(-0.099999994, 1.1, 0.59999996, 0.099999994, 1.1, 0.59999996, -0.099999994, -1.1, 0.59999996, 0.099999994, 1.1, 0.59999996, 0.099999994, -1.1, 0.59999996, -0.099999994, -1.1, 0.59999996, 0.099999994, 1.1, -0.59999996, -0.099999994, 1.1, -0.59999996, 0.099999994, -1.1, -0.59999996, -0.099999994, 1.1, -0.59999996, -0.099999994, -1.1, -0.59999996, 0.099999994, -1.1, -0.59999996, 0.099999994, 1.1, 0.59999996, 0.099999994, 1.1, -0.59999996, 0.099999994, -1.1, 0.59999996, 0.099999994, 1.1, -0.59999996, 0.099999994, -1.1, -0.59999996, 0.099999994, -1.1, 0.59999996, -0.099999994, 1.1, -0.59999996, -0.099999994, 1.1, 0.59999996, -0.099999994, -1.1, -0.59999996, -0.099999994, 1.1, 0.59999996, -0.099999994, -1.1, 0.59999996, -0.099999994, -1.1, -0.59999996, 0.099999994, 1.1, 0.59999996, -0.099999994, 1.1, 0.59999996, 0.099999994, 1.1, -0.59999996, -0.099999994, 1.1, 0.59999996, -0.099999994, 1.1, -0.59999996, 0.099999994, 1.1, -0.59999996, -0.099999994, -1.1, 0.59999996, 0.099999994, -1.1, 0.59999996, -0.099999994, -1.1, -0.59999996, 0.099999994, -1.1, 0.59999996, 0.099999994, -1.1, -0.59999996, -0.099999994, -1.1, -0.59999996)
 
@@ -41,6 +37,9 @@ data = PackedVector3Array(-1, 1.5, 0.5, 1, 1.5, 0.5, -1, -1.5, 0.5, 1, 1.5, 0.5,
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_hwv8p"]
 data = PackedVector3Array(-0.099999994, 1.1, 0.59999996, 0.099999994, 1.1, 0.59999996, -0.099999994, -1.1, 0.59999996, 0.099999994, 1.1, 0.59999996, 0.099999994, -1.1, 0.59999996, -0.099999994, -1.1, 0.59999996, 0.099999994, 1.1, -0.59999996, -0.099999994, 1.1, -0.59999996, 0.099999994, -1.1, -0.59999996, -0.099999994, 1.1, -0.59999996, -0.099999994, -1.1, -0.59999996, 0.099999994, -1.1, -0.59999996, 0.099999994, 1.1, 0.59999996, 0.099999994, 1.1, -0.59999996, 0.099999994, -1.1, 0.59999996, 0.099999994, 1.1, -0.59999996, 0.099999994, -1.1, -0.59999996, 0.099999994, -1.1, 0.59999996, -0.099999994, 1.1, -0.59999996, -0.099999994, 1.1, 0.59999996, -0.099999994, -1.1, -0.59999996, -0.099999994, 1.1, 0.59999996, -0.099999994, -1.1, 0.59999996, -0.099999994, -1.1, -0.59999996, 0.099999994, 1.1, 0.59999996, -0.099999994, 1.1, 0.59999996, 0.099999994, 1.1, -0.59999996, -0.099999994, 1.1, 0.59999996, -0.099999994, 1.1, -0.59999996, 0.099999994, 1.1, -0.59999996, -0.099999994, -1.1, 0.59999996, 0.099999994, -1.1, 0.59999996, -0.099999994, -1.1, -0.59999996, 0.099999994, -1.1, 0.59999996, 0.099999994, -1.1, -0.59999996, -0.099999994, -1.1, -0.59999996)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3w3tr"]
+size = Vector3(1.020359, 2.1911926, 1.1984863)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w57m6"]
 albedo_color = Color(0.7823088, 0.27937153, 0.3990216, 1)
@@ -131,6 +130,13 @@ mesh = SubResource("BoxMesh_nlnob")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="minigame3/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_hwv8p")
 
+[node name="InteractionArea3" parent="minigame3" instance=ExtResource("1_u7i40")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.005112648, 0, -0.0010011196)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="minigame3/InteractionArea3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.40878734, 0.014877319, -0.0010986328)
+shape = SubResource("BoxShape3D_3w3tr")
+
 [node name="minigame2" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.35999998, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0.054007873, 1.1, -5.0309043)
 mesh = SubResource("BoxMesh_nlnob")
@@ -149,10 +155,10 @@ shape = SubResource("BoxShape3D_3w3tr")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="minigame2/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_w57m6")
 
-[node name="InteractionArea" parent="photoshoot" instance=ExtResource("1_u7i40")]
+[node name="photoshoot#InteractionArea" parent="." instance=ExtResource("1_u7i40")]
 transform = Transform3D(-1.0000001, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="photoshoot/InteractionArea"]
+[node name="photoshoot_InteractionArea#CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, -7.1054274e-15, 0, 1, 0.45536017, 0.014877319, -0.0010986328)
 shape = SubResource("BoxShape3D_3w3tr")
 
@@ -174,16 +180,9 @@ shape = SubResource("BoxShape3D_3w3tr")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="minigame1/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_drbwl")
 
-[node name="minigame3" type="MeshInstance3D" parent="."]
+[node name="minigame4" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.6, 0, 0, 0, 1, 0, 0, 0, 1, 5.919, 1.1, 2.604409)
 mesh = SubResource("BoxMesh_nlnob")
-
-[node name="InteractionArea3" parent="minigame3" instance=ExtResource("1_u7i40")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.005112648, 0, -0.0010011196)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="minigame3/InteractionArea3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.40878734, 0.014877319, -0.0010986328)
-shape = SubResource("BoxShape3D_3w3tr")
 
 [node name="walls" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.19999999, 0, 0, 0, 1, 0, 0, 0, 23.020206, -0.19077909, 1.5, -0.96180606)
