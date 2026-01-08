@@ -16,9 +16,7 @@ var text_marker_timer: float = text_marker_speed
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	text_revealing = true
-	dialogue_array = ["Hello world, this is sample text to test out the dialogue system!!", "Yippeeeeeeee", "bruh", "last one"]
-	text = dialogue_array[dialogue_index]
+	start_dialogue()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -42,6 +40,15 @@ func _process(delta: float) -> void:
 			continue_dialogue()
 
 
+func initialize_dialogue(_dialogue_array: Array[String]) -> void:
+	dialogue_array = _dialogue_array
+
+
+func start_dialogue() -> void:
+	text = dialogue_array[dialogue_index]
+	text_revealing = true
+
+
 func continue_dialogue() -> void:
 	visible_ratio = 0.0
 	$TextMarker.visible = false
@@ -52,7 +59,3 @@ func continue_dialogue() -> void:
 		get_parent().queue_free()
 	else:
 		text = dialogue_array[dialogue_index]
-
-
-func set_dialogue_array(_dialogue_array: Array[String]) -> void:
-	dialogue_array = _dialogue_array
