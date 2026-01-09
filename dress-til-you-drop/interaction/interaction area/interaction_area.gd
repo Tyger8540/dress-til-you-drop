@@ -5,7 +5,6 @@ const DIALOG_BOX = preload("res://scenes/dialog_box.tscn")
 
 @export var action_name: String = "interact"
 @export var dialog: Array[String]  # lines of dialog to be displayed
-@export var one_shot_dialog: bool  # determines if dialog is only shown once
 @export var accessible: bool  # allows the player to enter the area connected to this InteractionArea
 @export var connected_area: PackedScene  # area connected to this InteractionArea
 
@@ -15,8 +14,6 @@ var interact: Callable = func():
 		var dialog_box: DialogBox = spawn_dialog_box()  # spawn a dialog box
 		await dialog_box.dialog.dialog_finished  # await it to finish
 		dialog_box.queue_free()  # delete the dialog box
-		if one_shot_dialog:
-			dialog = []  # clears the dialog (only meant to be shown once)
 	if accessible:
 		# change to the connected scene
 		get_tree().change_scene_to_packed(connected_area)  # TODO maybe change based on future scene changing logic

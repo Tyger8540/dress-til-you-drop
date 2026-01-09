@@ -160,6 +160,7 @@ shape = SubResource("ConcavePolygonShape3D_w57m6")
 
 [node name="PhotoshootInteractionArea" parent="." instance=ExtResource("1_u7i40")]
 transform = Transform3D(-1.0000001, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
+dialog = Array[String](["What could this be?"])
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PhotoshootInteractionArea"]
 transform = Transform3D(-0.9999999, 0, -8.742277e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.4553601, 0.014877319, 0.0010986726)
