@@ -1,10 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://t604fy5q77jb"]
+[gd_scene load_steps=3 format=3 uid="uid://t604fy5q77jb"]
 
-[ext_resource type="Script" uid="uid://b5m63q5oo47kf" path="res://scripts/dialogue.gd" id="1_rc1id"]
+[ext_resource type="Script" uid="uid://dq7ffwc8vch6f" path="res://scripts/dialog_box.gd" id="1_tihiy"]
+[ext_resource type="Script" uid="uid://b5m63q5oo47kf" path="res://scripts/dialog.gd" id="2_df88m"]
 
 [node name="DialogueBox" type="Panel"]
 offset_right = 400.0
 offset_bottom = 200.0
+script = ExtResource("1_tihiy")
 
 [node name="Dialogue" type="RichTextLabel" parent="."]
 layout_mode = 0
@@ -15,7 +17,7 @@ text = "Hello world, this is sample text to test out the dialogue system!!
 Yippeeeeeeee"
 visible_characters = 0
 visible_ratio = 0.0
-script = ExtResource("1_rc1id")
+script = ExtResource("2_df88m")
 
 [node name="TextMarker" type="ColorRect" parent="Dialogue"]
 visible = false

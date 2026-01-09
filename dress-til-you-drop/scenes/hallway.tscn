@@ -170,6 +170,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_hwv8p")
 
 [node name="InteractionArea" parent="minigame1" instance=ExtResource("1_u7i40")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6441581, 0, 0)
+dialogue = Array[String](["This is minigame 1"])
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="minigame1/InteractionArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0273799, 0.014877319, -0.0010986328)
