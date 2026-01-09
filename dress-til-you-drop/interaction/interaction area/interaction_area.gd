@@ -5,6 +5,8 @@ const DIALOG_BOX = preload("res://scenes/dialog_box.tscn")
 
 @export var action_name: String = "interact"
 @export var dialog: Array[String]
+@export var accessible: bool  # allows player to enter the area connected to this InteractionArea
+@export var connected_area: PackedScene
 
 
 var interact: Callable = func():
@@ -12,7 +14,9 @@ var interact: Callable = func():
 		var dialog_box: DialogBox = spawn_dialog_box()
 		await dialog_box.dialog.dialog_finished
 		dialog_box.queue_free()
-		print("yippee")
+	if accessible:
+		# change to the connected scene
+		get_tree().change_scene_to_packed(connected_area)  # TODO maybe change based on scene changing logic
 
 
 func spawn_dialog_box() -> DialogBox:

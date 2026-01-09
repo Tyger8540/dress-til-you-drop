@@ -1,8 +1,9 @@
-[gd_scene load_steps=28 format=3 uid="uid://drq47eo7tin14"]
+[gd_scene load_steps=29 format=3 uid="uid://drq47eo7tin14"]
 
 [ext_resource type="Script" uid="uid://cm5tsyihtd36p" path="res://scripts/camera_controller.gd" id="1_h81ti"]
 [ext_resource type="PackedScene" uid="uid://bmd45oqbmm5e" path="res://scenes/player.tscn" id="1_owcqv"]
 [ext_resource type="PackedScene" uid="uid://f6sftetqaoh1" path="res://interaction/interaction area/interaction_area.tscn" id="1_u7i40"]
+[ext_resource type="PackedScene" uid="uid://cm2b44johy1sv" path="res://scenes/closet.tscn" id="2_3w3tr"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_u0cnw"]
 size = Vector3(1, 1, 2)
@@ -132,6 +133,7 @@ shape = SubResource("ConcavePolygonShape3D_hwv8p")
 
 [node name="InteractionArea3" parent="minigame3" instance=ExtResource("1_u7i40")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.005112648, 0, -0.0010011196)
+dialog = Array[String](["Minigame 3 door"])
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="minigame3/InteractionArea3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.40878734, 0.014877319, -0.0010986328)
@@ -145,6 +147,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_w57m6")
 
 [node name="InteractionArea2" parent="minigame2" instance=ExtResource("1_u7i40")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0051122606, 0, -0.0010012388)
+dialog = Array[String](["Minigame 2 door"])
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="minigame2/InteractionArea2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.40878734, 0.014877319, -0.0010986328)
@@ -155,11 +158,11 @@ shape = SubResource("BoxShape3D_3w3tr")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="minigame2/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_w57m6")
 
-[node name="photoshoot#InteractionArea" parent="." instance=ExtResource("1_u7i40")]
+[node name="PhotoshootInteractionArea" parent="." instance=ExtResource("1_u7i40")]
 transform = Transform3D(-1.0000001, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
 
-[node name="photoshoot_InteractionArea#CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, -7.1054274e-15, 0, 1, 0.45536017, 0.014877319, -0.0010986328)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PhotoshootInteractionArea"]
+transform = Transform3D(-0.9999999, 0, -8.742277e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.4553601, 0.014877319, 0.0010986726)
 shape = SubResource("BoxShape3D_3w3tr")
 
 [node name="minigame1" type="MeshInstance3D" parent="."]
@@ -170,7 +173,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_hwv8p")
 
 [node name="InteractionArea" parent="minigame1" instance=ExtResource("1_u7i40")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6441581, 0, 0)
-dialogue = Array[String](["This is minigame 1"])
+dialog = Array[String](["Minigame 1 door"])
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="minigame1/InteractionArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0273799, 0.014877319, -0.0010986328)
@@ -225,6 +228,9 @@ shape = SubResource("ConcavePolygonShape3D_yjeik")
 
 [node name="InteractionArea" parent="walls/MeshInstance3D3/closet" instance=ExtResource("1_u7i40")]
 transform = Transform3D(-1, 0, 8.7422784e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
+dialog = Array[String](["This is your closet!", "Let's see what's inside!"])
+accessible = true
+connected_area = ExtResource("2_3w3tr")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="walls/MeshInstance3D3/closet/InteractionArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3951559, 0.014877319, -0.0010986328)

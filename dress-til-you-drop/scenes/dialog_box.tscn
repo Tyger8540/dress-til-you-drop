@@ -4,18 +4,30 @@
 [ext_resource type="Script" uid="uid://b5m63q5oo47kf" path="res://scripts/dialog.gd" id="2_df88m"]
 
 [node name="DialogBox" type="Panel" node_paths=PackedStringArray("dialog")]
-offset_right = 400.0
-offset_bottom = 200.0
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -200.0
+offset_right = 200.0
+grow_horizontal = 2
+grow_vertical = 0
 script = ExtResource("1_tihiy")
 dialog = NodePath("Dialog")
 
 [node name="Dialog" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_right = 400.0
-offset_bottom = 200.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 390.0
+offset_bottom = 190.0
 text = "Hello world, this is sample text to test out the dialogue system!!
 
 Yippeeeeeeee"
+horizontal_alignment = 1
+vertical_alignment = 1
 visible_characters = 0
 visible_ratio = 0.0
 script = ExtResource("2_df88m")
