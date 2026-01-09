@@ -1,7 +1,7 @@
 class_name DialogBox
 extends Panel
 
-@export var dialog: Dialog
+@export var dialog: Dialog  # reference to this dialog box's dialog
 
 
 # Called when the node enters the scene tree for the first time.
@@ -15,4 +15,4 @@ func _process(_delta: float) -> void:
 
 
 func initialize_dialog(_dialog_array: Array[String]) -> void:
-	dialog.dialog_array = _dialog_array
+	dialog.dialog_array = _dialog_array  # sets the dialog array in dialog
