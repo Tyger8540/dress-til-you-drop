@@ -3,12 +3,13 @@
 [ext_resource type="Script" uid="uid://dq7ffwc8vch6f" path="res://scripts/dialog_box.gd" id="1_tihiy"]
 [ext_resource type="Script" uid="uid://b5m63q5oo47kf" path="res://scripts/dialog.gd" id="2_df88m"]
 
-[node name="DialogueBox" type="Panel"]
+[node name="DialogBox" type="Panel" node_paths=PackedStringArray("dialog")]
 offset_right = 400.0
 offset_bottom = 200.0
 script = ExtResource("1_tihiy")
+dialog = NodePath("Dialog")
 
-[node name="Dialogue" type="RichTextLabel" parent="."]
+[node name="Dialog" type="RichTextLabel" parent="."]
 layout_mode = 0
 offset_right = 400.0
 offset_bottom = 200.0
@@ -19,7 +20,7 @@ visible_characters = 0
 visible_ratio = 0.0
 script = ExtResource("2_df88m")
 
-[node name="TextMarker" type="ColorRect" parent="Dialogue"]
+[node name="TextMarker" type="ColorRect" parent="Dialog"]
 visible = false
 layout_mode = 1
 anchors_preset = 3
