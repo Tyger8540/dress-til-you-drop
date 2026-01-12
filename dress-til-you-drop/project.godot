@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-InteractionManager="*res://interaction/InteractionManager.tscn"
+InteractionManager="*res://scenes/interaction_manager.tscn"
 
 [global_group]
 
