@@ -13,3 +13,7 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	look_at(player.global_position)
 	player.rotation.y = rotation.y
+
+
+func set_cam(cam: Camera) -> void:
+	super(cam)

@@ -45,6 +45,15 @@ func set_cam(cam: Camera) -> void:
 			global_position.y = player.global_position.y
 		CAM_AXIS.Z:
 			global_position.z = player.global_position.z
+		CAM_AXIS.XY:
+			global_position.x = player.global_position.x
+			global_position.y = player.global_position.y
+		CAM_AXIS.XZ:
+			global_position.x = player.global_position.x
+			global_position.z = player.global_position.z
+		CAM_AXIS.YZ:
+			global_position.y = player.global_position.y
+			global_position.z = player.global_position.z
 		_:
-			pass
+			print("default case reached")
 	look_at(player.global_position)
