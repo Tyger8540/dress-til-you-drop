@@ -1,6 +1,6 @@
 [gd_scene load_steps=29 format=3 uid="uid://drq47eo7tin14"]
 
-[ext_resource type="Script" uid="uid://cm5tsyihtd36p" path="res://scripts/camera_controller.gd" id="1_h81ti"]
+[ext_resource type="Script" uid="uid://cm5tsyihtd36p" path="res://scripts/camera.gd" id="1_h81ti"]
 [ext_resource type="PackedScene" uid="uid://bmd45oqbmm5e" path="res://scenes/player.tscn" id="1_owcqv"]
 [ext_resource type="PackedScene" uid="uid://f6sftetqaoh1" path="res://scenes/interaction_area.tscn" id="1_u7i40"]
 [ext_resource type="PackedScene" uid="uid://cm2b44johy1sv" path="res://scenes/closet.tscn" id="2_3w3tr"]
