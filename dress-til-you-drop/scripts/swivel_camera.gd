@@ -11,6 +11,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta: float) -> void:
+	# follow the player and correct their rotation
 	look_at(player.global_position)
 	player.rotation.y = rotation.y
 

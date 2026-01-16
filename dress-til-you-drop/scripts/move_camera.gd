@@ -15,6 +15,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
+	# lerp towards the player's position based on the cam axis
 	match cam_axis:
 		CAM_AXIS.X:
 			global_position.x = lerp(global_position.x, player.global_position.x, FOLLOW_SPEED * delta)
@@ -38,6 +39,7 @@ func _physics_process(delta: float) -> void:
 func set_cam(cam: Camera) -> void:
 	super(cam)
 	
+	# reset cam position based on cam axis
 	match cam_axis:
 		CAM_AXIS.X:
 			global_position.x = player.global_position.x
