@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cy5lbcl5enw6a"]
+
+[ext_resource type="Script" uid="uid://61du4qifcyxt" path="res://scripts/move_camera.gd" id="1_adqkk"]
+
+[node name="MoveCamera" type="Camera3D"]
+script = ExtResource("1_adqkk")
+metadata/_custom_type_script = "uid://cm5tsyihtd36p"
