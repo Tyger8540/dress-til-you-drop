@@ -1,9 +1,10 @@
-[gd_scene load_steps=29 format=3 uid="uid://drq47eo7tin14"]
+[gd_scene load_steps=30 format=3 uid="uid://drq47eo7tin14"]
 
 [ext_resource type="PackedScene" uid="uid://bmd45oqbmm5e" path="res://scenes/player.tscn" id="1_owcqv"]
 [ext_resource type="PackedScene" uid="uid://f6sftetqaoh1" path="res://scenes/interaction_area.tscn" id="1_u7i40"]
 [ext_resource type="PackedScene" uid="uid://cm2b44johy1sv" path="res://scenes/closet.tscn" id="2_3w3tr"]
 [ext_resource type="PackedScene" uid="uid://bm31ye7javi80" path="res://scenes/swivel_camera.tscn" id="3_3w3tr"]
+[ext_resource type="PackedScene" uid="uid://crh3xyw8knqlt" path="res://scenes/settings_manager.tscn" id="5_1k2v8"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_u0cnw"]
 size = Vector3(1, 1, 2)
@@ -263,3 +264,5 @@ visible = false
 light_energy = 16.0
 spot_range = 56.274
 spot_angle = 180.0
+
+[node name="SettingsManager" parent="." instance=ExtResource("5_1k2v8")]
