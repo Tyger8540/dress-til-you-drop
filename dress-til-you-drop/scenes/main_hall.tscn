@@ -1,7 +1,8 @@
-[gd_scene load_steps=48 format=3 uid="uid://kfnqrrgcpdjs"]
+[gd_scene load_steps=49 format=3 uid="uid://kfnqrrgcpdjs"]
 
 [ext_resource type="PackedScene" uid="uid://bmd45oqbmm5e" path="res://scenes/player.tscn" id="1_cptfm"]
 [ext_resource type="PackedScene" uid="uid://cy5lbcl5enw6a" path="res://scenes/move_camera.tscn" id="2_cptfm"]
+[ext_resource type="PackedScene" uid="uid://crh3xyw8knqlt" path="res://scenes/settings_manager.tscn" id="3_muuyn"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_cptfm"]
 
@@ -291,3 +292,5 @@ current_cam = NodePath("../MoveCamera")
 transform = Transform3D(-4.371139e-08, -0.4226183, 0.9063078, 0, 0.9063078, 0.4226183, -1, 1.8473234e-08, -3.9615973e-08, 7.9, 3.5, 0)
 cam_axis = 3
 player = NodePath("../Player")
+
+[node name="SettingsManager" parent="." instance=ExtResource("3_muuyn")]
