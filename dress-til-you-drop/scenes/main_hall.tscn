@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=46 format=3 uid="uid://db6b13rcb27gn"]
+=======
+[gd_scene load_steps=46 format=3 uid="uid://crh0ytswgworq"]
+>>>>>>> Stashed changes
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_cptfm"]
 
