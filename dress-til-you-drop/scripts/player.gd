@@ -38,6 +38,7 @@ func _physics_process(delta: float) -> void:
 			locked_cam_orientation = current_cam.rotation.y
 			move_orientation_locked = true
 		
+		look_at(global_position + move_direction)
 		move_direction = move_direction.rotated(Vector3.UP, locked_cam_orientation)
 		
 		velocity.x = move_direction.x * SPEED

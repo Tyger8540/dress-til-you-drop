@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://ds4f3s77v5f5w"]
+[gd_scene load_steps=58 format=3 uid="uid://ds4f3s77v5f5w"]
 
 [ext_resource type="PackedScene" uid="uid://f6sftetqaoh1" path="res://scenes/interaction_area.tscn" id="1_4y6b0"]
 [ext_resource type="PackedScene" uid="uid://bmd45oqbmm5e" path="res://scenes/player.tscn" id="1_cptfm"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://crh3xyw8knqlt" path="res://scenes/settings_manager.tscn" id="3_muuyn"]
 [ext_resource type="Resource" uid="uid://cijuaatftyr2g" path="res://resources/dialog/shop_1_locked.tres" id="3_xs61c"]
 [ext_resource type="Resource" uid="uid://cu4jrgrm8eq5n" path="res://resources/dialog/photoshoot_locked.tres" id="4_xs61c"]
+[ext_resource type="PackedScene" uid="uid://dmecdf4b0ub0k" path="res://scenes/move_follow_camera.tscn" id="7_dbmwu"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_muuyn"]
 
@@ -328,10 +329,24 @@ shape = SubResource("SphereShape3D_4y6b0")
 
 [node name="Player" parent="." node_paths=PackedStringArray("current_cam") instance=ExtResource("1_cptfm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 1.0999999, 0)
-current_cam = NodePath("../MoveCamera")
+current_cam = NodePath("../MoveFollowCamera")
+
+[node name="MoveFollowCamera" parent="." node_paths=PackedStringArray("player") instance=ExtResource("7_dbmwu")]
+transform = Transform3D(-4.222196e-08, -0.17364818, 0.9848078, 1.1313337e-08, 0.9848078, 0.17364818, -1, 1.8473228e-08, -3.9615973e-08, 14.4, 3, 0)
+current = true
+follow_axis = 1
+follow_distance = 3.0
+cam_axis = 3
+player = NodePath("../Player")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="MoveFollowCamera"]
+transform = Transform3D(1, 1.7763568e-15, 0, 0, 1, -7.3183493e-16, 0, -7.3183493e-16, 1, 0, 0, 0)
+light_energy = 2.309
+omni_range = 8.0
 
 [node name="MoveCamera" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_cptfm")]
-transform = Transform3D(-4.222196e-08, -0.17364818, 0.9848078, 1.1313337e-08, 0.9848078, 0.17364818, -1, 1.8473228e-08, -3.9615973e-08, 14.9, 4.5, 0)
+transform = Transform3D(-4.222196e-08, -0.17364818, 0.9848078, 1.1313337e-08, 0.9848078, 0.17364818, -1, 1.8473228e-08, -3.9615973e-08, 14.4, 3, 0)
+visible = false
 cam_axis = 3
 player = NodePath("../Player")
 
