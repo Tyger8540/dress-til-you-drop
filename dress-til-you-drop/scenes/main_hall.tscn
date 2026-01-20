@@ -333,7 +333,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 1.0999999, 0)
 current_cam = NodePath("../MoveFollowCamera")
 
 [node name="InventoryCamera" type="Camera3D" parent="Player" node_paths=PackedStringArray("inventory_ui", "player")]
-transform = Transform3D(-0.5000001, 0, -0.8660254, 0, 1, 0, 0.8660254, 0, -0.5000001, -2.500001, 0.19999993, 7.450581e-09)
+transform = Transform3D(-0.5000001, 0, -0.8660254, 0, 1, 0, 0.8660254, 0, -0.5000001, -2.500001, 0.099999905, 7.450581e-09)
+visible = false
 script = ExtResource("8_6hdfs")
 inventory_ui = NodePath("../../InventoryUI")
 player = NodePath("..")
