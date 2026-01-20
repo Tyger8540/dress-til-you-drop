@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bm31ye7javi80"]
+
+[ext_resource type="Script" uid="uid://c2pr1lveorgdr" path="res://scripts/swivel_camera.gd" id="1_0n8yc"]
+
+[node name="SwivelCamera" type="Camera3D"]
+script = ExtResource("1_0n8yc")
+metadata/_custom_type_script = "uid://cm5tsyihtd36p"

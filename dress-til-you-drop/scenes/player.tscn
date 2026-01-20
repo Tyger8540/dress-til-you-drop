@@ -1,8 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://bmd45oqbmm5e"]
+[gd_scene load_steps=7 format=3 uid="uid://bmd45oqbmm5e"]
 
 [ext_resource type="Script" uid="uid://ds03crob6pyyc" path="res://scripts/player.gd" id="1_3vyb7"]
+[ext_resource type="ArrayMesh" uid="uid://fa80is55d3mj" path="res://models/main_character/body.obj" id="2_qlg0r"]
+[ext_resource type="ArrayMesh" uid="uid://c6yvu2nqtj1q8" path="res://models/main_character/underwear-top.obj" id="3_tuyoq"]
+[ext_resource type="ArrayMesh" uid="uid://txcta0gn4ulv" path="res://models/main_character/underwear-bottom.obj" id="4_fjrip"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3vyb7"]
+
+[sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_qlg0r"]
+length = 1.2
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 script = ExtResource("1_3vyb7")
@@ -12,3 +18,22 @@ shape = SubResource("CapsuleShape3D_3vyb7")
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 2.0900002, 0, 0, 0, 1, 0, 0, 0)
+visible = false
+
+[node name="Body" type="MeshInstance3D" parent="."]
+transform = Transform3D(-8.742278e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.742278e-09, 0, 1.1, 0)
+mesh = ExtResource("2_qlg0r")
+
+[node name="Accessory" type="MeshInstance3D" parent="Body"]
+
+[node name="Top" type="MeshInstance3D" parent="Body"]
+mesh = ExtResource("3_tuyoq")
+
+[node name="Bottom" type="MeshInstance3D" parent="Body"]
+mesh = ExtResource("4_fjrip")
+
+[node name="Shoes" type="MeshInstance3D" parent="Body"]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(-0.8660254, 0.50000006, 0, 2.1855696e-08, 3.7855173e-08, -1, -0.50000006, -0.8660254, -4.371139e-08, -0.6, 0.2, 0)
+shape = SubResource("SeparationRayShape3D_qlg0r")

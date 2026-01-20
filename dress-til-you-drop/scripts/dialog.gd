@@ -3,10 +3,13 @@ extends RichTextLabel
 
 signal dialog_finished
 
+@export var speaker: RichTextLabel
+
 @export var text_speed: float = 0.05  # adjustable dialog box text speed
 @export var text_marker_speed: float = 0.5  # adjustable text marker speed
 
 var dialog_array: Array[String]  # array holding lines of dialog
+var speaker_array: Array[DialogResource.speakers]  # array holding speakers for dialog
 var dialog_index: int = 0  # index of cur line of dialog
 
 var text_revealing: bool = false  # true if text is currently being revealed
@@ -46,6 +49,14 @@ func _process(delta: float) -> void:
 
 func start_dialog() -> void:
 	text = dialog_array[dialog_index]  # set text for the cur line of dialog
+	if speaker_array[dialog_index] != DialogResource.speakers.NONE:
+		# TODO set dialog box to speaker version
+		get_parent().set_dialog_mode()
+		speaker.text = DialogResource.speakers.find_key(speaker_array[dialog_index])  # set speaker name for the cur line of dialog
+	else:
+		# TODO set dialog box to non-speaker version
+		get_parent().set_description_mode()
+		pass
 	text_revealing = true  # start revealing text
 
 

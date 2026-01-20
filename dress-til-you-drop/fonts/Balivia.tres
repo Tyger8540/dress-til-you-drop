@@ -1,0 +1,10 @@
+[gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://bh1okvhwsp83k"]
+
+[ext_resource type="FontFile" uid="uid://cqukri5ts0qpb" path="res://fonts/Balivia.ttf" id="1_o4pl5"]
+
+[resource]
+base_font = ExtResource("1_o4pl5")
+opentype_features = {
+1801810542: 0,
+1818847073: 0
+}
