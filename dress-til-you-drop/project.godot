@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 InteractionManager="*res://scenes/interaction_manager.tscn"
+CurrencyManager="*res://scripts/currency_manager.gd"
 PlayerStats="*res://scripts/player_stats.gd"
 Enums="*res://scripts/enums.gd"
 Signals="*res://scripts/signals.gd"
