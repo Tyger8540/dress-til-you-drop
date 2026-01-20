@@ -26,9 +26,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_8wyaw")
+metadata/_edit_vertical_guides_ = [820.0]
 
 [node name="Panel" type="Panel" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -254,3 +254,16 @@ offset_top = 325.0
 offset_right = 1515.0
 offset_bottom = 328.0
 texture = ExtResource("12_y7i8o")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 0
+offset_left = 820.0
+offset_top = 320.0
+offset_right = 820.0
+offset_bottom = 320.0
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer"]
+layout_mode = 2
+columns = 4

@@ -1,14 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://bmd45oqbmm5e"]
+[gd_scene load_steps=8 format=3 uid="uid://bmd45oqbmm5e"]
 
 [ext_resource type="Script" uid="uid://ds03crob6pyyc" path="res://scripts/player.gd" id="1_3vyb7"]
 [ext_resource type="ArrayMesh" uid="uid://fa80is55d3mj" path="res://models/main_character/body.obj" id="2_qlg0r"]
 [ext_resource type="ArrayMesh" uid="uid://c6yvu2nqtj1q8" path="res://models/main_character/underwear-top.obj" id="3_tuyoq"]
 [ext_resource type="ArrayMesh" uid="uid://txcta0gn4ulv" path="res://models/main_character/underwear-bottom.obj" id="4_fjrip"]
 [ext_resource type="ArrayMesh" uid="uid://dle68gpkyv2la" path="res://models/main_character/schoolgirl-shoes.obj" id="5_smehm"]
+[ext_resource type="PackedScene" uid="uid://b2x3rd7m3rywc" path="res://scenes/inventory_ui.tscn" id="6_tuyoq"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3vyb7"]
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
+process_mode = 3
 script = ExtResource("1_3vyb7")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -32,3 +34,8 @@ mesh = ExtResource("4_fjrip")
 
 [node name="Shoes" type="MeshInstance3D" parent="Body"]
 mesh = ExtResource("5_smehm")
+
+[node name="InventoryUI" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="InventoryUI" parent="InventoryUI" instance=ExtResource("6_tuyoq")]
