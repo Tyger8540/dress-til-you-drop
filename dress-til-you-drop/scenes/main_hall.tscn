@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://crh3xyw8knqlt" path="res://scenes/settings_manager.tscn" id="3_muuyn"]
 [ext_resource type="Resource" uid="uid://cijuaatftyr2g" path="res://resources/dialog/shop_1_locked.tres" id="3_xs61c"]
 [ext_resource type="Resource" uid="uid://cu4jrgrm8eq5n" path="res://resources/dialog/photoshoot_locked.tres" id="4_xs61c"]
+[ext_resource type="Material" uid="uid://djombhx4qb3pp" path="res://resources/materials/green_material.tres" id="5_in4so"]
 [ext_resource type="PackedScene" uid="uid://dmecdf4b0ub0k" path="res://scenes/move_follow_camera.tscn" id="7_dbmwu"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_muuyn"]
@@ -129,9 +130,6 @@ albedo_color = Color(0.24946035, 0.24946035, 0.24946035, 1)
 data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
 
 [sub_resource type="PrismMesh" id="PrismMesh_muuyn"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wf2n6"]
-albedo_color = Color(0.4745098, 0.95686275, 0.16078432, 1)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_muuyn"]
 data = PackedVector3Array(0, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0, 0.5, 0.5, 0, 0.5, -0.5, 0.5, -0.5, 0.5, 0, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0, 0.5, -0.5, 0, 0.5, 0.5, -0.5, -0.5, -0.5, 0, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
@@ -314,15 +312,16 @@ shape = SubResource("ConcavePolygonShape3D_g3kkl")
 [node name="interactable obj" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.7071068, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, -0.7071068, -3, 1, 7)
 mesh = SubResource("PrismMesh_muuyn")
-surface_material_override/0 = SubResource("StandardMaterial3D_wf2n6")
+surface_material_override/0 = ExtResource("5_in4so")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="interactable obj"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="interactable obj/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_muuyn")
 
-[node name="InteractionArea" parent="interactable obj" instance=ExtResource("1_4y6b0")]
+[node name="InteractionArea" parent="interactable obj" node_paths=PackedStringArray("connected_area") instance=ExtResource("1_4y6b0")]
 dialog = ExtResource("2_wf2n6")
+connected_area = NodePath("../../walls/MeshInstance3D5/minigame1/InteractionArea")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="interactable obj/InteractionArea"]
 shape = SubResource("SphereShape3D_4y6b0")

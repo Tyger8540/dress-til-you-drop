@@ -48,3 +48,10 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 	
 	move_and_slide()
+
+
+func dress_up() -> void:
+	# TODO PROTOTYPE CODE TO FIX
+	top.mesh = load("res://models/main_character/schoolgirl-top.obj")
+	bottom.mesh = load("res://models/main_character/schoolgirl-bottom.obj")
+	shoes.mesh = load("res://models/main_character/schoolgirl-shoes.obj")
