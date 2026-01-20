@@ -1,7 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://t604fy5q77jb"]
+[gd_scene load_steps=9 format=3 uid="uid://t604fy5q77jb"]
 
 [ext_resource type="Script" uid="uid://dq7ffwc8vch6f" path="res://scripts/dialog_box.gd" id="1_tihiy"]
+[ext_resource type="StyleBox" uid="uid://br3ydv3a81llm" path="res://resources/style_boxes/description_dialog_box.tres" id="1_v0qdq"]
 [ext_resource type="Script" uid="uid://b5m63q5oo47kf" path="res://scripts/dialog.gd" id="2_df88m"]
+[ext_resource type="Texture2D" uid="uid://cmq0kystajuhd" path="res://icon.svg" id="2_kxkgd"]
+[ext_resource type="FontFile" uid="uid://cqukri5ts0qpb" path="res://fonts/Balivia.ttf" id="4_caxlw"]
+[ext_resource type="FontFile" uid="uid://oo1ksgkwpwxp" path="res://fonts/Goodlife Serif.otf" id="4_kdl02"]
+[ext_resource type="Texture2D" uid="uid://r1ofi7t20dti" path="res://art/dialog_ui/round dialogue.png" id="5_caxlw"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dfgu0"]
+texture = ExtResource("5_caxlw")
 
 [node name="DialogBox" type="Panel" node_paths=PackedStringArray("dialog")]
 anchors_preset = 7
@@ -9,31 +17,63 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -200.0
-offset_top = -200.0
-offset_right = 200.0
+offset_left = -575.0
+offset_top = -390.0
+offset_right = 556.0
+offset_bottom = -24.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_styles/panel = ExtResource("1_v0qdq")
 script = ExtResource("1_tihiy")
 dialog = NodePath("Dialog")
 
-[node name="Dialog" type="RichTextLabel" parent="."]
+[node name="SpeakerBackground" type="TextureRect" parent="."]
+visible = false
+self_modulate = Color(0, 0, 0, 1)
 layout_mode = 0
-offset_left = 10.0
-offset_top = 10.0
-offset_right = 390.0
-offset_bottom = 190.0
-text = "Hello world, this is sample text to test out the dialogue system!!
+offset_left = -50.999992
+offset_top = 13.778563
+offset_right = 77.00001
+offset_bottom = 141.77856
+rotation = -0.34906584
+scale = Vector2(1, 0.2)
+texture = ExtResource("2_kxkgd")
 
-Yippeeeeeeee"
+[node name="Speaker" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 101.0
+offset_top = 61.00003
+offset_right = 285.1586
+offset_bottom = 133.45096
+rotation = -0.06981317
+theme_override_fonts/normal_font = ExtResource("4_kdl02")
+theme_override_font_sizes/normal_font_size = 58
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Dialog" type="RichTextLabel" parent="." node_paths=PackedStringArray("speaker")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -23.0
+offset_right = 400.0
+offset_bottom = 117.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("4_caxlw")
+theme_override_font_sizes/normal_font_size = 40
+text = "Hey this is me currently speaking in the game AHHH isn't that so cool???"
 visible_characters = 0
 visible_ratio = 0.0
 script = ExtResource("2_df88m")
+speaker = NodePath("../Speaker")
 
 [node name="TextMarker" type="ColorRect" parent="Dialog"]
-visible = false
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -46,3 +86,19 @@ offset_right = -5.0
 offset_bottom = -5.0
 grow_horizontal = 0
 grow_vertical = 0
+color = Color(0, 0, 0, 1)
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -575.0
+offset_top = -366.0
+offset_right = 556.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_dfgu0")
