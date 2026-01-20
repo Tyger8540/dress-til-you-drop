@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bmd45oqbmm5e"]
+[gd_scene load_steps=8 format=3 uid="uid://bmd45oqbmm5e"]
 
 [ext_resource type="Script" uid="uid://ds03crob6pyyc" path="res://scripts/player.gd" id="1_3vyb7"]
 [ext_resource type="ArrayMesh" uid="uid://fa80is55d3mj" path="res://models/main_character/body.obj" id="2_qlg0r"]
@@ -7,6 +7,9 @@
 [ext_resource type="ArrayMesh" uid="uid://dle68gpkyv2la" path="res://models/main_character/schoolgirl-shoes.obj" id="5_smehm"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3vyb7"]
+
+[sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_qlg0r"]
+length = 1.2
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 script = ExtResource("1_3vyb7")
@@ -32,3 +35,7 @@ mesh = ExtResource("4_fjrip")
 
 [node name="Shoes" type="MeshInstance3D" parent="Body"]
 mesh = ExtResource("5_smehm")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(-0.8660254, 0.50000006, 0, 2.1855696e-08, 3.7855173e-08, -1, -0.50000006, -0.8660254, -4.371139e-08, -0.6, 0.2, 0)
+shape = SubResource("SeparationRayShape3D_qlg0r")

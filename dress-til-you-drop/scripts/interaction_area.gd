@@ -4,7 +4,7 @@ extends Area3D
 const DIALOG_BOX = preload("res://scenes/dialog_box.tscn")
 
 @export var action_name: String = "interact"
-@export var dialog: Array[String]  # lines of dialog to be displayed
+@export var dialog: DialogResource  # lines of dialog to be displayed
 @export var accessible: bool  # allows the player to enter the area connected to this InteractionArea
 @export var connected_area: PackedScene  # area connected to this InteractionArea
 
