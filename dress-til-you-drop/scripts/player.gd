@@ -11,6 +11,12 @@ var move_direction: Vector3
 var locked_cam_orientation: float = 0.0
 var move_orientation_locked: bool = false
 
+@onready var body: MeshInstance3D = $Body
+@onready var accessory: MeshInstance3D = $Body/Accessory
+@onready var top: MeshInstance3D = $Body/Top
+@onready var bottom: MeshInstance3D = $Body/Bottom
+@onready var shoes: MeshInstance3D = $Body/Shoes
+
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
