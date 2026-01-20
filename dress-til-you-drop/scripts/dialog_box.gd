@@ -23,9 +23,11 @@ func set_dialog_mode() -> void:
 	add_theme_stylebox_override("panel", load("res://resources/style_boxes/dialog_dialog_box.tres"))
 	size = Vector2(1131.0, 366.0)
 	position = Vector2(385.0, 690.0)
+	dialog.position = Vector2(156.0, 160.0)
 
 
 func set_description_mode() -> void:
 	add_theme_stylebox_override("panel", load("res://resources/style_boxes/description_dialog_box.tres"))
 	size = Vector2(1112.0, 286.0)
 	position = Vector2(404.0, 770.0)
+	dialog.position = Vector2(156.0, 80.0)

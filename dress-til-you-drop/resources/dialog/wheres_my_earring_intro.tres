@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource("1_o7pyl")
 speaker = Array[int]([1, 2, 2, 1, 2, 1, 1])
-dialog = Array[String](["I told you that you could borrow it, not do whatever you want with it!", "I'm sorry! It's not like I meant to lose it on purpose.", "Plus, you borrow my things without asking all the time.", "...", "Sis?", "...", "Just…find my earring."])
+dialog = Array[String](["I told you that you could borrow it, not do whatever you want with it!", "I'm sorry! It's not like I meant to lose it on purpose.", "Plus, you borrow my things without asking all the time.", "...", "Sis?", "...", "Just..…find my earring."])
 metadata/_custom_type_script = "uid://d1gw1wt5dw784"

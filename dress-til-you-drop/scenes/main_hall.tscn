@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://ds4f3s77v5f5w"]
+[gd_scene load_steps=57 format=3 uid="uid://ds4f3s77v5f5w"]
 
 [ext_resource type="PackedScene" uid="uid://f6sftetqaoh1" path="res://scenes/interaction_area.tscn" id="1_4y6b0"]
 [ext_resource type="PackedScene" uid="uid://bmd45oqbmm5e" path="res://scenes/player.tscn" id="1_cptfm"]
@@ -7,6 +7,7 @@
 [ext_resource type="Resource" uid="uid://bvayquwvopjhg" path="res://resources/dialog/wheres_my_earring_intro.tres" id="2_wf2n6"]
 [ext_resource type="PackedScene" uid="uid://crh3xyw8knqlt" path="res://scenes/settings_manager.tscn" id="3_muuyn"]
 [ext_resource type="Resource" uid="uid://cijuaatftyr2g" path="res://resources/dialog/shop_1_locked.tres" id="3_xs61c"]
+[ext_resource type="Resource" uid="uid://cu4jrgrm8eq5n" path="res://resources/dialog/photoshoot_locked.tres" id="4_xs61c"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_muuyn"]
 
@@ -106,6 +107,9 @@ albedo_color = Color(1, 0.03529412, 0.20392157, 1)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_fgfk0"]
 data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3p60x"]
+size = Vector3(4, 1, 1.4)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_rpj0x"]
 
@@ -276,6 +280,13 @@ surface_material_override/0 = SubResource("StandardMaterial3D_gsg6v")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="walls/garden/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_fgfk0")
+
+[node name="InteractionArea" parent="walls/garden" instance=ExtResource("1_4y6b0")]
+dialog = ExtResource("4_xs61c")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="walls/garden/InteractionArea"]
+transform = Transform3D(1, 0, 0, 0, 0.99999964, 0, 0, 0, 1, 1.4999847, 0, -6.953875e-08)
+shape = SubResource("BoxShape3D_3p60x")
 
 [node name="stairs" type="MeshInstance3D" parent="walls"]
 transform = Transform3D(-11.494812, 1.5652575, 0, 0.20532873, 0.08387928, 0, 0, 0, 0.10483774, 19.684475, -0.28588015, 0)
