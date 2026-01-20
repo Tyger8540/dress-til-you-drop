@@ -1,7 +1,6 @@
 class_name Player
 extends CharacterBody3D
 
-
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
@@ -10,6 +9,7 @@ const JUMP_VELOCITY = 4.5
 var move_direction: Vector3
 var locked_cam_orientation: float = 0.0
 var move_orientation_locked: bool = false
+var in_inventory: bool = false
 
 @onready var body: MeshInstance3D = $Body
 @onready var accessory: MeshInstance3D = $Body/Accessory
@@ -35,7 +35,7 @@ func _physics_process(delta: float) -> void:
 	
 	if move_direction:
 		if not move_orientation_locked:
-			locked_cam_orientation = current_cam.rotation.y
+			locked_cam_orientation = current_cam.global_rotation.y
 			move_orientation_locked = true
 		
 		look_at(global_position + move_direction)
@@ -46,6 +46,9 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
+	
+	if in_inventory:
+		return
 	
 	move_and_slide()
 
