@@ -1,0 +1,128 @@
+[gd_scene load_steps=2 format=3 uid="uid://ubqqbukxq7yg"]
+
+[ext_resource type="Script" uid="uid://cka2v7vq7m2vl" path="res://scripts/earring_minigame.gd" id="1_minigame"]
+
+[node name="EarringMinigame" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_minigame")
+
+[node name="Background" type="ColorRect" parent="."]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.05, 0.05, 0.09, 1)
+
+[node name="MainFrame" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopBar" type="VBoxContainer" parent="MainFrame"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.06
+anchor_top = 0.14
+anchor_right = 0.11
+anchor_bottom = 0.86
+grow_horizontal = 0
+alignment = 1
+theme_override_constants/separation = 24
+
+[node name="TargetLabel" type="Label" parent="MainFrame/TopBar"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Target"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TargetPreview" type="ColorRect" parent="MainFrame/TopBar"]
+custom_minimum_size = Vector2(132, 132)
+layout_mode = 2
+size_flags_horizontal = 0
+color = Color(0.93, 0.93, 0.96, 1)
+
+[node name="TargetGlyph" type="Label" parent="MainFrame/TopBar/TargetPreview"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TimerContainer" type="Control" parent="MainFrame/TopBar"]
+custom_minimum_size = Vector2(132, 480)
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="TimerBackground" type="ColorRect" parent="MainFrame/TopBar/TimerContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.18, 0.18, 0.22, 1)
+
+[node name="TimerBar" type="ColorRect" parent="MainFrame/TopBar/TimerContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.9, 0.85, 0.35, 1)
+
+[node name="TimerGlow" type="ColorRect" parent="MainFrame/TopBar/TimerContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 0.5, 0)
+
+[node name="ScoreLabel" type="Label" parent="MainFrame/TopBar"]
+layout_mode = 2
+text = "Score: 0 / 3"
+horizontal_alignment = 1
+
+[node name="SpeedLabel" type="Label" parent="MainFrame/TopBar"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="PlayfieldFrame" type="ColorRect" parent="MainFrame"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.14
+anchor_top = 0.14
+anchor_right = 0.95
+anchor_bottom = 0.86
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.9, 0.92, 0.97, 1)
+
+[node name="Playfield" type="Control" parent="MainFrame/PlayfieldFrame"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
