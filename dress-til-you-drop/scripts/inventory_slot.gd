@@ -4,7 +4,7 @@ extends Control
 @onready var icon = $ItemIcon
 
 
-var item = null
+# var item = null
 
 
 # Called when the node enters the scene tree for the first time.
@@ -18,5 +18,6 @@ func _process(delta: float) -> void:
 
 
 func set_item(new_item):
-	item = new_item
-	icon.texture = new_item["ui_texture"]
+	# item = new_item
+	icon.texture = new_item.ui_texture
+	#new_item["ui_texture"]

@@ -164,7 +164,6 @@ active_texture = ExtResource("14_rqtn1")
 type = "shoes"
 
 [node name="Boxes" type="Control" parent="."]
-visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0

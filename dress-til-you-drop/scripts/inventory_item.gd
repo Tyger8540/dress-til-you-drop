@@ -1,4 +1,5 @@
 @tool
+class_name InventoryItem
 extends Node3D
 # TODO Added this to group called Items: Figure out if it is global
 
@@ -29,13 +30,13 @@ func _process(delta: float) -> void:
 		icon_mesh.texture = item_texture
 
 func pickup_item():
-	var item = {
-		"type": item_type,
-		"name": item_name,
-		"texture": item_texture,
-		"ui_texture": ui_texture,
-		"scene_path": scene_path
-	}
+	#var item = {
+		#"type": item_type,
+		#"name": item_name,
+		#"texture": item_texture,
+		#"ui_texture": ui_texture,
+		#"scene_path": scene_path
+	#}
 	if InventoryManager.player_node:
-		InventoryManager.add_item(item)
-		self.queue_free() # TODO check if this is unneccesary
+		InventoryManager.add_item(self)
+		# self.queue_free()

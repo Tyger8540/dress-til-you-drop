@@ -21,11 +21,10 @@ func _on_inventory_updated(current_tab) -> void:
 	clear_grid_container()
 	# 
 	for item in InventoryManager.inventory:
-		if current_tab.type == item["type"]:
+		if current_tab.type == item.item_type:
 			var slot = InventoryManager.inventory_slot_scene.instantiate()
 			grid_container.add_child(slot)
 			slot.set_item(item)
-	
 
 
 # Clears the UI grid
