@@ -1,13 +1,13 @@
 extends Control
 
 @onready var grid_container = $ScrollContainer/GridContainer
-
+@onready var current_tab = $"Tabs/Earrings Tab"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# Connecting the func
 	InventoryManager.inventory_updated.connect(_on_inventory_updated)
-	_on_inventory_updated()
+	_on_inventory_updated(current_tab)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -16,14 +16,15 @@ func _process(_delta: float) -> void:
 
 
 # Updates inventory UI
-func _on_inventory_updated() -> void:
+func _on_inventory_updated(current_tab) -> void:
 	# Clears current grid container contents
 	clear_grid_container()
 	# 
 	for item in InventoryManager.inventory:
-		var slot = InventoryManager.inventory_slot_scene.instantiate()
-		grid_container.add_child(slot)
-		slot.set_item(item)
+		if current_tab.type == item["type"]:
+			var slot = InventoryManager.inventory_slot_scene.instantiate()
+			grid_container.add_child(slot)
+			slot.set_item(item)
 	
 
 

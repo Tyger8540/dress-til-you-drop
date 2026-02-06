@@ -119,7 +119,7 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="InventoryTabButton" parent="Tabs" instance=ExtResource("7_rc4hi")]
+[node name="Earrings Tab" parent="Tabs" instance=ExtResource("7_rc4hi")]
 layout_mode = 0
 offset_left = 871.0
 offset_top = 272.0
@@ -128,8 +128,9 @@ offset_bottom = 272.0
 texture_normal = ExtResource("6_rc4hi")
 inactive_texture = ExtResource("6_rc4hi")
 active_texture = ExtResource("7_rqtn1")
+type = "earrings"
 
-[node name="InventoryTabButton2" parent="Tabs" instance=ExtResource("7_rc4hi")]
+[node name="Tops Tab" parent="Tabs" instance=ExtResource("7_rc4hi")]
 layout_mode = 0
 offset_left = 1015.0
 offset_top = 272.0
@@ -138,8 +139,9 @@ offset_bottom = 272.0
 texture_normal = ExtResource("8_ucuti")
 inactive_texture = ExtResource("8_ucuti")
 active_texture = ExtResource("10_3y5j4")
+type = "tops"
 
-[node name="InventoryTabButton3" parent="Tabs" instance=ExtResource("7_rc4hi")]
+[node name="Bottoms Tab" parent="Tabs" instance=ExtResource("7_rc4hi")]
 layout_mode = 0
 offset_left = 1159.0
 offset_top = 272.0
@@ -148,8 +150,9 @@ offset_bottom = 272.0
 texture_normal = ExtResource("9_u4vby")
 inactive_texture = ExtResource("9_u4vby")
 active_texture = ExtResource("12_rc4hi")
+type = "bottoms"
 
-[node name="InventoryTabButton4" parent="Tabs" instance=ExtResource("7_rc4hi")]
+[node name="Shoes Tab" parent="Tabs" instance=ExtResource("7_rc4hi")]
 layout_mode = 0
 offset_left = 1304.0
 offset_top = 272.0
@@ -158,6 +161,7 @@ offset_bottom = 272.0
 texture_normal = ExtResource("10_xl45s")
 inactive_texture = ExtResource("10_xl45s")
 active_texture = ExtResource("14_rqtn1")
+type = "shoes"
 
 [node name="Boxes" type="Control" parent="."]
 visible = false
