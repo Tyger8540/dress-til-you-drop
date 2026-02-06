@@ -3,7 +3,7 @@ extends Node
 # TODO see if we need to add different lists for each category
 var inventory = [] 
 var player_node: Node = null
-
+@onready var inventory_slot_scene = preload("res://scenes/inventory_slot.tscn")
 
 signal inventory_updated
 
@@ -21,4 +21,5 @@ func _process(delta: float) -> void:
 
 func add_item(item):
 	inventory.push_back(item)
+	inventory_updated.emit()
 	print("Item added!", inventory)

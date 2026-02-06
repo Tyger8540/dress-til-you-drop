@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://d2ib6cckh3l33"]
+
+[ext_resource type="Script" uid="uid://55y022tik7ck" path="res://scripts/inventory_slot.gd" id="1_bxqf6"]
+[ext_resource type="PackedScene" uid="uid://c3k7ourtgy1hp" path="res://scenes/inventory_slot_button.tscn" id="2_hddt5"]
+[ext_resource type="Script" uid="uid://35r6r8kvdl3s" path="res://scripts/item_button.gd" id="3_hddt5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bbig2"]
+
+[node name="Inventory_Slot" type="Control"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 3
+anchors_preset = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 160.0
+offset_bottom = 160.0
+script = ExtResource("1_bxqf6")
+
+[node name="InventorySlotButton" parent="." instance=ExtResource("2_hddt5")]
+layout_mode = 0
+script = null
+
+[node name="ItemIcon" type="MeshInstance3D" parent="."]
+
+[node name="ItemButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_bbig2")
+script = ExtResource("3_hddt5")

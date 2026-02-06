@@ -57,7 +57,16 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 
 
-func _input(event):
+func _input(event) -> void:
 	if event.is_action_pressed("inventory_toggle"):
 		inventory_ui.visible = !inventory_ui.visible
 		get_tree().paused = !get_tree().paused
+
+
+# Puts item on player if they are not already wearing it
+func put_on_clothes(item) -> void:
+	var clothing_type = item["type"]
+	
+	# TODO figure out what the correct variable to change is :(
+	if clothing_type.texture != item["item_texture"]:
+		clothing_type.texture = item["item_texture"]

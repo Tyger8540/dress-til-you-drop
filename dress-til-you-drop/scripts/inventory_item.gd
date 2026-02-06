@@ -6,6 +6,7 @@ extends Node3D
 @export var item_type = ""
 @export var item_name = ""
 @export var item_texture: Texture
+@export var ui_texture: Texture
 # The path to the scene that will be spawned
 var scene_path: String = "res://scenes/inventory_item.tscn"
 
@@ -23,7 +24,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	# TODO If this does not work, delete the first condition (icon_mesh...)
+	# TODO If this does not work, delete the first condition (icon_mesh...item_texture)
 	if icon_mesh.texture!= item_texture && Engine.is_editor_hint():
 		icon_mesh.texture = item_texture
 
@@ -32,8 +33,9 @@ func pickup_item():
 		"type": item_type,
 		"name": item_name,
 		"texture": item_texture,
+		"ui_texture": ui_texture,
 		"scene_path": scene_path
 	}
 	if InventoryManager.player_node:
 		InventoryManager.add_item(item)
-		self.queue_free() # Check that this does not need removing
+		self.queue_free() # TODO check if this is unneccesary
