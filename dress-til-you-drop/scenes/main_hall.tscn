@@ -9,8 +9,8 @@
 [ext_resource type="Resource" uid="uid://cijuaatftyr2g" path="res://resources/dialog/shop_1_locked.tres" id="3_xs61c"]
 [ext_resource type="Resource" uid="uid://cu4jrgrm8eq5n" path="res://resources/dialog/photoshoot_locked.tres" id="4_xs61c"]
 [ext_resource type="Material" uid="uid://djombhx4qb3pp" path="res://resources/materials/green_material.tres" id="5_in4so"]
-[ext_resource type="PackedScene" uid="uid://dmecdf4b0ub0k" path="res://scenes/move_follow_camera.tscn" id="7_dbmwu"]
-[ext_resource type="Script" uid="uid://dvwxpheb3tytc" path="res://scripts/inventory_camera.gd" id="8_6hdfs"]
+[ext_resource type="PackedScene" path="res://scenes/move_follow_camera.tscn" id="7_dbmwu"]
+[ext_resource type="Script" path="res://scripts/inventory_camera.gd" id="8_6hdfs"]
 [ext_resource type="PackedScene" uid="uid://b2x3rd7m3rywc" path="res://scenes/inventory_ui.tscn" id="12_p52to"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_muuyn"]
@@ -122,6 +122,7 @@ albedo_color = Color(0.24946035, 0.24946035, 0.24946035, 1)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_tltrp"]
 data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
+backface_collision = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_gjt1e"]
 
@@ -311,6 +312,12 @@ surface_material_override/0 = SubResource("StandardMaterial3D_rjvo3")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="walls/stairs/second floor/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_g3kkl")
 
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.0000001, 35.687286, -0.49087864, -0.19794178)
+use_collision = true
+polygon = PackedVector2Array(1, 0, 1, 0.02, 0, 0.02, 0, 0.04, -1, 0.04, -1, 0.06, -2, 0.06, -2, 0.08, -3, 0.08, -3, 0.1, -4, 0.1, -4, 0.12, -5, 0.12, -5, 0.14, -6, 0.14, -6, 0.16, -7, 0.16, -7, 0)
+depth = 0.1
+
 [node name="interactable obj" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.7071068, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, -0.7071068, -3, 1, 7)
 mesh = SubResource("PrismMesh_muuyn")
@@ -329,7 +336,7 @@ connected_area = NodePath("../../walls/MeshInstance3D5/minigame1/InteractionArea
 shape = SubResource("SphereShape3D_4y6b0")
 
 [node name="Player" parent="." node_paths=PackedStringArray("current_cam") instance=ExtResource("1_cptfm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 1.0999999, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 1, 0)
 current_cam = NodePath("../MoveFollowCamera")
 
 [node name="InventoryCamera" type="Camera3D" parent="Player" node_paths=PackedStringArray("inventory_ui", "player")]
@@ -338,18 +345,18 @@ visible = false
 script = ExtResource("8_6hdfs")
 inventory_ui = NodePath("../../InventoryUI")
 player = NodePath("..")
-metadata/_custom_type_script = "uid://dvwxpheb3tytc"
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Player/InventoryCamera"]
 transform = Transform3D(1, 0, 2.9802322e-08, 0, 1, 0, -2.9802322e-08, 0, 1, 0, 0.9000001, 0)
 light_energy = 2.5
 
 [node name="MoveFollowCamera" parent="." node_paths=PackedStringArray("player") instance=ExtResource("7_dbmwu")]
-transform = Transform3D(-4.222196e-08, -0.17364818, 0.9848078, 1.1313337e-08, 0.9848078, 0.17364818, -1, 1.8473228e-08, -3.9615973e-08, 14.4, 3, 0)
+transform = Transform3D(-4.371139e-08, -0.34202012, 0.9396926, 0, 0.9396926, 0.34202012, -1, 1.4950174e-08, -4.1075268e-08, 14, 3, 0)
 current = true
 follow_axis = 1
 follow_distance = 3.0
-cam_axis = 3
+cam_axis = 6
+cam_offset = Vector3(2.5, 2, 0)
 player = NodePath("../Player")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="MoveFollowCamera"]
@@ -374,3 +381,4 @@ omni_range = 42.657
 
 [node name="InventoryUI" parent="." instance=ExtResource("12_p52to")]
 visible = false
+metadata/_edit_vertical_guides_ = [820.0]

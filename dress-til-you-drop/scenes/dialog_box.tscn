@@ -72,6 +72,7 @@ visible_characters = 0
 visible_ratio = 0.0
 script = ExtResource("2_df88m")
 speaker = NodePath("../Speaker")
+text_speed = 0.03
 
 [node name="TextMarker" type="ColorRect" parent="Dialog"]
 visible = false
