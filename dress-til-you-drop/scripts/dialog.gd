@@ -5,7 +5,7 @@ signal dialog_finished
 
 @export var speaker: RichTextLabel
 
-@export var text_speed: float = 0.05  # adjustable dialog box text speed
+@export var text_speed: float = 0.025  # adjustable dialog box text speed
 @export var text_marker_speed: float = 0.5  # adjustable text marker speed
 
 var dialog_array: Array[String]  # array holding lines of dialog
@@ -31,6 +31,10 @@ func _process(delta: float) -> void:
 			text_revealing = false
 			text_revealed = true
 		else:  # cur line of dialog is still being revealed
+			# finish dialog line if input was received
+			if Input.is_action_just_pressed("ui_accept"):
+				finish_dialog_line()
+				return
 			text_timer += delta  # increase time since last char revealed
 			if text_timer >= text_speed:  # reveal next char if enough time has passed
 				text_timer = 0.0  # reset the timer
@@ -50,14 +54,19 @@ func _process(delta: float) -> void:
 func start_dialog() -> void:
 	text = dialog_array[dialog_index]  # set text for the cur line of dialog
 	if speaker_array[dialog_index] != DialogResource.speakers.NONE:
-		# TODO set dialog box to speaker version
+		# set dialog box to speaker version
 		get_parent().set_dialog_mode()
 		speaker.text = DialogResource.speakers.find_key(speaker_array[dialog_index])  # set speaker name for the cur line of dialog
 	else:
-		# TODO set dialog box to non-speaker version
+		# set dialog box to non-speaker version
 		get_parent().set_description_mode()
-		pass
 	text_revealing = true  # start revealing text
+
+
+func finish_dialog_line() -> void:
+	visible_ratio = 1.0
+	text_revealing = false
+	text_revealed = true
 
 
 func continue_dialog() -> void:
