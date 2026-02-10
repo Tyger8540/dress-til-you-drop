@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://0y81n7wfnq6k"]
+
+[ext_resource type="PackedScene" uid="uid://b01un27gp4qst" path="res://models/mansion/ceiling.fbx" id="1_l0pxy"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l0pxy"]
+size = Vector3(40, 2.1000001, 40)
+
+[node name="ceiling" instance=ExtResource("1_l0pxy")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.049999923, 0)
+shape = SubResource("BoxShape3D_l0pxy")
