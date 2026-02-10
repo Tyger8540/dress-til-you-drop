@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://doamnkbbr6t3n"]
+
+[ext_resource type="StyleBox" uid="uid://bklf6gie44p5" path="res://resources/style_boxes/pause_menu_none.tres" id="1_kukqi"]
+[ext_resource type="Script" uid="uid://cga0xsxa1xcpc" path="res://scripts/pause_menu.gd" id="2_kukqi"]
+[ext_resource type="PackedScene" uid="uid://cll8pc4irssnf" path="res://scenes/pause_menu_button.tscn" id="3_kukqi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kukqi"]
+
+[node name="PauseMenu" type="Panel"]
+process_mode = 3
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_kukqi")
+script = ExtResource("2_kukqi")
+
+[node name="OptionsPanel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme_override_styles/panel = ExtResource("1_kukqi")
+
+[node name="ContinueButton" parent="OptionsPanel" node_paths=PackedStringArray("pause_menu") instance=ExtResource("3_kukqi")]
+layout_mode = 0
+offset_left = 850.0
+offset_top = 518.0
+offset_right = 1070.0
+offset_bottom = 572.0
+pause_menu = NodePath("../..")
+pause_menu_state = 1
+
+[node name="SettingsButton" parent="OptionsPanel" node_paths=PackedStringArray("pause_menu") instance=ExtResource("3_kukqi")]
+layout_mode = 0
+offset_left = 850.0
+offset_top = 615.0
+offset_right = 1070.0
+offset_bottom = 669.0
+pause_menu = NodePath("../..")
+pause_menu_state = 2
+
+[node name="QuitButton" parent="OptionsPanel" node_paths=PackedStringArray("pause_menu") instance=ExtResource("3_kukqi")]
+layout_mode = 0
+offset_left = 805.0
+offset_top = 714.0
+offset_right = 1115.0
+offset_bottom = 768.0
+pause_menu = NodePath("../..")
+pause_menu_state = 3
+
+[connection signal="button_up" from="OptionsPanel/ContinueButton" to="." method="continue_game"]
+[connection signal="button_up" from="OptionsPanel/QuitButton" to="." method="quit_game"]

@@ -1,0 +1,25 @@
+[gd_scene load_steps=7 format=3 uid="uid://cll8pc4irssnf"]
+
+[ext_resource type="Script" uid="uid://c7cmxlfqtr55v" path="res://scripts/pause_menu_button.gd" id="1_33j2u"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_33j2u"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2d3yf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ll4op"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s2ylm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mq0q2"]
+
+[node name="PauseMenuButton" type="Button"]
+theme_override_styles/normal = SubResource("StyleBoxEmpty_33j2u")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_2d3yf")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ll4op")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_s2ylm")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_mq0q2")
+script = ExtResource("1_33j2u")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]

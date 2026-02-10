@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://ds4f3s77v5f5w"]
+[gd_scene load_steps=61 format=3 uid="uid://ds4f3s77v5f5w"]
 
 [ext_resource type="PackedScene" uid="uid://f6sftetqaoh1" path="res://scenes/interaction_area.tscn" id="1_4y6b0"]
 [ext_resource type="PackedScene" uid="uid://bmd45oqbmm5e" path="res://scenes/player.tscn" id="1_cptfm"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" path="res://scenes/move_follow_camera.tscn" id="7_dbmwu"]
 [ext_resource type="Script" path="res://scripts/inventory_camera.gd" id="8_6hdfs"]
 [ext_resource type="PackedScene" uid="uid://b2x3rd7m3rywc" path="res://scenes/inventory_ui.tscn" id="12_p52to"]
+[ext_resource type="PackedScene" uid="uid://doamnkbbr6t3n" path="res://scenes/pause_menu.tscn" id="13_ld5u0"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_muuyn"]
 
@@ -382,3 +383,5 @@ omni_range = 42.657
 [node name="InventoryUI" parent="." instance=ExtResource("12_p52to")]
 visible = false
 metadata/_edit_vertical_guides_ = [820.0]
+
+[node name="PauseMenu" parent="." instance=ExtResource("13_ld5u0")]
