@@ -23,6 +23,7 @@ PlayerStats="*res://scripts/player_stats.gd"
 Enums="*res://scripts/enums.gd"
 Signals="*res://scripts/signals.gd"
 InventoryManager="*res://scripts/inventory_manager.gd"
+MusicPlayer="*res://scenes/MusicPlayer.tscn"
 
 [display]
 

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b08sbh87k0kft"]
+
+[ext_resource type="AudioStream" uid="uid://dsnlmh6sb1t8o" path="res://audio/music/theme.wav" id="1_yvkaf"]
+
+[node name="MusicPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_yvkaf")
+autoplay = true

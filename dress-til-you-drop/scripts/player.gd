@@ -7,6 +7,8 @@ const MAX_STEP_HEIGHT = 0.5  # NOTE might change for diff stair objects
 
 @export var current_cam: Camera3D
 
+var in_dialog: bool = false
+
 var move_direction: Vector3
 var locked_cam_orientation: float = 0.0
 var move_orientation_locked: bool = false
