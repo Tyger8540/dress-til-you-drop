@@ -22,6 +22,7 @@ CurrencyManager="*res://scripts/currency_manager.gd"
 PlayerStats="*res://scripts/player_stats.gd"
 Enums="*res://scripts/enums.gd"
 Signals="*res://scripts/signals.gd"
+InventoryManager="*res://scripts/inventory_manager.gd"
 
 [display]
 

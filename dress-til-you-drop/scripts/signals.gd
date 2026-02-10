@@ -2,3 +2,4 @@ extends Node
 
 signal inventory_tab_selected
 signal inventory_slot_selected
+signal inventory_updated

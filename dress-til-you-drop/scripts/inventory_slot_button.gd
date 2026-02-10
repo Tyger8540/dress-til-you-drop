@@ -4,6 +4,10 @@ extends TextureButton
 @export var inactive_texture: CompressedTexture2D
 @export var active_texture: CompressedTexture2D
 
+var inventory_item: InventoryItem
+
+@onready var item_icon: TextureRect = $ItemIcon
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -25,5 +29,9 @@ func set_active() -> void:
 
 
 func _on_button_up() -> void:
+	if inventory_item == null:
+		return
+	
 	set_active()
+	
 	Signals.emit_signal("inventory_slot_selected", self)

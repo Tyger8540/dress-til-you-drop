@@ -21,6 +21,12 @@ var _last_frame_was_on_floor = -INF
 @onready var bottom: MeshInstance3D = $Body/Bottom
 @onready var shoes: MeshInstance3D = $Body/Shoes
 
+@onready var inventory_ui = $InventoryUI
+
+
+func _ready():
+	Signals.inventory_slot_selected.connect(_on_inventory_slot_selected)
+
 
 func _physics_process(delta: float) -> void:
 	if is_on_floor(): _last_frame_was_on_floor = Engine.get_physics_frames()
@@ -28,10 +34,6 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not (is_on_floor() or _snapped_to_stairs_last_frame):
 		velocity += get_gravity() * delta
-
-	# Handle jump.
-	#if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		#velocity.y = JUMP_VELOCITY
 
 	move_direction.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
 	move_direction.z = Input.get_action_strength("move_backward") - Input.get_action_strength("move_forward")
@@ -47,12 +49,61 @@ func _physics_process(delta: float) -> void:
 		look_at(global_position + move_direction)
 		move_direction = move_direction.rotated(Vector3.UP, locked_cam_orientation)
 		
-		velocity.x = move_direction.x * SPEED
-		velocity.z = move_direction.z * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
+		if move_direction:
+			if not move_orientation_locked:
+				locked_cam_orientation = current_cam.rotation.y
+				move_orientation_locked = true
+			
+			move_direction = move_direction.rotated(Vector3.UP, locked_cam_orientation)
+			
+			velocity.x = move_direction.x * SPEED
+			velocity.z = move_direction.z * SPEED
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED)
+			velocity.z = move_toward(velocity.z, 0, SPEED)
+		
+		move_and_slide()
+
+
+# TODO once merged with main (logic for opening inventory in inventory_camera.gd)
+func _input(event) -> void:
+	if event.is_action_pressed("inventory_toggle"):
+		inventory_ui.visible = !inventory_ui.visible
+		get_tree().paused = !get_tree().paused
+
+
+# Puts item on player if they are not already wearing it
+func put_on_clothes(item: InventoryItem) -> void:
+	var clothing_type = item.item_type
 	
+	# TODO figure out what the correct variable to change is :(
+	match item.item_type:
+		Enums.ClothingType.ACCESSORY:
+			# TODO load in the correct mesh (not sure where in InventoryItem
+			#accessory.mesh = load()
+			pass
+		Enums.ClothingType.TOP:
+			pass
+		Enums.ClothingType.BOTTOM:
+			pass
+		Enums.ClothingType.SHOES:
+			pass
+		_:
+			pass
+	if clothing_type.texture != item.item_texture:
+		clothing_type.texture = item.item_texture
+
+
+func _on_inventory_slot_selected(inventory_slot: InventorySlotButton) -> void:
+	match inventory_ui.current_tab_type:
+		Enums.ClothingType.ACCESSORY:
+			accessory.mesh = inventory_slot.inventory_item.item_texture
+		Enums.ClothingType.TOP:
+			top.mesh = inventory_slot.inventory_item.item_texture
+		Enums.ClothingType.BOTTOM:
+			bottom.mesh = inventory_slot.inventory_item.item_texture
+		Enums.ClothingType.SHOES:
+			shoes.mesh = inventory_slot.inventory_item.item_texture
 	if in_inventory:
 		return
 	
