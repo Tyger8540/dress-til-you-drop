@@ -6,7 +6,7 @@ const TAB_INACTIVE_Y = 272.0
 
 @export var inactive_texture: CompressedTexture2D
 @export var active_texture: CompressedTexture2D
-@export var type = ""
+@export var tab_type: Enums.ClothingType
 
 var base_size: Vector2
 
@@ -34,10 +34,9 @@ func set_inactive(sender) -> void:
 func set_active() -> void:
 	texture_normal = active_texture
 	position.y = TAB_ACTIVE_Y
-	Signals.emit_signal("inventory_updated", self)
+	#Signals.emit_signal("inventory_updated", self)
 
 
 func _on_button_up() -> void:
 	set_active()
-	
 	Signals.emit_signal("inventory_tab_selected", self)

@@ -35,7 +35,6 @@ mesh = ExtResource("4_fjrip")
 [node name="Shoes" type="MeshInstance3D" parent="Body"]
 mesh = ExtResource("5_smehm")
 
-[node name="InventoryUI" type="CanvasLayer" parent="."]
+[node name="InventoryUI" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_tuyoq")]
 visible = false
-
-[node name="InventoryUI" parent="InventoryUI" instance=ExtResource("6_tuyoq")]
+player = NodePath("..")

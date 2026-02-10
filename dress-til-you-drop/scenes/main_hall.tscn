@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bmd45oqbmm5e" path="res://scenes/player.tscn" id="1_cptfm"]
 [ext_resource type="PackedScene" uid="uid://cy5lbcl5enw6a" path="res://scenes/move_camera.tscn" id="2_cptfm"]
-[ext_resource type="PackedScene" path="res://scenes/settings_manager.tscn" id="3_muuyn"]
+[ext_resource type="PackedScene" uid="uid://crh3xyw8knqlt" path="res://scenes/settings_manager.tscn" id="3_muuyn"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_muuyn"]
 

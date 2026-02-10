@@ -21,6 +21,7 @@ var move_orientation_locked: bool = false
 
 func _ready():
 	# InventoryManager.set_player_reference(self)
+	Signals.inventory_slot_selected.connect(_on_inventory_slot_selected)
 	pass
 
 func _physics_process(delta: float) -> void:
@@ -57,6 +58,7 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 
 
+# TODO once merged with main (logic for opening inventory in inventory_camera.gd)
 func _input(event) -> void:
 	if event.is_action_pressed("inventory_toggle"):
 		inventory_ui.visible = !inventory_ui.visible
@@ -64,9 +66,34 @@ func _input(event) -> void:
 
 
 # Puts item on player if they are not already wearing it
-func put_on_clothes(item) -> void:
-	var clothing_type = item["type"]
+func put_on_clothes(item: InventoryItem) -> void:
+	var clothing_type = item.item_type
 	
 	# TODO figure out what the correct variable to change is :(
-	if clothing_type.texture != item["item_texture"]:
-		clothing_type.texture = item["item_texture"]
+	match item.item_type:
+		Enums.ClothingType.ACCESSORY:
+			# TODO load in the correct mesh (not sure where in InventoryItem
+			#accessory.mesh = load()
+			pass
+		Enums.ClothingType.TOP:
+			pass
+		Enums.ClothingType.BOTTOM:
+			pass
+		Enums.ClothingType.SHOES:
+			pass
+		_:
+			pass
+	if clothing_type.texture != item.item_texture:
+		clothing_type.texture = item.item_texture
+
+
+func _on_inventory_slot_selected(inventory_slot: InventorySlotButton) -> void:
+	match inventory_ui.current_tab_type:
+		Enums.ClothingType.ACCESSORY:
+			accessory.mesh = inventory_slot.inventory_item.item_texture
+		Enums.ClothingType.TOP:
+			top.mesh = inventory_slot.inventory_item.item_texture
+		Enums.ClothingType.BOTTOM:
+			bottom.mesh = inventory_slot.inventory_item.item_texture
+		Enums.ClothingType.SHOES:
+			shoes.mesh = inventory_slot.inventory_item.item_texture

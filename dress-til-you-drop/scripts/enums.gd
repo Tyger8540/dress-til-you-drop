@@ -6,3 +6,10 @@ enum CurrencyType {
 	BONNY_BUTTONS,
 	SHINY_SHELLS,
 }
+
+enum ClothingType {
+	ACCESSORY,
+	TOP,
+	BOTTOM,
+	SHOES,
+}

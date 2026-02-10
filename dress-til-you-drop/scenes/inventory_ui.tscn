@@ -18,7 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://b2xyyfaw7i1xx" path="res://art/inventory_ui/assets/tabs/active - shoes.png" id="14_rqtn1"]
 [ext_resource type="PackedScene" uid="uid://c3k7ourtgy1hp" path="res://scenes/inventory_slot_button.tscn" id="16_rc4hi"]
 
-[node name="InventoryUI" type="Control"]
+[node name="InventoryUI" type="Control" node_paths=PackedStringArray("inventory_slot_buttons")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -26,6 +26,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_8wyaw")
+inventory_slot_buttons = [NodePath("Boxes/InventorySlotButton"), NodePath("Boxes/InventorySlotButton2"), NodePath("Boxes/InventorySlotButton3"), NodePath("Boxes/InventorySlotButton4"), NodePath("Boxes/InventorySlotButton5"), NodePath("Boxes/InventorySlotButton6"), NodePath("Boxes/InventorySlotButton7"), NodePath("Boxes/InventorySlotButton8"), NodePath("Boxes/InventorySlotButton9"), NodePath("Boxes/InventorySlotButton10"), NodePath("Boxes/InventorySlotButton11"), NodePath("Boxes/InventorySlotButton12")]
 metadata/_edit_vertical_guides_ = [1479.0, 990.0, 1006.0]
 metadata/_edit_horizontal_guides_ = [348.0, 329.0]
 
@@ -128,7 +129,6 @@ offset_bottom = 272.0
 texture_normal = ExtResource("6_rc4hi")
 inactive_texture = ExtResource("6_rc4hi")
 active_texture = ExtResource("7_rqtn1")
-type = "earrings"
 
 [node name="Tops Tab" parent="Tabs" instance=ExtResource("7_rc4hi")]
 layout_mode = 0
@@ -139,7 +139,7 @@ offset_bottom = 272.0
 texture_normal = ExtResource("8_ucuti")
 inactive_texture = ExtResource("8_ucuti")
 active_texture = ExtResource("10_3y5j4")
-type = "tops"
+tab_type = 1
 
 [node name="Bottoms Tab" parent="Tabs" instance=ExtResource("7_rc4hi")]
 layout_mode = 0
@@ -150,7 +150,7 @@ offset_bottom = 272.0
 texture_normal = ExtResource("9_u4vby")
 inactive_texture = ExtResource("9_u4vby")
 active_texture = ExtResource("12_rc4hi")
-type = "bottoms"
+tab_type = 2
 
 [node name="Shoes Tab" parent="Tabs" instance=ExtResource("7_rc4hi")]
 layout_mode = 0
@@ -161,7 +161,7 @@ offset_bottom = 272.0
 texture_normal = ExtResource("10_xl45s")
 inactive_texture = ExtResource("10_xl45s")
 active_texture = ExtResource("14_rqtn1")
-type = "shoes"
+tab_type = 3
 
 [node name="Boxes" type="Control" parent="."]
 anchors_preset = 0
@@ -261,6 +261,7 @@ offset_bottom = 328.0
 texture = ExtResource("12_y7i8o")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 842.0
 offset_top = 348.0

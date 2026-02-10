@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://d2ib6cckh3l33"]
 
-[ext_resource type="Script" uid="uid://55y022tik7ck" path="res://scripts/inventory_slot.gd" id="1_bxqf6"]
+[ext_resource type="Script" path="res://scripts/inventory_slot.gd" id="1_bxqf6"]
 [ext_resource type="PackedScene" uid="uid://c3k7ourtgy1hp" path="res://scenes/inventory_slot_button.tscn" id="2_hddt5"]
-[ext_resource type="Script" uid="uid://35r6r8kvdl3s" path="res://scripts/item_button.gd" id="3_hddt5"]
+[ext_resource type="Script" path="res://scripts/item_button.gd" id="3_hddt5"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bbig2"]
 
