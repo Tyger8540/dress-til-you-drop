@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://rkkqc2j0jlbk"]
+
+[ext_resource type="PackedScene" uid="uid://d4h7p7lgeu5f6" path="res://models/mansion/wall.fbx" id="1_xji7r"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xji7r"]
+size = Vector3(0.2, 10.400001, 10)
+
+[node name="wall" instance=ExtResource("1_xji7r")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9802322e-08, 5.2000003, 0)
+shape = SubResource("BoxShape3D_xji7r")

@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bmd45oqbmm5e" path="res://scenes/player.tscn" id="1_owcqv"]
 [ext_resource type="PackedScene" uid="uid://f6sftetqaoh1" path="res://scenes/interaction_area.tscn" id="1_u7i40"]
 [ext_resource type="PackedScene" uid="uid://cm2b44johy1sv" path="res://scenes/closet.tscn" id="2_3w3tr"]
+[ext_resource type="Script" path="res://scripts/minigame_interaction.gd" id="1_minigame"]
 [ext_resource type="PackedScene" uid="uid://bm31ye7javi80" path="res://scenes/swivel_camera.tscn" id="3_3w3tr"]
 [ext_resource type="PackedScene" uid="uid://crh3xyw8knqlt" path="res://scenes/settings_manager.tscn" id="5_1k2v8"]
 
@@ -176,6 +177,9 @@ surface_material_override/0 = SubResource("StandardMaterial3D_hwv8p")
 [node name="InteractionArea" parent="minigame1" instance=ExtResource("1_u7i40")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6441581, 0, 0)
 dialog = Array[String](["Minigame 1 door"])
+
+[node name="MinigameTrigger" type="Node" parent="minigame1/InteractionArea"]
+script = ExtResource("1_minigame")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="minigame1/InteractionArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0273799, 0.014877319, -0.0010986328)

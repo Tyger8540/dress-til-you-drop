@@ -1,0 +1,467 @@
+extends Control
+
+signal minigame_completed(currency_earned: int)
+signal minigame_failed()
+
+const ROW_COUNT := 3
+const ITEMS_PER_ROW := 6
+const SESSION_DURATION := 15.0  # seconds
+const TARGETS_TO_WIN := 3
+const LANE_GAP := 10.0
+const PLAYFIELD_PADDING_Y := 10.0
+const ITEM_GAP_X := 4.0
+
+@export var auto_start_when_run_directly: bool = true
+
+@onready var main_frame: Control = $MainFrame
+@onready var playfield_frame: ColorRect = $MainFrame/PlayfieldFrame
+@onready var playfield: Control = $MainFrame/PlayfieldFrame/Playfield
+@onready var target_preview: ColorRect = $MainFrame/TopBar/TargetPreview
+@onready var target_label: Label = $MainFrame/TopBar/TargetLabel
+@onready var target_glyph_label: Label = $MainFrame/TopBar/TargetPreview/TargetGlyph
+@onready var score_label: Label = $MainFrame/TopBar/ScoreLabel
+@onready var timer_background: ColorRect = $MainFrame/TopBar/TimerContainer/TimerBackground
+@onready var timer_bar: ColorRect = $MainFrame/TopBar/TimerContainer/TimerBar
+@onready var timer_glow: ColorRect = $MainFrame/TopBar/TimerContainer/TimerGlow
+@onready var speed_label: Label = $MainFrame/TopBar/SpeedLabel
+
+const EARRING_ITEM_SCENE: PackedScene = preload("res://scenes/earring_item.tscn")
+const SHAPE_VARIANTS := 8
+const SHAPE_GLYPHS := ["●", "▲", "■", "★", "◆", "♥", "♣", "♠"]
+const COLOR_TIMER_BAR_BASE := Color(0.9, 0.85, 0.35, 1.0)
+const COLOR_TIMER_BAR_DANGER := Color(1.0, 0.35, 0.35, 1.0)
+const COLOR_TIMER_BG_BASE := Color(0.18, 0.18, 0.22, 1.0)
+const COLOR_TIMER_BG_DANGER := Color(0.4, 0.12, 0.16, 1.0)
+var row_nodes: Array[Control] = [] # container node for each horizontal row
+var rows: Array[Array] = []  # rows[row_index] = array of earringitem
+var target_shape_id: int = 0
+var time_remaining: float = SESSION_DURATION
+var is_active: bool = false
+var targets_found: int = 0
+## base scroll speed in pixels/second. actual row speed alternates per row.
+const BASE_ROW_SPEED := 90.0
+var row_speeds: Array[float] = []
+var _main_frame_original_scale: Vector2 = Vector2.ONE
+var _main_frame_original_pos: Vector2 = Vector2.ZERO
+var _speed_multiplier: float = 1.0
+var _playfield_original_scale: Vector2 = Vector2.ONE
+var _playfield_original_rot: float = 0.0
+var _speed_stage: int = 1 # 1x, 2x, 3x
+var _zoom_factor: float = 1.0
+var _end_shake_seed: float = 0.0
+var _shake_time: float = 0.0
+
+func _ready() -> void:
+	# hide initially
+	visible = false
+	
+	# convenience for testing: if you press f6 on this scene, auto-start.
+	# when used via the game (canvaslayer/trigger), this won't run because the current scene is different.
+	_main_frame_original_scale = main_frame.scale
+	_main_frame_original_pos = main_frame.position
+	_playfield_original_scale = playfield_frame.scale
+	_playfield_original_rot = playfield_frame.rotation
+	_update_playfield_pivot()
+	if not playfield_frame.resized.is_connected(_on_playfield_resized):
+		playfield_frame.resized.connect(_on_playfield_resized)
+	_end_shake_seed = randf() * 1000.0
+	_shake_time = 0.0
+	
+	if auto_start_when_run_directly and get_tree().current_scene == self:
+		start_minigame()
+
+func _process(delta: float) -> void:
+	if is_active:
+		_update_rows(delta)
+		
+		var timer_mult := 1.0
+		if _speed_stage == 2:
+			timer_mult = 1.5
+		elif _speed_stage >= 3:
+			timer_mult = 2.0
+		time_remaining -= delta * timer_mult
+		_update_timer_bar()
+		_apply_end_shake(delta)
+		
+		if time_remaining <= 0:
+			time_remaining = 0
+			_end_session(false)
+	else:
+		# ensure we don't leave any shake offset behind.
+		main_frame.position = _main_frame_original_pos
+		_shake_time = 0.0
+
+func start_minigame(rounds: int = 3) -> void:
+	targets_found = 0
+	time_remaining = SESSION_DURATION
+	visible = true
+	is_active = true
+	_speed_multiplier = 1.0
+	_speed_stage = 1
+	_zoom_factor = 1.0
+	_shake_time = 0.0
+	playfield_frame.scale = _playfield_original_scale
+	playfield_frame.rotation = _playfield_original_rot
+	_spawn_rows()
+	_choose_new_target()
+	_update_score_label()
+	_update_timer_bar()
+
+func _spawn_rows() -> void:
+	_clear_rows()
+	rows.clear()
+	rows.resize(ROW_COUNT)
+	row_nodes.clear()
+	
+	# clear any existing children from the playfield
+	for child: Node in playfield.get_children():
+		child.queue_free()
+	
+	# determine row sizing based on the playfield height so rows are evenly spaced
+	# and scale with resolution.
+	var playfield_height: float = max(1.0, float(playfield.size.y))
+	var total_gaps: float = LANE_GAP * float(max(0, ROW_COUNT - 1))
+	var usable_height: float = playfield_height - PLAYFIELD_PADDING_Y * 2.0 - total_gaps
+	var lane_height: float = usable_height / float(ROW_COUNT)
+	var top_offset: float = PLAYFIELD_PADDING_Y
+	
+	row_speeds.clear()
+	
+	# create row containers dynamically inside the playfield.
+	# each row gets its own control that stays fixed in y; individual earrings
+	# inside the row move horizontally and wrap around, giving a conveyor feel.
+	for row_index in range(ROW_COUNT):
+		var row_container: Control = Control.new()
+		row_container.name = "Row_%d" % row_index
+		row_container.anchors_preset = Control.PRESET_TOP_LEFT
+		row_container.anchor_left = 0.0
+		row_container.anchor_right = 0.0
+		row_container.anchor_top = 0.0
+		row_container.anchor_bottom = 0.0
+		row_container.size_flags_horizontal = Control.SIZE_FILL
+		row_container.size_flags_vertical = Control.SIZE_FILL
+		var lane_y: float = top_offset + (float(row_index) * (lane_height + LANE_GAP))
+		row_container.position = Vector2(0.0, lane_y)
+		row_container.custom_minimum_size = Vector2(playfield.size.x, lane_height)
+		playfield.add_child(row_container)
+		
+		row_nodes.append(row_container)
+		
+		# alternate direction per row (even rows move right, odd rows move left)
+		var direction: float = 1.0 if row_index % 2 == 0 else -1.0
+		row_speeds.append(BASE_ROW_SPEED * direction)
+	
+	for row_index in range(ROW_COUNT):
+		var row_node: Control = row_nodes[row_index]
+		if row_node == null:
+			continue
+		rows[row_index] = []
+		
+		var row_width: float = playfield.size.x
+		var center_y: float = row_node.custom_minimum_size.y * 0.5
+		
+		# build a contiguous belt that covers the visible width + a bit extra off-screen.
+		# item size is derived from the lane height so tiles always \"fill\" the lane.
+		var item_h: float = lane_height * 0.7
+		var item_w: float = item_h
+		var spacing: float = item_w + ITEM_GAP_X
+		var needed_count: int = int(ceil((row_width + item_w * 2.0) / spacing))
+		needed_count = max(needed_count, ITEMS_PER_ROW)
+		
+		for i in range(needed_count):
+			var earring: EarringItem = EARRING_ITEM_SCENE.instantiate()
+			earring.earring_id = row_index * 1000 + i
+			earring.set_visual_size(item_w)
+			earring.set_shape_id(_random_shape_id())
+			earring.earring_clicked.connect(_on_earring_clicked)
+			
+			# start slightly off-screen so we always have blocks arriving.
+			var start_x: float = -item_w + float(i) * spacing
+			earring.position = Vector2(start_x, center_y - earring.custom_minimum_size.y * 0.5)
+			
+			row_node.add_child(earring)
+			rows[row_index].append(earring)
+
+func _update_rows(delta: float) -> void:
+	var width: float = playfield.size.x
+	
+	for row_index in range(ROW_COUNT):
+		var speed: float = 0.0
+		if row_index < row_speeds.size():
+			speed = row_speeds[row_index] * _speed_multiplier
+		
+		if row_index >= rows.size():
+			continue
+		
+		var row_items: Array = rows[row_index]
+		if row_items.is_empty():
+			continue
+		
+		# move all items.
+		for earring in row_items:
+			if earring == null:
+				continue
+			earring.position = earring.position + Vector2(speed * delta, 0.0)
+		
+		# remove items that fully left the view, and spawn brand-new ones off-screen
+		# on the entry side to keep spacing contiguous.
+		var item_w: float = 0.0
+		var spacing: float = 0.0
+		for earring in row_items:
+			if earring != null:
+				item_w = earring.custom_minimum_size.x
+				spacing = item_w + ITEM_GAP_X
+				break
+		if spacing <= 0.0:
+			return
+		
+		var to_remove: Array[EarringItem] = []
+		if speed > 0.0:
+			for earring in row_items:
+				if earring == null:
+					continue
+				# fully off to the right.
+				if earring.position.x >= width + item_w:
+					to_remove.append(earring)
+		elif speed < 0.0:
+			for earring in row_items:
+				if earring == null:
+					continue
+				# fully off to the left.
+				if earring.position.x + item_w <= -item_w:
+					to_remove.append(earring)
+		
+		# actually remove them (and free nodes).
+		for earring in to_remove:
+			if is_instance_valid(earring):
+				earring.queue_free()
+			row_items.erase(earring)
+		
+		# spawn new items to keep belt contiguous (no drifting 'group').
+		# right-moving: spawn on the left; left-moving: spawn on the right.
+		var row_node: Control = row_nodes[row_index]
+		var center_y: float = row_node.custom_minimum_size.y * 0.5
+		if speed > 0.0:
+			# find leftmost x among remaining items.
+			var leftmost_x: float = INF
+			for earring in row_items:
+				if earring == null:
+					continue
+				leftmost_x = min(leftmost_x, earring.position.x)
+			if leftmost_x == INF:
+				leftmost_x = 0.0
+			# keep spawning until we have an item at/before the entry threshold.
+			while leftmost_x > -item_w:
+				var new_item: EarringItem = EARRING_ITEM_SCENE.instantiate()
+				new_item.earring_id = row_index * 1000 + randi()
+				new_item.set_shape_id(_random_shape_id())
+				new_item.set_visual_size(item_w)
+				new_item.earring_clicked.connect(_on_earring_clicked)
+				var spawn_x: float = leftmost_x - spacing
+				new_item.position = Vector2(spawn_x, center_y - new_item.custom_minimum_size.y * 0.5)
+				row_node.add_child(new_item)
+				row_items.append(new_item)
+				leftmost_x = spawn_x
+		elif speed < 0.0:
+			# find rightmost right-edge among remaining items.
+			var rightmost_edge: float = -INF
+			for earring in row_items:
+				if earring == null:
+					continue
+				rightmost_edge = max(rightmost_edge, earring.position.x + item_w)
+			if rightmost_edge == -INF:
+				rightmost_edge = width
+			while rightmost_edge < width + item_w:
+				var new_item: EarringItem = EARRING_ITEM_SCENE.instantiate()
+				new_item.earring_id = row_index * 1000 + randi()
+				new_item.set_shape_id(_random_shape_id())
+				new_item.set_visual_size(item_w)
+				new_item.earring_clicked.connect(_on_earring_clicked)
+				var spawn_x: float = rightmost_edge + ITEM_GAP_X
+				new_item.position = Vector2(spawn_x, center_y - new_item.custom_minimum_size.y * 0.5)
+				row_node.add_child(new_item)
+				row_items.append(new_item)
+				rightmost_edge = spawn_x + item_w
+
+func _choose_new_target() -> void:
+	var all_earrings: Array[EarringItem] = []
+	for row in rows:
+		for e in row:
+			all_earrings.append(e)
+	
+	if all_earrings.is_empty():
+		return
+	
+	var chosen: EarringItem = all_earrings[randi() % all_earrings.size()]
+	target_shape_id = chosen.get_shape_id()
+	_update_target_preview()
+
+func _clear_rows() -> void:
+	for row in rows:
+		for earring in row:
+			if is_instance_valid(earring):
+				earring.queue_free()
+	rows.clear()
+
+func _on_earring_clicked(earring: EarringItem) -> void:
+	if not is_active:
+		return
+	
+	# ignore if this earring has already been clicked.
+	if not earring.is_clickable:
+		return
+	
+	print("Clicked earring id:", earring.earring_id, "shape:", earring.get_shape_id(), "target shape:", target_shape_id)
+	
+	if earring.get_shape_id() == target_shape_id:
+		# correct earring found!
+		print("Correct earring clicked")
+		earring.mark_correct()
+		_play_correct_fx()
+		targets_found += 1
+		_update_score_label()
+		
+		if targets_found >= TARGETS_TO_WIN:
+			_end_session(true)
+	else:
+		# wrong earring - mark and disable further clicks.
+		print("Wrong earring clicked")
+		earring.mark_incorrect()
+		_play_wrong_fx()
+
+func _end_session(success: bool) -> void:
+	is_active = false
+	# reset playfield transform immediately so the canvas doesn't appear stretched
+	# or rotated during the end-of-round message.
+	playfield_frame.scale = _playfield_original_scale
+	playfield_frame.rotation = _playfield_original_rot
+	_speed_multiplier = 1.0
+	_speed_stage = 1
+	_zoom_factor = 1.0
+	main_frame.position = _main_frame_original_pos
+
+	# keep ui stable at end-of-round (no text growth in the left column that can
+	# cause the vboxcontainer to reflow/stretch). end immediately.
+	_update_score_label()
+	if is_instance_valid(speed_label):
+		speed_label.text = ""
+	if is_instance_valid(timer_glow):
+		timer_glow.modulate.a = 0.0
+
+	_cleanup_and_close()
+	if success:
+		minigame_completed.emit(0)
+	else:
+		minigame_failed.emit()
+
+func _update_timer_bar() -> void:
+	var fraction = clamp(time_remaining / SESSION_DURATION, 0.0, 1.0)
+	var full_height = $MainFrame/TopBar/TimerContainer.size.y
+	timer_bar.size.y = full_height * fraction
+	timer_bar.position.y = full_height * (1.0 - fraction)
+	# danger color ramp as time runs out.
+	var danger: float = 1.0 - fraction
+	var ramp: float = clamp((danger - 0.3) / 0.7, 0.0, 1.0) # start changing after ~70% time
+	timer_bar.color = COLOR_TIMER_BAR_BASE.lerp(COLOR_TIMER_BAR_DANGER, ramp)
+	timer_background.color = COLOR_TIMER_BG_BASE.lerp(COLOR_TIMER_BG_DANGER, ramp)
+
+func _update_score_label() -> void:
+	score_label.text = "Score: %d / %d" % [targets_found, TARGETS_TO_WIN]
+
+func _cleanup_and_close() -> void:
+	_clear_rows()
+	visible = false
+	is_active = false
+	main_frame.scale = _main_frame_original_scale
+	main_frame.position = _main_frame_original_pos
+	if is_instance_valid(timer_glow):
+		timer_glow.modulate.a = 0.0
+	if is_instance_valid(speed_label):
+		speed_label.text = ""
+
+func _random_shape_id() -> int:
+	return randi() % SHAPE_VARIANTS
+
+func _update_target_preview() -> void:
+	var glyph: String = "?"
+	if SHAPE_GLYPHS.size() > 0:
+		var idx: int = abs(target_shape_id) % SHAPE_GLYPHS.size()
+		glyph = SHAPE_GLYPHS[idx]
+	target_label.text = "Target"
+	if is_instance_valid(target_glyph_label):
+		target_glyph_label.add_theme_font_size_override("font_size", 64)
+		target_glyph_label.text = glyph
+
+func _play_correct_fx() -> void:
+	if not is_instance_valid(playfield_frame):
+		return
+	# step-wise speed stages: 1x -> 2x -> 3x
+	if _speed_stage < 3:
+		_speed_stage += 1
+	if _speed_stage == 1:
+		_speed_multiplier = 1.0
+	elif _speed_stage == 2:
+		_speed_multiplier = 2.0
+	else:
+		_speed_multiplier = 3.0
+
+	# bring back the subtle \"random rotate + zoom\" on correct click, but only
+	# on the playfield canvas (not the ui column). reset happens in `_end_session`.
+	_zoom_factor = min(_zoom_factor * 1.03, 1.18)
+	var target_scale: Vector2 = _playfield_original_scale * _zoom_factor
+	var angle_sign: float
+	if randf() < 0.5:
+		angle_sign = -1.0
+	else:
+		angle_sign = 1.0
+	var angle_deg: float = angle_sign * (0.6 + randf() * 0.6) # ~0.6–1.2 degrees
+	var target_rot: float = deg_to_rad(angle_deg)
+	var t := create_tween()
+	t.tween_property(playfield_frame, "scale", target_scale, 0.28)\
+		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	t.parallel().tween_property(playfield_frame, "rotation", target_rot, 0.28)\
+		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+
+	if is_instance_valid(timer_glow):
+		timer_glow.modulate.a = 0.0
+		var glow_tween := create_tween()
+		glow_tween.tween_property(timer_glow, "modulate:a", 0.55, 0.18)\
+			.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+		glow_tween.tween_property(timer_glow, "modulate:a", 0.0, 0.22)\
+			.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	if is_instance_valid(speed_label):
+		if _speed_stage <= 1:
+			speed_label.text = ""
+		else:
+			speed_label.text = "x%d speed" % _speed_stage
+func _apply_end_shake(delta: float) -> void:
+	# increase screen shake as time runs out. this shakes the whole `mainframe`
+	# (including play area + ui column) for urgency feedback.
+	if SESSION_DURATION <= 0.0:
+		return
+	_shake_time += delta
+	var t: float = clamp(1.0 - (time_remaining / SESSION_DURATION), 0.0, 1.0)
+	# slightly stronger, earlier sway: quadratic easing for amplitude.
+	var ramp: float = t * t                 # more motion mid-game but still subtle
+	var amp: float = 6.0 * ramp            # max ~6px at t = 1
+	# frequency also ramps up so the sway feels more urgent as time runs out.
+	var freq: float = lerp(2.0, 9.0, ramp) # radians per second, 2→9 over time
+	var jx: float = sin(_shake_time * freq)
+	var jy: float = cos(_shake_time * freq * 1.3)
+	main_frame.position = _main_frame_original_pos + Vector2(jx, jy) * amp
+
+func _play_wrong_fx() -> void:
+	if not is_instance_valid(main_frame):
+		return
+	var tween := create_tween()
+	var offset := Vector2(6, 0)
+	tween.tween_property(main_frame, "position", _main_frame_original_pos + offset, 0.06)
+	tween.tween_property(main_frame, "position", _main_frame_original_pos - offset, 0.09)
+	tween.tween_property(main_frame, "position", _main_frame_original_pos, 0.10)\
+		.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+
+func _on_playfield_resized() -> void:
+	_update_playfield_pivot()
+
+func _update_playfield_pivot() -> void:
+	playfield_frame.pivot_offset = playfield_frame.size * 0.5

@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cgy5mfr20be1v"
+path="res://.godot/imported/shoes.obj-edc5a092b8f4173705778ed2048f711e.mesh"
+
+[deps]
+
+files=["res://.godot/imported/shoes.obj-edc5a092b8f4173705778ed2048f711e.mesh"]
+
+source_file="res://models/main_character/sand outfit/shoes.obj"
+dest_files=["res://.godot/imported/shoes.obj-edc5a092b8f4173705778ed2048f711e.mesh", "res://.godot/imported/shoes.obj-edc5a092b8f4173705778ed2048f711e.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

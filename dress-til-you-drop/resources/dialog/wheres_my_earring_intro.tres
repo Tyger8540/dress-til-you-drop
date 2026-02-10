@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="DialogResource" load_steps=2 format=3 uid="uid://bvayquwvopjhg"]
+
+[ext_resource type="Script" uid="uid://d1gw1wt5dw784" path="res://scripts/dialog_resource.gd" id="1_o7pyl"]
+
+[resource]
+script = ExtResource("1_o7pyl")
+speaker = Array[int]([1, 2, 2, 1, 2, 1, 1])
+dialog = Array[String](["I told you that you could borrow it, not do whatever you want with it!", "I'm sorry! It's not like I meant to lose it on purpose.", "Plus, you borrow my things without asking all the time.", "...", "Sis?", "...", "Just..…find my earring."])
+metadata/_custom_type_script = "uid://d1gw1wt5dw784"
