@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bmd45oqbmm5e"]
+[gd_scene load_steps=7 format=3 uid="uid://bmd45oqbmm5e"]
 
 [ext_resource type="Script" uid="uid://ds03crob6pyyc" path="res://scripts/player.gd" id="1_3vyb7"]
-[ext_resource type="ArrayMesh" uid="uid://fa80is55d3mj" path="res://models/main_character/body.obj" id="2_qlg0r"]
-[ext_resource type="ArrayMesh" uid="uid://c6yvu2nqtj1q8" path="res://models/main_character/underwear-top.obj" id="3_tuyoq"]
-[ext_resource type="ArrayMesh" uid="uid://txcta0gn4ulv" path="res://models/main_character/underwear-bottom.obj" id="4_fjrip"]
+[ext_resource type="ArrayMesh" uid="uid://c4c0pdr86y4dh" path="res://models/main_character/body.obj" id="2_qlg0r"]
+[ext_resource type="ArrayMesh" uid="uid://cjm04ywjis7ty" path="res://models/main_character/sand outfit/top.obj" id="3_qlg0r"]
+[ext_resource type="ArrayMesh" uid="uid://c8d83ys8y0eta" path="res://models/main_character/sand outfit/bottom.obj" id="4_qlg0r"]
+[ext_resource type="ArrayMesh" uid="uid://cgy5mfr20be1v" path="res://models/main_character/sand outfit/shoes.obj" id="5_tuyoq"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3vyb7"]
 
@@ -24,12 +25,13 @@ mesh = ExtResource("2_qlg0r")
 [node name="Accessory" type="MeshInstance3D" parent="Body"]
 
 [node name="Top" type="MeshInstance3D" parent="Body"]
-mesh = ExtResource("3_tuyoq")
+mesh = ExtResource("3_qlg0r")
 
 [node name="Bottom" type="MeshInstance3D" parent="Body"]
-mesh = ExtResource("4_fjrip")
+mesh = ExtResource("4_qlg0r")
 
 [node name="Shoes" type="MeshInstance3D" parent="Body"]
+mesh = ExtResource("5_tuyoq")
 
 [node name="StairsAheadRayCast3D" type="RayCast3D" parent="."]
 unique_name_in_owner = true
