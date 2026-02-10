@@ -49,49 +49,29 @@ func _physics_process(delta: float) -> void:
 		look_at(global_position + move_direction)
 		move_direction = move_direction.rotated(Vector3.UP, locked_cam_orientation)
 		
-		if move_direction:
-			if not move_orientation_locked:
-				locked_cam_orientation = current_cam.rotation.y
-				move_orientation_locked = true
 			
-			move_direction = move_direction.rotated(Vector3.UP, locked_cam_orientation)
-			
-			velocity.x = move_direction.x * SPEED
-			velocity.z = move_direction.z * SPEED
-		else:
-			velocity.x = move_toward(velocity.x, 0, SPEED)
-			velocity.z = move_toward(velocity.z, 0, SPEED)
-		
-		move_and_slide()
-
-
-# TODO once merged with main (logic for opening inventory in inventory_camera.gd)
-func _input(event) -> void:
-	if event.is_action_pressed("inventory_toggle"):
-		inventory_ui.visible = !inventory_ui.visible
-		get_tree().paused = !get_tree().paused
-
-
-# Puts item on player if they are not already wearing it
-func put_on_clothes(item: InventoryItem) -> void:
-	var clothing_type = item.item_type
+		velocity.x = move_direction.x * SPEED
+		velocity.z = move_direction.z * SPEED
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.z = move_toward(velocity.z, 0, SPEED)
 	
-	# TODO figure out what the correct variable to change is :(
-	match item.item_type:
-		Enums.ClothingType.ACCESSORY:
-			# TODO load in the correct mesh (not sure where in InventoryItem
-			#accessory.mesh = load()
-			pass
-		Enums.ClothingType.TOP:
-			pass
-		Enums.ClothingType.BOTTOM:
-			pass
-		Enums.ClothingType.SHOES:
-			pass
-		_:
-			pass
-	if clothing_type.texture != item.item_texture:
-		clothing_type.texture = item.item_texture
+	if in_inventory:
+		return
+	
+	if not _snap_up_stairs_check(delta):
+		# Because _snap_up_stairs_check moves the body manually, don't call move_and_slide
+		# This should be fine since we ensure with the body_test_motion that it doesn't
+		# collide with anything except the stairs it's moving up to.
+		move_and_slide()
+		_snap_down_to_stairs_check()
+
+
+## TODO once merged with main (logic for opening inventory in inventory_camera.gd)
+#func _input(event) -> void:
+	#if event.is_action_pressed("inventory"):
+		#inventory_ui.visible = !inventory_ui.visible
+		#get_tree().paused = !get_tree().paused
 
 
 func _on_inventory_slot_selected(inventory_slot: InventorySlotButton) -> void:
@@ -106,13 +86,6 @@ func _on_inventory_slot_selected(inventory_slot: InventorySlotButton) -> void:
 			shoes.mesh = inventory_slot.inventory_item.item_texture
 	if in_inventory:
 		return
-	
-	if not _snap_up_stairs_check(delta):
-		# Because _snap_up_stairs_check moves the body manually, don't call move_and_slide
-		# This should be fine since we ensure with the body_test_motion that it doesn't
-		# collide with anything except the stairs it's moving up to.
-		move_and_slide()
-		_snap_down_to_stairs_check()
 
 
 func is_surface_too_steep(normal: Vector3) -> bool:

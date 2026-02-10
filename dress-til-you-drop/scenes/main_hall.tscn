@@ -9,9 +9,9 @@
 [ext_resource type="Resource" uid="uid://cijuaatftyr2g" path="res://resources/dialog/shop_1_locked.tres" id="3_xs61c"]
 [ext_resource type="Resource" uid="uid://cu4jrgrm8eq5n" path="res://resources/dialog/photoshoot_locked.tres" id="4_xs61c"]
 [ext_resource type="Material" uid="uid://djombhx4qb3pp" path="res://resources/materials/green_material.tres" id="5_in4so"]
-[ext_resource type="PackedScene" path="res://scenes/move_follow_camera.tscn" id="7_dbmwu"]
-[ext_resource type="Script" path="res://scripts/inventory_camera.gd" id="8_6hdfs"]
-[ext_resource type="PackedScene" uid="uid://b2x3rd7m3rywc" path="res://scenes/inventory_ui.tscn" id="12_p52to"]
+[ext_resource type="Script" uid="uid://dxt3a4wousdtn" path="res://scripts/minigame_interaction.gd" id="7_6ay7c"]
+[ext_resource type="PackedScene" uid="uid://dmecdf4b0ub0k" path="res://scenes/move_follow_camera.tscn" id="7_dbmwu"]
+[ext_resource type="Script" uid="uid://dvwxpheb3tytc" path="res://scripts/inventory_camera.gd" id="8_6hdfs"]
 [ext_resource type="PackedScene" uid="uid://doamnkbbr6t3n" path="res://scenes/pause_menu.tscn" id="13_ld5u0"]
 [ext_resource type="PackedScene" uid="uid://x2vxhocjdljg" path="res://scenes/models/railing.tscn" id="14_6ay7c"]
 
@@ -241,10 +241,8 @@ skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_3x2of")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="walls/floor"]
-process_mode = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="walls/floor/StaticBody3D"]
-process_mode = 4
 shape = SubResource("ConcavePolygonShape3D_snj6e")
 
 [node name="ceiling" type="MeshInstance3D" parent="walls"]
@@ -336,18 +334,21 @@ shape = SubResource("ConcavePolygonShape3D_muuyn")
 dialog = ExtResource("2_wf2n6")
 connected_area = NodePath("../../walls/MeshInstance3D5/minigame1/InteractionArea")
 
+[node name="MinigameTrigger" type="Node" parent="interactable obj/InteractionArea"]
+script = ExtResource("7_6ay7c")
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="interactable obj/InteractionArea"]
 shape = SubResource("SphereShape3D_4y6b0")
 
 [node name="Player" parent="." node_paths=PackedStringArray("current_cam") instance=ExtResource("1_cptfm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 1, -21.2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 1, 0)
 current_cam = NodePath("../MoveFollowCamera")
 
 [node name="InventoryCamera" type="Camera3D" parent="Player" node_paths=PackedStringArray("inventory_ui", "player")]
 transform = Transform3D(-0.5000001, 0, -0.8660254, 0, 1, 0, 0.8660254, 0, -0.5000001, -2.500001, 0.099999905, 7.450581e-09)
 visible = false
 script = ExtResource("8_6hdfs")
-inventory_ui = NodePath("../../InventoryUI")
+inventory_ui = NodePath("../InventoryUI")
 player = NodePath("..")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Player/InventoryCamera"]
@@ -383,11 +384,9 @@ light_energy = 9.412
 light_size = 0.28
 omni_range = 42.657
 
-[node name="InventoryUI" parent="." instance=ExtResource("12_p52to")]
-visible = false
-metadata/_edit_vertical_guides_ = [820.0]
-
 [node name="PauseMenu" parent="." instance=ExtResource("13_ld5u0")]
 
 [node name="railing" parent="." instance=ExtResource("14_6ay7c")]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 11.3, 0, -19.7)
+
+[editable path="Player"]
