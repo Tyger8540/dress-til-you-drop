@@ -1,3 +1,4 @@
+class_name InventoryUI
 extends Control
 
 @export var player: Player

@@ -2,12 +2,17 @@ extends Node
 
 # TODO see if we need to add different lists for each category
 var inventory: Array[InventoryItem] = []
+
+var minigame_one_defeated := false
+
 #var player_node: Node = null
 @onready var inventory_slot_scene = preload("res://scenes/inventory_slot.tscn")
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	Signals.minigame_one_defeated.connect(_on_minigame_one_defeated)
+	
 	# TODO: Push_back default clothing into inventory
 	
 	var underwear_top: InventoryItem = InventoryItem.new()
@@ -23,6 +28,24 @@ func _ready() -> void:
 	underwear_bottom.item_texture = load("res://models/main_character/underwear/bottom.obj")
 	underwear_bottom.ui_texture = load("res://art/inventory_icons/underwear/bottom.png")
 	add_item(underwear_bottom)
+	
+	pass
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+
+func add_item(item: InventoryItem) -> void:
+	inventory.push_back(item)
+	#Signals.inventory_updated.emit()
+	print("Item added!", inventory)
+
+
+func _on_minigame_one_defeated() -> void:
+	if minigame_one_defeated:
+		return
 	
 	var fancy_top: InventoryItem = InventoryItem.new()
 	fancy_top.item_type = Enums.ClothingType.TOP
@@ -87,15 +110,4 @@ func _ready() -> void:
 	siren_shoes.ui_texture = load("res://art/inventory_icons/siren_outfit/shoes.png")
 	add_item(siren_shoes)
 	
-	pass
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-
-func add_item(item: InventoryItem) -> void:
-	inventory.push_back(item)
-	#Signals.inventory_updated.emit()
-	print("Item added!", inventory)
+	minigame_one_defeated = true

@@ -1,7 +1,7 @@
 class_name InventoryCamera
 extends Camera
 
-@export var inventory_ui: Control
+@export var inventory_ui: InventoryUI
 
 var last_cam: Camera
 
@@ -20,6 +20,8 @@ func _physics_process(_delta: float) -> void:
 			last_cam = player.current_cam
 			last_cam.visible = false
 			visible = true
+			inventory_ui.clear_inventory_ui()
+			inventory_ui.set_inventory_ui()
 			inventory_ui.visible = true
 			top_level = true
 			player.in_inventory = true

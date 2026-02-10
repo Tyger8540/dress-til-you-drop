@@ -45,6 +45,7 @@ func _start_minigame() -> void:
 
 func _on_minigame_completed(currency_earned: int) -> void:
 	print("Minigame completed! Earned: ", currency_earned, " currency")
+	Signals.minigame_one_defeated.emit()
 
 func _on_minigame_failed() -> void:
 	print("Minigame failed!")

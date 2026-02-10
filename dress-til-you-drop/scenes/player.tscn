@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://ds03crob6pyyc" path="res://scripts/player.gd" id="1_3vyb7"]
 [ext_resource type="ArrayMesh" uid="uid://c4c0pdr86y4dh" path="res://models/main_character/body.obj" id="2_qlg0r"]
-[ext_resource type="ArrayMesh" uid="uid://cjm04ywjis7ty" path="res://models/main_character/sand outfit/top.obj" id="3_qlg0r"]
-[ext_resource type="ArrayMesh" uid="uid://c8d83ys8y0eta" path="res://models/main_character/sand outfit/bottom.obj" id="4_qlg0r"]
+[ext_resource type="ArrayMesh" uid="uid://cls0ciwk5knrb" path="res://models/main_character/underwear/top.obj" id="3_tuyoq"]
+[ext_resource type="ArrayMesh" uid="uid://ceit8f7pyw1jv" path="res://models/main_character/underwear/bottom.obj" id="4_fjrip"]
 [ext_resource type="ArrayMesh" uid="uid://cgy5mfr20be1v" path="res://models/main_character/sand outfit/shoes.obj" id="5_tuyoq"]
 [ext_resource type="PackedScene" uid="uid://b2x3rd7m3rywc" path="res://scenes/inventory_ui.tscn" id="6_tuyoq"]
 
@@ -27,10 +27,10 @@ mesh = ExtResource("2_qlg0r")
 [node name="Accessory" type="MeshInstance3D" parent="Body"]
 
 [node name="Top" type="MeshInstance3D" parent="Body"]
-mesh = ExtResource("3_qlg0r")
+mesh = ExtResource("3_tuyoq")
 
 [node name="Bottom" type="MeshInstance3D" parent="Body"]
-mesh = ExtResource("4_qlg0r")
+mesh = ExtResource("4_fjrip")
 
 [node name="Shoes" type="MeshInstance3D" parent="Body"]
 mesh = ExtResource("5_tuyoq")
