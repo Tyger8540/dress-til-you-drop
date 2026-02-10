@@ -1,10 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://doamnkbbr6t3n"]
+[gd_scene load_steps=6 format=3 uid="uid://doamnkbbr6t3n"]
 
 [ext_resource type="StyleBox" uid="uid://bklf6gie44p5" path="res://resources/style_boxes/pause_menu_none.tres" id="1_kukqi"]
 [ext_resource type="Script" uid="uid://cga0xsxa1xcpc" path="res://scripts/pause_menu.gd" id="2_kukqi"]
 [ext_resource type="PackedScene" uid="uid://cll8pc4irssnf" path="res://scenes/pause_menu_button.tscn" id="3_kukqi"]
+[ext_resource type="Material" uid="uid://dn47x2emhq2u7" path="res://resources/materials/vignette.tres" id="4_5d2l8"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kukqi"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7l7mv"]
 
 [node name="PauseMenu" type="Panel"]
 process_mode = 3
@@ -14,8 +15,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_kukqi")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_7l7mv")
 script = ExtResource("2_kukqi")
+
+[node name="Vignette" type="ColorRect" parent="."]
+material = ExtResource("4_5d2l8")
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
 
 [node name="OptionsPanel" type="Panel" parent="."]
 layout_mode = 0
