@@ -4,20 +4,21 @@ extends Control
 # individual earring item in the grid
 signal earring_clicked(earring: EarringItem)
 
-const SHAPE_GLYPHS := ["●", "▲", "■", "★", "◆", "♥", "♣", "♠"]
-
 @export var earring_id: int = -1  # unique ID for this earring instance
-@export var shape_id: int = 0     # logical shape type this item represents
+@export var shape_id: int = 0     # logical shape type (index into earring spritesheet 0..16)
 
 var is_clickable: bool = true
 
 @onready var color_rect: ColorRect = $ColorRect
-@onready var shape_label: Label = $ShapeLabel
+@onready var earring_sprite: TextureRect = $EarringSprite
 var shadow_rect: ColorRect
+var _pending_texture: Texture2D  # applied in _ready when set before add_child
 
 func _ready() -> void:
 	_create_shadow()
-	_apply_visuals()
+	if _pending_texture != null and is_instance_valid(earring_sprite):
+		earring_sprite.texture = _pending_texture
+		_pending_texture = null
 	mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 	# ensure this node stays at a fixed size when manually positioned (no fill-anchors).
 	size = custom_minimum_size
@@ -32,7 +33,12 @@ func set_visual_size(side: float) -> void:
 
 func set_shape_id(id: int) -> void:
 	shape_id = id
-	_apply_visuals()
+
+func set_sprite_texture(tex: Texture2D) -> void:
+	if is_instance_valid(earring_sprite):
+		earring_sprite.texture = tex
+	else:
+		_pending_texture = tex
 
 func get_shape_id() -> int:
 	return shape_id
@@ -51,15 +57,6 @@ func mark_incorrect() -> void:
 	is_clickable = false
 	modulate = Color(1.0, 0.6, 0.6, 1.0)
 	_play_click_pulse()
-
-func _apply_visuals() -> void:
-	if is_instance_valid(shape_label):
-		shape_label.add_theme_font_size_override("font_size", 56)
-		if SHAPE_GLYPHS.size() == 0:
-			shape_label.text = "?"
-		else:
-			var idx: int = abs(shape_id) % SHAPE_GLYPHS.size()
-			shape_label.text = SHAPE_GLYPHS[idx]
 
 func _play_click_pulse() -> void:
 	var tween := create_tween()

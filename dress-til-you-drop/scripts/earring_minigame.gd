@@ -16,9 +16,8 @@ const ITEM_GAP_X := 4.0
 @onready var main_frame: Control = $MainFrame
 @onready var playfield_frame: ColorRect = $MainFrame/PlayfieldFrame
 @onready var playfield: Control = $MainFrame/PlayfieldFrame/Playfield
-@onready var target_preview: ColorRect = $MainFrame/TopBar/TargetPreview
-@onready var target_label: Label = $MainFrame/TopBar/TargetLabel
-@onready var target_glyph_label: Label = $MainFrame/TopBar/TargetPreview/TargetGlyph
+@onready var target_preview: ColorRect = $MainFrame/TargetPreview
+@onready var target_sprite: TextureRect = $MainFrame/TargetPreview/TargetSprite
 @onready var score_label: Label = $MainFrame/TopBar/ScoreLabel
 @onready var timer_background: ColorRect = $MainFrame/TopBar/TimerContainer/TimerBackground
 @onready var timer_bar: ColorRect = $MainFrame/TopBar/TimerContainer/TimerBar
@@ -26,8 +25,12 @@ const ITEM_GAP_X := 4.0
 @onready var speed_label: Label = $MainFrame/TopBar/SpeedLabel
 
 const EARRING_ITEM_SCENE: PackedScene = preload("res://scenes/earring_item.tscn")
-const SHAPE_VARIANTS := 8
-const SHAPE_GLYPHS := ["●", "▲", "■", "★", "◆", "♥", "♣", "♠"]
+const EARRING_SPRITESHEET_PATH := "res://art/earring_minigame_assets/earrings_spritesheet.PNG"
+const EARRING_VARIANTS := 17  # 17 unique earring sprites
+# Spritesheet: 3 rows × 6 columns; cell [2,5] (bottom-right) is empty.
+const EARRING_SHEET_COLS := 6
+const EARRING_SHEET_ROWS := 3
+const SHAPE_VARIANTS := 17
 const COLOR_TIMER_BAR_BASE := Color(0.9, 0.85, 0.35, 1.0)
 const COLOR_TIMER_BAR_DANGER := Color(1.0, 0.35, 0.35, 1.0)
 const COLOR_TIMER_BG_BASE := Color(0.18, 0.18, 0.22, 1.0)
@@ -50,6 +53,36 @@ var _speed_stage: int = 1 # 1x, 2x, 3x
 var _zoom_factor: float = 1.0
 var _end_shake_seed: float = 0.0
 var _shake_time: float = 0.0
+var _earring_spritesheet: Texture2D
+var _earring_atlas_cache: Dictionary = {}  # index -> AtlasTexture
+
+func _get_earring_atlas_texture(sprite_index: int) -> AtlasTexture:
+	if _earring_spritesheet == null:
+		_earring_spritesheet = load(EARRING_SPRITESHEET_PATH) as Texture2D
+	if _earring_spritesheet == null:
+		return null
+	var idx: int = clampi(sprite_index, 0, EARRING_VARIANTS - 1) % EARRING_VARIANTS
+	if _earring_atlas_cache.has(idx):
+		return _earring_atlas_cache[idx]
+	var tw: float = float(_earring_spritesheet.get_width())
+	var th: float = float(_earring_spritesheet.get_height())
+	var cell_w: float = tw / float(EARRING_SHEET_COLS)
+	var cell_h: float = th / float(EARRING_SHEET_ROWS)
+	# Map linear index 0..16 to (row,col). Cell [2,5] is empty.
+	# 0-5 -> row 0, col 0-5; 6-11 -> row 1, col 0-5; 12-16 -> row 2, col 0-4 (skip col 5).
+	var sheet_row: int
+	var sheet_col: int
+	if idx < 12:
+		sheet_row = idx / EARRING_SHEET_COLS
+		sheet_col = idx % EARRING_SHEET_COLS
+	else:
+		sheet_row = 2
+		sheet_col = idx - 12
+	var atlas := AtlasTexture.new()
+	atlas.atlas = _earring_spritesheet
+	atlas.region = Rect2(sheet_col * cell_w, sheet_row * cell_h, cell_w, cell_h)
+	_earring_atlas_cache[idx] = atlas
+	return atlas
 
 func _ready() -> void:
 	# hide initially
@@ -172,7 +205,9 @@ func _spawn_rows() -> void:
 			var earring: EarringItem = EARRING_ITEM_SCENE.instantiate()
 			earring.earring_id = row_index * 1000 + i
 			earring.set_visual_size(item_w)
-			earring.set_shape_id(_random_shape_id())
+			var sprite_id: int = _random_shape_id()
+			earring.set_shape_id(sprite_id)
+			earring.set_sprite_texture(_get_earring_atlas_texture(sprite_id))
 			earring.earring_clicked.connect(_on_earring_clicked)
 			
 			# start slightly off-screen so we always have blocks arriving.
@@ -254,7 +289,9 @@ func _update_rows(delta: float) -> void:
 			while leftmost_x > -item_w:
 				var new_item: EarringItem = EARRING_ITEM_SCENE.instantiate()
 				new_item.earring_id = row_index * 1000 + randi()
-				new_item.set_shape_id(_random_shape_id())
+				var new_id: int = _random_shape_id()
+				new_item.set_shape_id(new_id)
+				new_item.set_sprite_texture(_get_earring_atlas_texture(new_id))
 				new_item.set_visual_size(item_w)
 				new_item.earring_clicked.connect(_on_earring_clicked)
 				var spawn_x: float = leftmost_x - spacing
@@ -274,7 +311,9 @@ func _update_rows(delta: float) -> void:
 			while rightmost_edge < width + item_w:
 				var new_item: EarringItem = EARRING_ITEM_SCENE.instantiate()
 				new_item.earring_id = row_index * 1000 + randi()
-				new_item.set_shape_id(_random_shape_id())
+				var new_id: int = _random_shape_id()
+				new_item.set_shape_id(new_id)
+				new_item.set_sprite_texture(_get_earring_atlas_texture(new_id))
 				new_item.set_visual_size(item_w)
 				new_item.earring_clicked.connect(_on_earring_clicked)
 				var spawn_x: float = rightmost_edge + ITEM_GAP_X
@@ -380,17 +419,12 @@ func _cleanup_and_close() -> void:
 		speed_label.text = ""
 
 func _random_shape_id() -> int:
-	return randi() % SHAPE_VARIANTS
+	return randi() % EARRING_VARIANTS
 
 func _update_target_preview() -> void:
-	var glyph: String = "?"
-	if SHAPE_GLYPHS.size() > 0:
-		var idx: int = abs(target_shape_id) % SHAPE_GLYPHS.size()
-		glyph = SHAPE_GLYPHS[idx]
-	target_label.text = "Target"
-	if is_instance_valid(target_glyph_label):
-		target_glyph_label.add_theme_font_size_override("font_size", 64)
-		target_glyph_label.text = glyph
+	var atlas: AtlasTexture = _get_earring_atlas_texture(target_shape_id)
+	if is_instance_valid(target_sprite):
+		target_sprite.texture = atlas
 
 func _play_correct_fx() -> void:
 	if not is_instance_valid(playfield_frame):
