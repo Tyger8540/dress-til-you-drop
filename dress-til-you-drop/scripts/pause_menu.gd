@@ -50,3 +50,13 @@ func continue_game() -> void:
 func quit_game() -> void:
 	# TODO save game before quitting
 	get_tree().quit()
+
+
+func open_settings() -> void:
+	$OptionsPanel.visible = false
+	$SettingsPanel.visible = true
+
+
+func close_settings() -> void:
+	$SettingsPanel.visible = false
+	$OptionsPanel.visible = true

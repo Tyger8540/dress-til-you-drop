@@ -1,11 +1,38 @@
-[gd_scene load_steps=6 format=3 uid="uid://doamnkbbr6t3n"]
+[gd_scene load_steps=16 format=3 uid="uid://doamnkbbr6t3n"]
 
 [ext_resource type="StyleBox" uid="uid://bklf6gie44p5" path="res://resources/style_boxes/pause_menu_none.tres" id="1_kukqi"]
 [ext_resource type="Script" uid="uid://cga0xsxa1xcpc" path="res://scripts/pause_menu.gd" id="2_kukqi"]
 [ext_resource type="PackedScene" uid="uid://cll8pc4irssnf" path="res://scenes/pause_menu_button.tscn" id="3_kukqi"]
 [ext_resource type="Material" uid="uid://dn47x2emhq2u7" path="res://resources/materials/vignette.tres" id="4_5d2l8"]
+[ext_resource type="StyleBox" uid="uid://cbd5nnguhi3w0" path="res://resources/style_boxes/settings_menu_mouse_none.tres" id="5_7l7mv"]
+[ext_resource type="Texture2D" uid="uid://cj1sjbm8fcytv" path="res://art/settings_ui/slider bar/unselected/slider unselected.png" id="6_71k7c"]
+[ext_resource type="Script" uid="uid://bg62bu1y2c6lv" path="res://scripts/settings_panel.gd" id="6_cmnsq"]
+[ext_resource type="Texture2D" uid="uid://c0rae8hkrk3ks" path="res://art/settings_ui/slider bar/selected/slider selected.png" id="7_cmnsq"]
+[ext_resource type="Texture2D" uid="uid://crgeaan6ngvw8" path="res://art/settings_ui/slider bar/selected/slider empty bar.png" id="8_ofnjo"]
+[ext_resource type="Texture2D" uid="uid://b2oghk3nd3thm" path="res://art/settings_ui/slider bar/unselected/slider filled unselected.png" id="9_1rgno"]
+[ext_resource type="Texture2D" uid="uid://chlxvtswtculh" path="res://art/settings_ui/slider bar/selected/slider filled bar.png" id="10_4hnlu"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7l7mv"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3o3g3"]
+texture = ExtResource("8_ofnjo")
+expand_margin_top = 20.0
+expand_margin_bottom = 20.0
+axis_stretch_horizontal = 1
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h5b1d"]
+texture = ExtResource("9_1rgno")
+expand_margin_top = 20.0
+expand_margin_bottom = 20.0
+axis_stretch_horizontal = 1
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_knqa7"]
+content_margin_left = 79.0
+content_margin_right = 79.0
+texture = ExtResource("10_4hnlu")
+expand_margin_top = 20.0
+expand_margin_bottom = 20.0
+axis_stretch_horizontal = 1
 
 [node name="PauseMenu" type="Panel"]
 process_mode = 3
@@ -57,5 +84,29 @@ offset_bottom = 768.0
 pause_menu = NodePath("../..")
 pause_menu_state = 3
 
+[node name="SettingsPanel" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme_override_styles/panel = ExtResource("5_7l7mv")
+script = ExtResource("6_cmnsq")
+
+[node name="VolumeSlider" type="HSlider" parent="SettingsPanel"]
+layout_mode = 0
+offset_left = 743.0
+offset_top = 569.0
+offset_right = 1206.0
+offset_bottom = 619.0
+theme_override_constants/center_grabber = 1
+theme_override_icons/grabber = ExtResource("6_71k7c")
+theme_override_icons/grabber_highlight = ExtResource("7_cmnsq")
+theme_override_styles/slider = SubResource("StyleBoxTexture_3o3g3")
+theme_override_styles/grabber_area = SubResource("StyleBoxTexture_h5b1d")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_knqa7")
+value = 50.0
+
 [connection signal="button_up" from="OptionsPanel/ContinueButton" to="." method="continue_game"]
+[connection signal="button_up" from="OptionsPanel/SettingsButton" to="." method="open_settings"]
 [connection signal="button_up" from="OptionsPanel/QuitButton" to="." method="quit_game"]
+[connection signal="drag_ended" from="SettingsPanel/VolumeSlider" to="SettingsPanel" method="_on_volume_slider_drag_ended"]

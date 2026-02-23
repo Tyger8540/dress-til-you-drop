@@ -3,5 +3,7 @@
 [ext_resource type="AudioStream" uid="uid://dsnlmh6sb1t8o" path="res://audio/music/theme.wav" id="1_yvkaf"]
 
 [node name="MusicPlayer" type="AudioStreamPlayer"]
+process_mode = 3
 stream = ExtResource("1_yvkaf")
+volume_db = -5.0
 autoplay = true
