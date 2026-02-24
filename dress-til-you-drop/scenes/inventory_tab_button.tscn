@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b2eftgk23kxj8"]
+
+[ext_resource type="Script" uid="uid://dx5xam7buc6i5" path="res://scripts/inventory_tab_button.gd" id="1_v4ug2"]
+
+[node name="InventoryTabButton" type="TextureButton"]
+script = ExtResource("1_v4ug2")
+
+[connection signal="button_up" from="." to="." method="_on_button_up"]

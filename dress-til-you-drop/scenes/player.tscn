@@ -1,10 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://bmd45oqbmm5e"]
+[gd_scene load_steps=7 format=3 uid="uid://bmd45oqbmm5e"]
 
 [ext_resource type="Script" uid="uid://ds03crob6pyyc" path="res://scripts/player.gd" id="1_3vyb7"]
+[ext_resource type="ArrayMesh" uid="uid://c4c0pdr86y4dh" path="res://models/main_character/body.obj" id="2_qlg0r"]
+[ext_resource type="ArrayMesh" uid="uid://cls0ciwk5knrb" path="res://models/main_character/underwear/top.obj" id="3_tuyoq"]
+[ext_resource type="ArrayMesh" uid="uid://ceit8f7pyw1jv" path="res://models/main_character/underwear/bottom.obj" id="4_fjrip"]
+[ext_resource type="PackedScene" uid="uid://b2x3rd7m3rywc" path="res://scenes/inventory_ui.tscn" id="6_tuyoq"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3vyb7"]
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
+process_mode = 3
 script = ExtResource("1_3vyb7")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -12,3 +17,32 @@ shape = SubResource("CapsuleShape3D_3vyb7")
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 2.0900002, 0, 0, 0, 1, 0, 0, 0)
+visible = false
+
+[node name="Body" type="MeshInstance3D" parent="."]
+transform = Transform3D(-8.742278e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.742278e-09, 0, 1.1, 0)
+mesh = ExtResource("2_qlg0r")
+
+[node name="Accessory" type="MeshInstance3D" parent="Body"]
+
+[node name="Top" type="MeshInstance3D" parent="Body"]
+mesh = ExtResource("3_tuyoq")
+
+[node name="Bottom" type="MeshInstance3D" parent="Body"]
+mesh = ExtResource("4_fjrip")
+
+[node name="Shoes" type="MeshInstance3D" parent="Body"]
+
+[node name="InventoryUI" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_tuyoq")]
+visible = false
+player = NodePath("..")
+
+[node name="StairsAheadRayCast3D" type="RayCast3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.70000005, -0.5, 0)
+target_position = Vector3(0, -0.55, 0)
+
+[node name="StairsBelowRayCast3D" type="RayCast3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+target_position = Vector3(0, -0.75, 0)

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmecdf4b0ub0k"]
+
+[ext_resource type="Script" uid="uid://f6t41ihgu8n" path="res://scripts/move_follow_camera.gd" id="1_uvc3b"]
+
+[node name="MoveFollowCamera" type="Camera3D"]
+script = ExtResource("1_uvc3b")
+metadata/_custom_type_script = "uid://61du4qifcyxt"

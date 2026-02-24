@@ -1,0 +1,6 @@
+extends Node
+
+signal inventory_tab_selected
+signal inventory_slot_selected
+signal inventory_updated
+signal minigame_one_defeated

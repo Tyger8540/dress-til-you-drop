@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwoxekqcwg82"]
+
+[ext_resource type="PackedScene" uid="uid://cqgsenv0d6oav" path="res://models/mansion/baseboardTop.fbx" id="1_bp8ie"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bp8ie"]
+size = Vector3(0.4, 1.2, 10)
+
+[node name="baseboardTop" instance=ExtResource("1_bp8ie")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.20000002, 0.20000005, 0)
+shape = SubResource("BoxShape3D_bp8ie")
