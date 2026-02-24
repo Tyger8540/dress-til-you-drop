@@ -12,6 +12,16 @@ const PLAYFIELD_PADDING_Y := 10.0
 const ITEM_GAP_X := 4.0
 
 @export var auto_start_when_run_directly: bool = true
+## Inset (left, top, right, bottom) so the fill bar stays inside the timer background. Increase if the bar overflows.
+@export var timer_bar_inset: Vector4 = Vector4(8.0, 8.0, 8.0, 8.0)
+## Scale of the gem slider. Change in the inspector to resize the gem.
+@export var timer_gem_scale: float = 1.0
+## Pixels to move the gem down from the fill line (positive = lower). Gem still follows the top of the fill.
+@export var timer_gem_offset_y: float = 8.0
+## Pixels to crop from top of bar_fill.png (removes empty/transparent space so fill stays aligned).
+@export var timer_fill_crop_top: float = 0.0
+## Pixels to crop from bottom of bar_fill.png (removes empty space beneath the bar graphic).
+@export var timer_fill_crop_bottom: float = 0.0
 
 @onready var main_frame: Control = $MainFrame
 @onready var playfield_frame: ColorRect = $MainFrame/PlayfieldFrame
@@ -19,13 +29,16 @@ const ITEM_GAP_X := 4.0
 @onready var target_preview: ColorRect = $MainFrame/TargetPreview
 @onready var target_sprite: TextureRect = $MainFrame/TargetPreview/TargetSprite
 @onready var score_label: Label = $MainFrame/TopBar/ScoreLabel
-@onready var timer_background: ColorRect = $MainFrame/TopBar/TimerContainer/TimerBackground
-@onready var timer_bar: ColorRect = $MainFrame/TopBar/TimerContainer/TimerBar
+@onready var timer_background: TextureRect = $MainFrame/TopBar/TimerContainer/TimerBackground
+@onready var timer_bar_bounds: Control = $MainFrame/TimerBarBounds
+@onready var timer_bar: TextureRect = $MainFrame/TopBar/TimerContainer/TimerBar
+@onready var timer_gem: TextureRect = $MainFrame/TopBar/TimerContainer/TimerGem
 @onready var timer_glow: ColorRect = $MainFrame/TopBar/TimerContainer/TimerGlow
 @onready var speed_label: Label = $MainFrame/TopBar/SpeedLabel
 
 const EARRING_ITEM_SCENE: PackedScene = preload("res://scenes/earring_item.tscn")
 const EARRING_SPRITESHEET_PATH := "res://art/earring_minigame_assets/earrings_spritesheet.PNG"
+const TIMER_FILL_TEXTURE_PATH := "res://art/earring_minigame_assets/bar_fill.PNG"
 const EARRING_VARIANTS := 17  # 17 unique earring sprites
 # Spritesheet: 3 rows × 6 columns; cell [2,5] (bottom-right) is empty.
 const EARRING_SHEET_COLS := 6
@@ -55,6 +68,8 @@ var _end_shake_seed: float = 0.0
 var _shake_time: float = 0.0
 var _earring_spritesheet: Texture2D
 var _earring_atlas_cache: Dictionary = {}  # index -> AtlasTexture
+var _timer_fill_texture: Texture2D
+var _timer_fill_atlas: AtlasTexture  # cropped to remove transparent top/bottom
 
 func _get_earring_atlas_texture(sprite_index: int) -> AtlasTexture:
 	if _earring_spritesheet == null:
@@ -84,6 +99,21 @@ func _get_earring_atlas_texture(sprite_index: int) -> AtlasTexture:
 	_earring_atlas_cache[idx] = atlas
 	return atlas
 
+func _ensure_timer_fill_atlas() -> void:
+	if _timer_fill_atlas != null:
+		return
+	_timer_fill_texture = load(TIMER_FILL_TEXTURE_PATH) as Texture2D
+	if _timer_fill_texture == null:
+		return
+	var tw: float = float(_timer_fill_texture.get_width())
+	var th: float = float(_timer_fill_texture.get_height())
+	var crop_t: float = clampf(timer_fill_crop_top, 0.0, th - 1.0)
+	var crop_b: float = clampf(timer_fill_crop_bottom, 0.0, th - crop_t - 1.0)
+	var content_h: float = th - crop_t - crop_b
+	_timer_fill_atlas = AtlasTexture.new()
+	_timer_fill_atlas.atlas = _timer_fill_texture
+	_timer_fill_atlas.region = Rect2(0.0, crop_t, tw, content_h)
+
 func _ready() -> void:
 	# hide initially
 	visible = false
@@ -100,6 +130,9 @@ func _ready() -> void:
 	_end_shake_seed = randf() * 1000.0
 	_shake_time = 0.0
 	
+	_ensure_timer_fill_atlas()
+	if is_instance_valid(timer_bar) and _timer_fill_atlas != null:
+		timer_bar.texture = _timer_fill_atlas
 	if auto_start_when_run_directly and get_tree().current_scene == self:
 		start_minigame()
 
@@ -394,15 +427,68 @@ func _end_session(success: bool) -> void:
 		minigame_failed.emit()
 
 func _update_timer_bar() -> void:
-	var fraction = clamp(time_remaining / SESSION_DURATION, 0.0, 1.0)
-	var full_height = $MainFrame/TopBar/TimerContainer.size.y
-	timer_bar.size.y = full_height * fraction
-	timer_bar.position.y = full_height * (1.0 - fraction)
-	# danger color ramp as time runs out.
-	var danger: float = 1.0 - fraction
-	var ramp: float = clamp((danger - 0.3) / 0.7, 0.0, 1.0) # start changing after ~70% time
-	timer_bar.color = COLOR_TIMER_BAR_BASE.lerp(COLOR_TIMER_BAR_DANGER, ramp)
-	timer_background.color = COLOR_TIMER_BG_BASE.lerp(COLOR_TIMER_BG_DANGER, ramp)
+	var fraction: float = clamp(time_remaining / SESSION_DURATION, 0.0, 1.0)
+	var container: Control = $MainFrame/TopBar/TimerContainer
+	var full_height: float = container.size.y
+	var full_width: float = container.size.x
+	# Inner rect: use TimerBarBounds if present (move/resize in 2D editor - it's under MainFrame), else use insets
+	var left: float
+	var top: float
+	var inner_w: float
+	var inner_h: float
+	if is_instance_valid(timer_bar_bounds):
+		# Bounds is under MainFrame; convert its rect to TimerContainer local space
+		var bounds_global: Rect2 = timer_bar_bounds.get_global_rect()
+		var container_global: Rect2 = container.get_global_rect()
+		var sx: float = container.size.x / container_global.size.x if container_global.size.x > 0 else 1.0
+		var sy: float = container.size.y / container_global.size.y if container_global.size.y > 0 else 1.0
+		left = (bounds_global.position.x - container_global.position.x) * sx
+		top = (bounds_global.position.y - container_global.position.y) * sy
+		inner_w = max(1.0, bounds_global.size.x * sx)
+		inner_h = max(1.0, bounds_global.size.y * sy)
+	else:
+		left = timer_bar_inset.x
+		top = timer_bar_inset.y
+		var right: float = timer_bar_inset.z
+		var bottom: float = timer_bar_inset.w
+		inner_w = max(1.0, full_width - left - right)
+		inner_h = max(1.0, full_height - top - bottom)
+	# Clamp so inner rect never extends past container
+	left = clampf(left, 0.0, full_width - 1.0)
+	top = clampf(top, 0.0, full_height - 1.0)
+	inner_w = min(inner_w, full_width - left)
+	inner_h = min(inner_h, full_height - top)
+	# Fill bar: anchored to bottom so it never slides; only height shrinks
+	var fill_bottom_y: float = top + inner_h
+	var fill_height: float = inner_h * fraction
+	var fill_top_y: float = fill_bottom_y - fill_height
+	timer_bar.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
+	timer_bar.anchor_left = 0.0
+	timer_bar.anchor_right = 0.0
+	timer_bar.anchor_top = 1.0
+	timer_bar.anchor_bottom = 1.0
+	timer_bar.offset_left = left
+	timer_bar.offset_right = left + inner_w
+	timer_bar.offset_bottom = fill_bottom_y - full_height
+	timer_bar.offset_top = timer_bar.offset_bottom - fill_height
+	# Gem: follows the top of the fill line, offset lower by timer_gem_offset_y, stays inside
+	if is_instance_valid(timer_gem):
+		timer_gem.scale = Vector2(timer_gem_scale, timer_gem_scale)
+		var gem_h: float = timer_gem.size.y * timer_gem_scale
+		var gem_w: float = timer_gem.size.x * timer_gem_scale
+		var fill_line_y: float = fill_top_y
+		var gem_y: float = fill_line_y - gem_h + timer_gem_offset_y
+		gem_y = clampf(gem_y, top, top + inner_h - gem_h)
+		var gem_x: float = left + (inner_w - gem_w) * 0.5
+		gem_x = clampf(gem_x, left, left + inner_w - gem_w)
+		timer_gem.set_anchors_preset(Control.PRESET_TOP_LEFT)
+		timer_gem.offset_left = gem_x
+		timer_gem.offset_top = gem_y
+		timer_gem.offset_right = gem_x + timer_gem.size.x
+		timer_gem.offset_bottom = gem_y + timer_gem.size.y
+		var danger: float = 1.0 - fraction
+		var ramp: float = clamp((danger - 0.3) / 0.7, 0.0, 1.0)
+		timer_gem.modulate = Color(1.0, 1.0, 1.0).lerp(Color(1.0, 0.6, 0.6), ramp * 0.5)
 
 func _update_score_label() -> void:
 	score_label.text = "Score: %d / %d" % [targets_found, TARGETS_TO_WIN]
