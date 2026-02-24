@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://ubqqbukxq7yg"]
+[gd_scene load_steps=7 format=3 uid="uid://ubqqbukxq7yg"]
 
 [ext_resource type="Script" uid="uid://cka2v7vq7m2vl" path="res://scripts/earring_minigame.gd" id="1_minigame"]
+[ext_resource type="Texture2D" uid="uid://bf2xqd3qhue1" path="res://art/earring_minigame_assets/findmy_background.PNG" id="2_xm06f"]
+[ext_resource type="Texture2D" uid="uid://box1enc166kx0" path="res://art/earring_minigame_assets/findmy_frame.PNG" id="3_pesq2"]
+[ext_resource type="Texture2D" uid="uid://coxsyg24vai6c" path="res://art/earring_minigame_assets/bar_bg.PNG" id="4_bar_bg"]
+[ext_resource type="Texture2D" uid="uid://c0mbt1wnyskqy" path="res://art/earring_minigame_assets/bar_fill.PNG" id="5_bar_fill"]
+[ext_resource type="Texture2D" uid="uid://bk25mfduuaosy" path="res://art/earring_minigame_assets/gem.PNG" id="6_gem"]
 
 [node name="EarringMinigame" type="Control"]
 layout_mode = 3
@@ -10,6 +15,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_minigame")
+
+[node name="MainBackground" type="Sprite2D" parent="."]
+position = Vector2(976.16675, 539)
+scale = Vector2(5.1333337, 5.1333337)
+texture = ExtResource("2_xm06f")
+
+[node name="bg" type="Sprite2D" parent="."]
+position = Vector2(816, 536.75)
+scale = Vector2(9.126532, 5.2452383)
+texture = ExtResource("2_xm06f")
 
 [node name="Background" type="ColorRect" parent="."]
 z_index = -1
@@ -30,69 +45,137 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="PlayfieldFrame" type="ColorRect" parent="MainFrame"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.39600003
+anchor_top = 0.20400001
+anchor_right = 0.83500004
+anchor_bottom = 0.776
+offset_left = 0.67993164
+offset_top = -0.32000732
+offset_right = -0.20007324
+offset_bottom = -0.08001709
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.9019608, 0.92156863, 0.96862745, 0)
+
+[node name="Playfield" type="Control" parent="MainFrame/PlayfieldFrame"]
+clip_contents = true
+layout_mode = 1
+anchor_left = 0.039
+anchor_top = 0.010000001
+anchor_right = 0.78000003
+anchor_bottom = 1.0
+offset_left = 0.16199875
+offset_top = -0.1800003
+offset_right = 0.23999023
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="frame" type="Sprite2D" parent="MainFrame/PlayfieldFrame"]
+position = Vector2(215.16675, 319)
+scale = Vector2(5.1333337, 5.1333337)
+texture = ExtResource("3_pesq2")
+
+[node name="TimerBarBounds" type="Control" parent="MainFrame"]
+anchors_preset = 0
+offset_left = 130.0
+offset_top = 20.0
+offset_right = 262.0
+offset_bottom = 500.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="TargetPreview" type="ColorRect" parent="MainFrame"]
+layout_mode = 0
+offset_left = 729.0
+offset_top = 120.0
+offset_right = 861.0
+offset_bottom = 252.0
+mouse_filter = 2
+color = Color(0.92941177, 0.92941177, 0.9607843, 0)
+
+[node name="TargetSprite" type="TextureRect" parent="MainFrame/TargetPreview"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
 [node name="TopBar" type="VBoxContainer" parent="MainFrame"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.06
-anchor_top = 0.14
-anchor_right = 0.11
-anchor_bottom = 0.86
-grow_horizontal = 0
-alignment = 1
+anchor_left = 0.25100002
+anchor_top = 0.004
+anchor_right = 0.836
+anchor_bottom = 0.99600005
+offset_left = -0.92004395
+offset_top = 4.68
+offset_right = 0.8800049
+offset_bottom = 7.3199463
+mouse_filter = 2
 theme_override_constants/separation = 24
-
-[node name="TargetLabel" type="Label" parent="MainFrame/TopBar"]
-layout_mode = 2
-size_flags_horizontal = 4
-text = "Target"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="TargetPreview" type="ColorRect" parent="MainFrame/TopBar"]
-custom_minimum_size = Vector2(132, 132)
-layout_mode = 2
-size_flags_horizontal = 0
-color = Color(0.93, 0.93, 0.96, 1)
-
-[node name="TargetGlyph" type="Label" parent="MainFrame/TopBar/TargetPreview"]
-modulate = Color(0, 0, 0, 1)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-horizontal_alignment = 1
-vertical_alignment = 1
+alignment = 1
 
 [node name="TimerContainer" type="Control" parent="MainFrame/TopBar"]
+clip_contents = true
 custom_minimum_size = Vector2(132, 480)
 layout_mode = 2
 size_flags_horizontal = 0
+size_flags_stretch_ratio = 0.0
 
-[node name="TimerBackground" type="ColorRect" parent="MainFrame/TopBar/TimerContainer"]
+[node name="TimerBackground" type="TextureRect" parent="MainFrame/TopBar/TimerContainer"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 62.0
+offset_bottom = 62.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.18, 0.18, 0.22, 1)
+texture = ExtResource("4_bar_bg")
+expand_mode = 1
+stretch_mode = 5
 
-[node name="TimerBar" type="ColorRect" parent="MainFrame/TopBar/TimerContainer"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.9, 0.85, 0.35, 1)
+[node name="TimerBar" type="TextureRect" parent="MainFrame/TopBar/TimerContainer"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 288.0
+offset_right = 120.0
+offset_bottom = 486.0
+texture = ExtResource("5_bar_fill")
+expand_mode = 1
+
+[node name="TimerGem" type="TextureRect" parent="MainFrame/TopBar/TimerContainer"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 220.0
+offset_right = 92.0
+offset_bottom = 272.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("6_gem")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="TimerGlow" type="ColorRect" parent="MainFrame/TopBar/TimerContainer"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -0.19999695
+offset_top = -0.2000122
+offset_right = -0.19999695
+offset_bottom = -0.2000122
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -106,23 +189,3 @@ horizontal_alignment = 1
 [node name="SpeedLabel" type="Label" parent="MainFrame/TopBar"]
 layout_mode = 2
 horizontal_alignment = 1
-
-[node name="PlayfieldFrame" type="ColorRect" parent="MainFrame"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.14
-anchor_top = 0.14
-anchor_right = 0.95
-anchor_bottom = 0.86
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.9, 0.92, 0.97, 1)
-
-[node name="Playfield" type="Control" parent="MainFrame/PlayfieldFrame"]
-clip_contents = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
