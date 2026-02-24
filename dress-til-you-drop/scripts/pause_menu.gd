@@ -21,8 +21,14 @@ func _process(_delta: float) -> void:
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("pause"):
-		get_tree().paused = not get_tree().paused
-		visible = get_tree().paused
+		if get_tree().get_nodes_in_group("player")[0].in_inventory:
+			Signals.inventory_closed.emit()
+		elif $SettingsPanel.visible:
+			close_settings()
+		else:
+			get_tree().paused = not get_tree().paused
+			visible = get_tree().paused
+			MouseController.set_mouse_visible(visible)
 
 
 func set_panel(state: MenuState) -> void:
@@ -45,6 +51,7 @@ func set_panel(state: MenuState) -> void:
 func continue_game() -> void:
 	get_tree().paused = false
 	visible = false
+	MouseController.set_mouse_visible(false)
 
 
 func quit_game() -> void:

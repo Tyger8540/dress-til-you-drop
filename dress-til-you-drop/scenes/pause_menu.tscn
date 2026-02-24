@@ -1,42 +1,62 @@
-[gd_scene load_steps=16 format=3 uid="uid://doamnkbbr6t3n"]
+[gd_scene load_steps=39 format=3 uid="uid://doamnkbbr6t3n"]
 
 [ext_resource type="StyleBox" uid="uid://bklf6gie44p5" path="res://resources/style_boxes/pause_menu_none.tres" id="1_kukqi"]
 [ext_resource type="Script" uid="uid://cga0xsxa1xcpc" path="res://scripts/pause_menu.gd" id="2_kukqi"]
 [ext_resource type="PackedScene" uid="uid://cll8pc4irssnf" path="res://scenes/pause_menu_button.tscn" id="3_kukqi"]
 [ext_resource type="Material" uid="uid://dn47x2emhq2u7" path="res://resources/materials/vignette.tres" id="4_5d2l8"]
 [ext_resource type="StyleBox" uid="uid://cbd5nnguhi3w0" path="res://resources/style_boxes/settings_menu_mouse_none.tres" id="5_7l7mv"]
+[ext_resource type="Texture2D" uid="uid://7cv41ktphiok" path="res://art/settings_ui/settings reference.png" id="5_ofnjo"]
 [ext_resource type="Texture2D" uid="uid://cj1sjbm8fcytv" path="res://art/settings_ui/slider bar/unselected/slider unselected.png" id="6_71k7c"]
 [ext_resource type="Script" uid="uid://bg62bu1y2c6lv" path="res://scripts/settings_panel.gd" id="6_cmnsq"]
 [ext_resource type="Texture2D" uid="uid://c0rae8hkrk3ks" path="res://art/settings_ui/slider bar/selected/slider selected.png" id="7_cmnsq"]
-[ext_resource type="Texture2D" uid="uid://crgeaan6ngvw8" path="res://art/settings_ui/slider bar/selected/slider empty bar.png" id="8_ofnjo"]
-[ext_resource type="Texture2D" uid="uid://b2oghk3nd3thm" path="res://art/settings_ui/slider bar/unselected/slider filled unselected.png" id="9_1rgno"]
-[ext_resource type="Texture2D" uid="uid://chlxvtswtculh" path="res://art/settings_ui/slider bar/selected/slider filled bar.png" id="10_4hnlu"]
+[ext_resource type="Texture2D" uid="uid://bfe3q5e1nyj8a" path="res://art/settings_ui/dropdown/fullscreen/fullscreen unselected.png" id="8_4hnlu"]
+[ext_resource type="Texture2D" uid="uid://dohx4m821xbg" path="res://art/settings_ui/dropdown/fullscreen/fullscreen dropdown0.png" id="9_3o3g3"]
+[ext_resource type="Texture2D" uid="uid://d25ut0tvwru7c" path="res://art/settings_ui/dropdown/fullscreen/fullscreen open0.png" id="9_h5b1d"]
+[ext_resource type="StyleBox" uid="uid://cdj0q0yyy4a6s" path="res://resources/style_boxes/settings_menu_slider_unselected.tres" id="10_1rgno"]
+[ext_resource type="StyleBox" uid="uid://dcs0cee2j87ai" path="res://resources/style_boxes/settings_menu_grabber_area.tres" id="11_4hnlu"]
+[ext_resource type="Texture2D" uid="uid://brxk4s1b7dfan" path="res://art/settings_ui/dropdown/windowed/windowed unselected.png" id="11_bhxne"]
+[ext_resource type="StyleBox" uid="uid://dqafdhsi5koj7" path="res://resources/style_boxes/settings_menu_grabber_area_highlight.tres" id="12_3o3g3"]
+[ext_resource type="Script" uid="uid://ffg1nlhmypvm" path="res://scripts/settings_slider.gd" id="13_1rgno"]
+[ext_resource type="Texture2D" uid="uid://b5p3x773qgb3a" path="res://art/settings_ui/dropdown/windowed/windowed dropdown0.png" id="13_vlav8"]
+[ext_resource type="Texture2D" uid="uid://mss83ysr0sh0" path="res://art/settings_ui/dropdown/windowed/windowed open0.png" id="14_shxmr"]
+[ext_resource type="Texture2D" uid="uid://do3opicm3bo1m" path="res://art/settings_ui/dropdown/windowed/fullscreen selected0.png" id="16_5wegr"]
+[ext_resource type="Script" uid="uid://bfg7ba00pyjsu" path="res://scripts/settings_dropdown.gd" id="16_h5b1d"]
+[ext_resource type="Texture2D" uid="uid://c0h2n148uf53k" path="res://art/settings_ui/dropdown/fullscreen/windowed selected0.png" id="18_ar2xs"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7l7mv"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3o3g3"]
-texture = ExtResource("8_ofnjo")
-expand_margin_top = 20.0
-expand_margin_bottom = 20.0
-axis_stretch_horizontal = 1
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ar2xs"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h5b1d"]
-texture = ExtResource("9_1rgno")
-expand_margin_top = 20.0
-expand_margin_bottom = 20.0
-axis_stretch_horizontal = 1
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jkjer"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_knqa7"]
-content_margin_left = 79.0
-content_margin_right = 79.0
-texture = ExtResource("10_4hnlu")
-expand_margin_top = 20.0
-expand_margin_bottom = 20.0
-axis_stretch_horizontal = 1
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5gujb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fy126"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bhxne"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vlav8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_shxmr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5wegr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ns75t"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s8k84"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dmw1k"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3hsps"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vtr1r"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a1ndm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_etf8b"]
 
 [node name="PauseMenu" type="Panel"]
 process_mode = 3
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -52,6 +72,7 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 
 [node name="OptionsPanel" type="Panel" parent="."]
+visible = false
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
@@ -84,29 +105,120 @@ offset_bottom = 768.0
 pause_menu = NodePath("../..")
 pause_menu_state = 3
 
-[node name="SettingsPanel" type="Panel" parent="."]
+[node name="SettingsReference" type="Sprite2D" parent="."]
 visible = false
+position = Vector2(960, 540)
+texture = ExtResource("5_ofnjo")
+
+[node name="SettingsPanel" type="Panel" parent="."]
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 theme_override_styles/panel = ExtResource("5_7l7mv")
 script = ExtResource("6_cmnsq")
 
+[node name="ModeDropdown" type="TextureRect" parent="SettingsPanel"]
+layout_mode = 0
+offset_left = 871.0
+offset_top = 375.0
+offset_right = 1190.0
+offset_bottom = 436.0
+texture = ExtResource("8_4hnlu")
+script = ExtResource("16_h5b1d")
+normal = Array[Texture2D]([ExtResource("8_4hnlu"), ExtResource("11_bhxne")])
+hover = Array[Texture2D]([ExtResource("9_3o3g3"), ExtResource("13_vlav8")])
+selected = Array[Texture2D]([ExtResource("9_h5b1d"), ExtResource("14_shxmr")])
+hover_options = Array[Texture2D]([ExtResource("18_ar2xs"), ExtResource("16_5wegr")])
+hover_display_options = Array[int]([3, 0])
+
+[node name="Option1" type="Button" parent="SettingsPanel/ModeDropdown"]
+layout_mode = 0
+offset_right = 319.0
+offset_bottom = 55.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ar2xs")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_jkjer")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_5gujb")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_fy126")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_bhxne")
+
+[node name="Option2" type="Button" parent="SettingsPanel/ModeDropdown"]
+layout_mode = 0
+offset_top = 55.0
+offset_right = 319.0
+offset_bottom = 109.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_vlav8")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_shxmr")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_5wegr")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_ns75t")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_s8k84")
+
 [node name="VolumeSlider" type="HSlider" parent="SettingsPanel"]
 layout_mode = 0
-offset_left = 743.0
-offset_top = 569.0
-offset_right = 1206.0
-offset_bottom = 619.0
+offset_left = 729.0
+offset_top = 554.0
+offset_right = 1192.0
+offset_bottom = 604.0
 theme_override_constants/center_grabber = 1
 theme_override_icons/grabber = ExtResource("6_71k7c")
 theme_override_icons/grabber_highlight = ExtResource("7_cmnsq")
-theme_override_styles/slider = SubResource("StyleBoxTexture_3o3g3")
-theme_override_styles/grabber_area = SubResource("StyleBoxTexture_h5b1d")
-theme_override_styles/grabber_area_highlight = SubResource("StyleBoxTexture_knqa7")
-value = 50.0
+theme_override_styles/slider = ExtResource("10_1rgno")
+theme_override_styles/grabber_area = ExtResource("11_4hnlu")
+theme_override_styles/grabber_area_highlight = ExtResource("12_3o3g3")
+script = ExtResource("13_1rgno")
+metadata/_custom_type_script = "uid://ffg1nlhmypvm"
+
+[node name="SensitivitySlider" type="HSlider" parent="SettingsPanel"]
+layout_mode = 0
+offset_left = 729.0
+offset_top = 721.0
+offset_right = 1192.0
+offset_bottom = 771.0
+theme_override_constants/center_grabber = 1
+theme_override_icons/grabber = ExtResource("6_71k7c")
+theme_override_icons/grabber_highlight = ExtResource("7_cmnsq")
+theme_override_styles/slider = ExtResource("10_1rgno")
+theme_override_styles/grabber_area = ExtResource("11_4hnlu")
+theme_override_styles/grabber_area_highlight = ExtResource("12_3o3g3")
+min_value = 0.5
+max_value = 1.5
+step = 0.01
+value = 1.0
+script = ExtResource("13_1rgno")
+metadata/_custom_type_script = "uid://ffg1nlhmypvm"
+
+[node name="BackButton" type="Button" parent="SettingsPanel"]
+layout_mode = 0
+offset_left = 905.0
+offset_top = 832.0
+offset_right = 1017.0
+offset_bottom = 886.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_dmw1k")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_3hsps")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_vtr1r")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_a1ndm")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_etf8b")
 
 [connection signal="button_up" from="OptionsPanel/ContinueButton" to="." method="continue_game"]
 [connection signal="button_up" from="OptionsPanel/SettingsButton" to="." method="open_settings"]
 [connection signal="button_up" from="OptionsPanel/QuitButton" to="." method="quit_game"]
+[connection signal="mouse_entered" from="SettingsPanel/ModeDropdown" to="SettingsPanel/ModeDropdown" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="SettingsPanel/ModeDropdown" to="SettingsPanel/ModeDropdown" method="_on_mouse_exited"]
+[connection signal="button_up" from="SettingsPanel/ModeDropdown/Option1" to="SettingsPanel/ModeDropdown" method="_on_option_1_button_up"]
+[connection signal="mouse_entered" from="SettingsPanel/ModeDropdown/Option1" to="SettingsPanel/ModeDropdown" method="_on_option_1_mouse_entered"]
+[connection signal="mouse_exited" from="SettingsPanel/ModeDropdown/Option1" to="SettingsPanel/ModeDropdown" method="_on_option_1_mouse_exited"]
+[connection signal="button_up" from="SettingsPanel/ModeDropdown/Option2" to="SettingsPanel/ModeDropdown" method="_on_option_2_button_up"]
+[connection signal="mouse_entered" from="SettingsPanel/ModeDropdown/Option2" to="SettingsPanel/ModeDropdown" method="_on_option_2_mouse_entered"]
+[connection signal="mouse_exited" from="SettingsPanel/ModeDropdown/Option2" to="SettingsPanel/ModeDropdown" method="_on_option_2_mouse_exited"]
 [connection signal="drag_ended" from="SettingsPanel/VolumeSlider" to="SettingsPanel" method="_on_volume_slider_drag_ended"]
+[connection signal="drag_ended" from="SettingsPanel/VolumeSlider" to="SettingsPanel/VolumeSlider" method="_on_drag_ended"]
+[connection signal="drag_started" from="SettingsPanel/VolumeSlider" to="SettingsPanel/VolumeSlider" method="_on_drag_started"]
+[connection signal="mouse_entered" from="SettingsPanel/VolumeSlider" to="SettingsPanel/VolumeSlider" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="SettingsPanel/VolumeSlider" to="SettingsPanel/VolumeSlider" method="_on_mouse_exited"]
+[connection signal="drag_ended" from="SettingsPanel/SensitivitySlider" to="SettingsPanel" method="_on_sensitivity_slider_drag_ended"]
+[connection signal="drag_ended" from="SettingsPanel/SensitivitySlider" to="SettingsPanel/SensitivitySlider" method="_on_drag_ended"]
+[connection signal="drag_started" from="SettingsPanel/SensitivitySlider" to="SettingsPanel/SensitivitySlider" method="_on_drag_started"]
+[connection signal="mouse_entered" from="SettingsPanel/SensitivitySlider" to="SettingsPanel/SensitivitySlider" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="SettingsPanel/SensitivitySlider" to="SettingsPanel/SensitivitySlider" method="_on_mouse_exited"]
+[connection signal="button_up" from="SettingsPanel/BackButton" to="." method="close_settings"]
+[connection signal="mouse_entered" from="SettingsPanel/BackButton" to="SettingsPanel" method="_on_back_button_mouse_entered"]
+[connection signal="mouse_exited" from="SettingsPanel/BackButton" to="SettingsPanel" method="_on_back_button_mouse_exited"]
