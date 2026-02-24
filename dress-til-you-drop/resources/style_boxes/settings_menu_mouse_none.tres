@@ -1,0 +1,6 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://cbd5nnguhi3w0"]
+
+[ext_resource type="Texture2D" uid="uid://cmcxmpv5ort6b" path="res://art/settings_ui/mouse/back unselected.png" id="1_qwt74"]
+
+[resource]
+texture = ExtResource("1_qwt74")
