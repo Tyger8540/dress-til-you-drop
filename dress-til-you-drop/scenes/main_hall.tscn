@@ -5,7 +5,7 @@
 [ext_resource type="Resource" uid="uid://dvle46b7es7mm" path="res://resources/dialog/shop_2_locked.tres" id="2_3p60x"]
 [ext_resource type="PackedScene" uid="uid://cy5lbcl5enw6a" path="res://scenes/move_camera.tscn" id="2_cptfm"]
 [ext_resource type="Resource" uid="uid://bvayquwvopjhg" path="res://resources/dialog/wheres_my_earring_intro.tres" id="2_wf2n6"]
-[ext_resource type="PackedScene" path="res://scenes/settings_manager.tscn" id="3_muuyn"]
+[ext_resource type="PackedScene" uid="uid://crh3xyw8knqlt" path="res://scenes/settings_manager.tscn" id="3_muuyn"]
 [ext_resource type="Resource" uid="uid://cijuaatftyr2g" path="res://resources/dialog/shop_1_locked.tres" id="3_xs61c"]
 [ext_resource type="Resource" uid="uid://cu4jrgrm8eq5n" path="res://resources/dialog/photoshoot_locked.tres" id="4_xs61c"]
 [ext_resource type="Material" uid="uid://djombhx4qb3pp" path="res://resources/materials/green_material.tres" id="5_in4so"]
@@ -779,14 +779,17 @@ depth = 0.1
 material = SubResource("StandardMaterial3D_rpj0x")
 
 [node name="stair plane" type="MeshInstance3D" parent="stairs"]
+process_mode = 4
 transform = Transform3D(-1.6571485e-07, 0.23112036, 5.9315577, 2.2367048e-09, 0.065564364, -0.0800601, -0.051191818, 1.0103884e-17, -3.501041e-09, -0.79385376, 0.09039556, -0.05232942)
 mesh = SubResource("PlaneMesh_oxpdu")
 skeleton = NodePath("../../wall/wall9/wall4")
 surface_material_override/0 = SubResource("StandardMaterial3D_tltrp")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="stairs/stair plane"]
+process_mode = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="stairs/stair plane/StaticBody3D"]
+process_mode = 4
 shape = SubResource("ConcavePolygonShape3D_c7qah")
 
 [node name="2nd floor" type="MeshInstance3D" parent="stairs"]
