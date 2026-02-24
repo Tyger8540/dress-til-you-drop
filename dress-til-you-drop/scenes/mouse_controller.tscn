@@ -10,6 +10,7 @@ anchors_preset = 0
 script = ExtResource("1_5m18o")
 
 [node name="Cursor" type="TextureRect" parent="."]
+visible = false
 layout_mode = 0
 offset_left = -166.0
 offset_top = -157.0
