@@ -6,7 +6,7 @@
 size = Vector3(0.4, 1.2, 10)
 
 [node name="baseboardTop" instance=ExtResource("1_bp8ie")]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
 
