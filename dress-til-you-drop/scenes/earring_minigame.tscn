@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://ubqqbukxq7yg"]
+[gd_scene load_steps=8 format=3 uid="uid://ubqqbukxq7yg"]
 
 [ext_resource type="Script" uid="uid://cka2v7vq7m2vl" path="res://scripts/earring_minigame.gd" id="1_minigame"]
+[ext_resource type="FontFile" uid="uid://oo1ksgkwpwxp" path="res://fonts/Goodlife Serif.otf" id="2_xhvj5"]
 [ext_resource type="Texture2D" uid="uid://bf2xqd3qhue1" path="res://art/earring_minigame_assets/findmy_background.PNG" id="2_xm06f"]
 [ext_resource type="Texture2D" uid="uid://box1enc166kx0" path="res://art/earring_minigame_assets/findmy_frame.PNG" id="3_pesq2"]
 [ext_resource type="Texture2D" uid="uid://coxsyg24vai6c" path="res://art/earring_minigame_assets/bar_bg.PNG" id="4_bar_bg"]
@@ -15,6 +16,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_minigame")
+win_screen_font = ExtResource("2_xhvj5")
+win_screen_message_font_size = 60
+win_screen_button_font_size = 40
 
 [node name="MainBackground" type="Sprite2D" parent="."]
 position = Vector2(976.16675, 539)
@@ -62,6 +66,7 @@ mouse_filter = 2
 color = Color(0.9019608, 0.92156863, 0.96862745, 0)
 
 [node name="Playfield" type="Control" parent="MainFrame/PlayfieldFrame"]
+texture_filter = 1
 clip_contents = true
 layout_mode = 1
 anchor_left = 0.039
@@ -77,6 +82,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="frame" type="Sprite2D" parent="MainFrame/PlayfieldFrame"]
+texture_filter = 1
 position = Vector2(215.16675, 319)
 scale = Vector2(5.1333337, 5.1333337)
 texture = ExtResource("3_pesq2")
@@ -101,6 +107,7 @@ mouse_filter = 2
 color = Color(0.92941177, 0.92941177, 0.9607843, 0)
 
 [node name="TargetSprite" type="TextureRect" parent="MainFrame/TargetPreview"]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -133,6 +140,7 @@ size_flags_horizontal = 0
 size_flags_stretch_ratio = 0.0
 
 [node name="TimerBackground" type="TextureRect" parent="MainFrame/TopBar/TimerContainer"]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -146,6 +154,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="TimerBar" type="TextureRect" parent="MainFrame/TopBar/TimerContainer"]
+texture_filter = 1
 layout_mode = 0
 offset_left = 12.0
 offset_top = 288.0
@@ -155,6 +164,7 @@ texture = ExtResource("5_bar_fill")
 expand_mode = 1
 
 [node name="TimerGem" type="TextureRect" parent="MainFrame/TopBar/TimerContainer"]
+texture_filter = 1
 layout_mode = 0
 offset_left = 40.0
 offset_top = 220.0
