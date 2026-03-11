@@ -31,6 +31,7 @@ metadata/_edit_vertical_guides_ = [1479.0, 990.0, 1006.0]
 metadata/_edit_horizontal_guides_ = [348.0, 329.0]
 
 [node name="Panel" type="Panel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

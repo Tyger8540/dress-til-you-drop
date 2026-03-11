@@ -1,17 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cbw46q2x4po04"]
+[gd_scene load_steps=2 format=3 uid="uid://bfvelbfagnf2c"]
 
 [ext_resource type="Script" uid="uid://dp57gprs43ig4" path="res://scripts/inventory_item.gd" id="1_u4rwp"]
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_letey"]
 
 [node name="InventoryItem" type="Control" groups=["Items"]]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_u4rwp")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-
-[node name="Area3D" type="Area3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-shape = SubResource("SphereShape3D_letey")

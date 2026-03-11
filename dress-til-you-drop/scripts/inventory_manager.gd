@@ -14,6 +14,7 @@ func _ready() -> void:
 	Signals.minigame_one_defeated.connect(_on_minigame_one_defeated)
 	
 	# TODO: Push_back default clothing into inventory
+	#add_item(load("res://resources/inventory_items/alt_preppy_top.tres"))
 	
 	var underwear_top: InventoryItem = InventoryItem.new()
 	underwear_top.item_type = Enums.ClothingType.TOP

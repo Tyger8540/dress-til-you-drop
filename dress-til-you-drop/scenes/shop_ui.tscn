@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://b5qx71qbk8evb"]
+
+[ext_resource type="Script" uid="uid://c0gh85tu3v6qo" path="res://scripts/shop_ui.gd" id="1_fs6yy"]
+[ext_resource type="Script" uid="uid://dp57gprs43ig4" path="res://scripts/inventory_item.gd" id="2_18xnp"]
+[ext_resource type="Resource" uid="uid://dlpoivjg1ix6c" path="res://resources/inventory_items/alt_preppy_top.tres" id="3_crtus"]
+
+[node name="ShopUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fs6yy")
+stock = Array[ExtResource("2_18xnp")]([ExtResource("3_crtus")])
