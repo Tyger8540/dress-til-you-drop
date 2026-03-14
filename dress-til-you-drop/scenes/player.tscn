@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://ds03crob6pyyc" path="res://scripts/player.gd" id="1_3vyb7"]
 [ext_resource type="ArrayMesh" uid="uid://c4c0pdr86y4dh" path="res://models/main_character/body.obj" id="2_qlg0r"]
-[ext_resource type="ArrayMesh" uid="uid://cls0ciwk5knrb" path="res://models/main_character/underwear/top.obj" id="3_tuyoq"]
-[ext_resource type="ArrayMesh" uid="uid://ceit8f7pyw1jv" path="res://models/main_character/underwear/bottom.obj" id="4_fjrip"]
+[ext_resource type="ArrayMesh" uid="uid://cls0ciwk5knrb" path="res://models/main_character/underwear-old/top.obj" id="3_tuyoq"]
+[ext_resource type="ArrayMesh" uid="uid://ceit8f7pyw1jv" path="res://models/main_character/underwear-old/bottom.obj" id="4_fjrip"]
 [ext_resource type="PackedScene" uid="uid://b2x3rd7m3rywc" path="res://scenes/inventory_ui.tscn" id="6_tuyoq"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3vyb7"]
