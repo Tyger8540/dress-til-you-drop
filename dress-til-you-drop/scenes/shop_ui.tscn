@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://b5qx71qbk8evb"]
+[gd_scene load_steps=6 format=3 uid="uid://b5qx71qbk8evb"]
 
 [ext_resource type="Script" uid="uid://c0gh85tu3v6qo" path="res://scripts/shop_ui.gd" id="1_fs6yy"]
 [ext_resource type="Script" uid="uid://dp57gprs43ig4" path="res://scripts/inventory_item.gd" id="2_18xnp"]
 [ext_resource type="Resource" uid="uid://dlpoivjg1ix6c" path="res://resources/inventory_items/alt_preppy_top.tres" id="3_crtus"]
+[ext_resource type="Texture2D" uid="uid://qalnqo6sjy70" path="res://art/inventory_ui/assets/inactive - box.png" id="4_epbsd"]
+[ext_resource type="Script" uid="uid://b4mipp3hejdij" path="res://scripts/inventory_slot_button.gd" id="5_usj2y"]
 
 [node name="ShopUI" type="Control"]
 layout_mode = 3
@@ -13,3 +15,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fs6yy")
 stock = Array[ExtResource("2_18xnp")]([ExtResource("3_crtus")])
+
+[node name="InventorySlotButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_right = 144.0
+offset_bottom = 144.0
+texture_normal = ExtResource("4_epbsd")
+script = ExtResource("5_usj2y")
+inactive_texture = ExtResource("4_epbsd")
+metadata/_custom_type_script = "uid://b4mipp3hejdij"

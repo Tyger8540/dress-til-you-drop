@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://b38fb54l86sti"]
+
+[ext_resource type="Texture2D" uid="uid://qalnqo6sjy70" path="res://art/inventory_ui/assets/inactive - box.png" id="1_0aqg1"]
+[ext_resource type="Script" uid="uid://c1vhqiqg2fgml" path="res://scripts/shop_slot_button.gd" id="1_6dwq0"]
+[ext_resource type="Texture2D" uid="uid://pdsjkr5y5trs" path="res://art/inventory_ui/assets/active - box.png" id="3_syv21"]
+[ext_resource type="Texture2D" uid="uid://cj2q108o7fqp3" path="res://art/inventory_icons/siren_outfit/top.png" id="4_pvab8"]
+[ext_resource type="Texture2D" uid="uid://cmq0kystajuhd" path="res://icon.svg" id="4_syv21"]
+
+[node name="ShopSlotButton" type="TextureButton"]
+texture_normal = ExtResource("1_0aqg1")
+stretch_mode = 3
+script = ExtResource("1_6dwq0")
+inactive_texture = ExtResource("1_0aqg1")
+active_texture = ExtResource("3_syv21")
+metadata/_custom_type_script = "uid://c1vhqiqg2fgml"
+
+[node name="ItemIcon" type="TextureRect" parent="."]
+layout_mode = 0
+offset_top = 1.0
+offset_right = 149.0
+offset_bottom = 150.0
+texture = ExtResource("4_pvab8")
+
+[node name="OutOfStockIcon" type="TextureRect" parent="."]
+visible = false
+modulate = Color(1, 0, 0, 0.5137255)
+layout_mode = 0
+offset_top = 1.0
+offset_right = 149.0
+offset_bottom = 150.0
+texture = ExtResource("4_syv21")
+
+[node name="LockedIcon" type="TextureRect" parent="."]
+visible = false
+modulate = Color(0.15294118, 0.15294118, 0.15294118, 0.73333335)
+layout_mode = 0
+offset_top = 1.0
+offset_right = 149.0
+offset_bottom = 150.0
+texture = ExtResource("4_syv21")

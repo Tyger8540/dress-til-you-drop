@@ -8,3 +8,4 @@ signal minigame_one_failed
 signal minigame_one_defeated
 signal ui_selected
 signal inventory_closed
+signal shop_slot_selected
