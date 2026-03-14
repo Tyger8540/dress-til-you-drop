@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=3 uid="uid://ds4f3s77v5f5w"]
+[gd_scene load_steps=78 format=3 uid="uid://ds4f3s77v5f5w"]
 
 [ext_resource type="PackedScene" uid="uid://f6sftetqaoh1" path="res://scenes/interaction_area.tscn" id="1_4y6b0"]
 [ext_resource type="PackedScene" uid="uid://bmd45oqbmm5e" path="res://scenes/player.tscn" id="1_cptfm"]
@@ -9,9 +9,10 @@
 [ext_resource type="Resource" uid="uid://cijuaatftyr2g" path="res://resources/dialog/shop_1_locked.tres" id="3_xs61c"]
 [ext_resource type="Resource" uid="uid://cu4jrgrm8eq5n" path="res://resources/dialog/photoshoot_locked.tres" id="4_xs61c"]
 [ext_resource type="Material" uid="uid://djombhx4qb3pp" path="res://resources/materials/green_material.tres" id="5_in4so"]
-[ext_resource type="Script" uid="uid://dxt3a4wousdtn" path="res://scripts/minigame_interaction.gd" id="7_6ay7c"]
+[ext_resource type="Script" uid="uid://cvmwt7y8js3uk" path="res://scripts/earring_interaction.gd" id="7_0wv5t"]
 [ext_resource type="PackedScene" uid="uid://dmecdf4b0ub0k" path="res://scenes/move_follow_camera.tscn" id="7_dbmwu"]
 [ext_resource type="Script" uid="uid://dvwxpheb3tytc" path="res://scripts/inventory_camera.gd" id="8_6hdfs"]
+[ext_resource type="PackedScene" uid="uid://ubqqbukxq7yg" path="res://scenes/earring_minigame.tscn" id="8_j7c6l"]
 [ext_resource type="PackedScene" uid="uid://doamnkbbr6t3n" path="res://scenes/pause_menu.tscn" id="13_ld5u0"]
 [ext_resource type="PackedScene" uid="uid://x2vxhocjdljg" path="res://scenes/models/railing.tscn" id="14_6ay7c"]
 [ext_resource type="PackedScene" uid="uid://cnkdqfa4fsxoh" path="res://scenes/models/carpet.tscn" id="15_72xcf"]
@@ -362,7 +363,8 @@ dialog = ExtResource("2_wf2n6")
 connected_area = NodePath("../../walls/MeshInstance3D5/minigame1/InteractionArea")
 
 [node name="MinigameTrigger" type="Node" parent="interactable obj/InteractionArea"]
-script = ExtResource("7_6ay7c")
+script = ExtResource("7_0wv5t")
+minigame_scene = ExtResource("8_j7c6l")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="interactable obj/InteractionArea"]
 shape = SubResource("SphereShape3D_4y6b0")
