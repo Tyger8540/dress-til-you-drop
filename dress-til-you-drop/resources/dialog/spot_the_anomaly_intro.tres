@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="DialogResource" load_steps=2 format=3 uid="uid://26yc23e1s8yl"]
+
+[ext_resource type="Script" uid="uid://d1gw1wt5dw784" path="res://scripts/dialog_resource.gd" id="1_uqaji"]
+
+[resource]
+script = ExtResource("1_uqaji")
+speaker = Array[int]([0, 0])
+dialog = Array[String](["Something looks off about these pictures...", "Maybe I should try to Spot the Anomaly"])
+metadata/_custom_type_script = "uid://d1gw1wt5dw784"
