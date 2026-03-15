@@ -4,4 +4,6 @@
 
 [resource]
 script = ExtResource("1_uqaji")
+speaker = Array[int]([0, 0])
+dialog = Array[String](["Something looks off about these pictures...", "Maybe I should try to Spot the Anomaly"])
 metadata/_custom_type_script = "uid://d1gw1wt5dw784"

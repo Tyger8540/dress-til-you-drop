@@ -5,6 +5,8 @@ extends Button
 @export var textures: Array[Texture2D]
 @export var anomaly_minigame: Control
 
+var anomaly_detected: bool = false
+
 @onready var animation: AnimatedSprite2D = $Animation
 
 
@@ -29,6 +31,11 @@ func _on_button_up() -> void:
 		# TODO make a disappointed sound or smth
 	else:
 		print("anomaly detected!")
+		if anomaly_detected:
+			return
+		else:
+			anomaly_detected = true
+			connected_button.anomaly_detected = true
 		# TODO make a correct sound or smth
 		# TODO change the icons color or smth
 		#if icon:
@@ -38,8 +45,10 @@ func _on_button_up() -> void:
 		play_animation()
 		connected_button.play_animation()
 		await connected_button.animation.animation_finished
-		icon = null
-		connected_button.icon = null
+		if icon == textures[0]:
+			icon = textures[1]
+		else:
+			icon = textures[0]
 		
 		# TODO update count
 		anomaly_minigame.anomaly_count -= 1
