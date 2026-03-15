@@ -18,7 +18,7 @@ func _ready() -> void:
 	Signals.minigame_one_failed.connect(minigame_ended, false)
 	Signals.minigame_one_defeated.connect(minigame_ended, false)
 	get_tree().scene_changed.connect(check_new_scene)
-	Input.set_mouse_mode(Input.MouseMode.MOUSE_MODE_HIDDEN)
+	#Input.set_mouse_mode(Input.MouseMode.MOUSE_MODE_HIDDEN)
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
 

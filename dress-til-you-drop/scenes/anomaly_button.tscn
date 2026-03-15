@@ -1,0 +1,58 @@
+[gd_scene load_steps=13 format=3 uid="uid://b6n2rb1ewfvef"]
+
+[ext_resource type="Texture2D" uid="uid://fit0iou1k2tc" path="res://art/spot_the_anomaly/sparkle_animation/IMG_6521.PNG" id="2_b11gp"]
+[ext_resource type="Script" uid="uid://br0ouru0g6vt6" path="res://scripts/anomaly_button.gd" id="2_hn13e"]
+[ext_resource type="Texture2D" uid="uid://tkkppw4mbkkd" path="res://art/spot_the_anomaly/sparkle_animation/IMG_6519.PNG" id="2_n1xhs"]
+[ext_resource type="Texture2D" uid="uid://dwx6onqkcj8ll" path="res://art/spot_the_anomaly/sparkle_animation/IMG_6517.PNG" id="3_5wsgj"]
+[ext_resource type="Texture2D" uid="uid://c5hj4lj1klv1i" path="res://art/spot_the_anomaly/sparkle_animation/IMG_6518.PNG" id="4_htc7n"]
+[ext_resource type="Texture2D" uid="uid://ct1j45e170v2l" path="res://art/spot_the_anomaly/sparkle_animation/IMG_6520.PNG" id="6_5h02f"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wetqf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o41sq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rxf7h"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ygp2d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iic87"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ilp4u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_b11gp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_5wsgj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_htc7n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_n1xhs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_5h02f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_b11gp")
+}],
+"loop": false,
+"name": &"sparkle",
+"speed": 5.0
+}]
+
+[node name="Anomaly" type="Button"]
+theme_override_styles/normal = SubResource("StyleBoxEmpty_wetqf")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_o41sq")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_rxf7h")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_ygp2d")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_iic87")
+script = ExtResource("2_hn13e")
+
+[node name="Animation" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ilp4u")
+animation = &"sparkle"
+
+[connection signal="button_up" from="." to="." method="_on_button_up"]
