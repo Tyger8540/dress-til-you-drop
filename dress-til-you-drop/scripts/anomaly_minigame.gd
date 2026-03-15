@@ -20,7 +20,7 @@ func _process(delta: float) -> void:
 func get_num_anomalies() -> int:
 	var count: int = 0
 	for anomaly in left_anomalies:
-		if anomaly.icon == anomaly.connected_button.icon:
+		if anomaly.icon != anomaly.connected_button.icon:
 			count += 1
 	
 	return count
