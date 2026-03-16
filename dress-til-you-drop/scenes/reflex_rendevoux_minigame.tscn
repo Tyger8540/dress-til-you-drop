@@ -1,0 +1,61 @@
+[gd_scene load_steps=8 format=3 uid="uid://c1spv0tjvp0tk"]
+
+[ext_resource type="Texture2D" uid="uid://d0y8ibbfmt5o8" path="res://art/reflex_rendevoux_minigame_assets/reflex_background.PNG" id="1_4xdvm"]
+[ext_resource type="Script" uid="uid://c4pxcfoc2tn4f" path="res://scripts/reflex_rendevoux_minigame.gd" id="1_38csk"]
+[ext_resource type="Texture2D" uid="uid://twxgmtbpdtaa" path="res://art/reflex_rendevoux_minigame_assets/girl_idle.PNG" id="2_38csk"]
+[ext_resource type="Texture2D" uid="uid://c4uj186wu188v" path="res://art/reflex_rendevoux_minigame_assets/gargoyle_idle.PNG" id="3_oc5fu"]
+[ext_resource type="Texture2D" uid="uid://b1symt2uoxwsn" path="res://art/reflex_rendevoux_minigame_assets/impact_frame.PNG" id="4_8qaoc"]
+[ext_resource type="Texture2D" uid="uid://ds727qojhseim" path="res://art/reflex_rendevoux_minigame_assets/reflex_exclamation.PNG" id="5_mvpfh"]
+[ext_resource type="FontFile" uid="uid://gtwvx85p73w" path="res://fonts/Early GameBoy.ttf" id="5_oc5fu"]
+
+[node name="ReflexRendevoux" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_38csk")
+
+[node name="Back Back Background" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.019607844, 0.09019608, 0.30588236, 1)
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(957, 538)
+scale = Vector2(5.085714, 5.085714)
+texture = ExtResource("1_4xdvm")
+
+[node name="Girl" type="Sprite2D" parent="Background"]
+texture = ExtResource("2_38csk")
+
+[node name="Gargoyle" type="Sprite2D" parent="Background"]
+texture = ExtResource("3_oc5fu")
+
+[node name="HealthLabel" type="Label" parent="Background"]
+anchors_preset = -1
+anchor_left = -0.04930062
+anchor_right = -0.05429946
+anchor_bottom = -0.0037185668
+offset_left = -73.45507
+offset_top = 82.19101
+offset_right = -47.45507
+offset_bottom = 105.19101
+theme_override_colors/font_color = Color(0.019607844, 0.09019608, 0.30588236, 1)
+theme_override_fonts/font = ExtResource("5_oc5fu")
+theme_override_font_sizes/font_size = 10
+text = "10"
+metadata/_edit_use_anchors_ = true
+
+[node name="Hidden Stuff" type="Control" parent="Background"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Exclamation" type="Sprite2D" parent="Background/Hidden Stuff"]
+visible = false
+texture = ExtResource("5_mvpfh")
+
+[node name="ImpactFrame" type="Sprite2D" parent="Background/Hidden Stuff"]
+visible = false
+texture = ExtResource("4_8qaoc")
