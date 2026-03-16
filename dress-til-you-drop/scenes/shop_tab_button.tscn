@@ -1,9 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bhbevkq06vfdp"]
+[gd_scene load_steps=2 format=3 uid="uid://bhbevkq06vfdp"]
 
 [ext_resource type="Script" uid="uid://cxgkyu8uplycf" path="res://scripts/shop_tab_button.gd" id="1_wthxi"]
-[ext_resource type="Texture2D" uid="uid://0o0fhga7ibci" path="res://art/shop_ui/right side/categories/bubbles/tops bubble.png" id="2_5d6lq"]
 
 [node name="ShopTabButton" type="TextureButton"]
 script = ExtResource("1_wthxi")
-inactive_texture = ExtResource("2_5d6lq")
 metadata/_custom_type_script = "uid://cxgkyu8uplycf"
