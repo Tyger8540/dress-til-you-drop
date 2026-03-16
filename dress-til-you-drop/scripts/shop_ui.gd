@@ -19,5 +19,6 @@ func _process(delta: float) -> void:
 func create_shop_buttons() -> void:
 	for item in stock:
 		var shop_button = SHOP_SLOT_BUTTON.instantiate()
+		$BrowseScreen/Boxes.add_child(shop_button)
 		shop_button.inventory_item = item
-		shop_button.item_icon = item.ui_texture
+		shop_button.item_icon.texture = item.ui_texture

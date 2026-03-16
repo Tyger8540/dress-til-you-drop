@@ -1,23 +1,29 @@
-[gd_scene load_steps=30 format=3 uid="uid://b5qx71qbk8evb"]
+[gd_scene load_steps=36 format=3 uid="uid://b5qx71qbk8evb"]
 
 [ext_resource type="Script" uid="uid://c0gh85tu3v6qo" path="res://scripts/shop_ui.gd" id="1_fs6yy"]
 [ext_resource type="Script" uid="uid://dp57gprs43ig4" path="res://scripts/inventory_item.gd" id="2_18xnp"]
 [ext_resource type="Resource" uid="uid://dlpoivjg1ix6c" path="res://resources/inventory_items/alt_preppy_top.tres" id="3_crtus"]
-[ext_resource type="Texture2D" uid="uid://baqvb1kkmy84y" path="res://art/shop_ui/reference pics/2 - top checkout.jpg" id="4_84tcx"]
+[ext_resource type="Texture2D" uid="uid://bov3h1o5ytxnk" path="res://art/shop_ui/reference pics/2 - top funds.jpg" id="4_ihbq2"]
 [ext_resource type="Texture2D" uid="uid://donkutcecifvh" path="res://art/shop_ui/checkout/checkout overlay/checkout frame top.png" id="5_hkchb"]
+[ext_resource type="Texture2D" uid="uid://cwxs45rhl61i7" path="res://art/shop_ui/reference pics/1 - store 3-row.jpg" id="5_ihbq2"]
 [ext_resource type="Texture2D" uid="uid://cv3wxwf7edadi" path="res://art/shop_ui/left side/currency/currency box.png" id="6_t870q"]
-[ext_resource type="Texture2D" uid="uid://tkvfidav0s6o" path="res://art/shop_ui/checkout/checkout overlay/purchase button.png" id="6_w56t3"]
+[ext_resource type="Texture2D" uid="uid://itu4t2bbtlji" path="res://art/shop_ui/checkout/checkout overlay/purchase button.png" id="6_w56t3"]
 [ext_resource type="Texture2D" uid="uid://dcgnkkgra4dm" path="res://art/shop_ui/right side/categories/category line.png" id="7_0npar"]
 [ext_resource type="PackedScene" uid="uid://bhbevkq06vfdp" path="res://scenes/shop_tab_button.tscn" id="7_u47jy"]
 [ext_resource type="Texture2D" uid="uid://bnmqr1u3c31g2" path="res://art/shop_ui/checkout/checkout overlay/cancel button.png" id="7_uh5f5"]
 [ext_resource type="Texture2D" uid="uid://cnhwoir8ax45y" path="res://art/shop_ui/left side/purchase button.png" id="7_uq0pw"]
+[ext_resource type="Texture2D" uid="uid://gd0b7xtbi6jw" path="res://art/shop_ui/checkout/checkout overlay/purchase hover.png" id="7_w56t3"]
+[ext_resource type="Texture2D" uid="uid://bfmyejpna5b3v" path="res://art/shop_ui/checkout/checkout overlay/insufficient funds.png" id="8_5lsac"]
 [ext_resource type="Texture2D" uid="uid://cxq7hlpakpah1" path="res://art/shop_ui/left side/purchase hover.png" id="8_cry7x"]
 [ext_resource type="Texture2D" uid="uid://dqbshjk6vtllm" path="res://art/shop_ui/right side/categories/icons/unselected/hair unselected.png" id="8_unumj"]
 [ext_resource type="Texture2D" uid="uid://djsa18veomj07" path="res://art/shop_ui/right side/categories/icons/selected/hair selected.png" id="9_0npar"]
-[ext_resource type="Texture2D" uid="uid://dsu3q4od16n6b" path="res://art/shop_ui/checkout/checkout overlay/checkout box.png" id="9_hkchb"]
+[ext_resource type="PackedScene" uid="uid://b7qayip6d2upo" path="res://scenes/checkout_box.tscn" id="9_hkchb"]
+[ext_resource type="Texture2D" uid="uid://ccl11xio13ttc" path="res://art/shop_ui/checkout/checkout overlay/cancel hover.png" id="9_uh5f5"]
 [ext_resource type="Texture2D" uid="uid://b7pnwq1um3xh" path="res://art/shop_ui/right side/categories/icons/unselected/tops unselected.png" id="10_t870q"]
 [ext_resource type="Texture2D" uid="uid://beodxyl5gbaoj" path="res://art/shop_ui/right side/categories/icons/selected/tops selected.png" id="11_uq0pw"]
 [ext_resource type="Texture2D" uid="uid://cou4kyah2a8wb" path="res://art/shop_ui/right side/categories/icons/unselected/bottoms unselected.png" id="12_cry7x"]
+[ext_resource type="FontVariation" uid="uid://bh1okvhwsp83k" path="res://fonts/Balivia.tres" id="12_f1mgy"]
+[ext_resource type="Texture2D" uid="uid://cotgf6n7enpdh" path="res://art/shop_ui/left side/exit store.png" id="13_011ij"]
 [ext_resource type="Texture2D" uid="uid://b06lgm4nhdji0" path="res://art/shop_ui/right side/categories/icons/selected/bottoms selected.png" id="13_84tcx"]
 [ext_resource type="Texture2D" uid="uid://bovd47j2kxgra" path="res://art/shop_ui/right side/categories/icons/unselected/shoes unselected.png" id="14_hkchb"]
 [ext_resource type="Texture2D" uid="uid://4orjqo1k28ty" path="res://art/shop_ui/right side/categories/icons/selected/shoes selected.png" id="15_w56t3"]
@@ -40,11 +46,20 @@ grow_vertical = 2
 script = ExtResource("1_fs6yy")
 stock = Array[ExtResource("2_18xnp")]([ExtResource("3_crtus")])
 
-[node name="Reference" type="TextureRect" parent="."]
+[node name="Reference Checkout" type="TextureRect" parent="."]
+visible = false
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
-texture = ExtResource("4_84tcx")
+texture = ExtResource("4_ihbq2")
+expand_mode = 1
+
+[node name="Reference Browse" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("5_ihbq2")
 expand_mode = 1
 
 [node name="CheckoutScreen" type="Control" parent="."]
@@ -52,8 +67,55 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="CurrencyBox" type="TextureRect" parent="CheckoutScreen"]
+layout_mode = 0
+offset_left = -43.0
+offset_top = -2.0
+offset_right = 432.0
+offset_bottom = 169.0
+texture = ExtResource("6_t870q")
+
+[node name="CurrencyTexts" type="Control" parent="CheckoutScreen/CurrencyBox"]
+anchors_preset = 0
+offset_left = 43.0
+offset_top = 2.0
+offset_right = 83.0
+offset_bottom = 42.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CheckoutScreen/CurrencyBox/CurrencyTexts"]
+layout_mode = 0
+offset_left = 76.0
+offset_top = 50.0
+offset_right = 137.0
+offset_bottom = 102.0
+theme_override_colors/default_color = Color(0.79607844, 0.7411765, 0.98039216, 1)
+theme_override_fonts/normal_font = ExtResource("12_f1mgy")
+theme_override_font_sizes/normal_font_size = 42
+text = "46"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="CheckoutScreen/CurrencyBox/CurrencyTexts"]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 52.0
+offset_right = 253.0
+offset_bottom = 104.0
+theme_override_colors/default_color = Color(0.91764706, 0.45882353, 0.67058825, 1)
+theme_override_fonts/normal_font = ExtResource("12_f1mgy")
+theme_override_font_sizes/normal_font_size = 42
+text = "23"
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="CheckoutScreen/CurrencyBox/CurrencyTexts"]
+layout_mode = 0
+offset_left = 298.0
+offset_top = 52.0
+offset_right = 359.0
+offset_bottom = 104.0
+theme_override_colors/default_color = Color(0.9764706, 0.92941177, 0.19607843, 1)
+theme_override_fonts/normal_font = ExtResource("12_f1mgy")
+theme_override_font_sizes/normal_font_size = 42
+text = "08"
+
 [node name="Frame" type="TextureRect" parent="CheckoutScreen"]
-visible = false
 layout_mode = 1
 offset_left = 214.0
 offset_top = 104.0
@@ -62,12 +124,21 @@ offset_bottom = 956.0
 texture = ExtResource("5_hkchb")
 
 [node name="PurchaseButton" type="TextureButton" parent="CheckoutScreen/Frame"]
-layout_mode = 0
-offset_left = 316.0
-offset_top = 722.0
-offset_right = 733.0
-offset_bottom = 897.0
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -425.5
+offset_top = -124.0
+offset_right = -8.5
+offset_bottom = 51.0
+grow_horizontal = 2
+grow_vertical = 0
 texture_normal = ExtResource("6_w56t3")
+texture_pressed = ExtResource("7_w56t3")
+texture_hover = ExtResource("7_w56t3")
 
 [node name="CancelButton" type="TextureButton" parent="CheckoutScreen/Frame"]
 layout_mode = 0
@@ -76,23 +147,82 @@ offset_top = 728.0
 offset_right = 1171.0
 offset_bottom = 894.0
 texture_normal = ExtResource("7_uh5f5")
+texture_pressed = ExtResource("9_uh5f5")
+texture_hover = ExtResource("9_uh5f5")
 
-[node name="CurrencyBox" type="TextureRect" parent="CheckoutScreen/Frame"]
-layout_mode = 0
-offset_left = -257.0
-offset_top = -106.0
-offset_right = 218.0
-offset_bottom = 65.0
-texture = ExtResource("6_t870q")
-
-[node name="CheckoutBoxes" type="Control" parent="CheckoutScreen"]
+[node name="CurrencyTexts" type="Control" parent="CheckoutScreen/Frame"]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="CheckoutBox" type="Sprite2D" parent="CheckoutScreen/CheckoutBoxes"]
-position = Vector2(651, 550)
-texture = ExtResource("9_hkchb")
+[node name="RichTextLabel" type="RichTextLabel" parent="CheckoutScreen/Frame/CurrencyTexts"]
+layout_mode = 0
+offset_left = 630.0
+offset_top = 176.0
+offset_right = 691.0
+offset_bottom = 228.0
+theme_override_colors/default_color = Color(0.79607844, 0.7411765, 0.98039216, 1)
+theme_override_fonts/normal_font = ExtResource("12_f1mgy")
+theme_override_font_sizes/normal_font_size = 42
+text = "30"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="CheckoutScreen/Frame/CurrencyTexts"]
+layout_mode = 0
+offset_left = 746.0
+offset_top = 176.0
+offset_right = 807.0
+offset_bottom = 228.0
+theme_override_colors/default_color = Color(0.91764706, 0.45882353, 0.67058825, 1)
+theme_override_fonts/normal_font = ExtResource("12_f1mgy")
+theme_override_font_sizes/normal_font_size = 42
+text = "30"
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="CheckoutScreen/Frame/CurrencyTexts"]
+layout_mode = 0
+offset_left = 859.0
+offset_top = 176.0
+offset_right = 920.0
+offset_bottom = 228.0
+theme_override_colors/default_color = Color(0.9764706, 0.92941177, 0.19607843, 1)
+theme_override_fonts/normal_font = ExtResource("12_f1mgy")
+theme_override_font_sizes/normal_font_size = 42
+text = "03"
+
+[node name="InsufficentFunds" type="TextureRect" parent="CheckoutScreen/Frame"]
+layout_mode = 0
+offset_left = 413.0
+offset_top = 659.0
+offset_right = 1078.0
+offset_bottom = 734.0
+texture = ExtResource("8_5lsac")
+
+[node name="CheckoutBoxes" type="HBoxContainer" parent="CheckoutScreen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 540.0
+offset_top = 434.0
+offset_right = 1338.0
+offset_bottom = 625.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 26
+alignment = 1
+
+[node name="CheckoutBox" parent="CheckoutScreen/CheckoutBoxes" instance=ExtResource("9_hkchb")]
+layout_mode = 2
+
+[node name="CheckoutBox2" parent="CheckoutScreen/CheckoutBoxes" instance=ExtResource("9_hkchb")]
+layout_mode = 2
+
+[node name="CheckoutBox3" parent="CheckoutScreen/CheckoutBoxes" instance=ExtResource("9_hkchb")]
+layout_mode = 2
+
+[node name="CheckoutBox4" parent="CheckoutScreen/CheckoutBoxes" instance=ExtResource("9_hkchb")]
+layout_mode = 2
 
 [node name="BrowseScreen" type="Control" parent="."]
 visible = false
@@ -100,13 +230,13 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="CategoryLine" type="TextureRect" parent="BrowseScreen"]
+[node name="ExitStoreButton" type="TextureButton" parent="BrowseScreen"]
 layout_mode = 0
-offset_left = 1116.0
-offset_top = 116.0
-offset_right = 1873.0
-offset_bottom = 154.0
-texture = ExtResource("7_0npar")
+offset_left = 39.0
+offset_top = 41.0
+offset_right = 233.0
+offset_bottom = 98.0
+texture_normal = ExtResource("13_011ij")
 
 [node name="CurrencyBox" type="TextureRect" parent="BrowseScreen"]
 layout_mode = 0
@@ -116,15 +246,103 @@ offset_right = 432.0
 offset_bottom = 256.0
 texture = ExtResource("6_t870q")
 
+[node name="CurrencyTexts" type="Control" parent="BrowseScreen/CurrencyBox"]
+anchors_preset = 0
+offset_left = 43.0
+offset_top = -85.0
+offset_right = 83.0
+offset_bottom = -45.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="BrowseScreen/CurrencyBox/CurrencyTexts"]
+layout_mode = 0
+offset_left = 76.0
+offset_top = 138.0
+offset_right = 146.0
+offset_bottom = 190.0
+theme_override_colors/default_color = Color(0.79607844, 0.7411765, 0.98039216, 1)
+theme_override_fonts/normal_font = ExtResource("12_f1mgy")
+theme_override_font_sizes/normal_font_size = 42
+text = "46"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="BrowseScreen/CurrencyBox/CurrencyTexts"]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 140.0
+offset_right = 259.0
+offset_bottom = 192.0
+theme_override_colors/default_color = Color(0.91764706, 0.45882353, 0.67058825, 1)
+theme_override_fonts/normal_font = ExtResource("12_f1mgy")
+theme_override_font_sizes/normal_font_size = 42
+text = "23"
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="BrowseScreen/CurrencyBox/CurrencyTexts"]
+layout_mode = 0
+offset_left = 298.0
+offset_top = 140.0
+offset_right = 367.0
+offset_bottom = 192.0
+theme_override_colors/default_color = Color(0.9764706, 0.92941177, 0.19607843, 1)
+theme_override_fonts/normal_font = ExtResource("12_f1mgy")
+theme_override_font_sizes/normal_font_size = 42
+text = "08"
+
+[node name="CategoryLine" type="TextureRect" parent="BrowseScreen"]
+layout_mode = 0
+offset_left = 1116.0
+offset_top = 116.0
+offset_right = 1873.0
+offset_bottom = 154.0
+texture = ExtResource("7_0npar")
+
 [node name="PurchaseButton" type="TextureButton" parent="BrowseScreen"]
 layout_mode = 0
-offset_left = -42.0
-offset_top = 829.0
-offset_right = 464.0
-offset_bottom = 1057.0
+offset_left = -39.0
+offset_top = 834.0
+offset_right = 467.0
+offset_bottom = 1062.0
 texture_normal = ExtResource("7_uq0pw")
 texture_pressed = ExtResource("8_cry7x")
 texture_hover = ExtResource("8_cry7x")
+
+[node name="PurchaseCurrencies" type="Control" parent="BrowseScreen/PurchaseButton"]
+anchors_preset = 0
+offset_left = 105.0
+offset_top = 133.0
+offset_right = 381.0
+offset_bottom = 162.0
+
+[node name="DiamondAmount" type="RichTextLabel" parent="BrowseScreen/PurchaseButton/PurchaseCurrencies"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = -21.0
+offset_right = 85.0
+offset_bottom = 39.0
+theme_override_colors/default_color = Color(0.9372549, 0.25490198, 0.21176471, 1)
+theme_override_fonts/normal_font = ExtResource("12_f1mgy")
+theme_override_font_sizes/normal_font_size = 42
+text = "04"
+
+[node name="HeartAmount" type="RichTextLabel" parent="BrowseScreen/PurchaseButton/PurchaseCurrencies"]
+layout_mode = 0
+offset_left = 137.0
+offset_top = -21.0
+offset_right = 197.0
+offset_bottom = 39.0
+theme_override_colors/default_color = Color(0.9372549, 0.25490198, 0.21176471, 1)
+theme_override_fonts/normal_font = ExtResource("12_f1mgy")
+theme_override_font_sizes/normal_font_size = 42
+text = "20"
+
+[node name="MagAmount" type="RichTextLabel" parent="BrowseScreen/PurchaseButton/PurchaseCurrencies"]
+layout_mode = 0
+offset_left = 240.0
+offset_top = -21.0
+offset_right = 300.0
+offset_bottom = 39.0
+theme_override_colors/default_color = Color(0.9372549, 0.25490198, 0.21176471, 1)
+theme_override_fonts/normal_font = ExtResource("12_f1mgy")
+theme_override_font_sizes/normal_font_size = 42
+text = "03"
 
 [node name="TabIcons" type="Control" parent="BrowseScreen"]
 anchors_preset = 0
@@ -261,17 +479,17 @@ offset_bottom = 509.0
 
 [node name="ShopSlotButton3" parent="BrowseScreen/Boxes" instance=ExtResource("24_t870q")]
 layout_mode = 0
-offset_left = 1672.0
-offset_top = 711.0
-offset_right = 1821.0
-offset_bottom = 862.0
+offset_left = 1626.0
+offset_top = 655.0
+offset_right = 1775.0
+offset_bottom = 806.0
 
 [node name="ShopSlotButton4" parent="BrowseScreen/Boxes" instance=ExtResource("24_t870q")]
 layout_mode = 0
-offset_left = 1171.0
-offset_top = 887.0
-offset_right = 1320.0
-offset_bottom = 1038.0
+offset_left = 1507.0
+offset_top = 851.0
+offset_right = 1656.0
+offset_bottom = 1002.0
 
 [node name="ShopSlotButton5" parent="BrowseScreen/Boxes" instance=ExtResource("24_t870q")]
 layout_mode = 0
