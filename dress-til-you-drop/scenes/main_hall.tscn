@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=3 uid="uid://ds4f3s77v5f5w"]
+[gd_scene load_steps=85 format=3 uid="uid://ds4f3s77v5f5w"]
 
 [ext_resource type="PackedScene" uid="uid://f6sftetqaoh1" path="res://scenes/interaction_area.tscn" id="1_4y6b0"]
 [ext_resource type="PackedScene" uid="uid://bmd45oqbmm5e" path="res://scenes/player.tscn" id="1_cptfm"]
@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://bwoxekqcwg82" path="res://scenes/models/baseboard_top.tscn" id="16_0wv5t"]
 [ext_resource type="PackedScene" uid="uid://0y81n7wfnq6k" path="res://scenes/models/ceiling.tscn" id="16_64kij"]
 [ext_resource type="PackedScene" uid="uid://rkkqc2j0jlbk" path="res://scenes/models/wall.tscn" id="17_eq5mn"]
+[ext_resource type="PackedScene" uid="uid://dsnl16balodhm" path="res://models/mansion/dtyd_mansion_with_collision.tscn" id="18_gjt1e"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_muuyn"]
 
@@ -155,6 +156,9 @@ radius = 1.3000001
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bhs85"]
 albedo_color = Color(1, 0, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gjt1e"]
+size = Vector3(1, 21.800001, 70.8)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_j7c6l"]
 
@@ -357,7 +361,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_rjvo3")
 shape = SubResource("ConcavePolygonShape3D_g3kkl")
 
 [node name="interactable obj" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.7071068, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, -0.7071068, -3, 1, 64)
+transform = Transform3D(-0.7071068, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, -0.7071068, 53.7, 1, 64)
 mesh = SubResource("PrismMesh_muuyn")
 surface_material_override/0 = ExtResource("5_in4so")
 
@@ -378,7 +382,7 @@ minigame_scene = ExtResource("8_j7c6l")
 shape = SubResource("SphereShape3D_4y6b0")
 
 [node name="interactable obj2" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.7071068, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, -0.7071068, -3, 1, 50.399998)
+transform = Transform3D(-0.7071068, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, -0.7071068, 53.7, 1, 50.399998)
 mesh = SubResource("SphereMesh_rcqqv")
 surface_material_override/0 = SubResource("StandardMaterial3D_bhs85")
 
@@ -399,7 +403,7 @@ minigame_scene = ExtResource("10_bhs85")
 shape = SubResource("SphereShape3D_4y6b0")
 
 [node name="Player" parent="." node_paths=PackedStringArray("current_cam") instance=ExtResource("1_cptfm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 1, 57)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68, 1, 57)
 current_cam = NodePath("../MoveFollowCamera")
 
 [node name="InventoryCamera" type="Camera3D" parent="Player" node_paths=PackedStringArray("inventory_ui", "player")]
@@ -414,7 +418,7 @@ transform = Transform3D(1, 0, 2.9802322e-08, 0, 1, 0, -2.9802322e-08, 0, 1, 0, 0
 light_energy = 2.5
 
 [node name="MoveFollowCamera" parent="." node_paths=PackedStringArray("player") instance=ExtResource("7_dbmwu")]
-transform = Transform3D(-4.371139e-08, -0.34202015, 0.9396927, 0, 0.9396927, 0.34202015, -1, 1.4950176e-08, -4.107527e-08, 14, 3, 57)
+transform = Transform3D(-4.371139e-08, -0.34202015, 0.9396927, 0, 0.9396927, 0.34202015, -1, 1.4950176e-08, -4.107527e-08, 70.5, 3, 57)
 current = true
 follow_axis = 1
 follow_distance = 3.0
@@ -443,6 +447,15 @@ light_size = 0.28
 omni_range = 42.657
 
 [node name="PauseMenu" parent="." instance=ExtResource("13_ld5u0")]
+
+[node name="DTYDMansion" parent="." instance=ExtResource("18_gjt1e")]
+transform = Transform3D(-0.5, 0, -7.54979e-08, 0, 0.5, 0, 7.54979e-08, 0, -0.5, 68.7, 0, 57)
+
+[node name="BackWall" type="StaticBody3D" parent="DTYDMansion"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DTYDMansion/BackWall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3999939, 10.400001, 3)
+shape = SubResource("BoxShape3D_gjt1e")
 
 [node name="wall" parent="." instance=ExtResource("17_eq5mn")]
 transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 0.5, 16, 0.38943624, 38)
