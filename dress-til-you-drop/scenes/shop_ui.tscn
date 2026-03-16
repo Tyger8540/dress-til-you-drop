@@ -1,14 +1,20 @@
-[gd_scene load_steps=23 format=3 uid="uid://b5qx71qbk8evb"]
+[gd_scene load_steps=30 format=3 uid="uid://b5qx71qbk8evb"]
 
 [ext_resource type="Script" uid="uid://c0gh85tu3v6qo" path="res://scripts/shop_ui.gd" id="1_fs6yy"]
 [ext_resource type="Script" uid="uid://dp57gprs43ig4" path="res://scripts/inventory_item.gd" id="2_18xnp"]
 [ext_resource type="Resource" uid="uid://dlpoivjg1ix6c" path="res://resources/inventory_items/alt_preppy_top.tres" id="3_crtus"]
-[ext_resource type="Texture2D" uid="uid://qalnqo6sjy70" path="res://art/inventory_ui/assets/inactive - box.png" id="4_epbsd"]
-[ext_resource type="Script" uid="uid://b4mipp3hejdij" path="res://scripts/inventory_slot_button.gd" id="5_usj2y"]
-[ext_resource type="Texture2D" uid="uid://cwxs45rhl61i7" path="res://art/shop_ui/reference pics/1 - store 3-row.jpg" id="6_usj2y"]
+[ext_resource type="Texture2D" uid="uid://baqvb1kkmy84y" path="res://art/shop_ui/reference pics/2 - top checkout.jpg" id="4_84tcx"]
+[ext_resource type="Texture2D" uid="uid://donkutcecifvh" path="res://art/shop_ui/checkout/checkout overlay/checkout frame top.png" id="5_hkchb"]
+[ext_resource type="Texture2D" uid="uid://cv3wxwf7edadi" path="res://art/shop_ui/left side/currency/currency box.png" id="6_t870q"]
+[ext_resource type="Texture2D" uid="uid://tkvfidav0s6o" path="res://art/shop_ui/checkout/checkout overlay/purchase button.png" id="6_w56t3"]
+[ext_resource type="Texture2D" uid="uid://dcgnkkgra4dm" path="res://art/shop_ui/right side/categories/category line.png" id="7_0npar"]
 [ext_resource type="PackedScene" uid="uid://bhbevkq06vfdp" path="res://scenes/shop_tab_button.tscn" id="7_u47jy"]
+[ext_resource type="Texture2D" uid="uid://bnmqr1u3c31g2" path="res://art/shop_ui/checkout/checkout overlay/cancel button.png" id="7_uh5f5"]
+[ext_resource type="Texture2D" uid="uid://cnhwoir8ax45y" path="res://art/shop_ui/left side/purchase button.png" id="7_uq0pw"]
+[ext_resource type="Texture2D" uid="uid://cxq7hlpakpah1" path="res://art/shop_ui/left side/purchase hover.png" id="8_cry7x"]
 [ext_resource type="Texture2D" uid="uid://dqbshjk6vtllm" path="res://art/shop_ui/right side/categories/icons/unselected/hair unselected.png" id="8_unumj"]
 [ext_resource type="Texture2D" uid="uid://djsa18veomj07" path="res://art/shop_ui/right side/categories/icons/selected/hair selected.png" id="9_0npar"]
+[ext_resource type="Texture2D" uid="uid://dsu3q4od16n6b" path="res://art/shop_ui/checkout/checkout overlay/checkout box.png" id="9_hkchb"]
 [ext_resource type="Texture2D" uid="uid://b7pnwq1um3xh" path="res://art/shop_ui/right side/categories/icons/unselected/tops unselected.png" id="10_t870q"]
 [ext_resource type="Texture2D" uid="uid://beodxyl5gbaoj" path="res://art/shop_ui/right side/categories/icons/selected/tops selected.png" id="11_uq0pw"]
 [ext_resource type="Texture2D" uid="uid://cou4kyah2a8wb" path="res://art/shop_ui/right side/categories/icons/unselected/bottoms unselected.png" id="12_cry7x"]
@@ -22,6 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://bclbxvxaqxxj2" path="res://art/shop_ui/right side/categories/bubbles/bottoms bubble.png" id="20_5lsac"]
 [ext_resource type="Texture2D" uid="uid://pwmtxvvgw5hv" path="res://art/shop_ui/right side/categories/bubbles/shoes bubble.png" id="21_ihbq2"]
 [ext_resource type="Texture2D" uid="uid://bi81pvosxcncr" path="res://art/shop_ui/right side/categories/bubbles/accessories bubble.png" id="22_f1mgy"]
+[ext_resource type="PackedScene" uid="uid://b38fb54l86sti" path="res://scenes/shop_slot_button.tscn" id="24_t870q"]
 
 [node name="ShopUI" type="Control"]
 layout_mode = 3
@@ -33,28 +40,98 @@ grow_vertical = 2
 script = ExtResource("1_fs6yy")
 stock = Array[ExtResource("2_18xnp")]([ExtResource("3_crtus")])
 
-[node name="InventorySlotButton" type="TextureButton" parent="."]
-layout_mode = 0
-offset_right = 144.0
-offset_bottom = 144.0
-texture_normal = ExtResource("4_epbsd")
-script = ExtResource("5_usj2y")
-inactive_texture = ExtResource("4_epbsd")
-metadata/_custom_type_script = "uid://b4mipp3hejdij"
-
 [node name="Reference" type="TextureRect" parent="."]
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
-texture = ExtResource("6_usj2y")
+texture = ExtResource("4_84tcx")
 expand_mode = 1
 
-[node name="TabIcons" type="Control" parent="."]
+[node name="CheckoutScreen" type="Control" parent="."]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Hair Tab" parent="TabIcons" instance=ExtResource("7_u47jy")]
+[node name="Frame" type="TextureRect" parent="CheckoutScreen"]
+visible = false
+layout_mode = 1
+offset_left = 214.0
+offset_top = 104.0
+offset_right = 1707.0
+offset_bottom = 956.0
+texture = ExtResource("5_hkchb")
+
+[node name="PurchaseButton" type="TextureButton" parent="CheckoutScreen/Frame"]
+layout_mode = 0
+offset_left = 316.0
+offset_top = 722.0
+offset_right = 733.0
+offset_bottom = 897.0
+texture_normal = ExtResource("6_w56t3")
+
+[node name="CancelButton" type="TextureButton" parent="CheckoutScreen/Frame"]
+layout_mode = 0
+offset_left = 761.0
+offset_top = 728.0
+offset_right = 1171.0
+offset_bottom = 894.0
+texture_normal = ExtResource("7_uh5f5")
+
+[node name="CurrencyBox" type="TextureRect" parent="CheckoutScreen/Frame"]
+layout_mode = 0
+offset_left = -257.0
+offset_top = -106.0
+offset_right = 218.0
+offset_bottom = 65.0
+texture = ExtResource("6_t870q")
+
+[node name="CheckoutBoxes" type="Control" parent="CheckoutScreen"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CheckoutBox" type="Sprite2D" parent="CheckoutScreen/CheckoutBoxes"]
+position = Vector2(651, 550)
+texture = ExtResource("9_hkchb")
+
+[node name="BrowseScreen" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CategoryLine" type="TextureRect" parent="BrowseScreen"]
+layout_mode = 0
+offset_left = 1116.0
+offset_top = 116.0
+offset_right = 1873.0
+offset_bottom = 154.0
+texture = ExtResource("7_0npar")
+
+[node name="CurrencyBox" type="TextureRect" parent="BrowseScreen"]
+layout_mode = 0
+offset_left = -43.0
+offset_top = 85.0
+offset_right = 432.0
+offset_bottom = 256.0
+texture = ExtResource("6_t870q")
+
+[node name="PurchaseButton" type="TextureButton" parent="BrowseScreen"]
+layout_mode = 0
+offset_left = -42.0
+offset_top = 829.0
+offset_right = 464.0
+offset_bottom = 1057.0
+texture_normal = ExtResource("7_uq0pw")
+texture_pressed = ExtResource("8_cry7x")
+texture_hover = ExtResource("8_cry7x")
+
+[node name="TabIcons" type="Control" parent="BrowseScreen"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Hair Tab" parent="BrowseScreen/TabIcons" instance=ExtResource("7_u47jy")]
 layout_mode = 0
 offset_left = 1181.0
 offset_top = 42.0
@@ -66,7 +143,7 @@ texture_hover = ExtResource("9_0npar")
 inactive_texture = ExtResource("8_unumj")
 active_texture = ExtResource("9_0npar")
 
-[node name="Tops Tab" parent="TabIcons" instance=ExtResource("7_u47jy")]
+[node name="Tops Tab" parent="BrowseScreen/TabIcons" instance=ExtResource("7_u47jy")]
 layout_mode = 0
 offset_left = 1320.0
 offset_top = 44.0
@@ -79,7 +156,7 @@ inactive_texture = ExtResource("10_t870q")
 active_texture = ExtResource("11_uq0pw")
 tab_type = 1
 
-[node name="Bottoms Tab" parent="TabIcons" instance=ExtResource("7_u47jy")]
+[node name="Bottoms Tab" parent="BrowseScreen/TabIcons" instance=ExtResource("7_u47jy")]
 layout_mode = 0
 offset_left = 1465.0
 offset_top = 47.0
@@ -92,7 +169,7 @@ inactive_texture = ExtResource("12_cry7x")
 active_texture = ExtResource("13_84tcx")
 tab_type = 2
 
-[node name="Shoes Tab" parent="TabIcons" instance=ExtResource("7_u47jy")]
+[node name="Shoes Tab" parent="BrowseScreen/TabIcons" instance=ExtResource("7_u47jy")]
 layout_mode = 0
 offset_left = 1611.0
 offset_top = 42.0
@@ -105,7 +182,7 @@ inactive_texture = ExtResource("14_hkchb")
 active_texture = ExtResource("15_w56t3")
 tab_type = 3
 
-[node name="Accessories Tab" parent="TabIcons" instance=ExtResource("7_u47jy")]
+[node name="Accessories Tab" parent="BrowseScreen/TabIcons" instance=ExtResource("7_u47jy")]
 layout_mode = 0
 offset_left = 1754.0
 offset_top = 45.0
@@ -118,12 +195,12 @@ inactive_texture = ExtResource("16_uh5f5")
 active_texture = ExtResource("17_t13p1")
 tab_type = 4
 
-[node name="TabBubbles" type="Control" parent="."]
+[node name="TabBubbles" type="Control" parent="BrowseScreen"]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Hair" type="TextureRect" parent="TabBubbles"]
+[node name="Hair" type="TextureRect" parent="BrowseScreen/TabBubbles"]
 layout_mode = 0
 offset_left = 1143.0
 offset_top = 112.0
@@ -131,7 +208,7 @@ offset_right = 1274.0
 offset_bottom = 158.0
 texture = ExtResource("18_011ij")
 
-[node name="Tops" type="TextureRect" parent="TabBubbles"]
+[node name="Tops" type="TextureRect" parent="BrowseScreen/TabBubbles"]
 layout_mode = 0
 offset_left = 1286.0
 offset_top = 113.0
@@ -139,7 +216,7 @@ offset_right = 1418.0
 offset_bottom = 157.0
 texture = ExtResource("19_ry7ft")
 
-[node name="Bottoms" type="TextureRect" parent="TabBubbles"]
+[node name="Bottoms" type="TextureRect" parent="BrowseScreen/TabBubbles"]
 layout_mode = 0
 offset_left = 1430.0
 offset_top = 113.0
@@ -147,7 +224,7 @@ offset_right = 1561.0
 offset_bottom = 157.0
 texture = ExtResource("20_5lsac")
 
-[node name="Shoes" type="TextureRect" parent="TabBubbles"]
+[node name="Shoes" type="TextureRect" parent="BrowseScreen/TabBubbles"]
 layout_mode = 0
 offset_left = 1574.0
 offset_top = 113.0
@@ -155,7 +232,7 @@ offset_right = 1705.0
 offset_bottom = 157.0
 texture = ExtResource("21_ihbq2")
 
-[node name="Accessories" type="TextureRect" parent="TabBubbles"]
+[node name="Accessories" type="TextureRect" parent="BrowseScreen/TabBubbles"]
 layout_mode = 0
 offset_left = 1718.0
 offset_top = 113.0
@@ -163,7 +240,42 @@ offset_right = 1849.0
 offset_bottom = 157.0
 texture = ExtResource("22_f1mgy")
 
-[node name="Boxes" type="Control" parent="."]
+[node name="Boxes" type="Control" parent="BrowseScreen"]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="ShopSlotButton" parent="BrowseScreen/Boxes" instance=ExtResource("24_t870q")]
+layout_mode = 0
+offset_left = 1338.0
+offset_top = 358.0
+offset_right = 1487.0
+offset_bottom = 509.0
+
+[node name="ShopSlotButton2" parent="BrowseScreen/Boxes" instance=ExtResource("24_t870q")]
+layout_mode = 0
+offset_left = 1505.0
+offset_top = 358.0
+offset_right = 1654.0
+offset_bottom = 509.0
+
+[node name="ShopSlotButton3" parent="BrowseScreen/Boxes" instance=ExtResource("24_t870q")]
+layout_mode = 0
+offset_left = 1672.0
+offset_top = 711.0
+offset_right = 1821.0
+offset_bottom = 862.0
+
+[node name="ShopSlotButton4" parent="BrowseScreen/Boxes" instance=ExtResource("24_t870q")]
+layout_mode = 0
+offset_left = 1171.0
+offset_top = 887.0
+offset_right = 1320.0
+offset_bottom = 1038.0
+
+[node name="ShopSlotButton5" parent="BrowseScreen/Boxes" instance=ExtResource("24_t870q")]
+layout_mode = 0
+offset_left = 1172.0
+offset_top = 535.0
+offset_right = 1321.0
+offset_bottom = 686.0
