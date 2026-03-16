@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://bmd45oqbmm5e"]
+[gd_scene load_steps=9 format=3 uid="uid://bmd45oqbmm5e"]
 
 [ext_resource type="Script" uid="uid://ds03crob6pyyc" path="res://scripts/player.gd" id="1_3vyb7"]
-[ext_resource type="ArrayMesh" uid="uid://bej6nonpsso1k" path="res://models/main_character/body.res" id="2_tuyoq"]
-[ext_resource type="ArrayMesh" uid="uid://cg3uf8qisi1jy" path="res://models/main_character/underwear/dtyd-underwear-top-01_19export.res" id="3_qlg0r"]
-[ext_resource type="ArrayMesh" uid="uid://3ymh3688344u" path="res://models/main_character/underwear/dtyd-underwear-bottom-01_19export.res" id="4_tuyoq"]
+[ext_resource type="ArrayMesh" uid="uid://syjlgurlqcrn" path="res://models/main_character/body4.res" id="2_fjrip"]
+[ext_resource type="ArrayMesh" uid="uid://cdjkparc6d0g4" path="res://models/main_character/witchy_scholar/witchyScholar-hair.res" id="3_fjrip"]
+[ext_resource type="ArrayMesh" uid="uid://dvq5si6e7xr5w" path="res://models/main_character/witchy_scholar/witchyScholar-top.res" id="4_smehm"]
+[ext_resource type="ArrayMesh" uid="uid://v6rclvxjkxmt" path="res://models/main_character/witchy_scholar/witchyScholar-bottom.res" id="5_y4r1p"]
+[ext_resource type="ArrayMesh" uid="uid://bsxx1pcar66ns" path="res://models/main_character/witchy_scholar/witchyScholar-shoes.res" id="6_d2wvv"]
 [ext_resource type="PackedScene" uid="uid://b2x3rd7m3rywc" path="res://scenes/inventory_ui.tscn" id="6_tuyoq"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3vyb7"]
@@ -21,18 +23,20 @@ visible = false
 
 [node name="Body" type="MeshInstance3D" parent="."]
 transform = Transform3D(-8.742278e-07, 0, -20, 0, 20, 0, 20, 0, -8.742278e-07, 0, 1.1, 0)
-mesh = ExtResource("2_tuyoq")
+mesh = ExtResource("2_fjrip")
 
 [node name="Hair" type="MeshInstance3D" parent="Body"]
 transform = Transform3D(1, 0, -3.5527137e-15, 0, 1, 0, 3.5527137e-15, 0, 1, 0, 0, 0)
+mesh = ExtResource("3_fjrip")
 
 [node name="Top" type="MeshInstance3D" parent="Body"]
-mesh = ExtResource("3_qlg0r")
+mesh = ExtResource("4_smehm")
 
 [node name="Bottom" type="MeshInstance3D" parent="Body"]
-mesh = ExtResource("4_tuyoq")
+mesh = ExtResource("5_y4r1p")
 
 [node name="Shoes" type="MeshInstance3D" parent="Body"]
+mesh = ExtResource("6_d2wvv")
 
 [node name="Accessory" type="MeshInstance3D" parent="Body"]
 transform = Transform3D(1, 0, -3.5527137e-15, 0, 1, 0, 3.5527137e-15, 0, 1, 0, 0, 0)
