@@ -1,8 +1,8 @@
 class_name InventoryTabButton
 extends TextureButton
 
-const TAB_ACTIVE_Y = 260.0
-const TAB_INACTIVE_Y = 272.0
+const TAB_ACTIVE_Y = 280.0
+const TAB_INACTIVE_Y = 292.0
 
 @export var inactive_texture: CompressedTexture2D
 @export var active_texture: CompressedTexture2D
@@ -15,7 +15,7 @@ var base_size: Vector2
 func _ready() -> void:
 	Signals.connect("inventory_tab_selected", set_inactive)
 	base_size = size
-	if inactive_texture == load("res://art/inventory_ui/assets/tabs/inactive - earrings.png"):
+	if inactive_texture == load("res://art/inventory_ui/assets/tabs/inactive - hair.png"):
 		set_active()
 
 
@@ -33,7 +33,7 @@ func set_inactive(sender) -> void:
 
 func set_active() -> void:
 	texture_normal = active_texture
-	position.y = TAB_ACTIVE_Y
+	#position.y = TAB_ACTIVE_Y
 	#Signals.emit_signal("inventory_updated", self)
 
 

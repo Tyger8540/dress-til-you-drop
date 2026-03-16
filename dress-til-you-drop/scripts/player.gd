@@ -28,7 +28,7 @@ var _last_frame_was_on_floor = -INF
 
 func _ready():
 	Signals.inventory_slot_selected.connect(_on_inventory_slot_selected)
-	print(typeof(Enums.CurrencyType.keys()[Enums.CurrencyType.STAR_SHIMMERS]))
+	#print(typeof(Enums.CurrencyType.keys()[Enums.CurrencyType.STAR_SHIMMERS]))
 	#typeof()
 
 

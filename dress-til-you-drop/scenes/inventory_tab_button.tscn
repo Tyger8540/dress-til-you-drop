@@ -3,6 +3,13 @@
 [ext_resource type="Script" uid="uid://dx5xam7buc6i5" path="res://scripts/inventory_tab_button.gd" id="1_v4ug2"]
 
 [node name="InventoryTabButton" type="TextureButton"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
 script = ExtResource("1_v4ug2")
 
 [connection signal="button_up" from="." to="." method="_on_button_up"]
