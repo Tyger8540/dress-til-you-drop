@@ -12,8 +12,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	if Input.is_action_just_released("ui_accept"):
-		purchase_item(load("res://resources/inventory_items/alt_preppy_top.tres"))
+	pass
 
 
 func load_stock() -> void:

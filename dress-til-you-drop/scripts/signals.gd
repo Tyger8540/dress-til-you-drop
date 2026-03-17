@@ -9,3 +9,8 @@ signal minigame_one_defeated
 signal ui_selected
 signal inventory_closed
 signal shop_slot_selected
+signal shop_slot_deselected
+signal shop_tab_selected
+signal shop_closed
+signal minigame_started
+signal minigame_defeated

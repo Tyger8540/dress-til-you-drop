@@ -155,7 +155,7 @@ radius = 1.3000001
 [sub_resource type="SphereMesh" id="SphereMesh_rcqqv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bhs85"]
-albedo_color = Color(1, 0, 1, 1)
+albedo_color = Color(0.43137255, 0.2901961, 0.26666668, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gjt1e"]
 size = Vector3(1, 21.800001, 70.8)
@@ -361,7 +361,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_rjvo3")
 shape = SubResource("ConcavePolygonShape3D_g3kkl")
 
 [node name="interactable obj" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.7071068, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, -0.7071068, 53.7, 1, 64)
+transform = Transform3D(-0.7071068, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, -0.7071068, 53.7, 0.5, 64)
 mesh = SubResource("PrismMesh_muuyn")
 surface_material_override/0 = ExtResource("5_in4so")
 
@@ -382,7 +382,7 @@ minigame_scene = ExtResource("8_j7c6l")
 shape = SubResource("SphereShape3D_4y6b0")
 
 [node name="interactable obj2" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.7071068, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, -0.7071068, 53.7, 1, 50.399998)
+transform = Transform3D(-0.7071068, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, -0.7071068, 53.7, 0.5, 50.399998)
 mesh = SubResource("SphereMesh_rcqqv")
 surface_material_override/0 = SubResource("StandardMaterial3D_bhs85")
 
@@ -406,11 +406,12 @@ shape = SubResource("SphereShape3D_4y6b0")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68, 1, 57)
 current_cam = NodePath("../MoveFollowCamera")
 
-[node name="InventoryCamera" type="Camera3D" parent="Player" node_paths=PackedStringArray("inventory_ui", "player")]
+[node name="InventoryCamera" type="Camera3D" parent="Player" node_paths=PackedStringArray("inventory_ui", "shop_ui", "player")]
 transform = Transform3D(-0.5000001, 0, -0.8660254, 0, 1, 0, 0.8660254, 0, -0.5000001, -2.5, 0.3, 0)
 visible = false
 script = ExtResource("8_6hdfs")
 inventory_ui = NodePath("../InventoryUI")
+shop_ui = NodePath("../ShopUI")
 player = NodePath("..")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Player/InventoryCamera"]

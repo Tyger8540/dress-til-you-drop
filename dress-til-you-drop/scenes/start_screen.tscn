@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://blv36am0kfhyf"]
+
+[ext_resource type="Script" uid="uid://b001m4i5fcmpa" path="res://scripts/start_screen.gd" id="1_tx5wa"]
+[ext_resource type="Texture2D" uid="uid://57x4wrlhjdnp" path="res://art/title.jpg" id="2_o7i0r"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_he1sj"]
+texture = ExtResource("2_o7i0r")
+
+[node name="StartScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_tx5wa")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_he1sj")

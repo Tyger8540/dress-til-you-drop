@@ -38,6 +38,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if win_screen_finished:
 		if Input.is_action_just_pressed("continue"):
+			Signals.minigame_defeated.emit()
 			get_parent().queue_free()
 	
 	if not minigame_finished:

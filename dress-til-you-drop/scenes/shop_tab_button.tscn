@@ -5,3 +5,5 @@
 [node name="ShopTabButton" type="TextureButton"]
 script = ExtResource("1_wthxi")
 metadata/_custom_type_script = "uid://cxgkyu8uplycf"
+
+[connection signal="button_up" from="." to="." method="_on_button_up"]

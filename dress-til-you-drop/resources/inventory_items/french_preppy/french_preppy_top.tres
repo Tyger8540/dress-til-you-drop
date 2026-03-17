@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://dlpoivjg1ix6c"]
+
+[ext_resource type="Script" uid="uid://dp57gprs43ig4" path="res://scripts/inventory_item.gd" id="1_47q8y"]
+[ext_resource type="ArrayMesh" uid="uid://pb2e3pap3e0y" path="res://models/main_character/french_preppy/frenchPreppy-top.res" id="1_68i1f"]
+[ext_resource type="Texture2D" uid="uid://ba3v0w03ykqeo" path="res://art/inventory_icons/top/frenchPreppy-top.png" id="3_y3vwt"]
+
+[resource]
+script = ExtResource("1_47q8y")
+item_type = 1
+item_name = "French Preppy Top"
+item_texture = ExtResource("1_68i1f")
+ui_texture = ExtResource("3_y3vwt")
+price = {
+"Diamonds": 0,
+"Hearts": 0,
+"Mags": 5
+}
+in_inventory = true
+equipped = true
+metadata/_custom_type_script = "uid://dp57gprs43ig4"

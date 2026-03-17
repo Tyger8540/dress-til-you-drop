@@ -7,10 +7,14 @@ extends Resource
 @export var item_texture: Mesh
 @export var ui_texture: Texture2D
 @export var price: Dictionary = {
-	"Currency 1": 0,
-	"Currency 2": 0,
-	"Currency 3": 0,
+	"Diamonds": 0,
+	"Hearts": 0,
+	"Mags": 0,
 }
 @export var in_inventory: bool = false
+@export var equipped: bool = false
+@export var in_cart: bool = false
+@export var locked: bool = false
+
 # The path to the scene that will be spawned
 var scene_path: String = "res://scenes/inventory_item.tscn"

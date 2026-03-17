@@ -34,6 +34,7 @@ metadata/_edit_vertical_guides_ = [1479.0, 990.0, 1006.0]
 metadata/_edit_horizontal_guides_ = [348.0, 329.0]
 
 [node name="Vignette" type="ColorRect" parent="."]
+visible = false
 material = ExtResource("2_xl45s")
 layout_mode = 0
 offset_right = 1920.0

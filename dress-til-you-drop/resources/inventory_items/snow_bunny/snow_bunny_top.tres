@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://p4fuyryem52h"]
+
+[ext_resource type="ArrayMesh" uid="uid://diarkcoq0e8yu" path="res://models/main_character/snow_bunny/snowBunny-top.res" id="1_fm6dp"]
+[ext_resource type="Script" uid="uid://dp57gprs43ig4" path="res://scripts/inventory_item.gd" id="1_thowh"]
+[ext_resource type="Texture2D" uid="uid://dsbskbn7il685" path="res://art/inventory_icons/top/snowBunny-top.png" id="3_wnwnx"]
+
+[resource]
+script = ExtResource("1_thowh")
+item_type = 1
+item_name = "Snow Bunny Top"
+item_texture = ExtResource("1_fm6dp")
+ui_texture = ExtResource("3_wnwnx")
+price = {
+"Diamonds": 0,
+"Hearts": 0,
+"Mags": 15
+}
+metadata/_custom_type_script = "uid://dp57gprs43ig4"

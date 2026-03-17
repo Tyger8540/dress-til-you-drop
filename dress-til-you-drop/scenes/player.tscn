@@ -1,12 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://bmd45oqbmm5e"]
+[gd_scene load_steps=10 format=3 uid="uid://bmd45oqbmm5e"]
 
 [ext_resource type="Script" uid="uid://ds03crob6pyyc" path="res://scripts/player.gd" id="1_3vyb7"]
 [ext_resource type="ArrayMesh" uid="uid://syjlgurlqcrn" path="res://models/main_character/body4.res" id="2_fjrip"]
-[ext_resource type="ArrayMesh" uid="uid://cdjkparc6d0g4" path="res://models/main_character/witchy_scholar/witchyScholar-hair.res" id="3_fjrip"]
-[ext_resource type="ArrayMesh" uid="uid://dvq5si6e7xr5w" path="res://models/main_character/witchy_scholar/witchyScholar-top.res" id="4_smehm"]
-[ext_resource type="ArrayMesh" uid="uid://v6rclvxjkxmt" path="res://models/main_character/witchy_scholar/witchyScholar-bottom.res" id="5_y4r1p"]
-[ext_resource type="ArrayMesh" uid="uid://bsxx1pcar66ns" path="res://models/main_character/witchy_scholar/witchyScholar-shoes.res" id="6_d2wvv"]
+[ext_resource type="ArrayMesh" uid="uid://bdo25x3xvmajy" path="res://models/main_character/french_preppy/frenchPreppy-hair.res" id="3_smehm"]
+[ext_resource type="ArrayMesh" uid="uid://pb2e3pap3e0y" path="res://models/main_character/french_preppy/frenchPreppy-top.res" id="4_ur7pv"]
+[ext_resource type="ArrayMesh" uid="uid://b0namx4xxrbnl" path="res://models/main_character/french_preppy/frenchPreppy-bottom.res" id="5_y4r1p"]
+[ext_resource type="ArrayMesh" uid="uid://d3knhoxg67dqn" path="res://models/main_character/french_preppy/frenchPreppy-shoes.res" id="6_d2wvv"]
 [ext_resource type="PackedScene" uid="uid://b2x3rd7m3rywc" path="res://scenes/inventory_ui.tscn" id="6_tuyoq"]
+[ext_resource type="PackedScene" uid="uid://b5qx71qbk8evb" path="res://scenes/shop_ui.tscn" id="8_smehm"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3vyb7"]
 
@@ -27,10 +28,10 @@ mesh = ExtResource("2_fjrip")
 
 [node name="Hair" type="MeshInstance3D" parent="Body"]
 transform = Transform3D(1, 0, -3.5527137e-15, 0, 1, 0, 3.5527137e-15, 0, 1, 0, 0, 0)
-mesh = ExtResource("3_fjrip")
+mesh = ExtResource("3_smehm")
 
 [node name="Top" type="MeshInstance3D" parent="Body"]
-mesh = ExtResource("4_smehm")
+mesh = ExtResource("4_ur7pv")
 
 [node name="Bottom" type="MeshInstance3D" parent="Body"]
 mesh = ExtResource("5_y4r1p")
@@ -44,6 +45,9 @@ transform = Transform3D(1, 0, -3.5527137e-15, 0, 1, 0, 3.5527137e-15, 0, 1, 0, 0
 [node name="InventoryUI" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_tuyoq")]
 visible = false
 player = NodePath("..")
+
+[node name="ShopUI" parent="." instance=ExtResource("8_smehm")]
+visible = false
 
 [node name="StairsAheadRayCast3D" type="RayCast3D" parent="."]
 unique_name_in_owner = true
