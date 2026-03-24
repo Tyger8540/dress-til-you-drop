@@ -53,7 +53,7 @@ var health_gargoyle: int = 5
 
 
 # string displayed for health
-var health_girl_string: String = "10"
+var health_girl_string: String = "03"
 
 
 # Ensures new QTE is not made during gargoyle atk anim
@@ -83,7 +83,7 @@ func qte_creation():
 	# Ensure QTE time is set false
 	qte_time = false
 	
-	await get_tree().create_time(time_before_QTE.timeout)
+	await get_tree().create_timer(time_before_QTE).timeout
 	
 	# Conducts checks for if any key was pressed
 	# (in other words check that number of rounds completed is the same before and after,
@@ -94,7 +94,7 @@ func qte_creation():
 		qte_time = true
 		exclamation.show()
 		
-		await get_tree().create_time(time_limit_QTE.timeout)
+		await get_tree().create_timer(time_limit_QTE).timeout
 		if starting_turn_number == turns_completed:
 			time_runs_out()
 
@@ -102,10 +102,10 @@ func qte_creation():
 # Visuals for girl's attack and update to gargoyle health
 func girl_attack() -> void:
 	girl.texture = GIRL_STRIKE
-	await get_tree().create_time(display_duration.timeout)
+	await get_tree().create_timer(display_duration).timeout
 	impact_frame.show()
 	girl.texture = GIRL_IDLE
-	await get_tree().create_time(display_duration.timeout)
+	await get_tree().create_timer(display_duration).timeout
 	impact_frame.hide()
 	health_gargoyle -= 1
 
@@ -114,24 +114,26 @@ func girl_attack() -> void:
 func update_health() -> void:
 	#This keeps the string two digits long
 	health_girl_string = "0" + str(health_girl)
+	health_label.text = health_girl_string
 
 
 # Visuals for gargoyle attack and girl hurt, also updates health
 func gargoyle_attack()-> void:
 	gargoyle.texture = GARGOYLE_STRIKE
-	await get_tree().create_time(display_duration.timeout)
+	await get_tree().create_timer(display_duration).timeout
 	girl.texture = GIRL_HURT
 	gargoyle.texture = GARGOYLE_IDLE
-	await get_tree().create_time(display_duration.timeout)
-	girl.texture = GIRL_IDLE
 	health_girl -= 1
+	update_health()
+	await get_tree().create_timer(display_duration).timeout
+	girl.texture = GIRL_IDLE
+
 
 
 # Events that occur if player is too slow
 func time_runs_out()->void:
 	exclamation.hide()
 	gargoyle_attack()
-	update_health()
 	reset_qte_vars()
 
 
@@ -142,7 +144,6 @@ func _input(event: InputEvent) -> void:
 			# Strike is too early
 			pause_new_qte_creation = true
 			gargoyle_attack()
-			update_health()
 		elif not success:
 			# Successful strike
 			pause_new_qte_creation = true

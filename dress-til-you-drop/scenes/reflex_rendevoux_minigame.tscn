@@ -24,11 +24,11 @@ position = Vector2(957, 538)
 scale = Vector2(5.085714, 5.085714)
 texture = ExtResource("1_4xdvm")
 
-[node name="Girl" type="Sprite2D" parent="Background"]
-texture = ExtResource("2_38csk")
-
 [node name="Gargoyle" type="Sprite2D" parent="Background"]
 texture = ExtResource("3_oc5fu")
+
+[node name="Girl" type="Sprite2D" parent="Background"]
+texture = ExtResource("2_38csk")
 
 [node name="HealthLabel" type="Label" parent="Background"]
 anchors_preset = -1
@@ -43,7 +43,7 @@ offset_bottom = 105.584274
 theme_override_colors/font_color = Color(0.019607844, 0.09019608, 0.30588236, 1)
 theme_override_fonts/font = ExtResource("5_oc5fu")
 theme_override_font_sizes/font_size = 10
-text = "10"
+text = "03"
 metadata/_edit_use_anchors_ = true
 
 [node name="Hidden Stuff" type="Control" parent="Background"]
