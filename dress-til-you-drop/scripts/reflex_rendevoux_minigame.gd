@@ -1,8 +1,5 @@
 extends Control
-
-
-# Stores the key needed to do the QTE
-@export var key_needed: Key = KEY_SPACE
+# Reflex Rendevoux Minigame Script
 
 
 # Stores time durations for the event
@@ -46,7 +43,7 @@ var current_game_state = game_status.ONGOING
 var qte_time: bool = false
 
 
-# Used to check if any key was pressed for QTE to determine timeout
+# var used to check if any key was pressed for QTE to determine timeout
 var turns_completed = 0;
 
 

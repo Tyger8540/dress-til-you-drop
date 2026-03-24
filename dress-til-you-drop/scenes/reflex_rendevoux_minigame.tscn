@@ -32,13 +32,14 @@ texture = ExtResource("3_oc5fu")
 
 [node name="HealthLabel" type="Label" parent="Background"]
 anchors_preset = -1
-anchor_left = -0.04930062
+anchor_left = -0.05429946
+anchor_top = -0.0037185668
 anchor_right = -0.05429946
 anchor_bottom = -0.0037185668
-offset_left = -73.45507
-offset_top = 82.19101
-offset_right = -47.45507
-offset_bottom = 105.19101
+offset_left = -73.25844
+offset_top = 82.584274
+offset_right = -47.25844
+offset_bottom = 105.584274
 theme_override_colors/font_color = Color(0.019607844, 0.09019608, 0.30588236, 1)
 theme_override_fonts/font = ExtResource("5_oc5fu")
 theme_override_font_sizes/font_size = 10
