@@ -3,7 +3,7 @@ extends Control
 
 
 # Stores time durations for the event
-@export var time_limit_QTE = 0.5
+@export var time_limit_QTE = 0.4
 
 
 # Stores time duration before sprite reverts to norm
@@ -27,7 +27,7 @@ const GIRL_STRIKE = preload("uid://c8l2q3hn2hls0")
 # TODO implement sound
 
 # Holds value for how long to wait before sound plays and qte begins
-var time_before_QTE = 0.2
+var time_before_QTE = randf_range(1.1, 6.0)
 
 
 # QTE success tracker
@@ -56,11 +56,6 @@ var health_gargoyle: int = 5
 var health_girl_string: String = "03"
 
 
-# Ensures new QTE is not made during gargoyle atk anim
-# when the player strikes when there is no QTE
-var pause_new_qte_creation: bool = false
-
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	qte_creation()
@@ -78,7 +73,7 @@ func qte_creation():
 	var starting_turn_number = turns_completed
 	
 	# Get random float for time
-	time_before_QTE = randf_range(1.1, 3.0)
+	time_before_QTE = randf_range(1.1, 6.0)
 	
 	# Ensure QTE time is set false
 	qte_time = false
@@ -142,11 +137,9 @@ func _input(event: InputEvent) -> void:
 	if Input.is_action_pressed("ui_accept"):
 		if not qte_time:
 			# Strike is too early
-			pause_new_qte_creation = true
 			gargoyle_attack()
 		elif not success:
 			# Successful strike
-			pause_new_qte_creation = true
 			success = true
 			exclamation.hide()
 			girl_attack()
@@ -157,7 +150,6 @@ func _input(event: InputEvent) -> void:
 # Or ends game if condition has been met
 func reset_qte_vars() -> void:
 	success = false
-	pause_new_qte_creation = false
 	qte_time = false
 	turns_completed += 1
 	check_end_condition()
