@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://6ckho8gq22od"
+uid="uid://ce8atu18w4x3"
 path="res://.godot/imported/snowBunny-top.fbx-d4e753a34c5b92f73882bbd2f6b5f00f.scn"
 
 [deps]
@@ -46,7 +46,7 @@ _subresources={
 "lods/normal_merge_angle": 20.0,
 "save_to_file/enabled": true,
 "save_to_file/fallback_path": "res://models/main_character/snow_bunny/snowBunny-top.res",
-"save_to_file/path": "uid://yb4um66w3s74"
+"save_to_file/path": "uid://bq8c8adkn1roc"
 }
 }
 }

@@ -17,9 +17,12 @@ func _ready() -> void:
 	Signals.minigame_one_started.connect(minigame_started, true)
 	Signals.minigame_one_failed.connect(minigame_ended, false)
 	Signals.minigame_one_defeated.connect(minigame_ended, false)
+	Signals.minigame_started.connect(minigame_started, true)
+	Signals.minigame_defeated.connect(minigame_ended)
 	get_tree().scene_changed.connect(check_new_scene)
-	#Input.set_mouse_mode(Input.MouseMode.MOUSE_MODE_HIDDEN)
+	Input.set_mouse_mode(Input.MouseMode.MOUSE_MODE_HIDDEN)
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	cursor.visible = true
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -72,12 +75,14 @@ func check_new_scene() -> void:
 
 
 func set_mouse_visible(is_visibile: bool):
-	if is_visibile:
-		#Input.set_mouse_mode(Input.MouseMode.MOUSE_MODE_VISIBLE)
-		cursor.visible = true
-	else:
-		#Input.set_mouse_mode(Input.MouseMode.MOUSE_MODE_CONFINED_HIDDEN)
-		cursor.visible = false
+	#if is_visibile:
+		##Input.set_mouse_mode(Input.MouseMode.MOUSE_MODE_VISIBLE)
+		#cursor.visible = true
+	#else:
+		##Input.set_mouse_mode(Input.MouseMode.MOUSE_MODE_CONFINED_HIDDEN)
+		#cursor.visible = false
+		
+	cursor.visible = true
 
 
 func set_mouse_sensitivity(new_sensitivity) -> void:

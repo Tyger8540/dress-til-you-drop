@@ -17,17 +17,27 @@ var in_inventory: bool = false
 var _snapped_to_stairs_last_frame = -INF
 var _last_frame_was_on_floor = -INF
 
+var saved_clothes: Array[MeshInstance3D]
+
+var in_shop: bool = false
+
 @onready var body: MeshInstance3D = $Body
-@onready var accessory: MeshInstance3D = $Body/Accessory
+@onready var hair: MeshInstance3D = $Body/Hair
 @onready var top: MeshInstance3D = $Body/Top
 @onready var bottom: MeshInstance3D = $Body/Bottom
 @onready var shoes: MeshInstance3D = $Body/Shoes
+@onready var accessory: MeshInstance3D = $Body/Accessory
 
 @onready var inventory_ui = $InventoryUI
+@onready var shop_ui = $ShopUI
 
 
 func _ready():
 	Signals.inventory_slot_selected.connect(_on_inventory_slot_selected)
+	Signals.shop_slot_selected.connect(_on_shop_slot_selected)
+	Signals.shop_slot_deselected.connect(_on_shop_slot_deselected)
+	#print(typeof(Enums.CurrencyType.keys()[Enums.CurrencyType.STAR_SHIMMERS]))
+	#typeof()
 
 
 func _physics_process(delta: float) -> void:
@@ -58,7 +68,7 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 	
-	if in_inventory:
+	if in_inventory or in_shop:
 		return
 	
 	if not _snap_up_stairs_check(delta):
@@ -78,16 +88,51 @@ func _physics_process(delta: float) -> void:
 
 func _on_inventory_slot_selected(inventory_slot: InventorySlotButton) -> void:
 	match inventory_ui.current_tab_type:
-		Enums.ClothingType.ACCESSORY:
-			accessory.mesh = inventory_slot.inventory_item.item_texture
+		Enums.ClothingType.HAIR:
+			hair.mesh = inventory_slot.inventory_item.item_texture
 		Enums.ClothingType.TOP:
 			top.mesh = inventory_slot.inventory_item.item_texture
 		Enums.ClothingType.BOTTOM:
 			bottom.mesh = inventory_slot.inventory_item.item_texture
 		Enums.ClothingType.SHOES:
 			shoes.mesh = inventory_slot.inventory_item.item_texture
+		Enums.ClothingType.ACCESSORY:
+			accessory.mesh = inventory_slot.inventory_item.item_texture
 	if in_inventory:
 		return
+
+
+func _on_shop_slot_selected(shop_slot: ShopSlotButton) -> void:
+	match shop_ui.current_tab_type:
+		Enums.ClothingType.HAIR:
+			hair.mesh = shop_slot.inventory_item.item_texture
+		Enums.ClothingType.TOP:
+			top.mesh = shop_slot.inventory_item.item_texture
+		Enums.ClothingType.BOTTOM:
+			bottom.mesh = shop_slot.inventory_item.item_texture
+		Enums.ClothingType.SHOES:
+			shoes.mesh = shop_slot.inventory_item.item_texture
+		Enums.ClothingType.ACCESSORY:
+			accessory.mesh = shop_slot.inventory_item.item_texture
+	if in_inventory:
+		return
+
+
+func _on_shop_slot_deselected() -> void:
+	print("bruh")
+	match shop_ui.current_tab_type:
+		Enums.ClothingType.HAIR:
+			hair.mesh = null
+			hair.visible = false
+			hair.visible = true
+		Enums.ClothingType.TOP:
+			top.mesh = load("res://models/main_character/underwear/dtyd-underwear-top-01_19export.res")
+		Enums.ClothingType.BOTTOM:
+			bottom.mesh = load("res://models/main_character/underwear/dtyd-underwear-bottom-01_19export.res")
+		Enums.ClothingType.SHOES:
+			shoes.mesh = null
+		Enums.ClothingType.ACCESSORY:
+			accessory.mesh = null
 
 
 func is_surface_too_steep(normal: Vector3) -> bool:

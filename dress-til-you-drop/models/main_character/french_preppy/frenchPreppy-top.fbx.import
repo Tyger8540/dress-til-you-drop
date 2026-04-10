@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://beyn00rvnvxkr"
+uid="uid://dcj0klkcrnbfh"
 path="res://.godot/imported/frenchPreppy-top.fbx-25014297e30c4bb0e45f8a3931562216.scn"
 
 [deps]
@@ -46,7 +46,7 @@ _subresources={
 "lods/normal_merge_angle": 20.0,
 "save_to_file/enabled": true,
 "save_to_file/fallback_path": "res://models/main_character/french_preppy/frenchPreppy-top.res",
-"save_to_file/path": "uid://c2650oprgu3f5"
+"save_to_file/path": "uid://bttvpn5qe6lub"
 }
 }
 }

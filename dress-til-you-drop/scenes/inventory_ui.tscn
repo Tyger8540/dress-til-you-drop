@@ -1,22 +1,25 @@
-[gd_scene load_steps=18 format=3 uid="uid://b2x3rd7m3rywc"]
+[gd_scene load_steps=21 format=3 uid="uid://b2x3rd7m3rywc"]
 
 [ext_resource type="Script" uid="uid://bt836rg7d4ihp" path="res://scripts/inventory_ui.gd" id="1_8wyaw"]
-[ext_resource type="Texture2D" uid="uid://fwtuc8rqo7ld" path="res://art/inventory_ui/assets/frame.png" id="2_cwdri"]
-[ext_resource type="Texture2D" uid="uid://cp0p6cxkh35hd" path="res://art/inventory_ui/assets/references/active_-_earrings_10.png" id="2_rg5pf"]
+[ext_resource type="Texture2D" uid="uid://cp42nc8q13lus" path="res://art/inventory_ui/frames/active_tab_ref.png" id="2_u4vby"]
+[ext_resource type="Material" uid="uid://dn47x2emhq2u7" path="res://resources/materials/vignette.tres" id="2_xl45s"]
 [ext_resource type="Texture2D" uid="uid://cwrd222kmboay" path="res://art/inventory_ui/assets/closet title.png" id="3_rg5pf"]
-[ext_resource type="Texture2D" uid="uid://c67xlg81nm323" path="res://art/inventory_ui/assets/collection.png" id="4_rmxcj"]
-[ext_resource type="Texture2D" uid="uid://d0elvm08mnnei" path="res://art/inventory_ui/assets/arrow.png" id="5_3y5j4"]
-[ext_resource type="Texture2D" uid="uid://ca5magqqqh2u6" path="res://art/inventory_ui/assets/tabs/inactive - earrings.png" id="6_rc4hi"]
+[ext_resource type="Texture2D" uid="uid://brx7uas6tdo5b" path="res://art/inventory_ui/frames/inventory_frame.png" id="3_xl45s"]
+[ext_resource type="Texture2D" uid="uid://rm6ukjrnsmvi" path="res://art/inventory_ui/assets/collection_box.png" id="5_qst7u"]
+[ext_resource type="FontVariation" uid="uid://bh1okvhwsp83k" path="res://fonts/Balivia.tres" id="6_y7i8o"]
 [ext_resource type="PackedScene" uid="uid://b2eftgk23kxj8" path="res://scenes/inventory_tab_button.tscn" id="7_rc4hi"]
-[ext_resource type="Texture2D" uid="uid://jh6jtnng73us" path="res://art/inventory_ui/assets/tabs/active - earrings.png" id="7_rqtn1"]
+[ext_resource type="Texture2D" uid="uid://dm6cfhfd1sb10" path="res://art/inventory_ui/assets/tabs/inactive - hair.png" id="7_rqtn1"]
+[ext_resource type="Texture2D" uid="uid://bdtfiainohwpu" path="res://art/inventory_ui/assets/tabs/active - hair.png" id="8_u4vby"]
 [ext_resource type="Texture2D" uid="uid://su1xhqvxwwjd" path="res://art/inventory_ui/assets/tabs/inactive - tops.png" id="8_ucuti"]
 [ext_resource type="Texture2D" uid="uid://bp3vl52caaay2" path="res://art/inventory_ui/assets/tabs/inactive - bottoms.png" id="9_u4vby"]
 [ext_resource type="Texture2D" uid="uid://dqxm2mjglbp1o" path="res://art/inventory_ui/assets/tabs/active - tops.png" id="10_3y5j4"]
 [ext_resource type="Texture2D" uid="uid://dcxade4jpfwi6" path="res://art/inventory_ui/assets/tabs/inactive - shoes.png" id="10_xl45s"]
 [ext_resource type="Texture2D" uid="uid://dqu1ubrbhpkod" path="res://art/inventory_ui/assets/tabs/active - bottoms.png" id="12_rc4hi"]
-[ext_resource type="Texture2D" uid="uid://dblktkgt8xdyx" path="res://art/inventory_ui/assets/line.png" id="12_y7i8o"]
 [ext_resource type="Texture2D" uid="uid://b2xyyfaw7i1xx" path="res://art/inventory_ui/assets/tabs/active - shoes.png" id="14_rqtn1"]
 [ext_resource type="PackedScene" uid="uid://c3k7ourtgy1hp" path="res://scenes/inventory_slot_button.tscn" id="16_rc4hi"]
+[ext_resource type="Texture2D" uid="uid://bqglguly0v4v" path="res://art/inventory_ui/assets/tabs/active - accessories.png" id="16_xl45s"]
+[ext_resource type="Texture2D" uid="uid://dkmmnnucpdybv" path="res://art/inventory_ui/assets/tabs/inactive - accessories.png" id="18_ucuti"]
+[ext_resource type="Texture2D" uid="uid://cs3usiituwoqd" path="res://art/inventory_ui/assets/inventory_line.png" id="20_gqjem"]
 
 [node name="InventoryUI" type="Control" node_paths=PackedStringArray("inventory_slot_buttons")]
 layout_mode = 3
@@ -30,7 +33,15 @@ inventory_slot_buttons = [NodePath("Boxes/InventorySlotButton"), NodePath("Boxes
 metadata/_edit_vertical_guides_ = [1479.0, 990.0, 1006.0]
 metadata/_edit_horizontal_guides_ = [348.0, 329.0]
 
+[node name="Vignette" type="ColorRect" parent="."]
+visible = false
+material = ExtResource("2_xl45s")
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
 [node name="Panel" type="Panel" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -58,7 +69,7 @@ offset_right = 706.5
 offset_bottom = 524.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_rg5pf")
+texture = ExtResource("2_u4vby")
 
 [node name="Frame" type="TextureRect" parent="."]
 layout_mode = 1
@@ -73,95 +84,101 @@ offset_right = 706.5
 offset_bottom = 524.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_cwdri")
+texture = ExtResource("3_xl45s")
 
 [node name="ClosetTitle" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 1031.0
-offset_top = 156.0
-offset_right = 1304.0
-offset_bottom = 283.0
+offset_left = 1030.0
+offset_top = 178.0
+offset_right = 1303.0
+offset_bottom = 305.0
 texture = ExtResource("3_rg5pf")
 
 [node name="Collection" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 1014.0
-offset_top = 819.0
-offset_right = 1322.0
-offset_bottom = 927.0
-texture = ExtResource("4_rmxcj")
+offset_left = 1012.0
+offset_top = 847.0
+offset_right = 1320.0
+offset_bottom = 955.0
+texture = ExtResource("5_qst7u")
 
-[node name="Arrows" type="Control" parent="."]
-anchors_preset = 0
-offset_left = 253.5
-offset_top = 16.0
-offset_right = 293.5
-offset_bottom = 56.0
-
-[node name="LeftArrow" type="TextureButton" parent="Arrows"]
-layout_mode = 0
-offset_left = 566.5
-offset_top = 252.0
-offset_right = 607.5
-offset_bottom = 305.0
-texture_normal = ExtResource("5_3y5j4")
-
-[node name="RightArrow" type="TextureButton" parent="Arrows"]
-layout_mode = 0
-offset_left = 1248.5
-offset_top = 305.0
-offset_right = 1289.5
-offset_bottom = 358.0
-rotation = 3.1415927
-texture_normal = ExtResource("5_3y5j4")
+[node name="CollectionText" type="RichTextLabel" parent="Collection"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -115.0
+offset_top = -29.0
+offset_right = 106.0
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("6_y7i8o")
+theme_override_font_sizes/normal_font_size = 21
+text = "00/00 Type Collected"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Tabs" type="Control" parent="."]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Earrings Tab" parent="Tabs" instance=ExtResource("7_rc4hi")]
-layout_mode = 0
-offset_left = 871.0
-offset_top = 272.0
-offset_right = 871.0
-offset_bottom = 272.0
-texture_normal = ExtResource("6_rc4hi")
-inactive_texture = ExtResource("6_rc4hi")
-active_texture = ExtResource("7_rqtn1")
+[node name="Hair Tab" parent="Tabs" instance=ExtResource("7_rc4hi")]
+layout_mode = 1
+offset_left = 811.0
+offset_top = 252.0
+offset_right = 945.0
+offset_bottom = 308.0
+texture_normal = ExtResource("7_rqtn1")
+inactive_texture = ExtResource("7_rqtn1")
+active_texture = ExtResource("8_u4vby")
 
 [node name="Tops Tab" parent="Tabs" instance=ExtResource("7_rc4hi")]
-layout_mode = 0
-offset_left = 1015.0
-offset_top = 272.0
-offset_right = 1015.0
-offset_bottom = 272.0
+layout_mode = 1
+offset_left = 942.0
+offset_top = 252.0
+offset_right = 1076.0
+offset_bottom = 308.0
 texture_normal = ExtResource("8_ucuti")
 inactive_texture = ExtResource("8_ucuti")
 active_texture = ExtResource("10_3y5j4")
 tab_type = 1
 
 [node name="Bottoms Tab" parent="Tabs" instance=ExtResource("7_rc4hi")]
-layout_mode = 0
-offset_left = 1159.0
-offset_top = 272.0
-offset_right = 1159.0
-offset_bottom = 272.0
+layout_mode = 1
+offset_left = 1073.0
+offset_top = 252.0
+offset_right = 1207.0
+offset_bottom = 308.0
 texture_normal = ExtResource("9_u4vby")
 inactive_texture = ExtResource("9_u4vby")
 active_texture = ExtResource("12_rc4hi")
 tab_type = 2
 
 [node name="Shoes Tab" parent="Tabs" instance=ExtResource("7_rc4hi")]
-layout_mode = 0
-offset_left = 1304.0
-offset_top = 272.0
-offset_right = 1304.0
-offset_bottom = 272.0
+layout_mode = 1
+offset_left = 1204.0
+offset_top = 252.0
+offset_right = 1338.0
+offset_bottom = 308.0
 texture_normal = ExtResource("10_xl45s")
 inactive_texture = ExtResource("10_xl45s")
 active_texture = ExtResource("14_rqtn1")
 tab_type = 3
+
+[node name="Accessories Tab" parent="Tabs" instance=ExtResource("7_rc4hi")]
+layout_mode = 1
+offset_left = 1335.0
+offset_top = 252.0
+offset_right = 1469.0
+offset_bottom = 308.0
+texture_normal = ExtResource("18_ucuti")
+inactive_texture = ExtResource("18_ucuti")
+active_texture = ExtResource("16_xl45s")
+tab_type = 4
 
 [node name="Boxes" type="Control" parent="."]
 anchors_preset = 0
@@ -170,95 +187,95 @@ offset_bottom = 40.0
 
 [node name="InventorySlotButton" parent="Boxes" instance=ExtResource("16_rc4hi")]
 layout_mode = 0
-offset_left = 842.0
-offset_top = 347.0
-offset_right = 991.0
-offset_bottom = 498.0
+offset_left = 841.0
+offset_top = 367.0
+offset_right = 990.0
+offset_bottom = 518.0
 
 [node name="InventorySlotButton2" parent="Boxes" instance=ExtResource("16_rc4hi")]
 layout_mode = 0
-offset_left = 1005.0
-offset_top = 347.0
-offset_right = 1154.0
-offset_bottom = 498.0
+offset_left = 1004.0
+offset_top = 367.0
+offset_right = 1153.0
+offset_bottom = 518.0
 
 [node name="InventorySlotButton3" parent="Boxes" instance=ExtResource("16_rc4hi")]
 layout_mode = 0
-offset_left = 1169.0
-offset_top = 347.0
-offset_right = 1318.0
-offset_bottom = 498.0
+offset_left = 1168.0
+offset_top = 367.0
+offset_right = 1317.0
+offset_bottom = 518.0
 
 [node name="InventorySlotButton4" parent="Boxes" instance=ExtResource("16_rc4hi")]
 layout_mode = 0
-offset_left = 1333.0
-offset_top = 347.0
-offset_right = 1482.0
-offset_bottom = 498.0
+offset_left = 1332.0
+offset_top = 367.0
+offset_right = 1481.0
+offset_bottom = 518.0
 
 [node name="InventorySlotButton5" parent="Boxes" instance=ExtResource("16_rc4hi")]
 layout_mode = 0
-offset_left = 842.0
-offset_top = 511.0
-offset_right = 991.0
-offset_bottom = 662.0
+offset_left = 841.0
+offset_top = 531.0
+offset_right = 990.0
+offset_bottom = 682.0
 
 [node name="InventorySlotButton6" parent="Boxes" instance=ExtResource("16_rc4hi")]
 layout_mode = 0
-offset_left = 1005.0
-offset_top = 511.0
-offset_right = 1154.0
-offset_bottom = 662.0
+offset_left = 1004.0
+offset_top = 531.0
+offset_right = 1153.0
+offset_bottom = 682.0
 
 [node name="InventorySlotButton7" parent="Boxes" instance=ExtResource("16_rc4hi")]
 layout_mode = 0
-offset_left = 1169.0
-offset_top = 511.0
-offset_right = 1318.0
-offset_bottom = 662.0
+offset_left = 1168.0
+offset_top = 531.0
+offset_right = 1317.0
+offset_bottom = 682.0
 
 [node name="InventorySlotButton8" parent="Boxes" instance=ExtResource("16_rc4hi")]
 layout_mode = 0
-offset_left = 1333.0
-offset_top = 511.0
-offset_right = 1482.0
-offset_bottom = 662.0
+offset_left = 1332.0
+offset_top = 531.0
+offset_right = 1481.0
+offset_bottom = 682.0
 
 [node name="InventorySlotButton9" parent="Boxes" instance=ExtResource("16_rc4hi")]
 layout_mode = 0
-offset_left = 842.0
-offset_top = 673.0
-offset_right = 991.0
-offset_bottom = 824.0
+offset_left = 841.0
+offset_top = 695.0
+offset_right = 990.0
+offset_bottom = 846.0
 
 [node name="InventorySlotButton10" parent="Boxes" instance=ExtResource("16_rc4hi")]
 layout_mode = 0
-offset_left = 1005.0
-offset_top = 673.0
-offset_right = 1154.0
-offset_bottom = 824.0
+offset_left = 1004.0
+offset_top = 695.0
+offset_right = 1153.0
+offset_bottom = 846.0
 
 [node name="InventorySlotButton11" parent="Boxes" instance=ExtResource("16_rc4hi")]
 layout_mode = 0
-offset_left = 1169.0
-offset_top = 673.0
-offset_right = 1318.0
-offset_bottom = 824.0
+offset_left = 1168.0
+offset_top = 695.0
+offset_right = 1317.0
+offset_bottom = 846.0
 
 [node name="InventorySlotButton12" parent="Boxes" instance=ExtResource("16_rc4hi")]
 layout_mode = 0
-offset_left = 1333.0
-offset_top = 673.0
-offset_right = 1482.0
-offset_bottom = 824.0
+offset_left = 1332.0
+offset_top = 695.0
+offset_right = 1481.0
+offset_bottom = 846.0
 
 [node name="Line" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 810.0
-offset_top = 325.0
-offset_right = 1515.0
-offset_bottom = 328.0
-texture = ExtResource("12_y7i8o")
+offset_left = 832.0
+offset_top = 345.0
+offset_right = 1489.0
+offset_bottom = 348.0
+texture = ExtResource("20_gqjem")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 visible = false
