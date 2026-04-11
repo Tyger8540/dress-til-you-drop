@@ -21,10 +21,14 @@ func _process(_delta: float) -> void:
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("pause"):
+		print("yo bro?")
 		if get_tree().get_nodes_in_group("player")[0].in_inventory:
 			Signals.inventory_closed.emit()
 		elif $SettingsPanel.visible:
 			close_settings()
+		elif get_tree().get_nodes_in_group("player")[0].in_minigame:
+			print("yoyoyoyoyo")
+			pass
 		else:
 			get_tree().paused = not get_tree().paused
 			visible = get_tree().paused
