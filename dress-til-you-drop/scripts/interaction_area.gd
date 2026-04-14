@@ -10,11 +10,14 @@ const DIALOG_BOX = preload("res://scenes/dialog_box.tscn")
 
 @export var connected_area: InteractionArea
 
+var dialog_seen: bool = false
+
 
 var interact: Callable = func():
-	if dialog:
+	if dialog and not dialog_seen:
 		var dialog_box: DialogBox = spawn_dialog_box()  # spawn a dialog box
 		await dialog_box.dialog.dialog_finished  # await it to finish
+		dialog_seen = true
 		if dialog == load("res://resources/dialog/shop_1_unlocked.tres"):  # TODO PROTOTYPE CODE TO FIX
 			get_tree().get_first_node_in_group("player").dress_up()
 		dialog_box.queue_free()  # delete the dialog box

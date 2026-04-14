@@ -22,6 +22,22 @@ func _ready() -> void:
 	add_item(load("res://resources/inventory_items/french_preppy/french_preppy_hair.tres"))
 	add_item(load("res://resources/inventory_items/french_preppy/french_preppy_shoes.tres"))
 	add_item(load("res://resources/inventory_items/french_preppy/french_preppy_top.tres"))
+	add_item(load("res://resources/inventory_items/bohemian_goth/bohemian_goth_bottom.tres"))
+	add_item(load("res://resources/inventory_items/bohemian_goth/bohemian_goth_hair.tres"))
+	add_item(load("res://resources/inventory_items/bohemian_goth/bohemian_goth_shoes.tres"))
+	add_item(load("res://resources/inventory_items/bohemian_goth/bohemian_goth_top.tres"))
+	add_item(load("res://resources/inventory_items/green_preppy/green_preppy_bottom.tres"))
+	add_item(load("res://resources/inventory_items/green_preppy/green_preppy_hair.tres"))
+	add_item(load("res://resources/inventory_items/green_preppy/green_preppy_shoes.tres"))
+	add_item(load("res://resources/inventory_items/green_preppy/green_preppy_top.tres"))
+	add_item(load("res://resources/inventory_items/snow_bunny/snow_bunny_bottom.tres"))
+	add_item(load("res://resources/inventory_items/snow_bunny/snow_bunny_hair.tres"))
+	add_item(load("res://resources/inventory_items/snow_bunny/snow_bunny_shoes.tres"))
+	add_item(load("res://resources/inventory_items/snow_bunny/snow_bunny_top.tres"))
+	add_item(load("res://resources/inventory_items/witchy_scholar/witchy_scholar_bottom.tres"))
+	add_item(load("res://resources/inventory_items/witchy_scholar/witchy_scholar_hair.tres"))
+	add_item(load("res://resources/inventory_items/witchy_scholar/witchy_scholar_shoes.tres"))
+	add_item(load("res://resources/inventory_items/witchy_scholar/witchy_scholar_top.tres"))
 	
 	pass
 

@@ -10,7 +10,7 @@ const MAX_CURRENCY_EARNED = 50
 const BASE_TIME_NEEDED = 10
 
 const WIN_SCREEN_SIZE_Y = 747.0
-const WIN_SCREEN_EXPANSION_SPEED = 400.0
+const WIN_SCREEN_EXPANSION_SPEED = 500.0
 
 @export var left_anomalies: Array[AnomalyButton]
 
@@ -39,6 +39,7 @@ func _process(delta: float) -> void:
 	if win_screen_finished:
 		if Input.is_action_just_pressed("continue"):
 			Signals.minigame_defeated.emit()
+			Signals.minigame_finished.emit()
 			get_parent().queue_free()
 	
 	if not minigame_finished:
@@ -106,7 +107,9 @@ func play_win_animation() -> void:
 	await get_tree().create_timer(5.0).timeout
 	win_screen_expanding = true
 	await win_screen_expanded
-	play_currency_earned_animation()
+	#play_currency_earned_animation()  # when using currency
+	$WinScreen/ContinueText.process_mode = Node.PROCESS_MODE_INHERIT  # immediately show continue text
+	win_screen_finished = true  # immediately show continue text
 
 
 func play_currency_earned_animation() -> void:
