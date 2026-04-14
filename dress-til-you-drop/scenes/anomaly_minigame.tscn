@@ -39,6 +39,8 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_6a7c3")
 left_anomalies = [NodePath("LeftCharacter/Anomalies/Anomaly1"), NodePath("LeftCharacter/Anomalies/Anomaly2"), NodePath("LeftCharacter/Anomalies/Anomaly3"), NodePath("LeftCharacter/Anomalies/Anomaly4"), NodePath("LeftCharacter/Anomalies/Anomaly5"), NodePath("LeftCharacter/Anomalies/Anomaly6"), NodePath("LeftCharacter/Anomalies/Anomaly7"), NodePath("LeftCharacter/Anomalies/Anomaly8"), NodePath("LeftCharacter/Anomalies/Anomaly9"), NodePath("LeftCharacter/Anomalies/Anomaly10"), NodePath("LeftCharacter/Anomalies/Anomaly11"), NodePath("LeftCharacter/Anomalies/Anomaly12"), NodePath("LeftCharacter/Anomalies/Anomaly13"), NodePath("LeftCharacter/Anomalies/Anomaly14"), NodePath("LeftCharacter/Anomalies/Anomaly15")]
+metadata/_edit_horizontal_guides_ = [1.0]
+metadata/_edit_vertical_guides_ = [1923.0]
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
