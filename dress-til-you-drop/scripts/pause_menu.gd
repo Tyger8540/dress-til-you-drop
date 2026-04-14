@@ -8,10 +8,12 @@ enum MenuState {
 	QUIT,
 }
 
+var player: Player
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	player = get_tree().get_nodes_in_group("player")[0]
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -21,14 +23,19 @@ func _process(_delta: float) -> void:
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("pause"):
-		if get_tree().get_nodes_in_group("player")[0].in_inventory:
+		if player.in_inventory:
 			Signals.inventory_closed.emit()
 		elif $SettingsPanel.visible:
 			close_settings()
+		#elif player.in_minigame:
+			##player.cur_minigame.visible = false
+			#pass
 		else:
 			get_tree().paused = not get_tree().paused
 			visible = get_tree().paused
 			MouseController.set_mouse_visible(visible)
+			if player.in_minigame:
+				player.cur_minigame.visible = !get_tree().paused
 
 
 func set_panel(state: MenuState) -> void:
@@ -52,6 +59,8 @@ func continue_game() -> void:
 	get_tree().paused = false
 	visible = false
 	MouseController.set_mouse_visible(false)
+	if player.in_minigame:
+		player.cur_minigame.visible = true
 
 
 func quit_game() -> void:

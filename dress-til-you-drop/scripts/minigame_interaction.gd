@@ -21,12 +21,14 @@ func initiate_minigame(minigame: Node) -> void:  # called in the inherited scrip
 	pass
 
 
-func _start_minigame() -> void:
+func _start_minigame() -> void:		
 	# show dialog first (if any)
-	if interaction_area and interaction_area.dialog.dialog.size() > 0:
-		var dialog_box = interaction_area.spawn_dialog_box()
-		await dialog_box.dialog.dialog_finished
-		dialog_box.queue_free()
+	if not interaction_area.dialog_seen:
+		if interaction_area and interaction_area.dialog.dialog.size() > 0:
+			var dialog_box = interaction_area.spawn_dialog_box()
+			await dialog_box.dialog.dialog_finished
+			dialog_box.queue_free()
+			interaction_area.dialog_seen = true
 	
 	# instantiate the minigame scene
 	var minigame = minigame_scene.instantiate()

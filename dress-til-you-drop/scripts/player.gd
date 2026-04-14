@@ -21,6 +21,9 @@ var saved_clothes: Array[MeshInstance3D]
 
 var in_shop: bool = false
 
+var in_minigame: bool = false
+var cur_minigame: Node = null
+
 @onready var body: MeshInstance3D = $Body
 @onready var hair: MeshInstance3D = $Body/Hair
 @onready var top: MeshInstance3D = $Body/Top
@@ -36,6 +39,8 @@ func _ready():
 	Signals.inventory_slot_selected.connect(_on_inventory_slot_selected)
 	Signals.shop_slot_selected.connect(_on_shop_slot_selected)
 	Signals.shop_slot_deselected.connect(_on_shop_slot_deselected)
+	Signals.minigame_started.connect(_on_minigame_started, true)
+	Signals.minigame_finished.connect(_on_minigame_finished)
 	#print(typeof(Enums.CurrencyType.keys()[Enums.CurrencyType.STAR_SHIMMERS]))
 	#typeof()
 
@@ -119,7 +124,6 @@ func _on_shop_slot_selected(shop_slot: ShopSlotButton) -> void:
 
 
 func _on_shop_slot_deselected() -> void:
-	print("bruh")
 	match shop_ui.current_tab_type:
 		Enums.ClothingType.HAIR:
 			hair.mesh = null
@@ -194,3 +198,13 @@ func _run_body_test_motion(from: Transform3D, motion: Vector3, result = null) ->
 	params.from = from
 	params.motion = motion
 	return PhysicsServer3D.body_test_motion(self.get_rid(), params, result)
+
+
+func _on_minigame_started(minigame_scene) -> void:
+	cur_minigame = minigame_scene
+	in_minigame = true
+
+
+func _on_minigame_finished() -> void:
+	cur_minigame = null
+	in_minigame = false

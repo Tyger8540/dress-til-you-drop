@@ -14,3 +14,4 @@ signal shop_tab_selected
 signal shop_closed
 signal minigame_started
 signal minigame_defeated
+signal minigame_finished
