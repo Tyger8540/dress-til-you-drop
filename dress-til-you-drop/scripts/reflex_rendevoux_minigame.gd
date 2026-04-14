@@ -3,7 +3,7 @@ extends Control
 
 
 # Stores time durations for the event
-@export var time_limit_QTE = 0.4
+@export var time_limit_QTE = 0.5
 
 
 # Stores time duration before sprite reverts to norm
@@ -128,14 +128,13 @@ func gargoyle_attack()-> void:
 # Events that occur if player is too slow
 func time_runs_out()->void:
 	exclamation.hide()
-	gargoyle_attack()
 	reset_qte_vars()
-
+	gargoyle_attack()
 
 # Interprets input: checks whether it is a success or not
 func _input(event: InputEvent) -> void:
 	if Input.is_action_pressed("ui_accept"):
-		if not qte_time:
+		if not qte_time && health_girl != 0:
 			# Strike is too early
 			gargoyle_attack()
 		elif not success:
