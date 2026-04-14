@@ -5,7 +5,7 @@ signal minigame_failed()
 
 const ROW_COUNT := 3
 const ITEMS_PER_ROW := 6
-const SESSION_DURATION := 15.0  # seconds
+const SESSION_DURATION := 22.0  # seconds (increased from 15 so player has more time)
 const TARGETS_TO_WIN := 3
 const LANE_GAP := 10.0
 const PLAYFIELD_PADDING_Y := 10.0
@@ -22,6 +22,18 @@ const ITEM_GAP_X := 4.0
 @export var timer_fill_crop_top: float = 0.0
 ## Pixels to crop from bottom of bar_fill.png (removes empty space beneath the bar graphic).
 @export var timer_fill_crop_bottom: float = 0.0
+## Optional custom font for the win screen (message and button). Assign a .ttf/.otf or a FontFile in the inspector.
+@export var win_screen_font: FontFile = null
+## Font size for the win message ("You found your sister's earring!").
+@export var win_screen_message_font_size: int = 50
+## Font size for the Continue button text. Set to 0 to use the theme default.
+@export var win_screen_button_font_size: int = 35
+## Custom button appearance: assign textures for normal, hover, and pressed. If texture_normal is set, a TextureButton is used instead of the default Button.
+@export var win_screen_button_texture_normal: Texture2D = null
+@export var win_screen_button_texture_hover: Texture2D = null
+@export var win_screen_button_texture_pressed: Texture2D = null
+## Size of the Continue button when using custom textures (ignored if using default button).
+@export var win_screen_button_size: Vector2 = Vector2(160, 48)
 
 @onready var main_frame: Control = $MainFrame
 @onready var playfield_frame: ColorRect = $MainFrame/PlayfieldFrame
@@ -70,6 +82,7 @@ var _earring_spritesheet: Texture2D
 var _earring_atlas_cache: Dictionary = {}  # index -> AtlasTexture
 var _timer_fill_texture: Texture2D
 var _timer_fill_atlas: AtlasTexture  # cropped to remove transparent top/bottom
+var _win_overlay: Control = null  # win screen shown when player finds all earrings
 
 func _get_earring_atlas_texture(sprite_index: int) -> AtlasTexture:
 	if _earring_spritesheet == null:
@@ -170,6 +183,7 @@ func start_minigame(rounds: int = 3) -> void:
 	playfield_frame.rotation = _playfield_original_rot
 	_spawn_rows()
 	_choose_new_target()
+	_ensure_target_on_playfield_at_least(5)
 	_update_score_label()
 	_update_timer_bar()
 
@@ -368,6 +382,32 @@ func _choose_new_target() -> void:
 	target_shape_id = chosen.get_shape_id()
 	_update_target_preview()
 
+## Ensures at least min_count earrings on the playfield have the current target shape,
+## so the player always has enough targets to find (e.g. 3 for TARGETS_TO_WIN).
+func _ensure_target_on_playfield_at_least(min_count: int) -> void:
+	var all_earrings: Array[EarringItem] = []
+	for row in rows:
+		for e in row:
+			all_earrings.append(e)
+	if all_earrings.is_empty():
+		return
+	var target_count: int = 0
+	for e in all_earrings:
+		if e.get_shape_id() == target_shape_id:
+			target_count += 1
+	if target_count >= min_count:
+		return
+	var need_more: int = min_count - target_count
+	var non_target: Array[EarringItem] = []
+	for e in all_earrings:
+		if e.get_shape_id() != target_shape_id:
+			non_target.append(e)
+	non_target.shuffle()
+	for i in range(mini(need_more, non_target.size())):
+		var earring: EarringItem = non_target[i]
+		earring.set_shape_id(target_shape_id)
+		earring.set_sprite_texture(_get_earring_atlas_texture(target_shape_id))
+
 func _clear_rows() -> void:
 	for row in rows:
 		for earring in row:
@@ -420,11 +460,98 @@ func _end_session(success: bool) -> void:
 	if is_instance_valid(timer_glow):
 		timer_glow.modulate.a = 0.0
 
-	_cleanup_and_close()
 	if success:
-		minigame_completed.emit(0)
+		_show_win_screen()
 	else:
+		_cleanup_and_close()
 		minigame_failed.emit()
+
+func _show_win_screen() -> void:
+	_clear_win_overlay()
+	_win_overlay = Control.new()
+	_win_overlay.name = "WinOverlay"
+	_win_overlay.set_anchors_preset(Control.PRESET_FULL_RECT)
+	_win_overlay.offset_left = 0.0
+	_win_overlay.offset_top = 0.0
+	_win_overlay.offset_right = 0.0
+	_win_overlay.offset_bottom = 0.0
+	_win_overlay.mouse_filter = Control.MOUSE_FILTER_STOP
+	main_frame.add_child(_win_overlay)
+
+	var bg: ColorRect = ColorRect.new()
+	bg.name = "WinOverlayBg"
+	bg.set_anchors_preset(Control.PRESET_FULL_RECT)
+	bg.offset_left = 0.0
+	bg.offset_top = 0.0
+	bg.offset_right = 0.0
+	bg.offset_bottom = 0.0
+	bg.color = Color(0.05, 0.05, 0.12, 0.92)
+	bg.mouse_filter = Control.MOUSE_FILTER_STOP
+	_win_overlay.add_child(bg)
+
+	var vbox: VBoxContainer = VBoxContainer.new()
+	vbox.name = "WinVBox"
+	vbox.set_anchors_preset(Control.PRESET_CENTER)
+	vbox.anchor_left = 0.5
+	vbox.anchor_top = 0.5
+	vbox.anchor_right = 0.5
+	vbox.anchor_bottom = 0.5
+	vbox.offset_left = -200.0
+	vbox.offset_top = -80.0
+	vbox.offset_right = 200.0
+	vbox.offset_bottom = 80.0
+	vbox.add_theme_constant_override("separation", 24)
+	vbox.alignment = BoxContainer.ALIGNMENT_CENTER
+	_win_overlay.add_child(vbox)
+
+	var msg: Label = Label.new()
+	msg.name = "WinMessage"
+	msg.text = "YOU FOUND YOUR SISTER'S EARRING."
+	msg.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	msg.add_theme_font_size_override("font_size", win_screen_message_font_size)
+	if win_screen_font != null:
+		msg.add_theme_font_override("font", win_screen_font)
+	msg.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	msg.custom_minimum_size = Vector2(360, 0)
+	vbox.add_child(msg)
+
+	var btn: BaseButton
+	if win_screen_button_texture_normal != null:
+		var tex_btn: TextureButton = TextureButton.new()
+		tex_btn.name = "ContinueButton"
+		tex_btn.text = "Continue"
+		tex_btn.texture_normal = win_screen_button_texture_normal
+		tex_btn.texture_hover = win_screen_button_texture_hover if win_screen_button_texture_hover != null else win_screen_button_texture_normal
+		tex_btn.texture_pressed = win_screen_button_texture_pressed if win_screen_button_texture_pressed != null else win_screen_button_texture_normal
+		tex_btn.custom_minimum_size = win_screen_button_size
+		#tex_btn.expand_mode = TextureButton.EXPAND_IGNORE_SIZE
+		if win_screen_font != null:
+			tex_btn.add_theme_font_override("font", win_screen_font)
+		if win_screen_button_font_size > 0:
+			tex_btn.add_theme_font_size_override("font_size", win_screen_button_font_size)
+		tex_btn.pressed.connect(_close_after_win)
+		btn = tex_btn
+	else:
+		var std_btn: Button = Button.new()
+		std_btn.name = "ContinueButton"
+		std_btn.text = "Continue"
+		std_btn.custom_minimum_size = win_screen_button_size
+		if win_screen_font != null:
+			std_btn.add_theme_font_override("font", win_screen_font)
+		if win_screen_button_font_size > 0:
+			std_btn.add_theme_font_size_override("font_size", win_screen_button_font_size)
+		std_btn.pressed.connect(_close_after_win)
+		btn = std_btn
+	vbox.add_child(btn)
+
+func _close_after_win() -> void:
+	_cleanup_and_close()
+	minigame_completed.emit(0)
+
+func _clear_win_overlay() -> void:
+	if _win_overlay != null and is_instance_valid(_win_overlay):
+		_win_overlay.queue_free()
+		_win_overlay = null
 
 func _update_timer_bar() -> void:
 	var fraction: float = clamp(time_remaining / SESSION_DURATION, 0.0, 1.0)
@@ -494,6 +621,7 @@ func _update_score_label() -> void:
 	score_label.text = "Score: %d / %d" % [targets_found, TARGETS_TO_WIN]
 
 func _cleanup_and_close() -> void:
+	_clear_win_overlay()
 	_clear_rows()
 	visible = false
 	is_active = false
