@@ -1,6 +1,8 @@
 extends Control
 # Reflex Rendevoux Minigame Script
 
+signal minigame_completed(currency_earned: int)
+signal minigame_failed()
 
 # Stores time durations for the event
 @export var time_limit_QTE = 0.5
