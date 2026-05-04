@@ -136,7 +136,7 @@ func time_runs_out()->void:
 # Interprets input: checks whether it is a success or not
 func _input(event: InputEvent) -> void:
 	if Input.is_action_pressed("ui_accept"):
-		if not qte_time && health_girl != 0:
+		if not qte_time && health_girl >= 1:
 			# Strike is too early
 			gargoyle_attack()
 		elif not success:
