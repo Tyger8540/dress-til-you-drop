@@ -97,4 +97,5 @@ func clear_inventory_ui() -> void:
 func _on_inventory_tab_selected(tab: InventoryTabButton) -> void:
 	clear_inventory_ui()
 	current_tab_type = tab.tab_type
+	Audio.play_sound(load("res://audio/sfx/UI/ChangePage.wav"))
 	set_inventory_ui()

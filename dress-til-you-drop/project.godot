@@ -23,9 +23,9 @@ PlayerStats="*res://scripts/player_stats.gd"
 Enums="*res://scripts/enums.gd"
 Signals="*res://scripts/signals.gd"
 InventoryManager="*res://scripts/inventory_manager.gd"
-MusicPlayer="*res://scenes/music_player.tscn"
-MouseController="*res://scenes/mouse_controller.tscn"
 ShopManager="*res://scripts/shop_manager.gd"
+Audio="*res://scripts/audio.gd"
+MouseController="*res://scenes/mouse_controller.tscn"
 
 [display]
 

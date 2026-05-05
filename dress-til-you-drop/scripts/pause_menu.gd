@@ -56,6 +56,7 @@ func set_panel(state: MenuState) -> void:
 
 
 func continue_game() -> void:
+	Audio.play_sound(load("res://audio/sfx/UI/SelectYes.wav"))
 	get_tree().paused = false
 	visible = false
 	MouseController.set_mouse_visible(false)
@@ -64,11 +65,13 @@ func continue_game() -> void:
 
 
 func quit_game() -> void:
+	Audio.play_sound(load("res://audio/sfx/UI/SelectYes.wav"))
 	# TODO save game before quitting
 	get_tree().quit()
 
 
 func open_settings() -> void:
+	Audio.play_sound(load("res://audio/sfx/UI/SelectYes.wav"))
 	$OptionsPanel.visible = false
 	$SettingsPanel.visible = true
 
