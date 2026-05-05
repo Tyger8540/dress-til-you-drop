@@ -1,9 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://b08sbh87k0kft"]
 
-[ext_resource type="AudioStream" uid="uid://dsnlmh6sb1t8o" path="res://audio/music/theme.wav" id="1_yvkaf"]
+[ext_resource type="AudioStream" uid="uid://dbybxgw8vm78o" path="res://audio/sfx/Clothes/PutOn.wav" id="1_jxdhu"]
 
 [node name="MusicPlayer" type="AudioStreamPlayer"]
 process_mode = 3
-stream = ExtResource("1_yvkaf")
+stream = ExtResource("1_jxdhu")
 volume_db = -10.0
 autoplay = true

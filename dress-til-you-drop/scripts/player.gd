@@ -7,6 +7,8 @@ const MAX_STEP_HEIGHT = 0.5  # NOTE might change for diff stair objects
 
 @export var current_cam: Camera3D
 
+@export var footstep_sounds: Array[AudioStream]
+
 var in_dialog: bool = false
 
 var move_direction: Vector3
@@ -34,6 +36,8 @@ var cur_minigame: Node = null
 @onready var inventory_ui = $InventoryUI
 @onready var shop_ui = $ShopUI
 
+@onready var footstep_sound_timer: Timer = $FootstepSoundTimer
+
 
 func _ready():
 	Signals.inventory_slot_selected.connect(_on_inventory_slot_selected)
@@ -57,6 +61,10 @@ func _physics_process(delta: float) -> void:
 	
 	if velocity.is_zero_approx():
 		move_orientation_locked = false
+		footstep_sound_timer.stop()
+	else:
+		if footstep_sound_timer.is_stopped():
+			footstep_sound_timer.start()
 	
 	if move_direction:
 		if not move_orientation_locked:
@@ -103,6 +111,7 @@ func _on_inventory_slot_selected(inventory_slot: InventorySlotButton) -> void:
 			shoes.mesh = inventory_slot.inventory_item.item_texture
 		Enums.ClothingType.ACCESSORY:
 			accessory.mesh = inventory_slot.inventory_item.item_texture
+	Audio.play_sound(load("res://audio/sfx/Clothes/PutOn.wav"))
 	if in_inventory:
 		return
 
@@ -208,3 +217,7 @@ func _on_minigame_started(minigame_scene) -> void:
 func _on_minigame_finished() -> void:
 	cur_minigame = null
 	in_minigame = false
+
+
+func _on_footstep_sound_timer_timeout() -> void:
+	Audio.play_sound(footstep_sounds.pick_random(), -5.0)

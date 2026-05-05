@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://0cfpk8kb73rs"
+path="res://.godot/imported/door2Conv.wav-bedcea9487b979662f1bb8bb201cb502.sample"
+
+[deps]
+
+source_file="res://audio/sfx/Door Sounds/FX/door2Conv.wav"
+dest_files=["res://.godot/imported/door2Conv.wav-bedcea9487b979662f1bb8bb201cb502.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

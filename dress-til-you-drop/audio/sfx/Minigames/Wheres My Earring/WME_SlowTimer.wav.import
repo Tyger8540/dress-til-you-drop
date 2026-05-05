@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b81hd1f7n7hem"
+path="res://.godot/imported/WME_SlowTimer.wav-75eb4e3ed757eaf8b7eb43e2c19576de.sample"
+
+[deps]
+
+source_file="res://audio/sfx/Minigames/Wheres My Earring/WME_SlowTimer.wav"
+dest_files=["res://.godot/imported/WME_SlowTimer.wav-75eb4e3ed757eaf8b7eb43e2c19576de.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

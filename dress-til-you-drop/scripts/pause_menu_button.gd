@@ -23,6 +23,7 @@ func _on_visibility_changed() -> void:
 
 func _on_mouse_entered() -> void:
 	pause_menu.set_panel(pause_menu_state)
+	Audio.play_sound(load("res://audio/sfx/UI/Hover.wav"))
 
 
 func _on_mouse_exited() -> void:

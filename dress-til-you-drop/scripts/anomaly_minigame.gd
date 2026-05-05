@@ -40,6 +40,7 @@ func _process(delta: float) -> void:
 		if Input.is_action_just_pressed("continue"):
 			Signals.minigame_defeated.emit()
 			Signals.minigame_finished.emit()
+			Audio.resume_music()
 			get_parent().queue_free()
 	
 	if not minigame_finished:
@@ -63,6 +64,10 @@ func get_num_anomalies() -> int:
 
 
 func start_minigame() -> void:
+	Audio.pause_music()
+	var startup_audio := Audio.play_sound(load("res://audio/sfx/Minigames/Spot the Anomaly/STA_StartupSound.wav"))
+	startup_audio.finished.connect(func(): Audio.play_music(load("res://audio/music/MainTheme.wav"), -12.5, true, get_parent()))
+	
 	var diff: int = get_num_anomalies()
 	while diff < 5:
 		for anomaly in left_anomalies:
