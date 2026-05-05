@@ -9,16 +9,17 @@
 [ext_resource type="PackedScene" uid="uid://crh3xyw8knqlt" path="res://scenes/settings_manager.tscn" id="3_muuyn"]
 [ext_resource type="Resource" uid="uid://cijuaatftyr2g" path="res://resources/dialog/shop_1_locked.tres" id="3_xs61c"]
 [ext_resource type="Resource" uid="uid://cu4jrgrm8eq5n" path="res://resources/dialog/photoshoot_locked.tres" id="4_xs61c"]
-[ext_resource type="Material" uid="uid://djombhx4qb3pp" path="res://resources/materials/green_material.tres" id="5_in4so"]
 [ext_resource type="Script" uid="uid://cvmwt7y8js3uk" path="res://scripts/earring_interaction.gd" id="7_0wv5t"]
 [ext_resource type="PackedScene" uid="uid://dmecdf4b0ub0k" path="res://scenes/move_follow_camera.tscn" id="7_dbmwu"]
 [ext_resource type="Script" uid="uid://dvwxpheb3tytc" path="res://scripts/inventory_camera.gd" id="8_6hdfs"]
 [ext_resource type="PackedScene" uid="uid://ubqqbukxq7yg" path="res://scenes/earring_minigame.tscn" id="8_j7c6l"]
 [ext_resource type="Resource" uid="uid://26yc23e1s8yl" path="res://resources/dialog/spot_the_anomaly_intro.tres" id="9_bhs85"]
+[ext_resource type="ArrayMesh" uid="uid://bfolh7lynx8a6" path="res://models/mansion_objects/piercing gun1.res" id="9_ld156"]
 [ext_resource type="Script" uid="uid://6mytq5d2jew6" path="res://scripts/anomaly_interaction.gd" id="9_rcqqv"]
 [ext_resource type="PackedScene" uid="uid://cub4fegl67mhq" path="res://scenes/anomaly_minigame.tscn" id="10_bhs85"]
 [ext_resource type="Script" uid="uid://brlj24qldvxv0" path="res://scripts/reflex_rendevoux_interaction.gd" id="12_rjvo3"]
 [ext_resource type="Resource" uid="uid://8iv5ryh7ka3" path="res://resources/dialog/reflex_rendezvous_intro.tres" id="12_rpj0x"]
+[ext_resource type="ArrayMesh" uid="uid://bs1osry68obds" path="res://models/mansion_objects/camera1.res" id="13_cqbpd"]
 [ext_resource type="PackedScene" uid="uid://doamnkbbr6t3n" path="res://scenes/pause_menu.tscn" id="13_ld5u0"]
 [ext_resource type="PackedScene" uid="uid://x2vxhocjdljg" path="res://scenes/models/railing.tscn" id="14_6ay7c"]
 [ext_resource type="PackedScene" uid="uid://dh426pr6mf5sx" path="res://scenes/reflex_rendevoux_minigame.tscn" id="14_oxpdu"]
@@ -27,7 +28,10 @@
 [ext_resource type="PackedScene" uid="uid://bwoxekqcwg82" path="res://scenes/models/baseboard_top.tscn" id="16_0wv5t"]
 [ext_resource type="PackedScene" uid="uid://0y81n7wfnq6k" path="res://scenes/models/ceiling.tscn" id="16_64kij"]
 [ext_resource type="PackedScene" uid="uid://rkkqc2j0jlbk" path="res://scenes/models/wall.tscn" id="17_eq5mn"]
+[ext_resource type="ArrayMesh" uid="uid://b5vxbr5yrqcwj" path="res://models/mansion_objects/BézierCurve.res" id="17_gsg6v"]
+[ext_resource type="ArrayMesh" uid="uid://bu7sbqj4vn1ka" path="res://models/mansion_objects/BézierCurve_002.res" id="18_fgfk0"]
 [ext_resource type="PackedScene" uid="uid://dsnl16balodhm" path="res://models/mansion/dtyd_mansion_with_collision.tscn" id="18_gjt1e"]
+[ext_resource type="ArrayMesh" uid="uid://b15jkqqhuqeup" path="res://models/mansion_objects/Mesh.res" id="19_iryt0"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_muuyn"]
 
@@ -148,20 +152,11 @@ albedo_color = Color(0.24946035, 0.24946035, 0.24946035, 1)
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_g3kkl"]
 data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
 
-[sub_resource type="PrismMesh" id="PrismMesh_muuyn"]
-
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_muuyn"]
 data = PackedVector3Array(0, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0, 0.5, 0.5, 0, 0.5, -0.5, 0.5, -0.5, 0.5, 0, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0, 0.5, -0.5, 0, 0.5, 0.5, -0.5, -0.5, -0.5, 0, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_4y6b0"]
 radius = 1.3000001
-
-[sub_resource type="SphereMesh" id="SphereMesh_rcqqv"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bhs85"]
-albedo_color = Color(0.43137255, 0.2901961, 0.26666668, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_rpj0x"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gjt1e"]
 size = Vector3(1, 21.800001, 70.8)
@@ -374,9 +369,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_rjvo3")
 shape = SubResource("ConcavePolygonShape3D_g3kkl")
 
 [node name="interactable obj" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.7071068, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, -0.7071068, 53.7, 0.5, 64)
-mesh = SubResource("PrismMesh_muuyn")
-surface_material_override/0 = ExtResource("5_in4so")
+transform = Transform3D(-0.7071068, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, -0.7071068, 57.399998, 0.5, 65)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="interactable obj"]
 
@@ -394,10 +387,12 @@ minigame_scene = ExtResource("8_j7c6l")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="interactable obj/InteractionArea"]
 shape = SubResource("SphereShape3D_4y6b0")
 
+[node name="PiercingGun" type="MeshInstance3D" parent="interactable obj"]
+transform = Transform3D(-40, 0, 3.8146973e-06, 0, 40, 0, -3.8146973e-06, 0, -40, 0, 0, 0)
+mesh = ExtResource("9_ld156")
+
 [node name="interactable obj2" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.7071068, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, -0.7071068, 53.7, 0.5, 50.399998)
-mesh = SubResource("SphereMesh_rcqqv")
-surface_material_override/0 = SubResource("StandardMaterial3D_bhs85")
+transform = Transform3D(-0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, -0.70710677, 54.600002, 0.5, 50.399998)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="interactable obj2"]
 
@@ -415,10 +410,12 @@ minigame_scene = ExtResource("10_bhs85")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="interactable obj2/InteractionArea"]
 shape = SubResource("SphereShape3D_4y6b0")
 
+[node name="CameraMesh" type="MeshInstance3D" parent="interactable obj2"]
+transform = Transform3D(-37.587704, 0, -13.680809, 0, 40, 0, 13.680809, 0, -37.587704, 0, 0, 0)
+mesh = ExtResource("13_cqbpd")
+
 [node name="interactable obj3" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.9961947, 0, -0.08715573, 0, 1, 0, 0.08715573, 0, -0.9961947, 56.9, 0.5, 60.7)
-mesh = SubResource("BoxMesh_rpj0x")
-surface_material_override/0 = ExtResource("5_in4so")
+transform = Transform3D(-0.9961947, 0, -0.08715573, 0, 1, 0, 0.08715573, 0, -0.9961947, 54.7, 0.5, 59.2)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="interactable obj3"]
 
@@ -426,6 +423,7 @@ surface_material_override/0 = ExtResource("5_in4so")
 shape = SubResource("ConcavePolygonShape3D_muuyn")
 
 [node name="InteractionArea" parent="interactable obj3" node_paths=PackedStringArray("connected_area") instance=ExtResource("1_4y6b0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.017433167, 0, -0.19924164)
 dialog = ExtResource("12_rpj0x")
 connected_area = NodePath("../../walls/MeshInstance3D5/minigame1/InteractionArea")
 
@@ -435,6 +433,19 @@ minigame_scene = ExtResource("14_oxpdu")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="interactable obj3/InteractionArea"]
 shape = SubResource("SphereShape3D_4y6b0")
+
+[node name="ScytheMeshes" type="Node3D" parent="interactable obj3"]
+transform = Transform3D(0.07854211, -0.44713542, -14.993133, -5.11078, 14.095388, -0.44713503, 14.102267, 5.1107817, -0.07854307, 0, 0.79999995, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="interactable obj3/ScytheMeshes"]
+mesh = ExtResource("17_gsg6v")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="interactable obj3/ScytheMeshes"]
+mesh = ExtResource("18_fgfk0")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="interactable obj3/ScytheMeshes"]
+transform = Transform3D(1, 2.9802322e-08, 0, 2.9802322e-08, 1, 1.8626451e-09, 7.450581e-09, 0, 1, 0.0022716522, -0.0062646866, 0.0001988411)
+mesh = ExtResource("19_iryt0")
 
 [node name="Player" parent="." node_paths=PackedStringArray("current_cam") instance=ExtResource("1_cptfm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68, 1, 57)
