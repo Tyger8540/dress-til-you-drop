@@ -1,0 +1,9 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://dcs0cee2j87ai"]
+
+[ext_resource type="Texture2D" uid="uid://b2oghk3nd3thm" path="res://art/settings_ui/slider bar/unselected/slider filled unselected.png" id="1_ypo8i"]
+
+[resource]
+texture = ExtResource("1_ypo8i")
+expand_margin_top = 20.0
+expand_margin_bottom = 20.0
+axis_stretch_horizontal = 1

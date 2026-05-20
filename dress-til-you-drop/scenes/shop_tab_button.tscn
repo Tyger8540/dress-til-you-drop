@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhbevkq06vfdp"]
+
+[ext_resource type="Script" uid="uid://cxgkyu8uplycf" path="res://scripts/shop_tab_button.gd" id="1_wthxi"]
+
+[node name="ShopTabButton" type="TextureButton"]
+script = ExtResource("1_wthxi")
+metadata/_custom_type_script = "uid://cxgkyu8uplycf"
+
+[connection signal="button_up" from="." to="." method="_on_button_up"]

@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmnsyo3nrlqcp"]
+
+[ext_resource type="Script" uid="uid://b5demftkhwxdc" path="res://scripts/mouse_controller.gd" id="1_5m18o"]
+[ext_resource type="Texture2D" uid="uid://dbi3ofwrivh0p" path="res://art/mouse_cursor_10.png" id="2_rcbpt"]
+
+[node name="MouseController" type="Control" node_paths=PackedStringArray("cursor")]
+z_index = 4096
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_5m18o")
+cursor = NodePath("Cursor")
+
+[node name="Cursor" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = -166.0
+offset_top = -157.0
+offset_right = 203.0
+offset_bottom = 210.0
+texture = ExtResource("2_rcbpt")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 67
+visible = false
+
+[node name="Cursor" type="TextureRect" parent="CanvasLayer"]
+offset_left = -166.0
+offset_top = -157.0
+offset_right = 203.0
+offset_bottom = 210.0
+texture = ExtResource("2_rcbpt")

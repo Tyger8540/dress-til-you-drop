@@ -4,10 +4,10 @@ extends Control
 @export var player: Player
 @export var inventory_slot_buttons: Array[InventorySlotButton]
 
-var current_tab_type: Enums.ClothingType = Enums.ClothingType.ACCESSORY
+var current_tab_type: Enums.ClothingType = Enums.ClothingType.HAIR
 
 @onready var grid_container = $ScrollContainer/GridContainer
-@onready var current_tab = $"Tabs/Earrings Tab"
+@onready var current_tab = $"Tabs/Hair Tab"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -53,8 +53,8 @@ func set_inventory_ui() -> void:
 			inventory_slot_buttons[index].item_icon.texture = inventory_item.ui_texture
 			
 			match current_tab_type:
-				Enums.ClothingType.ACCESSORY:
-					if inventory_slot_buttons[index].inventory_item.item_texture == player.accessory.mesh:
+				Enums.ClothingType.HAIR:
+					if inventory_slot_buttons[index].inventory_item.item_texture == player.hair.mesh:
 						inventory_slot_buttons[index].set_active()
 				Enums.ClothingType.TOP:
 					if inventory_slot_buttons[index].inventory_item.item_texture == player.top.mesh:
@@ -65,8 +65,24 @@ func set_inventory_ui() -> void:
 				Enums.ClothingType.SHOES:
 					if inventory_slot_buttons[index].inventory_item.item_texture == player.shoes.mesh:
 						inventory_slot_buttons[index].set_active()
+				Enums.ClothingType.ACCESSORY:
+					if inventory_slot_buttons[index].inventory_item.item_texture == player.accessory.mesh:
+						inventory_slot_buttons[index].set_active()
 			
 			index += 1
+	
+	$Collection/CollectionText.text = str(index) + "/" + "??" + " "
+	match current_tab_type:
+		Enums.ClothingType.HAIR:
+			$Collection/CollectionText.text += "Hair  Collected"
+		Enums.ClothingType.TOP:
+			$Collection/CollectionText.text += "Tops  Collected"
+		Enums.ClothingType.BOTTOM:
+			$Collection/CollectionText.text += "Bottoms  Collected"
+		Enums.ClothingType.SHOES:
+			$Collection/CollectionText.text += "Shoes  Collected"
+		Enums.ClothingType.ACCESSORY:
+			$Collection/CollectionText.text += "Accessories  Collected"
 
 
 func clear_inventory_ui() -> void:
@@ -81,4 +97,5 @@ func clear_inventory_ui() -> void:
 func _on_inventory_tab_selected(tab: InventoryTabButton) -> void:
 	clear_inventory_ui()
 	current_tab_type = tab.tab_type
+	Audio.play_sound(load("res://audio/sfx/UI/ChangePage.wav"))
 	set_inventory_ui()

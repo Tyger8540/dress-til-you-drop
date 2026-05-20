@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://bjq6qqwvckl4b"]
+
+[ext_resource type="Script" uid="uid://dp57gprs43ig4" path="res://scripts/inventory_item.gd" id="1_80pfd"]
+[ext_resource type="ArrayMesh" uid="uid://d2puurvk28ce8" path="res://models/main_character/snow_bunny/snowBunny-shoes.res" id="1_kparl"]
+[ext_resource type="Texture2D" uid="uid://vckuvhla3xf" path="res://art/inventory_icons/shoes/snowBunny-shoes.png" id="3_8v1r1"]
+
+[resource]
+script = ExtResource("1_80pfd")
+item_type = 3
+item_name = "Snow Bunny Shoes"
+item_texture = ExtResource("1_kparl")
+ui_texture = ExtResource("3_8v1r1")
+price = {
+"Diamonds": 0,
+"Hearts": 0,
+"Mags": 15
+}
+metadata/_custom_type_script = "uid://dp57gprs43ig4"

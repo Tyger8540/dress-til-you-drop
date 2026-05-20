@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://ck5svw77b211t"
 path.s3tc="res://.godot/imported/wall_0.png-766a305177b7bdcf4663f93d7a5cb55d.s3tc.ctex"
+path.etc2="res://.godot/imported/wall_0.png-766a305177b7bdcf4663f93d7a5cb55d.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://models/mansion/wall_0.png"
-dest_files=["res://.godot/imported/wall_0.png-766a305177b7bdcf4663f93d7a5cb55d.s3tc.ctex"]
+dest_files=["res://.godot/imported/wall_0.png-766a305177b7bdcf4663f93d7a5cb55d.s3tc.ctex", "res://.godot/imported/wall_0.png-766a305177b7bdcf4663f93d7a5cb55d.etc2.ctex"]
 
 [params]
 

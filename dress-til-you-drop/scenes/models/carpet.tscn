@@ -6,7 +6,6 @@
 size = Vector3(8, 0.3, 10)
 
 [node name="carpet" instance=ExtResource("1_aqn6o")]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
 

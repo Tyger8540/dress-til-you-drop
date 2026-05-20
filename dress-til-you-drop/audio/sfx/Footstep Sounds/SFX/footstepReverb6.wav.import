@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cngqs6yyqgj5i"
+path="res://.godot/imported/footstepReverb6.wav-f88a70fa0c209b71914e2543a3d630a1.sample"
+
+[deps]
+
+source_file="res://audio/sfx/Footstep Sounds/SFX/footstepReverb6.wav"
+dest_files=["res://.godot/imported/footstepReverb6.wav-f88a70fa0c209b71914e2543a3d630a1.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

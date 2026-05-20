@@ -8,6 +8,8 @@ enum MenuState {
 	QUIT,
 }
 
+var player: Player
+
 
 ## Raised above fullscreen UI spawned on CanvasLayer (earring minigame).
 var _elevated_pause_layer: CanvasLayer = null
@@ -16,7 +18,7 @@ var _saved_parent_before_elevate: Node = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	player = get_tree().get_nodes_in_group("player")[0]
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -26,15 +28,26 @@ func _process(_delta: float) -> void:
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("pause"):
-		var turning_on_pause: bool = not get_tree().paused
-		if turning_on_pause:
-			_elevate_above_minigame_if_needed()
+		if player.in_inventory:
+			Signals.inventory_closed.emit()
+		elif $SettingsPanel.visible:
+			close_settings()
+		#elif player.in_minigame:
+			##player.cur_minigame.visible = false
+			#pass
+		else:
+			var turning_on_pause: bool = not get_tree().paused
+			if turning_on_pause:
+				_elevate_above_minigame_if_needed()
 
-		get_tree().paused = not get_tree().paused
-		visible = get_tree().paused
+			get_tree().paused = not get_tree().paused
+			visible = get_tree().paused
+			MouseController.set_mouse_visible(visible)
+			if player.in_minigame:
+				player.cur_minigame.visible = !get_tree().paused
 
-		if not get_tree().paused:
-			_restore_normal_parent()
+			if not get_tree().paused:
+				_restore_normal_parent()
 
 
 func _is_earring_minigame_running() -> bool:
@@ -105,12 +118,28 @@ func set_panel(state: MenuState) -> void:
 
 
 func continue_game() -> void:
+	Audio.play_sound(load("res://audio/sfx/UI/SelectYes.wav"))
 	get_tree().paused = false
 	visible = false
 	_restore_normal_parent()
+	MouseController.set_mouse_visible(false)
+	if player.in_minigame:
+		player.cur_minigame.visible = true
 
 
 func quit_game() -> void:
+	Audio.play_sound(load("res://audio/sfx/UI/SelectYes.wav"))
 	_restore_normal_parent()
 	# TODO save game before quitting
 	get_tree().quit()
+
+
+func open_settings() -> void:
+	Audio.play_sound(load("res://audio/sfx/UI/SelectYes.wav"))
+	$OptionsPanel.visible = false
+	$SettingsPanel.visible = true
+
+
+func close_settings() -> void:
+	$SettingsPanel.visible = false
+	$OptionsPanel.visible = true

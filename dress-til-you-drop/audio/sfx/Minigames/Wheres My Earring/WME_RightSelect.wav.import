@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bochf58u8bo5u"
+path="res://.godot/imported/WME_RightSelect.wav-68f15d26860850db36c3f45787f8ef5f.sample"
+
+[deps]
+
+source_file="res://audio/sfx/Minigames/Wheres My Earring/WME_RightSelect.wav"
+dest_files=["res://.godot/imported/WME_RightSelect.wav-68f15d26860850db36c3f45787f8ef5f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

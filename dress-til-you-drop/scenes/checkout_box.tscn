@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7qayip6d2upo"]
+
+[ext_resource type="Texture2D" uid="uid://dsu3q4od16n6b" path="res://art/shop_ui/checkout/checkout overlay/checkout box.png" id="1_xyfal"]
+
+[node name="CheckoutBox" type="TextureRect"]
+texture = ExtResource("1_xyfal")
