@@ -1,6 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://earring_item_scene"]
+[gd_scene load_steps=4 format=3 uid="uid://earring_item_scene"]
 
 [ext_resource type="Script" path="res://scripts/earring_item.gd" id="1_earring"]
+
+[sub_resource type="Shader" id="Shader_soft_edges"]
+code = "shader_type canvas_item;\n\nuniform float edge_fade : hint_range(0.0, 0.5) = 0.12;\nuniform float corner_radius : hint_range(0.0, 0.5) = 0.18;\n\nvoid fragment() {\n\tvec4 base = COLOR * texture(TEXTURE, UV);\n\tvec2 p = UV - vec2(0.5);\n\tvec2 b = vec2(0.5 - corner_radius);\n\tvec2 q = abs(p) - b;\n\tfloat dist = length(max(q, vec2(0.0))) + min(max(q.x, q.y), 0.0) - corner_radius;\n\tfloat aa = fwidth(dist);\n\tfloat shape_alpha = 1.0 - smoothstep(-aa, aa, dist);\n\n\tfloat edge = min(min(UV.x, 1.0 - UV.x), min(UV.y, 1.0 - UV.y));\n\tfloat edge_alpha = smoothstep(0.0, edge_fade, edge);\n\n\tbase.a *= shape_alpha * edge_alpha;\n\tCOLOR = base;\n}\n"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_soft_edges"]
+shader = SubResource("Shader_soft_edges")
+shader_parameter/edge_fade = 0.1
+shader_parameter/corner_radius = 0.16
 
 [node name="EarringItem" type="Control"]
 custom_minimum_size = Vector2(110, 110)
@@ -23,7 +31,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0.97, 0.97, 0.99, 1)
+material = SubResource("ShaderMaterial_soft_edges")
+color = Color(0.19607843, 0.12941177, 0.4, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8

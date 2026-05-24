@@ -133,7 +133,6 @@ theme_override_constants/separation = 24
 alignment = 1
 
 [node name="TimerContainer" type="Control" parent="MainFrame/TopBar"]
-clip_contents = true
 custom_minimum_size = Vector2(132, 480)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -164,6 +163,7 @@ texture = ExtResource("5_bar_fill")
 expand_mode = 1
 
 [node name="TimerGem" type="TextureRect" parent="MainFrame/TopBar/TimerContainer"]
+z_index = 3
 texture_filter = 1
 layout_mode = 0
 offset_left = 40.0

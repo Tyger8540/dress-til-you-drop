@@ -15,13 +15,19 @@ const ITEM_GAP_X := 4.0
 ## Inset (left, top, right, bottom) so the fill bar stays inside the timer background. Increase if the bar overflows.
 @export var timer_bar_inset: Vector4 = Vector4(8.0, 8.0, 8.0, 8.0)
 ## Scale of the gem slider. Change in the inspector to resize the gem.
-@export var timer_gem_scale: float = 1.0
+@export var timer_gem_scale: float = 1.5
 ## Pixels to move the gem down from the fill line (positive = lower). Gem still follows the top of the fill.
-@export var timer_gem_offset_y: float = 8.0
+@export var timer_gem_offset_y: float = 100.0
+## Multiplier for gem descent speed relative to timer progress (1.0 = same speed).
+@export var timer_gem_speed_scale: float = 0.70
 ## Pixels to crop from top of bar_fill.png (removes empty/transparent space so fill stays aligned).
 @export var timer_fill_crop_top: float = 0.0
 ## Pixels to crop from bottom of bar_fill.png (removes empty space beneath the bar graphic).
 @export var timer_fill_crop_bottom: float = 0.0
+## Extra top padding for the fill movement area so full bar starts lower inside the background.
+@export var timer_fill_top_padding: float = 100.0
+## Small vertical offset to place the fill slightly lower without changing timer logic.
+@export var timer_fill_vertical_offset: float = 4.0
 ## Optional custom font for the win screen (message and button). Assign a .ttf/.otf or a FontFile in the inspector.
 @export var win_screen_font: FontFile = null
 ## Font size for the win message ("You found your sister's earring!").
@@ -476,7 +482,11 @@ func _show_win_screen() -> void:
 	_win_overlay.offset_right = 0.0
 	_win_overlay.offset_bottom = 0.0
 	_win_overlay.mouse_filter = Control.MOUSE_FILTER_STOP
+	# Draw above timer UI (gem uses a higher z_index) so dimmer covers the whole frame.
+	_win_overlay.z_as_relative = false
+	_win_overlay.z_index = 128
 	main_frame.add_child(_win_overlay)
+	_win_overlay.move_to_front()
 
 	var bg: ColorRect = ColorRect.new()
 	bg.name = "WinOverlayBg"
@@ -585,10 +595,17 @@ func _update_timer_bar() -> void:
 	top = clampf(top, 0.0, full_height - 1.0)
 	inner_w = min(inner_w, full_width - left)
 	inner_h = min(inner_h, full_height - top)
-	# Fill bar: anchored to bottom so it never slides; only height shrinks
+	# Nudge fill area slightly lower while keeping same update behavior.
+	top = clampf(top + timer_fill_vertical_offset, 0.0, full_height - 1.0)
+	inner_h = min(inner_h, full_height - top)
+	# Fill bar: anchored to bottom so it never slides; only height shrinks.
+	# Top padding lets the full bar start lower inside the timer background art.
+	var fill_top_limit: float = top + timer_fill_top_padding
+	var fill_usable_h: float = max(1.0, inner_h - timer_fill_top_padding)
 	var fill_bottom_y: float = top + inner_h
-	var fill_height: float = inner_h * fraction
+	var fill_height: float = fill_usable_h * fraction
 	var fill_top_y: float = fill_bottom_y - fill_height
+	fill_top_y = max(fill_top_y, fill_top_limit)
 	timer_bar.set_anchors_preset(Control.PRESET_BOTTOM_WIDE)
 	timer_bar.anchor_left = 0.0
 	timer_bar.anchor_right = 0.0
@@ -598,27 +615,33 @@ func _update_timer_bar() -> void:
 	timer_bar.offset_right = left + inner_w
 	timer_bar.offset_bottom = fill_bottom_y - full_height
 	timer_bar.offset_top = timer_bar.offset_bottom - fill_height
-	# Gem: follows the top of the fill line, offset lower by timer_gem_offset_y, stays inside
+	# Gem: follows the top edge of the fill and can slightly overlap into it.
 	if is_instance_valid(timer_gem):
 		timer_gem.scale = Vector2(timer_gem_scale, timer_gem_scale)
-		var gem_h: float = timer_gem.size.y * timer_gem_scale
-		var gem_w: float = timer_gem.size.x * timer_gem_scale
-		var fill_line_y: float = fill_top_y
-		var gem_y: float = fill_line_y - gem_h + timer_gem_offset_y
-		gem_y = clampf(gem_y, top, top + inner_h - gem_h)
-		var gem_x: float = left + (inner_w - gem_w) * 0.5
-		gem_x = clampf(gem_x, left, left + inner_w - gem_w)
+		var gem_rect_h: float = timer_gem.size.y
+		var gem_rect_w: float = timer_gem.size.x
+		var gem_visual_h: float = gem_rect_h * timer_gem_scale
+		var gem_visual_w: float = gem_rect_w * timer_gem_scale
+		# Move gem from timer progress, scaled so it can descend slower.
+		var timer_progress: float = 1.0 - fraction
+		var gem_y: float = top + (inner_h * timer_progress * timer_gem_speed_scale) + timer_gem_offset_y
+		# Only clamp at bottom to prevent "falling through"; avoid top clamp drift.
+		gem_y = min(gem_y, top + inner_h - gem_rect_h)
+		var gem_x: float = left + (inner_w - gem_visual_w) * 0.5
+		gem_x = clampf(gem_x, left, left + inner_w - gem_visual_w)
 		timer_gem.set_anchors_preset(Control.PRESET_TOP_LEFT)
 		timer_gem.offset_left = gem_x
 		timer_gem.offset_top = gem_y
-		timer_gem.offset_right = gem_x + timer_gem.size.x
-		timer_gem.offset_bottom = gem_y + timer_gem.size.y
+		timer_gem.offset_right = gem_x + gem_rect_w
+		timer_gem.offset_bottom = gem_y + gem_rect_h
 		var danger: float = 1.0 - fraction
 		var ramp: float = clamp((danger - 0.3) / 0.7, 0.0, 1.0)
 		timer_gem.modulate = Color(1.0, 1.0, 1.0).lerp(Color(1.0, 0.6, 0.6), ramp * 0.5)
 
 func _update_score_label() -> void:
-	score_label.text = "Score: %d / %d" % [targets_found, TARGETS_TO_WIN]
+	if is_instance_valid(score_label):
+		score_label.visible = false
+		score_label.text = ""
 
 func _cleanup_and_close() -> void:
 	_clear_win_overlay()
@@ -678,10 +701,7 @@ func _play_correct_fx() -> void:
 		glow_tween.tween_property(timer_glow, "modulate:a", 0.0, 0.22)\
 			.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	if is_instance_valid(speed_label):
-		if _speed_stage <= 1:
-			speed_label.text = ""
-		else:
-			speed_label.text = "x%d speed" % _speed_stage
+		speed_label.text = ""
 func _apply_end_shake(delta: float) -> void:
 	# increase screen shake as time runs out. this shakes the whole `mainframe`
 	# (including play area + ui column) for urgency feedback.
