@@ -12,7 +12,12 @@ const BASE_TIME_NEEDED = 10
 const WIN_SCREEN_SIZE_Y = 747.0
 const WIN_SCREEN_EXPANSION_SPEED = 500.0
 
-@export var left_anomalies: Array[AnomalyButton]
+@export var left_anomalies_1: Array[AnomalyButton]
+@export var left_anomalies_2: Array[AnomalyButton]
+
+var left_anomalies: Array[AnomalyButton]
+
+var level: int
 
 var anomaly_count: int
 var total_anomalies: int
@@ -29,8 +34,11 @@ var win_screen_finished: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$LeftCharacter.visible = false
-	$RightCharacter.visible = false
+	$LeftCharacter1.visible = false
+	$RightCharacter1.visible = false
+	$LeftCharacter2.visible = false
+	$RightCharacter2.visible = false
+	level = 2
 	start_minigame()
 
 
@@ -55,6 +63,11 @@ func _process(delta: float) -> void:
 	$WinScreen/Currency/CurrencyEarned.text = str(int(currency_earned - $WinScreen/CurrencyEarnedTimer.time_left * (currency_earned / $WinScreen/CurrencyEarnedTimer.wait_time)))
 
 func get_num_anomalies() -> int:
+	if level == 1:
+		left_anomalies = left_anomalies_1
+	elif level == 2:
+		left_anomalies = left_anomalies_2
+	
 	var count: int = 0
 	for anomaly in left_anomalies:
 		if anomaly.icon != anomaly.connected_button.icon:
@@ -72,13 +85,20 @@ func start_minigame() -> void:
 	while diff < 5:
 		for anomaly in left_anomalies:
 			anomaly.icon = anomaly.textures.pick_random()
+			anomaly.connected_button.icon = anomaly.textures.pick_random()
+			if anomaly.icon == anomaly.connected_button.icon:
+				anomaly.connected_button.icon = anomaly.textures[0]
 		diff = get_num_anomalies()
 	
 	anomaly_count = diff
 	total_anomalies = anomaly_count
 	update_anomaly_count_text()
-	$LeftCharacter.visible = true
-	$RightCharacter.visible = true
+	if level == 1:
+		$LeftCharacter1.visible = true
+		$RightCharacter1.visible = true
+	elif level == 2:
+		$LeftCharacter2.visible = true
+		$RightCharacter2.visible = true
 
 
 func update_anomaly_count_text() -> void:
@@ -88,10 +108,7 @@ func update_anomaly_count_text() -> void:
 		currency_earned = total_anomalies * BASE_TIME_NEEDED - int(time_passed)
 		currency_earned = clamp(currency_earned, MIN_CURRENCY_EARNED, MAX_CURRENCY_EARNED)
 		
-		# TODO UPDATE THE GLOBAL CURRENCY TO BE USED IN THE SHOP!!!!!!!
-		
 		play_win_animation()
-		#minigame_completed.emit(currency_earned)
 
 
 func play_win_animation() -> void:
