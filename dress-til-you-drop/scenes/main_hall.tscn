@@ -1,4 +1,4 @@
-[gd_scene load_steps=90 format=3 uid="uid://ds4f3s77v5f5w"]
+[gd_scene load_steps=95 format=3 uid="uid://ds4f3s77v5f5w"]
 
 [ext_resource type="PackedScene" uid="uid://f6sftetqaoh1" path="res://scenes/interaction_area.tscn" id="1_4y6b0"]
 [ext_resource type="PackedScene" uid="uid://bmd45oqbmm5e" path="res://scenes/player.tscn" id="1_cptfm"]
@@ -6,7 +6,7 @@
 [ext_resource type="Resource" uid="uid://dvle46b7es7mm" path="res://resources/dialog/shop_2_locked.tres" id="2_3p60x"]
 [ext_resource type="PackedScene" uid="uid://cy5lbcl5enw6a" path="res://scenes/move_camera.tscn" id="2_cptfm"]
 [ext_resource type="Resource" uid="uid://bvayquwvopjhg" path="res://resources/dialog/wheres_my_earring_intro.tres" id="2_wf2n6"]
-[ext_resource type="PackedScene" uid="uid://crh3xyw8knqlt" path="res://scenes/settings_manager.tscn" id="3_muuyn"]
+[ext_resource type="PackedScene" path="res://scenes/settings_manager.tscn" id="3_muuyn"]
 [ext_resource type="Resource" uid="uid://cijuaatftyr2g" path="res://resources/dialog/shop_1_locked.tres" id="3_xs61c"]
 [ext_resource type="Resource" uid="uid://cu4jrgrm8eq5n" path="res://resources/dialog/photoshoot_locked.tres" id="4_xs61c"]
 [ext_resource type="Script" uid="uid://cvmwt7y8js3uk" path="res://scripts/earring_interaction.gd" id="7_0wv5t"]
@@ -14,12 +14,12 @@
 [ext_resource type="Script" uid="uid://dvwxpheb3tytc" path="res://scripts/inventory_camera.gd" id="8_6hdfs"]
 [ext_resource type="PackedScene" uid="uid://ubqqbukxq7yg" path="res://scenes/earring_minigame.tscn" id="8_j7c6l"]
 [ext_resource type="Resource" uid="uid://26yc23e1s8yl" path="res://resources/dialog/spot_the_anomaly_intro.tres" id="9_bhs85"]
-[ext_resource type="ArrayMesh" uid="uid://bfolh7lynx8a6" path="res://models/mansion_objects/piercing gun1.res" id="9_ld156"]
+[ext_resource type="ArrayMesh" uid="uid://c7tnb6bv7v5qm" path="res://models/mansion_objects/piercing gun1.res" id="9_ld156"]
 [ext_resource type="Script" uid="uid://6mytq5d2jew6" path="res://scripts/anomaly_interaction.gd" id="9_rcqqv"]
 [ext_resource type="PackedScene" uid="uid://cub4fegl67mhq" path="res://scenes/anomaly_minigame.tscn" id="10_bhs85"]
 [ext_resource type="Script" uid="uid://brlj24qldvxv0" path="res://scripts/reflex_rendevoux_interaction.gd" id="12_rjvo3"]
 [ext_resource type="Resource" uid="uid://8iv5ryh7ka3" path="res://resources/dialog/reflex_rendezvous_intro.tres" id="12_rpj0x"]
-[ext_resource type="ArrayMesh" uid="uid://bs1osry68obds" path="res://models/mansion_objects/camera1.res" id="13_cqbpd"]
+[ext_resource type="ArrayMesh" uid="uid://bqwmyc11q8s55" path="res://models/mansion_objects/camera1.res" id="13_cqbpd"]
 [ext_resource type="PackedScene" uid="uid://doamnkbbr6t3n" path="res://scenes/pause_menu.tscn" id="13_ld5u0"]
 [ext_resource type="PackedScene" uid="uid://x2vxhocjdljg" path="res://scenes/models/railing.tscn" id="14_6ay7c"]
 [ext_resource type="PackedScene" uid="uid://dh426pr6mf5sx" path="res://scenes/reflex_rendevoux_minigame.tscn" id="14_oxpdu"]
@@ -28,10 +28,15 @@
 [ext_resource type="PackedScene" uid="uid://bwoxekqcwg82" path="res://scenes/models/baseboard_top.tscn" id="16_0wv5t"]
 [ext_resource type="PackedScene" uid="uid://0y81n7wfnq6k" path="res://scenes/models/ceiling.tscn" id="16_64kij"]
 [ext_resource type="PackedScene" uid="uid://rkkqc2j0jlbk" path="res://scenes/models/wall.tscn" id="17_eq5mn"]
-[ext_resource type="ArrayMesh" uid="uid://b5vxbr5yrqcwj" path="res://models/mansion_objects/BézierCurve.res" id="17_gsg6v"]
-[ext_resource type="ArrayMesh" uid="uid://bu7sbqj4vn1ka" path="res://models/mansion_objects/BézierCurve_002.res" id="18_fgfk0"]
+[ext_resource type="ArrayMesh" uid="uid://bwi805e0su56d" path="res://models/mansion_objects/BézierCurve.res" id="17_gsg6v"]
+[ext_resource type="ArrayMesh" uid="uid://di6gfp33a2wko" path="res://models/mansion_objects/BézierCurve_002.res" id="18_fgfk0"]
 [ext_resource type="PackedScene" uid="uid://dsnl16balodhm" path="res://models/mansion/dtyd_mansion_with_collision.tscn" id="18_gjt1e"]
-[ext_resource type="ArrayMesh" uid="uid://b15jkqqhuqeup" path="res://models/mansion_objects/Mesh.res" id="19_iryt0"]
+[ext_resource type="ArrayMesh" uid="uid://cvv5xm7j572vf" path="res://models/mansion_objects/Mesh.res" id="19_iryt0"]
+[ext_resource type="PackedScene" uid="uid://l2b1v4kbmp3r" path="res://scenes/models/wardrobe.tscn" id="33_3pjtp"]
+[ext_resource type="PackedScene" uid="uid://dfsysloypy843" path="res://scenes/models/lamp.tscn" id="34_er680"]
+[ext_resource type="PackedScene" uid="uid://c7iydw0io35qj" path="res://scenes/models/drawer.tscn" id="35_hf08v"]
+[ext_resource type="PackedScene" uid="uid://cad4vt4w33hcw" path="res://scenes/models/grandfather_clock.tscn" id="36_58mv0"]
+[ext_resource type="PackedScene" uid="uid://f874hyboynq" path="res://scenes/models/bookcase.tscn" id="37_8huc8"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_muuyn"]
 
@@ -369,7 +374,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_rjvo3")
 shape = SubResource("ConcavePolygonShape3D_g3kkl")
 
 [node name="interactable obj" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.7071068, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, -0.7071068, 57.399998, 0.5, 65)
+transform = Transform3D(-0.7071068, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, -0.7071068, 46.256035, 2.9635239, 64.0948)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="interactable obj"]
 
@@ -392,7 +397,7 @@ transform = Transform3D(-40, 0, 3.8146973e-06, 0, 40, 0, -3.8146973e-06, 0, -40,
 mesh = ExtResource("9_ld156")
 
 [node name="interactable obj2" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, -0.70710677, 54.600002, 0.5, 50.399998)
+transform = Transform3D(-0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, -0.70710677, 50.612175, 2.982286, 43.590767)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="interactable obj2"]
 
@@ -495,7 +500,7 @@ omni_range = 42.657
 [node name="PauseMenu" parent="." instance=ExtResource("13_ld5u0")]
 
 [node name="DTYDMansion" parent="." instance=ExtResource("18_gjt1e")]
-transform = Transform3D(-0.5, 0, -7.54979e-08, 0, 0.5, 0, 7.54979e-08, 0, -0.5, 68.7, 0, 57)
+transform = Transform3D(-0.5, 0, -7.54979e-08, 0, 0.5, 0, 7.54979e-08, 0, -0.5, 68.630714, -0.017176151, 56.966396)
 
 [node name="BackWall" type="StaticBody3D" parent="DTYDMansion"]
 
@@ -910,5 +915,69 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="stairs/2nd floor/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_cqbpd")
+
+[node name="carpet" parent="." instance=ExtResource("15_72xcf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59, 0, 57)
+
+[node name="wardrobe" parent="." instance=ExtResource("33_3pjtp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.72322, 0, 49.69317)
+
+[node name="lamp" parent="." instance=ExtResource("34_er680")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.799015, 0, 46.77007)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="lamp"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5148482, 0)
+
+[node name="wardrobe3" parent="." instance=ExtResource("33_3pjtp")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 60.151585, 0, 70.63836)
+
+[node name="drawer" parent="." instance=ExtResource("35_hf08v")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 50.750458, 0, 43.39821)
+
+[node name="drawer2" parent="." instance=ExtResource("35_hf08v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.3338, 0.07459833, 64.34427)
+
+[node name="clock" parent="." instance=ExtResource("36_58mv0")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 60.718147, 0, 43.247143)
+
+[node name="bookcase" parent="." instance=ExtResource("37_8huc8")]
+transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 55.273956, 0.041208763, 71.09953)
+
+[node name="bookcase2" parent="." instance=ExtResource("37_8huc8")]
+transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 51.55724, 0.041208763, 71.09953)
+
+[node name="bookcase3" parent="." instance=ExtResource("37_8huc8")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 55.403713, 0.041208763, 42.583378)
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.95768, 8.854202, 57)
+light_color = Color(0.54509807, 0.3372549, 0.31764707, 1)
+light_energy = 12.216
+light_specular = 4.624
+omni_range = 42.657
+
+[node name="lamp2" parent="." instance=ExtResource("34_er680")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.799015, 0, 66.904526)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="lamp2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5148482, 0)
+
+[node name="bookcase4" parent="." instance=ExtResource("37_8huc8")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 51.308655, 6.582403, 42.583378)
+
+[node name="drawer3" parent="." instance=ExtResource("35_hf08v")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 54.936813, 6.852103, 43.39821)
+
+[node name="bookcase5" parent="." instance=ExtResource("37_8huc8")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 47.657978, 6.582403, 42.583378)
+
+[node name="wardrobe4" parent="." instance=ExtResource("33_3pjtp")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 55.035694, 6.662054, 70.63836)
+
+[node name="wardrobe5" parent="." instance=ExtResource("33_3pjtp")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 48.356796, 6.662054, 70.63836)
+
+[node name="bookcase6" parent="." instance=ExtResource("37_8huc8")]
+transform = Transform3D(-3, 0, -2.6226832e-07, 0, 3, 0, 2.6226832e-07, 0, -3, 51.675076, 6.582403, 71.46442)
 
 [editable path="Player"]
