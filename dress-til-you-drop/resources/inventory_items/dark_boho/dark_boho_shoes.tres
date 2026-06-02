@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://dfn2gbjk34ili"]
+
+[ext_resource type="ArrayMesh" uid="uid://dn8eevwth24me" path="res://models/main_character/dark_boho/dark-boho-shoes.res" id="1_6omn4"]
+[ext_resource type="Script" uid="uid://dp57gprs43ig4" path="res://scripts/inventory_item.gd" id="1_exrql"]
+[ext_resource type="Texture2D" uid="uid://cb2xyax07vcm2" path="res://art/inventory_icons/dark-boho/goth-boho-shoes.png" id="3_vdevs"]
+
+[resource]
+script = ExtResource("1_exrql")
+item_type = 3
+item_name = "Dark Boho Shoes"
+item_texture = ExtResource("1_6omn4")
+ui_texture = ExtResource("3_vdevs")
+metadata/_custom_type_script = "uid://dp57gprs43ig4"

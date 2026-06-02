@@ -12,34 +12,20 @@ var minigame_one_defeated := false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Signals.minigame_one_defeated.connect(_on_minigame_one_defeated)
+	Signals.get_minigame_loot.connect(_on_minigame_defeated)
 	
 	# TODO: Push_back default clothing into inventory
 	#add_item(load("res://resources/inventory_items/alt_preppy_top.tres"))
 	
-	add_item(load("res://resources/inventory_items/underwear/underwear_top.tres"))
-	add_item(load("res://resources/inventory_items/underwear/underwear_bottom.tres"))
-	add_item(load("res://resources/inventory_items/french_preppy/french_preppy_bottom.tres"))
-	add_item(load("res://resources/inventory_items/french_preppy/french_preppy_hair.tres"))
-	add_item(load("res://resources/inventory_items/french_preppy/french_preppy_shoes.tres"))
-	add_item(load("res://resources/inventory_items/french_preppy/french_preppy_top.tres"))
-	add_item(load("res://resources/inventory_items/bohemian_goth/bohemian_goth_bottom.tres"))
-	add_item(load("res://resources/inventory_items/bohemian_goth/bohemian_goth_hair.tres"))
-	add_item(load("res://resources/inventory_items/bohemian_goth/bohemian_goth_shoes.tres"))
-	add_item(load("res://resources/inventory_items/bohemian_goth/bohemian_goth_top.tres"))
-	add_item(load("res://resources/inventory_items/green_preppy/green_preppy_bottom.tres"))
-	add_item(load("res://resources/inventory_items/green_preppy/green_preppy_hair.tres"))
-	add_item(load("res://resources/inventory_items/green_preppy/green_preppy_shoes.tres"))
-	add_item(load("res://resources/inventory_items/green_preppy/green_preppy_top.tres"))
-	add_item(load("res://resources/inventory_items/snow_bunny/snow_bunny_bottom.tres"))
-	add_item(load("res://resources/inventory_items/snow_bunny/snow_bunny_hair.tres"))
-	add_item(load("res://resources/inventory_items/snow_bunny/snow_bunny_shoes.tres"))
-	add_item(load("res://resources/inventory_items/snow_bunny/snow_bunny_top.tres"))
-	add_item(load("res://resources/inventory_items/witchy_scholar/witchy_scholar_bottom.tres"))
-	add_item(load("res://resources/inventory_items/witchy_scholar/witchy_scholar_hair.tres"))
-	add_item(load("res://resources/inventory_items/witchy_scholar/witchy_scholar_shoes.tres"))
-	add_item(load("res://resources/inventory_items/witchy_scholar/witchy_scholar_top.tres"))
+	add_item(load("res://resources/inventory_items/alt_preppy/alt_preppy_bottom.tres"))
+	add_item(load("res://resources/inventory_items/alt_preppy/alt_preppy_hair.tres"))
+	add_item(load("res://resources/inventory_items/alt_preppy/alt_preppy_shoes.tres"))
+	add_item(load("res://resources/inventory_items/alt_preppy/alt_preppy_top.tres"))
 	
-	pass
+	add_item(load("res://resources/inventory_items/light_boho/light_boho_bottom.tres"))
+	add_item(load("res://resources/inventory_items/light_boho/light_boho_hair.tres"))
+	add_item(load("res://resources/inventory_items/light_boho/light_boho_shoes.tres"))
+	add_item(load("res://resources/inventory_items/light_boho/light_boho_top.tres"))
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -51,6 +37,81 @@ func add_item(item: InventoryItem) -> void:
 	inventory.push_back(item)
 	#Signals.inventory_updated.emit()
 	print("Item added!", inventory)
+
+
+func _on_minigame_defeated(minigame: Enums.MinigameType, level_defeated: int) -> void:
+	match minigame:
+		Enums.MinigameType.FIND_MY_EARRING:
+			match level_defeated:
+				1:
+					add_item(load("res://resources/inventory_items/preppy_pink/preppy_pink_bottom.tres"))
+					add_item(load("res://resources/inventory_items/preppy_pink/preppy_pink_hair.tres"))
+					add_item(load("res://resources/inventory_items/preppy_pink/preppy_pink_shoes.tres"))
+					add_item(load("res://resources/inventory_items/preppy_pink/preppy_pink_top.tres"))
+					
+					add_item(load("res://resources/inventory_items/snow_bunny/snow_bunny_bottom.tres"))
+					add_item(load("res://resources/inventory_items/snow_bunny/snow_bunny_hair.tres"))
+					add_item(load("res://resources/inventory_items/snow_bunny/snow_bunny_shoes.tres"))
+					add_item(load("res://resources/inventory_items/snow_bunny/snow_bunny_top.tres"))
+				2:
+					pass
+				3:
+					pass
+				_:
+					pass
+		Enums.MinigameType.SPOT_THE_ANOMALY:
+			match level_defeated:
+				1:
+					add_item(load("res://resources/inventory_items/catty_pink/catty_pink_bottom.tres"))
+					add_item(load("res://resources/inventory_items/catty_pink/catty_pink_hair.tres"))
+					add_item(load("res://resources/inventory_items/catty_pink/catty_pink_shoes.tres"))
+					add_item(load("res://resources/inventory_items/catty_pink/catty_pink_top.tres"))
+				
+					add_item(load("res://resources/inventory_items/lone_wolf/lone_wolf_bottom.tres"))
+					add_item(load("res://resources/inventory_items/lone_wolf/lone_wolf_hair.tres"))
+					add_item(load("res://resources/inventory_items/lone_wolf/lone_wolf_shoes.tres"))
+					add_item(load("res://resources/inventory_items/lone_wolf/lone_wolf_top.tres"))
+				2:
+					add_item(load("res://resources/inventory_items/dark_boho/dark_boho_bottom.tres"))
+					add_item(load("res://resources/inventory_items/dark_boho/dark_boho_hair.tres"))
+					add_item(load("res://resources/inventory_items/dark_boho/dark_boho_shoes.tres"))
+					add_item(load("res://resources/inventory_items/dark_boho/dark_boho_top.tres"))
+				
+					add_item(load("res://resources/inventory_items/pink_snow/pink_snow_bottom.tres"))
+					add_item(load("res://resources/inventory_items/pink_snow/pink_snow_hair.tres"))
+					add_item(load("res://resources/inventory_items/pink_snow/pink_snow_shoes.tres"))
+					add_item(load("res://resources/inventory_items/pink_snow/pink_snow_top.tres"))
+				3:
+					add_item(load("res://resources/inventory_items/brown_bear/brown_bear_ bottom.tres"))
+					add_item(load("res://resources/inventory_items/brown_bear/brown_bear_hair.tres"))
+					add_item(load("res://resources/inventory_items/brown_bear/brown_bear_shoes.tres"))
+					add_item(load("res://resources/inventory_items/brown_bear/brown_bear_top.tres"))
+				
+					add_item(load("res://resources/inventory_items/preppy_peach/preppy_peach_bottom.tres"))
+					add_item(load("res://resources/inventory_items/preppy_peach/preppy_peach_hair.tres"))
+					add_item(load("res://resources/inventory_items/preppy_peach/preppy_peach_shoes.tres"))
+					add_item(load("res://resources/inventory_items/preppy_peach/preppy_peach_top.tres"))
+				_:
+					pass
+			pass
+		Enums.MinigameType.REFLEX_RENDEZVOUS:
+			match level_defeated:
+				1:
+					add_item(load("res://resources/inventory_items/goth_circus/goth_circus_bottom.tres"))
+					add_item(load("res://resources/inventory_items/goth_circus/goth_circus_hair.tres"))
+					add_item(load("res://resources/inventory_items/goth_circus/goth_circus_shoes.tres"))
+					add_item(load("res://resources/inventory_items/goth_circus/goth_circus_top.tres"))
+					
+					add_item(load("res://resources/inventory_items/preppy_lav/preppy_lav_bottom.tres"))
+					add_item(load("res://resources/inventory_items/preppy_lav/preppy_lav_hair.tres"))
+					add_item(load("res://resources/inventory_items/preppy_lav/preppy_lav_shoes.tres"))
+					add_item(load("res://resources/inventory_items/preppy_lav/preppy_lav_top.tres"))
+				2:
+					pass
+				3:
+					pass
+				_:
+					pass
 
 
 func _on_minigame_one_defeated() -> void:

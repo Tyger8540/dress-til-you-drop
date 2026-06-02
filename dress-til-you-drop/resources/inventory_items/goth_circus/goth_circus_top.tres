@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://ct6upnw4nywua"]
+
+[ext_resource type="Script" uid="uid://dp57gprs43ig4" path="res://scripts/inventory_item.gd" id="1_ehyt0"]
+[ext_resource type="ArrayMesh" uid="uid://dbq8erei6fseh" path="res://models/main_character/goth_circus/goth-circus-top.res" id="1_wy3vb"]
+[ext_resource type="Texture2D" uid="uid://df8o2hgfxmj41" path="res://art/inventory_icons/goth-circus/goth-circus-top.png" id="3_4g7cx"]
+
+[resource]
+script = ExtResource("1_ehyt0")
+item_type = 1
+item_name = "Goth Circus Top"
+item_texture = ExtResource("1_wy3vb")
+ui_texture = ExtResource("3_4g7cx")
+metadata/_custom_type_script = "uid://dp57gprs43ig4"

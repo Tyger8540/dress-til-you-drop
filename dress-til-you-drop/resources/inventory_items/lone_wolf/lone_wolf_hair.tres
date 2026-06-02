@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://p81s4yehbn1g"]
+
+[ext_resource type="Script" uid="uid://dp57gprs43ig4" path="res://scripts/inventory_item.gd" id="1_emvjb"]
+[ext_resource type="ArrayMesh" uid="uid://n4tj4tc3x3pf" path="res://models/main_character/lone_wolf/lone-wolf-hair.res" id="1_x8wed"]
+[ext_resource type="Texture2D" uid="uid://brbrp5nqqou0" path="res://art/inventory_icons/lone-wolf/lone-wolf-hair.png" id="3_i4dr2"]
+
+[resource]
+script = ExtResource("1_emvjb")
+item_name = "Lone Wolf Hair"
+item_texture = ExtResource("1_x8wed")
+ui_texture = ExtResource("3_i4dr2")
+metadata/_custom_type_script = "uid://dp57gprs43ig4"

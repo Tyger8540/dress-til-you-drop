@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://bkfadqqefe31q"]
+
+[ext_resource type="ArrayMesh" uid="uid://c1g4xnqendgdu" path="res://models/main_character/brown_bear/brown-bear-bottom.res" id="1_1lgbg"]
+[ext_resource type="Script" uid="uid://dp57gprs43ig4" path="res://scripts/inventory_item.gd" id="1_u4mmy"]
+[ext_resource type="Texture2D" uid="uid://ce37f0wit1kwp" path="res://art/inventory_icons/brown-bear/brown-bear-bottom.png" id="3_tulku"]
+
+[resource]
+script = ExtResource("1_u4mmy")
+item_type = 2
+item_name = "Brown Bear Bottom"
+item_texture = ExtResource("1_1lgbg")
+ui_texture = ExtResource("3_tulku")
+metadata/_custom_type_script = "uid://dp57gprs43ig4"

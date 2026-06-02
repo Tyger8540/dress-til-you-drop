@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://c73f2sebdww86"]
+
+[ext_resource type="ArrayMesh" uid="uid://sku4c8qoh157" path="res://models/main_character/preppy_peach/preppy-peach-top.res" id="1_jeful"]
+[ext_resource type="Script" uid="uid://dp57gprs43ig4" path="res://scripts/inventory_item.gd" id="1_oh44e"]
+[ext_resource type="Texture2D" uid="uid://p2ybivruxa3b" path="res://art/inventory_icons/preppy-peach/preppy-peach-top.png" id="3_ldka5"]
+
+[resource]
+script = ExtResource("1_oh44e")
+item_type = 1
+item_name = "Preppy Peach Top"
+item_texture = ExtResource("1_jeful")
+ui_texture = ExtResource("3_ldka5")
+metadata/_custom_type_script = "uid://dp57gprs43ig4"

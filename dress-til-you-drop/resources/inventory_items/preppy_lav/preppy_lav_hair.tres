@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://b1pw5j8ogx4rw"]
+
+[ext_resource type="ArrayMesh" uid="uid://c08ln0xlf8xmu" path="res://models/main_character/preppy_lav/preppy-lav-hair.res" id="1_h7y5q"]
+[ext_resource type="Script" uid="uid://dp57gprs43ig4" path="res://scripts/inventory_item.gd" id="1_oelse"]
+[ext_resource type="Texture2D" uid="uid://bbrxscm3pit7i" path="res://art/inventory_icons/preppy-lav/preppy-lav-hair.png" id="3_a6kfb"]
+
+[resource]
+script = ExtResource("1_oelse")
+item_name = "Preppy Lav Hair"
+item_texture = ExtResource("1_h7y5q")
+ui_texture = ExtResource("3_a6kfb")
+metadata/_custom_type_script = "uid://dp57gprs43ig4"
