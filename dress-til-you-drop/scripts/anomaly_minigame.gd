@@ -38,7 +38,9 @@ func _ready() -> void:
 	$RightCharacter1.visible = false
 	$LeftCharacter2.visible = false
 	$RightCharacter2.visible = false
-	level = 2
+	$LeftCharacter3.visible = false
+	$RightCharacter3.visible = false
+	level = 3
 	start_minigame()
 
 
@@ -99,6 +101,9 @@ func start_minigame() -> void:
 	elif level == 2:
 		$LeftCharacter2.visible = true
 		$RightCharacter2.visible = true
+	elif level == 3:
+		$LeftCharacter3.visible = true
+		$RightCharacter3.visible = true
 
 
 func update_anomaly_count_text() -> void:
