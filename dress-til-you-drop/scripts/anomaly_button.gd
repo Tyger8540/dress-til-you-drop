@@ -12,7 +12,8 @@ var anomaly_detected: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	icon = textures.pick_random()
+	pass
+	#icon = textures.pick_random()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -48,10 +49,12 @@ func _on_button_up() -> void:
 		play_animation()
 		connected_button.play_animation()
 		await connected_button.animation.animation_finished
-		if icon == textures[0]:
-			icon = textures[1]
-		else:
-			icon = textures[0]
+		icon = textures[0]
+		connected_button.icon = textures[0]
+		#if icon == textures[0]:
+			#icon = textures[1]
+		#else:
+			#icon = textures[0]
 		
 		# TODO update count
 		anomaly_minigame.anomaly_count -= 1
