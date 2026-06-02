@@ -15,3 +15,4 @@ signal shop_closed
 signal minigame_started
 signal minigame_defeated
 signal minigame_finished
+signal get_minigame_loot
