@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://cub4fegl67mhq"]
+[gd_scene load_steps=79 format=3 uid="uid://cub4fegl67mhq"]
 
 [ext_resource type="Script" uid="uid://dwm4cnvlom4p" path="res://scripts/anomaly_minigame.gd" id="1_6a7c3"]
 [ext_resource type="Texture2D" uid="uid://bfklhu6eahh0t" path="res://art/spot_the_anomaly/level_one/frame_resized.PNG" id="2_o41sq"]
@@ -6,33 +6,59 @@
 [ext_resource type="Texture2D" uid="uid://dtgoaccuuwhrb" path="res://art/spot_the_anomaly/level_one/base_image.PNG" id="3_wetqf"]
 [ext_resource type="PackedScene" uid="uid://b6n2rb1ewfvef" path="res://scenes/anomaly_button.tscn" id="4_ggj83"]
 [ext_resource type="Texture2D" uid="uid://cxwywqhkvlttu" path="res://art/spot_the_anomaly/level_one/anomalies/anomaly1.PNG" id="4_o41sq"]
+[ext_resource type="Texture2D" uid="uid://dm7ivt8ouw6id" path="res://art/spot_the_anomaly/level_three/realimg.PNG" id="4_x4rhv"]
 [ext_resource type="Texture2D" uid="uid://6erdbq10k7t" path="res://art/spot_the_anomaly/level_one/anomalies/anomaly2.PNG" id="6_01y8a"]
+[ext_resource type="Texture2D" uid="uid://cc6g21t1xuxnh" path="res://art/spot_the_anomaly/level_three/anomalies/anomaly_1.PNG" id="6_cc6n1"]
 [ext_resource type="Texture2D" uid="uid://cob24jsnwp27e" path="res://art/spot_the_anomaly/level_one/anomalies/anomaly3.PNG" id="7_43md1"]
+[ext_resource type="Texture2D" uid="uid://li2d74jmfju0" path="res://art/spot_the_anomaly/level_three/anomalies/anomaly_2.PNG" id="7_ppgfx"]
+[ext_resource type="Texture2D" uid="uid://xivv7wo6s7w0" path="res://art/spot_the_anomaly/level_three/anomalies/anomaly_3.PNG" id="8_omi82"]
 [ext_resource type="Texture2D" uid="uid://sbnch6yalahl" path="res://art/spot_the_anomaly/level_one/anomalies/anomaly4.PNG" id="8_ww20k"]
+[ext_resource type="Texture2D" uid="uid://c3ww3urhqis84" path="res://art/spot_the_anomaly/level_three/anomalies/anomaly_4.PNG" id="9_ocwe7"]
 [ext_resource type="Texture2D" uid="uid://bmcexn5hdu0ma" path="res://art/spot_the_anomaly/level_one/anomalies/anomaly5.PNG" id="9_xp354"]
 [ext_resource type="Texture2D" uid="uid://dqot3tbayxhcx" path="res://art/spot_the_anomaly/level_one/anomalies/anomaly6.PNG" id="10_plrly"]
+[ext_resource type="Texture2D" uid="uid://bbksgjnllhq21" path="res://art/spot_the_anomaly/level_three/anomalies/anomaly_5.PNG" id="10_qresf"]
 [ext_resource type="Texture2D" uid="uid://de2hh4tb410f" path="res://art/spot_the_anomaly/level_one/anomalies/anomaly7.PNG" id="11_ed8pt"]
+[ext_resource type="Texture2D" uid="uid://cdtrrekbccwe0" path="res://art/spot_the_anomaly/level_three/anomalies/anomaly_6.PNG" id="11_f0g0h"]
 [ext_resource type="Texture2D" uid="uid://0cvf5v5l01bv" path="res://art/spot_the_anomaly/level_one/anomalies/anomaly8.PNG" id="12_dg3t4"]
+[ext_resource type="Texture2D" uid="uid://csy0065w07sk1" path="res://art/spot_the_anomaly/level_three/anomalies/anomaly_7.PNG" id="12_jwnlf"]
+[ext_resource type="Texture2D" uid="uid://bt6j4v66xof82" path="res://art/spot_the_anomaly/level_three/anomalies/anomaly_8.PNG" id="13_5vfgf"]
 [ext_resource type="Texture2D" uid="uid://c3cy6jovqpgfb" path="res://art/spot_the_anomaly/level_one/anomalies/anomaly9.PNG" id="13_trvfo"]
+[ext_resource type="Texture2D" uid="uid://cth0kvcx1pusv" path="res://art/spot_the_anomaly/level_three/anomalies/anomaly_9.PNG" id="14_h251m"]
 [ext_resource type="Texture2D" uid="uid://cn6pxi6pneh2p" path="res://art/spot_the_anomaly/level_one/anomalies/anomaly10.PNG" id="14_lusg6"]
+[ext_resource type="Texture2D" uid="uid://dkmtljkd3h6ff" path="res://art/spot_the_anomaly/level_three/anomalies/anomaly_10.PNG" id="15_66g20"]
 [ext_resource type="Texture2D" uid="uid://ds6s6sdqcntfy" path="res://art/spot_the_anomaly/level_one/anomalies/anomaly11.PNG" id="15_sk7sk"]
+[ext_resource type="Texture2D" uid="uid://dvdg4hco8i4h7" path="res://art/spot_the_anomaly/level_three/anomalies/anomaly_11.PNG" id="16_m45ta"]
 [ext_resource type="Texture2D" uid="uid://c8gicwdty78ye" path="res://art/spot_the_anomaly/level_one/anomalies/anomaly12.PNG" id="16_pa5mo"]
 [ext_resource type="Texture2D" uid="uid://dkhvvtviiw42h" path="res://art/spot_the_anomaly/level_one/anomalies/anomaly13.PNG" id="17_3h3fi"]
+[ext_resource type="Texture2D" uid="uid://ljbb205j6vp2" path="res://art/spot_the_anomaly/level_three/anomalies/anomaly_12.PNG" id="17_05gsp"]
 [ext_resource type="Texture2D" uid="uid://ctdike6ejgtsw" path="res://art/spot_the_anomaly/level_one/anomalies/anomaly14.PNG" id="18_mufkv"]
+[ext_resource type="Texture2D" uid="uid://to0sheqec57e" path="res://art/spot_the_anomaly/level_three/anomalies/anomaly_13.PNG" id="18_so6ja"]
 [ext_resource type="Texture2D" uid="uid://b27myvnf5ilgm" path="res://art/spot_the_anomaly/level_one/anomalies/anomaly15.PNG" id="19_c2fd2"]
+[ext_resource type="Texture2D" uid="uid://d0o1y4oxpuadl" path="res://art/spot_the_anomaly/level_three/anomalies/anomaly_14.PNG" id="19_os26n"]
+[ext_resource type="Texture2D" uid="uid://ctk7us1k7wg3r" path="res://art/spot_the_anomaly/level_three/anomalies/anomaly_15.PNG" id="20_otn8b"]
 [ext_resource type="Texture2D" uid="uid://cmq0kystajuhd" path="res://icon.svg" id="21_43md1"]
+[ext_resource type="Texture2D" uid="uid://4at2q1aat0ed" path="res://art/spot_the_anomaly/level_three/anomalies/anomaly_16.PNG" id="21_istf1"]
 [ext_resource type="Texture2D" uid="uid://di8v8idyor70l" path="res://art/spot_the_anomaly/level_two/base_image_2.png" id="21_suf2l"]
 [ext_resource type="Texture2D" uid="uid://bvd1npabj2au4" path="res://art/currency mag.png" id="21_ww20k"]
 [ext_resource type="Texture2D" uid="uid://ctsx0dsfo41fj" path="res://art/spot_the_anomaly/level_two/anomalies/anomaly_1.PNG" id="22_1bl61"]
+[ext_resource type="Texture2D" uid="uid://y7r0rdwfcqlx" path="res://art/spot_the_anomaly/level_three/anomalies/anomaly_17.PNG" id="22_727uw"]
 [ext_resource type="Texture2D" uid="uid://dl4dudge08qds" path="res://art/spot_the_anomaly/level_two/anomalies/anomaly_2.PNG" id="23_7ttvl"]
+[ext_resource type="Texture2D" uid="uid://mftr4bhb7wj4" path="res://art/spot_the_anomaly/level_three/anomalies/anomaly_18.PNG" id="23_40cma"]
 [ext_resource type="Script" uid="uid://e7tiw2xhebca" path="res://scripts/flashing_text.gd" id="23_xp354"]
+[ext_resource type="Texture2D" uid="uid://bjjg7llxf3t71" path="res://art/spot_the_anomaly/level_three/anomalies/anomaly_19.PNG" id="24_3fm2x"]
 [ext_resource type="Texture2D" uid="uid://da3ldj7djn5em" path="res://art/spot_the_anomaly/level_two/anomalies/anomaly_3.PNG" id="24_ci7hh"]
 [ext_resource type="Texture2D" uid="uid://cigg5t3uxdjuk" path="res://art/spot_the_anomaly/level_two/anomalies/anomaly_4.PNG" id="25_h138n"]
+[ext_resource type="Texture2D" uid="uid://75ta3ex6pxx0" path="res://art/spot_the_anomaly/level_three/anomalies/anomaly_20.PNG" id="25_p8p5w"]
 [ext_resource type="Texture2D" uid="uid://bejaxfftnoaqx" path="res://art/spot_the_anomaly/level_two/anomalies/anomaly_5.PNG" id="26_3w2ac"]
+[ext_resource type="Texture2D" uid="uid://bih2ilf424kua" path="res://art/spot_the_anomaly/level_three/anomalies/anomaly_21.PNG" id="26_xxrll"]
+[ext_resource type="Texture2D" uid="uid://wm4edotx4e4h" path="res://art/spot_the_anomaly/level_three/anomalies/anomaly_22.PNG" id="27_6kfeb"]
 [ext_resource type="Texture2D" uid="uid://hpchoylcqqc5" path="res://art/spot_the_anomaly/level_two/anomalies/anomaly_6.PNG" id="27_a306d"]
+[ext_resource type="Texture2D" uid="uid://da5fu0hy700cp" path="res://art/spot_the_anomaly/level_three/anomalies/anomaly_23.PNG" id="28_fcmfn"]
 [ext_resource type="Texture2D" uid="uid://qvofwbtam3r" path="res://art/spot_the_anomaly/level_two/anomalies/anomaly_7.PNG" id="28_wsy2x"]
+[ext_resource type="Texture2D" uid="uid://onte52vwmul7" path="res://art/spot_the_anomaly/level_three/anomalies/anomaly_24.PNG" id="29_1mmjy"]
 [ext_resource type="Texture2D" uid="uid://b84o5fulwq8ud" path="res://art/spot_the_anomaly/level_two/anomalies/anomaly_8.PNG" id="29_km0xf"]
 [ext_resource type="Texture2D" uid="uid://bvx6452yb1n30" path="res://art/spot_the_anomaly/level_two/anomalies/anomaly_9.PNG" id="30_6q071"]
+[ext_resource type="Texture2D" uid="uid://cvqf8v85qs8b7" path="res://art/spot_the_anomaly/level_three/anomalies/anomaly_25.PNG" id="30_qrntp"]
 [ext_resource type="Texture2D" uid="uid://cbi4sb4gffq4b" path="res://art/spot_the_anomaly/level_two/anomalies/anomaly_10.PNG" id="31_iwaof"]
 [ext_resource type="Texture2D" uid="uid://b4q1nbsqcq7a2" path="res://art/spot_the_anomaly/level_two/anomalies/anomaly_11.PNG" id="32_xbw6n"]
 [ext_resource type="Texture2D" uid="uid://bo5imxh6ajv8a" path="res://art/spot_the_anomaly/level_two/anomalies/anomaly_12.PNG" id="33_fwvxd"]
@@ -49,7 +75,7 @@
 [ext_resource type="Texture2D" uid="uid://ya6gqlcbygx1" path="res://art/spot_the_anomaly/level_two/anomalies/anomaly_23.PNG" id="44_4w5je"]
 [ext_resource type="Texture2D" uid="uid://dm3lt62cudrql" path="res://art/spot_the_anomaly/level_two/anomalies/anomaly_24.PNG" id="45_iu6ro"]
 [ext_resource type="Texture2D" uid="uid://obk80v1pgvrd" path="res://art/spot_the_anomaly/level_two/anomalies/anomaly_25.PNG" id="46_culmy"]
-[ext_resource type="Texture2D" uid="uid://d2r34yyk07tux" path="res://art/spot_the_anomaly/level_two/anomalies_ref.PNG" id="47_x4rhv"]
+[ext_resource type="Texture2D" uid="uid://dq664ca8facs1" path="res://art/spot_the_anomaly/level_three/anomalies3.PNG" id="73_410nq"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sfv7r"]
 texture = ExtResource("2_o41sq")
@@ -57,7 +83,7 @@ texture = ExtResource("2_o41sq")
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_01y8a"]
 bg_color = Color(0.20784314, 0.050980393, 0.1882353, 1)
 
-[node name="AnomalyMinigame" type="Control" node_paths=PackedStringArray("left_anomalies_1", "left_anomalies_2")]
+[node name="AnomalyMinigame" type="Control" node_paths=PackedStringArray("left_anomalies_1", "left_anomalies_2", "left_anomalies_3")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -67,6 +93,7 @@ grow_vertical = 2
 script = ExtResource("1_6a7c3")
 left_anomalies_1 = [NodePath("LeftCharacter1/Anomalies/Anomaly1"), NodePath("LeftCharacter1/Anomalies/Anomaly2"), NodePath("LeftCharacter1/Anomalies/Anomaly3"), NodePath("LeftCharacter1/Anomalies/Anomaly4"), NodePath("LeftCharacter1/Anomalies/Anomaly5"), NodePath("LeftCharacter1/Anomalies/Anomaly6"), NodePath("LeftCharacter1/Anomalies/Anomaly7"), NodePath("LeftCharacter1/Anomalies/Anomaly8"), NodePath("LeftCharacter1/Anomalies/Anomaly9"), NodePath("LeftCharacter1/Anomalies/Anomaly10"), NodePath("LeftCharacter1/Anomalies/Anomaly11"), NodePath("LeftCharacter1/Anomalies/Anomaly12"), NodePath("LeftCharacter1/Anomalies/Anomaly13"), NodePath("LeftCharacter1/Anomalies/Anomaly14"), NodePath("LeftCharacter1/Anomalies/Anomaly15")]
 left_anomalies_2 = [NodePath("LeftCharacter2/Anomalies/Anomaly1"), NodePath("LeftCharacter2/Anomalies/Anomaly2"), NodePath("LeftCharacter2/Anomalies/Anomaly3"), NodePath("LeftCharacter2/Anomalies/Anomaly4"), NodePath("LeftCharacter2/Anomalies/Anomaly5"), NodePath("LeftCharacter2/Anomalies/Anomaly6"), NodePath("LeftCharacter2/Anomalies/Anomaly7"), NodePath("LeftCharacter2/Anomalies/Anomaly8"), NodePath("LeftCharacter2/Anomalies/Anomaly9"), NodePath("LeftCharacter2/Anomalies/Anomaly10"), NodePath("LeftCharacter2/Anomalies/Anomaly11"), NodePath("LeftCharacter2/Anomalies/Anomaly12"), NodePath("LeftCharacter2/Anomalies/Anomaly13"), NodePath("LeftCharacter2/Anomalies/Anomaly14"), NodePath("LeftCharacter2/Anomalies/Anomaly15"), NodePath("LeftCharacter2/Anomalies/Anomaly16"), NodePath("LeftCharacter2/Anomalies/Anomaly17"), NodePath("LeftCharacter2/Anomalies/Anomaly18"), NodePath("LeftCharacter2/Anomalies/Anomaly19"), NodePath("LeftCharacter2/Anomalies/Anomaly20"), NodePath("LeftCharacter2/Anomalies/Anomaly21"), NodePath("LeftCharacter2/Anomalies/Anomaly22"), NodePath("LeftCharacter2/Anomalies/Anomaly23"), NodePath("LeftCharacter2/Anomalies/Anomaly24"), NodePath("LeftCharacter2/Anomalies/Anomaly25")]
+left_anomalies_3 = [NodePath("LeftCharacter3/Anomalies/Anomaly1"), NodePath("LeftCharacter3/Anomalies/Anomaly2"), NodePath("LeftCharacter3/Anomalies/Anomaly3"), NodePath("LeftCharacter3/Anomalies/Anomaly4"), NodePath("LeftCharacter3/Anomalies/Anomaly5"), NodePath("LeftCharacter3/Anomalies/Anomaly6"), NodePath("LeftCharacter3/Anomalies/Anomaly7"), NodePath("LeftCharacter3/Anomalies/Anomaly8"), NodePath("LeftCharacter3/Anomalies/Anomaly9"), NodePath("LeftCharacter3/Anomalies/Anomaly10"), NodePath("LeftCharacter3/Anomalies/Anomaly11"), NodePath("LeftCharacter3/Anomalies/Anomaly12"), NodePath("LeftCharacter3/Anomalies/Anomaly13"), NodePath("LeftCharacter3/Anomalies/Anomaly14"), NodePath("LeftCharacter3/Anomalies/Anomaly15"), NodePath("LeftCharacter3/Anomalies/Anomaly16"), NodePath("LeftCharacter3/Anomalies/Anomaly17"), NodePath("LeftCharacter3/Anomalies/Anomaly18"), NodePath("LeftCharacter3/Anomalies/Anomaly19"), NodePath("LeftCharacter3/Anomalies/Anomaly20"), NodePath("LeftCharacter3/Anomalies/Anomaly21"), NodePath("LeftCharacter3/Anomalies/Anomaly22"), NodePath("LeftCharacter3/Anomalies/Anomaly23"), NodePath("LeftCharacter3/Anomalies/Anomaly24"), NodePath("LeftCharacter3/Anomalies/Anomaly25")]
 metadata/_edit_horizontal_guides_ = [1.0]
 metadata/_edit_vertical_guides_ = [1923.0]
 
@@ -104,6 +131,7 @@ theme_override_font_sizes/normal_font_size = 32
 text = "Anomalies Remaining:15"
 
 [node name="LeftCharacter1" type="TextureRect" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 477.0
 offset_top = 210.0
@@ -268,6 +296,7 @@ textures = Array[Texture2D]([null, ExtResource("19_c2fd2")])
 anomaly_minigame = NodePath("../../..")
 
 [node name="RightCharacter1" type="TextureRect" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 990.00006
 offset_top = 210.0
@@ -287,7 +316,6 @@ offset_left = 15.999981
 offset_top = 83.33333
 offset_right = 33.99998
 offset_bottom = 91.33333
-icon = ExtResource("4_o41sq")
 connected_button = NodePath("../../../LeftCharacter1/Anomalies/Anomaly1")
 textures = Array[Texture2D]([null, ExtResource("4_o41sq")])
 anomaly_minigame = NodePath("../../..")
@@ -298,7 +326,6 @@ offset_left = 67.999985
 offset_top = 33.333336
 offset_right = 78.99999
 offset_bottom = 45.333336
-icon = ExtResource("6_01y8a")
 connected_button = NodePath("../../../LeftCharacter1/Anomalies/Anomaly2")
 textures = Array[Texture2D]([null, ExtResource("6_01y8a")])
 anomaly_minigame = NodePath("../../..")
@@ -309,7 +336,6 @@ offset_left = 126.999985
 offset_top = 41.0
 offset_right = 142.99998
 offset_bottom = 57.0
-icon = ExtResource("7_43md1")
 connected_button = NodePath("../../../LeftCharacter1/Anomalies/Anomaly3")
 textures = Array[Texture2D]([null, ExtResource("7_43md1")])
 anomaly_minigame = NodePath("../../..")
@@ -320,7 +346,6 @@ offset_left = 75.999985
 offset_top = 84.0
 offset_right = 84.999985
 offset_bottom = 90.0
-icon = ExtResource("8_ww20k")
 connected_button = NodePath("../../../LeftCharacter1/Anomalies/Anomaly4")
 textures = Array[Texture2D]([null, ExtResource("8_ww20k")])
 anomaly_minigame = NodePath("../../..")
@@ -331,7 +356,6 @@ offset_left = 91.999985
 offset_top = 55.0
 offset_right = 102.999985
 offset_bottom = 66.0
-icon = ExtResource("9_xp354")
 connected_button = NodePath("../../../LeftCharacter1/Anomalies/Anomaly5")
 textures = Array[Texture2D]([null, ExtResource("9_xp354")])
 anomaly_minigame = NodePath("../../..")
@@ -342,7 +366,6 @@ offset_left = 117.999985
 offset_top = 68.0
 offset_right = 129.99998
 offset_bottom = 80.0
-icon = ExtResource("10_plrly")
 connected_button = NodePath("../../../LeftCharacter1/Anomalies/Anomaly6")
 textures = Array[Texture2D]([null, ExtResource("10_plrly")])
 anomaly_minigame = NodePath("../../..")
@@ -353,7 +376,6 @@ offset_left = 6.999981
 offset_top = 119.00001
 offset_right = 13.999981
 offset_bottom = 168.0
-icon = ExtResource("11_ed8pt")
 connected_button = NodePath("../../../LeftCharacter1/Anomalies/Anomaly7")
 textures = Array[Texture2D]([null, ExtResource("11_ed8pt")])
 anomaly_minigame = NodePath("../../..")
@@ -364,7 +386,6 @@ offset_left = 76.999985
 offset_top = 122.0
 offset_right = 80.999985
 offset_bottom = 129.0
-icon = ExtResource("12_dg3t4")
 connected_button = NodePath("../../../LeftCharacter1/Anomalies/Anomaly8")
 textures = Array[Texture2D]([null, ExtResource("12_dg3t4")])
 anomaly_minigame = NodePath("../../..")
@@ -375,7 +396,6 @@ offset_left = 33.99998
 offset_top = 169.00002
 offset_right = 54.99998
 offset_bottom = 177.00002
-icon = ExtResource("13_trvfo")
 connected_button = NodePath("../../../LeftCharacter1/Anomalies/Anomaly9")
 textures = Array[Texture2D]([null, ExtResource("13_trvfo")])
 anomaly_minigame = NodePath("../../..")
@@ -386,7 +406,6 @@ offset_left = 65.99998
 offset_top = 162.0
 offset_right = 88.99998
 offset_bottom = 168.0
-icon = ExtResource("14_lusg6")
 connected_button = NodePath("../../../LeftCharacter1/Anomalies/Anomaly10")
 textures = Array[Texture2D]([null, ExtResource("14_lusg6")])
 anomaly_minigame = NodePath("../../..")
@@ -397,7 +416,6 @@ offset_left = 96.99998
 offset_top = 153.00002
 offset_right = 104.99998
 offset_bottom = 166.00002
-icon = ExtResource("15_sk7sk")
 connected_button = NodePath("../../../LeftCharacter1/Anomalies/Anomaly11")
 textures = Array[Texture2D]([null, ExtResource("15_sk7sk")])
 anomaly_minigame = NodePath("../../..")
@@ -408,7 +426,6 @@ offset_left = 12.99998
 offset_top = 218.0
 offset_right = 24.99998
 offset_bottom = 229.0
-icon = ExtResource("16_pa5mo")
 connected_button = NodePath("../../../LeftCharacter1/Anomalies/Anomaly12")
 textures = Array[Texture2D]([null, ExtResource("16_pa5mo")])
 anomaly_minigame = NodePath("../../..")
@@ -419,7 +436,6 @@ offset_left = 46.999985
 offset_top = 211.0
 offset_right = 115.999985
 offset_bottom = 228.0
-icon = ExtResource("17_3h3fi")
 connected_button = NodePath("../../../LeftCharacter1/Anomalies/Anomaly13")
 textures = Array[Texture2D]([null, ExtResource("17_3h3fi")])
 anomaly_minigame = NodePath("../../..")
@@ -430,7 +446,6 @@ offset_left = 112.66666
 offset_top = 186.0
 offset_right = 121.66666
 offset_bottom = 192.0
-icon = ExtResource("18_mufkv")
 connected_button = NodePath("../../../LeftCharacter1/Anomalies/Anomaly14")
 textures = Array[Texture2D]([null, ExtResource("18_mufkv")])
 anomaly_minigame = NodePath("../../..")
@@ -441,12 +456,12 @@ offset_left = 123.999985
 offset_top = 227.00002
 offset_right = 134.0
 offset_bottom = 233.00002
-icon = ExtResource("19_c2fd2")
 connected_button = NodePath("../../../LeftCharacter1/Anomalies/Anomaly15")
 textures = Array[Texture2D]([null, ExtResource("19_c2fd2")])
 anomaly_minigame = NodePath("../../..")
 
 [node name="LeftCharacter2" type="TextureRect" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 477.0
 offset_top = 210.0
@@ -710,6 +725,7 @@ textures = Array[Texture2D]([null, ExtResource("46_culmy")])
 anomaly_minigame = NodePath("../../..")
 
 [node name="RightCharacter2" type="TextureRect" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 990.00006
 offset_top = 210.0
@@ -972,7 +988,271 @@ connected_button = NodePath("../../../LeftCharacter2/Anomalies/Anomaly25")
 textures = Array[Texture2D]([null, ExtResource("46_culmy")])
 anomaly_minigame = NodePath("../../..")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="LeftCharacter3" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 477.0
+offset_top = 210.0
+offset_right = 628.0
+offset_bottom = 455.0
+scale = Vector2(3, 3)
+texture = ExtResource("4_x4rhv")
+
+[node name="Anomalies" type="Control" parent="LeftCharacter3"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Anomaly1" parent="LeftCharacter3/Anomalies" node_paths=PackedStringArray("connected_button", "anomaly_minigame") instance=ExtResource("4_ggj83")]
+layout_mode = 0
+offset_left = 43.999992
+offset_top = 12.999998
+offset_right = 52.999992
+offset_bottom = 34.0
+connected_button = NodePath("../../../RightCharacter3/Anomalies/Anomaly1")
+textures = Array[Texture2D]([null, ExtResource("6_cc6n1")])
+anomaly_minigame = NodePath("../../..")
+
+[node name="Anomaly2" parent="LeftCharacter3/Anomalies" node_paths=PackedStringArray("connected_button", "anomaly_minigame") instance=ExtResource("4_ggj83")]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 37.0
+offset_right = 34.0
+offset_bottom = 45.0
+connected_button = NodePath("../../../RightCharacter3/Anomalies/Anomaly2")
+textures = Array[Texture2D]([null, ExtResource("7_ppgfx")])
+anomaly_minigame = NodePath("../../..")
+
+[node name="Anomaly3" parent="LeftCharacter3/Anomalies" node_paths=PackedStringArray("connected_button", "anomaly_minigame") instance=ExtResource("4_ggj83")]
+layout_mode = 0
+offset_left = 10.999997
+offset_top = 61.000004
+offset_right = 38.999996
+offset_bottom = 62.000004
+connected_button = NodePath("../../../RightCharacter3/Anomalies/Anomaly3")
+textures = Array[Texture2D]([null, ExtResource("8_omi82")])
+anomaly_minigame = NodePath("../../..")
+
+[node name="Anomaly4" parent="LeftCharacter3/Anomalies" node_paths=PackedStringArray("connected_button", "anomaly_minigame") instance=ExtResource("4_ggj83")]
+layout_mode = 0
+offset_left = 76.0
+offset_top = 29.0
+offset_right = 90.0
+offset_bottom = 46.0
+connected_button = NodePath("../../../RightCharacter3/Anomalies/Anomaly4")
+textures = Array[Texture2D]([null, ExtResource("9_ocwe7")])
+anomaly_minigame = NodePath("../../..")
+
+[node name="Anomaly5" parent="LeftCharacter3/Anomalies" node_paths=PackedStringArray("connected_button", "anomaly_minigame") instance=ExtResource("4_ggj83")]
+layout_mode = 0
+offset_left = 127.00012
+offset_top = 39.999996
+offset_right = 144.00012
+offset_bottom = 44.999996
+connected_button = NodePath("../../../RightCharacter3/Anomalies/Anomaly5")
+textures = Array[Texture2D]([null, ExtResource("10_qresf")])
+anomaly_minigame = NodePath("../../..")
+
+[node name="Anomaly6" parent="LeftCharacter3/Anomalies" node_paths=PackedStringArray("connected_button", "anomaly_minigame") instance=ExtResource("4_ggj83")]
+layout_mode = 0
+offset_top = 154.0
+offset_right = 4.9999967
+offset_bottom = 160.0
+connected_button = NodePath("../../../RightCharacter3/Anomalies/Anomaly6")
+textures = Array[Texture2D]([null, ExtResource("11_f0g0h")])
+anomaly_minigame = NodePath("../../..")
+
+[node name="Anomaly7" parent="LeftCharacter3/Anomalies" node_paths=PackedStringArray("connected_button", "anomaly_minigame") instance=ExtResource("4_ggj83")]
+layout_mode = 0
+offset_left = 11.000013
+offset_top = 91.0
+offset_right = 51.000015
+offset_bottom = 184.0
+connected_button = NodePath("../../../RightCharacter3/Anomalies/Anomaly7")
+textures = Array[Texture2D]([null, ExtResource("12_jwnlf")])
+anomaly_minigame = NodePath("../../..")
+
+[node name="Anomaly8" parent="LeftCharacter3/Anomalies" node_paths=PackedStringArray("connected_button", "anomaly_minigame") instance=ExtResource("4_ggj83")]
+layout_mode = 0
+offset_left = 57.999992
+offset_top = 90.99999
+offset_right = 76.99999
+offset_bottom = 97.99999
+connected_button = NodePath("../../../RightCharacter3/Anomalies/Anomaly8")
+textures = Array[Texture2D]([null, ExtResource("13_5vfgf")])
+anomaly_minigame = NodePath("../../..")
+
+[node name="Anomaly9" parent="LeftCharacter3/Anomalies" node_paths=PackedStringArray("connected_button", "anomaly_minigame") instance=ExtResource("4_ggj83")]
+layout_mode = 0
+offset_left = 68.0
+offset_top = 100.00006
+offset_right = 72.0
+offset_bottom = 102.00006
+connected_button = NodePath("../../../RightCharacter3/Anomalies/Anomaly9")
+textures = Array[Texture2D]([null, ExtResource("14_h251m")])
+anomaly_minigame = NodePath("../../..")
+
+[node name="Anomaly10" parent="LeftCharacter3/Anomalies" node_paths=PackedStringArray("connected_button", "anomaly_minigame") instance=ExtResource("4_ggj83")]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 112.0
+offset_right = 58.0
+offset_bottom = 120.0
+connected_button = NodePath("../../../RightCharacter3/Anomalies/Anomaly10")
+textures = Array[Texture2D]([null, ExtResource("15_66g20")])
+anomaly_minigame = NodePath("../../..")
+
+[node name="Anomaly11" parent="LeftCharacter3/Anomalies" node_paths=PackedStringArray("connected_button", "anomaly_minigame") instance=ExtResource("4_ggj83")]
+layout_mode = 0
+offset_left = 87.99999
+offset_top = 99.0
+offset_right = 101.99999
+offset_bottom = 105.0
+connected_button = NodePath("../../../RightCharacter3/Anomalies/Anomaly11")
+textures = Array[Texture2D]([null, ExtResource("16_m45ta")])
+anomaly_minigame = NodePath("../../..")
+
+[node name="Anomaly12" parent="LeftCharacter3/Anomalies" node_paths=PackedStringArray("connected_button", "anomaly_minigame") instance=ExtResource("4_ggj83")]
+layout_mode = 0
+offset_left = 97.00001
+offset_top = 107.0
+offset_right = 105.00001
+offset_bottom = 116.0
+connected_button = NodePath("../../../RightCharacter3/Anomalies/Anomaly12")
+textures = Array[Texture2D]([null, ExtResource("17_05gsp")])
+anomaly_minigame = NodePath("../../..")
+
+[node name="Anomaly13" parent="LeftCharacter3/Anomalies" node_paths=PackedStringArray("connected_button", "anomaly_minigame") instance=ExtResource("4_ggj83")]
+layout_mode = 0
+offset_left = 129.0
+offset_top = 74.0
+offset_right = 137.0
+offset_bottom = 89.0
+connected_button = NodePath("../../../RightCharacter3/Anomalies/Anomaly13")
+textures = Array[Texture2D]([null, ExtResource("18_so6ja")])
+anomaly_minigame = NodePath("../../..")
+
+[node name="Anomaly14" parent="LeftCharacter3/Anomalies" node_paths=PackedStringArray("connected_button", "anomaly_minigame") instance=ExtResource("4_ggj83")]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 126.999985
+offset_right = 92.0
+offset_bottom = 141.99998
+connected_button = NodePath("../../../RightCharacter3/Anomalies/Anomaly14")
+textures = Array[Texture2D]([null, ExtResource("19_os26n")])
+anomaly_minigame = NodePath("../../..")
+
+[node name="Anomaly15" parent="LeftCharacter3/Anomalies" node_paths=PackedStringArray("connected_button", "anomaly_minigame") instance=ExtResource("4_ggj83")]
+layout_mode = 0
+offset_left = 97.00006
+offset_top = 123.0
+offset_right = 102.00006
+offset_bottom = 162.0
+connected_button = NodePath("../../../RightCharacter3/Anomalies/Anomaly15")
+textures = Array[Texture2D]([null, ExtResource("20_otn8b")])
+anomaly_minigame = NodePath("../../..")
+
+[node name="Anomaly16" parent="LeftCharacter3/Anomalies" node_paths=PackedStringArray("connected_button", "anomaly_minigame") instance=ExtResource("4_ggj83")]
+layout_mode = 0
+offset_left = 110.00012
+offset_top = 129.0
+offset_right = 118.00012
+offset_bottom = 136.0
+connected_button = NodePath("../../../RightCharacter3/Anomalies/Anomaly16")
+textures = Array[Texture2D]([null, ExtResource("21_istf1")])
+anomaly_minigame = NodePath("../../..")
+
+[node name="Anomaly17" parent="LeftCharacter3/Anomalies" node_paths=PackedStringArray("connected_button", "anomaly_minigame") instance=ExtResource("4_ggj83")]
+layout_mode = 0
+offset_left = 145.00018
+offset_top = 116.0
+offset_right = 150.00018
+offset_bottom = 133.0
+connected_button = NodePath("../../../RightCharacter3/Anomalies/Anomaly17")
+textures = Array[Texture2D]([null, ExtResource("22_727uw")])
+anomaly_minigame = NodePath("../../..")
+
+[node name="Anomaly18" parent="LeftCharacter3/Anomalies" node_paths=PackedStringArray("connected_button", "anomaly_minigame") instance=ExtResource("4_ggj83")]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 190.00003
+offset_right = 19.0
+offset_bottom = 194.00003
+connected_button = NodePath("../../../RightCharacter3/Anomalies/Anomaly18")
+textures = Array[Texture2D]([null, ExtResource("23_40cma")])
+anomaly_minigame = NodePath("../../..")
+
+[node name="Anomaly19" parent="LeftCharacter3/Anomalies" node_paths=PackedStringArray("connected_button", "anomaly_minigame") instance=ExtResource("4_ggj83")]
+layout_mode = 0
+offset_left = 31.000004
+offset_top = 185.0
+offset_right = 51.000004
+offset_bottom = 191.0
+connected_button = NodePath("../../../RightCharacter3/Anomalies/Anomaly19")
+textures = Array[Texture2D]([null, ExtResource("24_3fm2x")])
+anomaly_minigame = NodePath("../../..")
+
+[node name="Anomaly20" parent="LeftCharacter3/Anomalies" node_paths=PackedStringArray("connected_button", "anomaly_minigame") instance=ExtResource("4_ggj83")]
+layout_mode = 0
+offset_left = 73.0
+offset_top = 177.0
+offset_right = 81.0
+offset_bottom = 184.0
+connected_button = NodePath("../../../RightCharacter3/Anomalies/Anomaly20")
+textures = Array[Texture2D]([null, ExtResource("25_p8p5w")])
+anomaly_minigame = NodePath("../../..")
+
+[node name="Anomaly21" parent="LeftCharacter3/Anomalies" node_paths=PackedStringArray("connected_button", "anomaly_minigame") instance=ExtResource("4_ggj83")]
+layout_mode = 0
+offset_left = 106.0
+offset_top = 166.0
+offset_right = 115.0
+offset_bottom = 176.0
+connected_button = NodePath("../../../RightCharacter3/Anomalies/Anomaly21")
+textures = Array[Texture2D]([null, ExtResource("26_xxrll")])
+anomaly_minigame = NodePath("../../..")
+
+[node name="Anomaly22" parent="LeftCharacter3/Anomalies" node_paths=PackedStringArray("connected_button", "anomaly_minigame") instance=ExtResource("4_ggj83")]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 166.0
+offset_right = 140.0
+offset_bottom = 192.0
+connected_button = NodePath("../../../RightCharacter3/Anomalies/Anomaly22")
+textures = Array[Texture2D]([null, ExtResource("27_6kfeb")])
+anomaly_minigame = NodePath("../../..")
+
+[node name="Anomaly23" parent="LeftCharacter3/Anomalies" node_paths=PackedStringArray("connected_button", "anomaly_minigame") instance=ExtResource("4_ggj83")]
+layout_mode = 0
+offset_left = 63.0
+offset_top = 202.9998
+offset_right = 73.0
+offset_bottom = 212.9998
+connected_button = NodePath("../../../RightCharacter3/Anomalies/Anomaly23")
+textures = Array[Texture2D]([null, ExtResource("28_fcmfn")])
+anomaly_minigame = NodePath("../../..")
+
+[node name="Anomaly24" parent="LeftCharacter3/Anomalies" node_paths=PackedStringArray("connected_button", "anomaly_minigame") instance=ExtResource("4_ggj83")]
+layout_mode = 0
+offset_left = 108.0
+offset_top = 216.00006
+offset_right = 122.00001
+offset_bottom = 219.00006
+connected_button = NodePath("../../../RightCharacter3/Anomalies/Anomaly24")
+textures = Array[Texture2D]([null, ExtResource("29_1mmjy")])
+anomaly_minigame = NodePath("../../..")
+
+[node name="Anomaly25" parent="LeftCharacter3/Anomalies" node_paths=PackedStringArray("connected_button", "anomaly_minigame") instance=ExtResource("4_ggj83")]
+layout_mode = 0
+offset_left = 18.999996
+offset_top = 225.99998
+offset_right = 24.999996
+offset_bottom = 244.99998
+connected_button = NodePath("../../../RightCharacter3/Anomalies/Anomaly25")
+textures = Array[Texture2D]([null, ExtResource("30_qrntp")])
+anomaly_minigame = NodePath("../../..")
+
+[node name="RightCharacter3" type="TextureRect" parent="."]
 visible = false
 layout_mode = 0
 offset_left = 990.00006
@@ -980,7 +1260,271 @@ offset_top = 210.0
 offset_right = 1141.0
 offset_bottom = 455.0
 scale = Vector2(3, 3)
-texture = ExtResource("47_x4rhv")
+texture = ExtResource("4_x4rhv")
+
+[node name="Anomalies" type="Control" parent="RightCharacter3"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Anomaly1" parent="RightCharacter3/Anomalies" node_paths=PackedStringArray("connected_button", "anomaly_minigame") instance=ExtResource("4_ggj83")]
+layout_mode = 0
+offset_left = 43.999992
+offset_top = 12.999998
+offset_right = 52.999992
+offset_bottom = 34.0
+connected_button = NodePath("../../../LeftCharacter3/Anomalies/Anomaly1")
+textures = Array[Texture2D]([null, ExtResource("6_cc6n1")])
+anomaly_minigame = NodePath("../../..")
+
+[node name="Anomaly2" parent="RightCharacter3/Anomalies" node_paths=PackedStringArray("connected_button", "anomaly_minigame") instance=ExtResource("4_ggj83")]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 37.0
+offset_right = 34.0
+offset_bottom = 45.0
+connected_button = NodePath("../../../LeftCharacter3/Anomalies/Anomaly2")
+textures = Array[Texture2D]([null, ExtResource("7_ppgfx")])
+anomaly_minigame = NodePath("../../..")
+
+[node name="Anomaly3" parent="RightCharacter3/Anomalies" node_paths=PackedStringArray("connected_button", "anomaly_minigame") instance=ExtResource("4_ggj83")]
+layout_mode = 0
+offset_left = 10.999997
+offset_top = 61.000004
+offset_right = 38.999996
+offset_bottom = 62.000004
+connected_button = NodePath("../../../LeftCharacter3/Anomalies/Anomaly3")
+textures = Array[Texture2D]([null, ExtResource("8_omi82")])
+anomaly_minigame = NodePath("../../..")
+
+[node name="Anomaly4" parent="RightCharacter3/Anomalies" node_paths=PackedStringArray("connected_button", "anomaly_minigame") instance=ExtResource("4_ggj83")]
+layout_mode = 0
+offset_left = 76.0
+offset_top = 29.0
+offset_right = 90.0
+offset_bottom = 46.0
+connected_button = NodePath("../../../LeftCharacter3/Anomalies/Anomaly4")
+textures = Array[Texture2D]([null, ExtResource("9_ocwe7")])
+anomaly_minigame = NodePath("../../..")
+
+[node name="Anomaly5" parent="RightCharacter3/Anomalies" node_paths=PackedStringArray("connected_button", "anomaly_minigame") instance=ExtResource("4_ggj83")]
+layout_mode = 0
+offset_left = 127.00012
+offset_top = 39.999996
+offset_right = 144.00012
+offset_bottom = 44.999996
+connected_button = NodePath("../../../LeftCharacter3/Anomalies/Anomaly5")
+textures = Array[Texture2D]([null, ExtResource("10_qresf")])
+anomaly_minigame = NodePath("../../..")
+
+[node name="Anomaly6" parent="RightCharacter3/Anomalies" node_paths=PackedStringArray("connected_button", "anomaly_minigame") instance=ExtResource("4_ggj83")]
+layout_mode = 0
+offset_top = 154.0
+offset_right = 4.9999967
+offset_bottom = 160.0
+connected_button = NodePath("../../../LeftCharacter3/Anomalies/Anomaly6")
+textures = Array[Texture2D]([null, ExtResource("11_f0g0h")])
+anomaly_minigame = NodePath("../../..")
+
+[node name="Anomaly7" parent="RightCharacter3/Anomalies" node_paths=PackedStringArray("connected_button", "anomaly_minigame") instance=ExtResource("4_ggj83")]
+layout_mode = 0
+offset_left = 11.000013
+offset_top = 91.0
+offset_right = 51.000015
+offset_bottom = 184.0
+connected_button = NodePath("../../../LeftCharacter3/Anomalies/Anomaly7")
+textures = Array[Texture2D]([null, ExtResource("12_jwnlf")])
+anomaly_minigame = NodePath("../../..")
+
+[node name="Anomaly8" parent="RightCharacter3/Anomalies" node_paths=PackedStringArray("connected_button", "anomaly_minigame") instance=ExtResource("4_ggj83")]
+layout_mode = 0
+offset_left = 57.999992
+offset_top = 90.99999
+offset_right = 76.99999
+offset_bottom = 97.99999
+connected_button = NodePath("../../../LeftCharacter3/Anomalies/Anomaly8")
+textures = Array[Texture2D]([null, ExtResource("13_5vfgf")])
+anomaly_minigame = NodePath("../../..")
+
+[node name="Anomaly9" parent="RightCharacter3/Anomalies" node_paths=PackedStringArray("connected_button", "anomaly_minigame") instance=ExtResource("4_ggj83")]
+layout_mode = 0
+offset_left = 68.0
+offset_top = 100.00006
+offset_right = 72.0
+offset_bottom = 102.00006
+connected_button = NodePath("../../../LeftCharacter3/Anomalies/Anomaly9")
+textures = Array[Texture2D]([null, ExtResource("14_h251m")])
+anomaly_minigame = NodePath("../../..")
+
+[node name="Anomaly10" parent="RightCharacter3/Anomalies" node_paths=PackedStringArray("connected_button", "anomaly_minigame") instance=ExtResource("4_ggj83")]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 112.0
+offset_right = 58.0
+offset_bottom = 120.0
+connected_button = NodePath("../../../LeftCharacter3/Anomalies/Anomaly10")
+textures = Array[Texture2D]([null, ExtResource("15_66g20")])
+anomaly_minigame = NodePath("../../..")
+
+[node name="Anomaly11" parent="RightCharacter3/Anomalies" node_paths=PackedStringArray("connected_button", "anomaly_minigame") instance=ExtResource("4_ggj83")]
+layout_mode = 0
+offset_left = 87.99999
+offset_top = 99.0
+offset_right = 101.99999
+offset_bottom = 105.0
+connected_button = NodePath("../../../LeftCharacter3/Anomalies/Anomaly11")
+textures = Array[Texture2D]([null, ExtResource("16_m45ta")])
+anomaly_minigame = NodePath("../../..")
+
+[node name="Anomaly12" parent="RightCharacter3/Anomalies" node_paths=PackedStringArray("connected_button", "anomaly_minigame") instance=ExtResource("4_ggj83")]
+layout_mode = 0
+offset_left = 97.00001
+offset_top = 107.0
+offset_right = 105.00001
+offset_bottom = 116.0
+connected_button = NodePath("../../../LeftCharacter3/Anomalies/Anomaly12")
+textures = Array[Texture2D]([null, ExtResource("17_05gsp")])
+anomaly_minigame = NodePath("../../..")
+
+[node name="Anomaly13" parent="RightCharacter3/Anomalies" node_paths=PackedStringArray("connected_button", "anomaly_minigame") instance=ExtResource("4_ggj83")]
+layout_mode = 0
+offset_left = 129.0
+offset_top = 74.0
+offset_right = 137.0
+offset_bottom = 89.0
+connected_button = NodePath("../../../LeftCharacter3/Anomalies/Anomaly13")
+textures = Array[Texture2D]([null, ExtResource("18_so6ja")])
+anomaly_minigame = NodePath("../../..")
+
+[node name="Anomaly14" parent="RightCharacter3/Anomalies" node_paths=PackedStringArray("connected_button", "anomaly_minigame") instance=ExtResource("4_ggj83")]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 126.999985
+offset_right = 92.0
+offset_bottom = 141.99998
+connected_button = NodePath("../../../LeftCharacter3/Anomalies/Anomaly14")
+textures = Array[Texture2D]([null, ExtResource("19_os26n")])
+anomaly_minigame = NodePath("../../..")
+
+[node name="Anomaly15" parent="RightCharacter3/Anomalies" node_paths=PackedStringArray("connected_button", "anomaly_minigame") instance=ExtResource("4_ggj83")]
+layout_mode = 0
+offset_left = 97.00006
+offset_top = 123.0
+offset_right = 102.00006
+offset_bottom = 162.0
+connected_button = NodePath("../../../LeftCharacter3/Anomalies/Anomaly15")
+textures = Array[Texture2D]([null, ExtResource("20_otn8b")])
+anomaly_minigame = NodePath("../../..")
+
+[node name="Anomaly16" parent="RightCharacter3/Anomalies" node_paths=PackedStringArray("connected_button", "anomaly_minigame") instance=ExtResource("4_ggj83")]
+layout_mode = 0
+offset_left = 110.00012
+offset_top = 129.0
+offset_right = 118.00012
+offset_bottom = 136.0
+connected_button = NodePath("../../../LeftCharacter3/Anomalies/Anomaly16")
+textures = Array[Texture2D]([null, ExtResource("21_istf1")])
+anomaly_minigame = NodePath("../../..")
+
+[node name="Anomaly17" parent="RightCharacter3/Anomalies" node_paths=PackedStringArray("connected_button", "anomaly_minigame") instance=ExtResource("4_ggj83")]
+layout_mode = 0
+offset_left = 145.00018
+offset_top = 116.0
+offset_right = 150.00018
+offset_bottom = 133.0
+connected_button = NodePath("../../../LeftCharacter3/Anomalies/Anomaly17")
+textures = Array[Texture2D]([null, ExtResource("22_727uw")])
+anomaly_minigame = NodePath("../../..")
+
+[node name="Anomaly18" parent="RightCharacter3/Anomalies" node_paths=PackedStringArray("connected_button", "anomaly_minigame") instance=ExtResource("4_ggj83")]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 190.00003
+offset_right = 19.0
+offset_bottom = 194.00003
+connected_button = NodePath("../../../LeftCharacter3/Anomalies/Anomaly18")
+textures = Array[Texture2D]([null, ExtResource("23_40cma")])
+anomaly_minigame = NodePath("../../..")
+
+[node name="Anomaly19" parent="RightCharacter3/Anomalies" node_paths=PackedStringArray("connected_button", "anomaly_minigame") instance=ExtResource("4_ggj83")]
+layout_mode = 0
+offset_left = 31.000004
+offset_top = 185.0
+offset_right = 51.000004
+offset_bottom = 191.0
+connected_button = NodePath("../../../LeftCharacter3/Anomalies/Anomaly19")
+textures = Array[Texture2D]([null, ExtResource("24_3fm2x")])
+anomaly_minigame = NodePath("../../..")
+
+[node name="Anomaly20" parent="RightCharacter3/Anomalies" node_paths=PackedStringArray("connected_button", "anomaly_minigame") instance=ExtResource("4_ggj83")]
+layout_mode = 0
+offset_left = 73.0
+offset_top = 177.0
+offset_right = 81.0
+offset_bottom = 184.0
+connected_button = NodePath("../../../LeftCharacter3/Anomalies/Anomaly20")
+textures = Array[Texture2D]([null, ExtResource("25_p8p5w")])
+anomaly_minigame = NodePath("../../..")
+
+[node name="Anomaly21" parent="RightCharacter3/Anomalies" node_paths=PackedStringArray("connected_button", "anomaly_minigame") instance=ExtResource("4_ggj83")]
+layout_mode = 0
+offset_left = 106.0
+offset_top = 166.0
+offset_right = 115.0
+offset_bottom = 176.0
+connected_button = NodePath("../../../LeftCharacter3/Anomalies/Anomaly21")
+textures = Array[Texture2D]([null, ExtResource("26_xxrll")])
+anomaly_minigame = NodePath("../../..")
+
+[node name="Anomaly22" parent="RightCharacter3/Anomalies" node_paths=PackedStringArray("connected_button", "anomaly_minigame") instance=ExtResource("4_ggj83")]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 166.0
+offset_right = 140.0
+offset_bottom = 192.0
+connected_button = NodePath("../../../LeftCharacter3/Anomalies/Anomaly22")
+textures = Array[Texture2D]([null, ExtResource("27_6kfeb")])
+anomaly_minigame = NodePath("../../..")
+
+[node name="Anomaly23" parent="RightCharacter3/Anomalies" node_paths=PackedStringArray("connected_button", "anomaly_minigame") instance=ExtResource("4_ggj83")]
+layout_mode = 0
+offset_left = 63.0
+offset_top = 202.9998
+offset_right = 73.0
+offset_bottom = 212.9998
+connected_button = NodePath("../../../LeftCharacter3/Anomalies/Anomaly23")
+textures = Array[Texture2D]([null, ExtResource("28_fcmfn")])
+anomaly_minigame = NodePath("../../..")
+
+[node name="Anomaly24" parent="RightCharacter3/Anomalies" node_paths=PackedStringArray("connected_button", "anomaly_minigame") instance=ExtResource("4_ggj83")]
+layout_mode = 0
+offset_left = 108.0
+offset_top = 216.00006
+offset_right = 122.00001
+offset_bottom = 219.00006
+connected_button = NodePath("../../../LeftCharacter3/Anomalies/Anomaly24")
+textures = Array[Texture2D]([null, ExtResource("29_1mmjy")])
+anomaly_minigame = NodePath("../../..")
+
+[node name="Anomaly25" parent="RightCharacter3/Anomalies" node_paths=PackedStringArray("connected_button", "anomaly_minigame") instance=ExtResource("4_ggj83")]
+layout_mode = 0
+offset_left = 18.999996
+offset_top = 225.99998
+offset_right = 24.999996
+offset_bottom = 244.99998
+connected_button = NodePath("../../../LeftCharacter3/Anomalies/Anomaly25")
+textures = Array[Texture2D]([null, ExtResource("30_qrntp")])
+anomaly_minigame = NodePath("../../..")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 477.00006
+offset_top = 210.0
+offset_right = 628.0001
+offset_bottom = 455.0
+scale = Vector2(3, 3)
+texture = ExtResource("73_410nq")
 
 [node name="WinScreen" type="Panel" parent="."]
 layout_mode = 1
