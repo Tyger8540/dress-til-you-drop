@@ -5,6 +5,10 @@ var inventory: Array[InventoryItem] = []
 
 var minigame_one_defeated := false
 
+var find_my_earring_level: int = 1
+var spot_the_anomaly_level: int = 1
+var reflex_rendezvous_level: int = 1
+
 #var player_node: Node = null
 @onready var inventory_slot_scene = preload("res://scenes/inventory_slot.tscn")
 
@@ -39,10 +43,10 @@ func add_item(item: InventoryItem) -> void:
 	print("Item added!", inventory)
 
 
-func _on_minigame_defeated(minigame: Enums.MinigameType, level_defeated: int) -> void:
+func _on_minigame_defeated(minigame: Enums.MinigameType) -> void:
 	match minigame:
 		Enums.MinigameType.FIND_MY_EARRING:
-			match level_defeated:
+			match find_my_earring_level:
 				1:
 					add_item(load("res://resources/inventory_items/preppy_pink/preppy_pink_bottom.tres"))
 					add_item(load("res://resources/inventory_items/preppy_pink/preppy_pink_hair.tres"))
@@ -53,6 +57,8 @@ func _on_minigame_defeated(minigame: Enums.MinigameType, level_defeated: int) ->
 					add_item(load("res://resources/inventory_items/snow_bunny/snow_bunny_hair.tres"))
 					add_item(load("res://resources/inventory_items/snow_bunny/snow_bunny_shoes.tres"))
 					add_item(load("res://resources/inventory_items/snow_bunny/snow_bunny_top.tres"))
+					
+					find_my_earring_level += 1
 				2:
 					pass
 				3:
@@ -60,7 +66,7 @@ func _on_minigame_defeated(minigame: Enums.MinigameType, level_defeated: int) ->
 				_:
 					pass
 		Enums.MinigameType.SPOT_THE_ANOMALY:
-			match level_defeated:
+			match spot_the_anomaly_level:
 				1:
 					add_item(load("res://resources/inventory_items/catty_pink/catty_pink_bottom.tres"))
 					add_item(load("res://resources/inventory_items/catty_pink/catty_pink_hair.tres"))
@@ -71,6 +77,8 @@ func _on_minigame_defeated(minigame: Enums.MinigameType, level_defeated: int) ->
 					add_item(load("res://resources/inventory_items/lone_wolf/lone_wolf_hair.tres"))
 					add_item(load("res://resources/inventory_items/lone_wolf/lone_wolf_shoes.tres"))
 					add_item(load("res://resources/inventory_items/lone_wolf/lone_wolf_top.tres"))
+					
+					spot_the_anomaly_level += 1
 				2:
 					add_item(load("res://resources/inventory_items/dark_boho/dark_boho_bottom.tres"))
 					add_item(load("res://resources/inventory_items/dark_boho/dark_boho_hair.tres"))
@@ -81,6 +89,8 @@ func _on_minigame_defeated(minigame: Enums.MinigameType, level_defeated: int) ->
 					add_item(load("res://resources/inventory_items/pink_snow/pink_snow_hair.tres"))
 					add_item(load("res://resources/inventory_items/pink_snow/pink_snow_shoes.tres"))
 					add_item(load("res://resources/inventory_items/pink_snow/pink_snow_top.tres"))
+					
+					spot_the_anomaly_level += 1
 				3:
 					add_item(load("res://resources/inventory_items/brown_bear/brown_bear_ bottom.tres"))
 					add_item(load("res://resources/inventory_items/brown_bear/brown_bear_hair.tres"))
@@ -91,11 +101,11 @@ func _on_minigame_defeated(minigame: Enums.MinigameType, level_defeated: int) ->
 					add_item(load("res://resources/inventory_items/preppy_peach/preppy_peach_hair.tres"))
 					add_item(load("res://resources/inventory_items/preppy_peach/preppy_peach_shoes.tres"))
 					add_item(load("res://resources/inventory_items/preppy_peach/preppy_peach_top.tres"))
+					
 				_:
 					pass
-			pass
 		Enums.MinigameType.REFLEX_RENDEZVOUS:
-			match level_defeated:
+			match reflex_rendezvous_level:
 				1:
 					add_item(load("res://resources/inventory_items/goth_circus/goth_circus_bottom.tres"))
 					add_item(load("res://resources/inventory_items/goth_circus/goth_circus_hair.tres"))
@@ -106,6 +116,8 @@ func _on_minigame_defeated(minigame: Enums.MinigameType, level_defeated: int) ->
 					add_item(load("res://resources/inventory_items/preppy_lav/preppy_lav_hair.tres"))
 					add_item(load("res://resources/inventory_items/preppy_lav/preppy_lav_shoes.tres"))
 					add_item(load("res://resources/inventory_items/preppy_lav/preppy_lav_top.tres"))
+					
+					reflex_rendezvous_level += 1
 				2:
 					pass
 				3:

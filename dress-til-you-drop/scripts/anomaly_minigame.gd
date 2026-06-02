@@ -14,6 +14,7 @@ const WIN_SCREEN_EXPANSION_SPEED = 500.0
 
 @export var left_anomalies_1: Array[AnomalyButton]
 @export var left_anomalies_2: Array[AnomalyButton]
+@export var left_anomalies_3: Array[AnomalyButton]
 
 var left_anomalies: Array[AnomalyButton]
 
@@ -40,7 +41,7 @@ func _ready() -> void:
 	$RightCharacter2.visible = false
 	$LeftCharacter3.visible = false
 	$RightCharacter3.visible = false
-	level = 3
+	level = InventoryManager.spot_the_anomaly_level
 	start_minigame()
 
 
@@ -50,6 +51,7 @@ func _process(delta: float) -> void:
 		if Input.is_action_just_pressed("continue"):
 			Signals.minigame_defeated.emit()
 			Signals.minigame_finished.emit()
+			Signals.get_minigame_loot.emit(Enums.MinigameType.SPOT_THE_ANOMALY)
 			Audio.resume_music()
 			get_parent().queue_free()
 	
@@ -69,6 +71,8 @@ func get_num_anomalies() -> int:
 		left_anomalies = left_anomalies_1
 	elif level == 2:
 		left_anomalies = left_anomalies_2
+	elif level == 3:
+		left_anomalies = left_anomalies_3
 	
 	var count: int = 0
 	for anomaly in left_anomalies:
@@ -147,3 +151,7 @@ func play_currency_earned_animation() -> void:
 func _on_currency_earned_timer_timeout() -> void:
 	$WinScreen/ContinueText.process_mode = Node.PROCESS_MODE_INHERIT
 	win_screen_finished = true
+
+
+func _on_level_increased() -> void:
+	level += 1
