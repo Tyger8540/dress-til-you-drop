@@ -51,7 +51,7 @@ func _process(delta: float) -> void:
 		if Input.is_action_just_pressed("continue"):
 			Signals.minigame_defeated.emit()
 			Signals.minigame_finished.emit()
-			Signals.get_minigame_loot.emit(Enums.MinigameType.SPOT_THE_ANOMALY)
+			InventoryManager.get_minigame_loot(Enums.MinigameType.SPOT_THE_ANOMALY)
 			Audio.resume_music()
 			get_parent().queue_free()
 	

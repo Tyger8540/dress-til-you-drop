@@ -16,7 +16,6 @@ var reflex_rendezvous_level: int = 1
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Signals.minigame_one_defeated.connect(_on_minigame_one_defeated)
-	Signals.get_minigame_loot.connect(_on_minigame_defeated)
 	
 	# TODO: Push_back default clothing into inventory
 	#add_item(load("res://resources/inventory_items/alt_preppy_top.tres"))
@@ -43,7 +42,7 @@ func add_item(item: InventoryItem) -> void:
 	print("Item added!", inventory)
 
 
-func _on_minigame_defeated(minigame: Enums.MinigameType) -> void:
+func get_minigame_loot(minigame: Enums.MinigameType) -> void:
 	match minigame:
 		Enums.MinigameType.FIND_MY_EARRING:
 			match find_my_earring_level:

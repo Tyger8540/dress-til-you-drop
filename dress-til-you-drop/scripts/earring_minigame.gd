@@ -557,6 +557,7 @@ func _show_win_screen() -> void:
 func _close_after_win() -> void:
 	_cleanup_and_close()
 	minigame_completed.emit(0)
+	InventoryManager.get_minigame_loot(Enums.MinigameType.FIND_MY_EARRING)
 
 func _clear_win_overlay() -> void:
 	if _win_overlay != null and is_instance_valid(_win_overlay):
