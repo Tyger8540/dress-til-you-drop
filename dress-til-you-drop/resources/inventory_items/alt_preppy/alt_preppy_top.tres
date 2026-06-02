@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://c4ndgiyvox8x"]
+
+[ext_resource type="Script" uid="uid://dp57gprs43ig4" path="res://scripts/inventory_item.gd" id="1_uks6f"]
+[ext_resource type="ArrayMesh" uid="uid://4bdwhoi15vpk" path="res://models/main_character/alt_preppy/alt-preppy-top.res" id="1_yrc2b"]
+[ext_resource type="Texture2D" uid="uid://dcehydy50ft80" path="res://art/inventory_icons/alt-preppy/alt-preppy-top.png" id="3_ghtuw"]
+
+[resource]
+script = ExtResource("1_uks6f")
+item_type = 1
+item_name = "Alt Preppy Top"
+item_texture = ExtResource("1_yrc2b")
+ui_texture = ExtResource("3_ghtuw")
+metadata/_custom_type_script = "uid://dp57gprs43ig4"

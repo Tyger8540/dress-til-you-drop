@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://ci3h24k8jaj27"]
+
+[ext_resource type="Script" uid="uid://dp57gprs43ig4" path="res://scripts/inventory_item.gd" id="1_34c6q"]
+[ext_resource type="ArrayMesh" uid="uid://h30tcdec1ao6" path="res://models/main_character/goth_circus/goth-circus-hair.res" id="1_74t1w"]
+[ext_resource type="Texture2D" uid="uid://cf6qsqhwvowkc" path="res://art/inventory_icons/goth-circus/goth-circus-hair.png" id="3_gpwaf"]
+
+[resource]
+script = ExtResource("1_34c6q")
+item_name = "Goth Circus Hair"
+item_texture = ExtResource("1_74t1w")
+ui_texture = ExtResource("3_gpwaf")
+metadata/_custom_type_script = "uid://dp57gprs43ig4"

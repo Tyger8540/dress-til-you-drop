@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://dg1benkwvynlp"]
+
+[ext_resource type="ArrayMesh" uid="uid://cnf8gnq86uoub" path="res://models/main_character/lone_wolf/lone-wolf-shoes.res" id="1_5qwji"]
+[ext_resource type="Script" uid="uid://dp57gprs43ig4" path="res://scripts/inventory_item.gd" id="1_vpx4y"]
+[ext_resource type="Texture2D" uid="uid://de80dnlgcpbop" path="res://art/inventory_icons/lone-wolf/lone-wolf-shoes.png" id="3_aba0g"]
+
+[resource]
+script = ExtResource("1_vpx4y")
+item_type = 3
+item_name = "Lone Wolf Shoes"
+item_texture = ExtResource("1_5qwji")
+ui_texture = ExtResource("3_aba0g")
+metadata/_custom_type_script = "uid://dp57gprs43ig4"

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://kfqecfqg85c4"]
+
+[ext_resource type="Script" uid="uid://dp57gprs43ig4" path="res://scripts/inventory_item.gd" id="1_t1rpu"]
+[ext_resource type="ArrayMesh" uid="uid://dhol64g52p5cy" path="res://models/main_character/dark_boho/dark-boho-bottom.res" id="1_ty34r"]
+[ext_resource type="Texture2D" uid="uid://trm0tr3fs15w" path="res://art/inventory_icons/dark-boho/goth-boho-bottom.png" id="3_h40vf"]
+
+[resource]
+script = ExtResource("1_t1rpu")
+item_type = 2
+item_name = "Dark Boho Bottom"
+item_texture = ExtResource("1_ty34r")
+ui_texture = ExtResource("3_h40vf")
+metadata/_custom_type_script = "uid://dp57gprs43ig4"

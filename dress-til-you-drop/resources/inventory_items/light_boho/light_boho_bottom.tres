@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://b768obpmcxpcj"]
+
+[ext_resource type="ArrayMesh" uid="uid://d12e7f0neb75d" path="res://models/main_character/light_boho/light-boho-bottom.res" id="1_nmyxa"]
+[ext_resource type="Script" uid="uid://dp57gprs43ig4" path="res://scripts/inventory_item.gd" id="1_vj2tq"]
+[ext_resource type="Texture2D" uid="uid://dxl6721cvaost" path="res://art/inventory_icons/light-boho/light-boho-bottom.png" id="3_1rxwr"]
+
+[resource]
+script = ExtResource("1_vj2tq")
+item_type = 2
+item_name = "Light Boho Bottom"
+item_texture = ExtResource("1_nmyxa")
+ui_texture = ExtResource("3_1rxwr")
+metadata/_custom_type_script = "uid://dp57gprs43ig4"

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://df2rrfd21mf4c"]
+
+[ext_resource type="ArrayMesh" uid="uid://bpkrio1mmdtce" path="res://models/main_character/pink_snow/pink-snow-shoes.res" id="1_12sp6"]
+[ext_resource type="Script" uid="uid://dp57gprs43ig4" path="res://scripts/inventory_item.gd" id="1_n0ols"]
+[ext_resource type="Texture2D" uid="uid://cpvse8dk0p188" path="res://art/inventory_icons/pink-snow/pink-snow-shoes.png" id="3_wl8hi"]
+
+[resource]
+script = ExtResource("1_n0ols")
+item_type = 3
+item_name = "Pink Snow Shoes"
+item_texture = ExtResource("1_12sp6")
+ui_texture = ExtResource("3_wl8hi")
+metadata/_custom_type_script = "uid://dp57gprs43ig4"

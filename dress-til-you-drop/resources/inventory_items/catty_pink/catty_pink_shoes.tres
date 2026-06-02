@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://dr87maoqwvpy7"]
+
+[ext_resource type="Script" uid="uid://dp57gprs43ig4" path="res://scripts/inventory_item.gd" id="1_fwg4b"]
+[ext_resource type="ArrayMesh" uid="uid://c3lj5lafxpe3w" path="res://models/main_character/catty_pink/catty-pink-shoes.res" id="1_ltokq"]
+[ext_resource type="Texture2D" uid="uid://btscucp6aorul" path="res://art/inventory_icons/catty-pink/catty-pink-shoes.png" id="3_h35lj"]
+
+[resource]
+script = ExtResource("1_fwg4b")
+item_type = 3
+item_name = "Catty Pink Shoes"
+item_texture = ExtResource("1_ltokq")
+ui_texture = ExtResource("3_h35lj")
+metadata/_custom_type_script = "uid://dp57gprs43ig4"

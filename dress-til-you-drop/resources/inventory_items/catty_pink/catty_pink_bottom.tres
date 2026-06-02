@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://b73fyqah1xcab"]
+
+[ext_resource type="Script" uid="uid://dp57gprs43ig4" path="res://scripts/inventory_item.gd" id="1_2xl2p"]
+[ext_resource type="ArrayMesh" uid="uid://by677ke17yg0f" path="res://models/main_character/catty_pink/catty-pink-bottom.res" id="1_h4kni"]
+[ext_resource type="Texture2D" uid="uid://bxtoa682v0dlc" path="res://art/inventory_icons/catty-pink/catty-pink-bottom.png" id="3_kqtfg"]
+
+[resource]
+script = ExtResource("1_2xl2p")
+item_type = 2
+item_name = "Catty Pink Bottom"
+item_texture = ExtResource("1_h4kni")
+ui_texture = ExtResource("3_kqtfg")
+metadata/_custom_type_script = "uid://dp57gprs43ig4"

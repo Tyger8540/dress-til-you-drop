@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://c0xkgwj8orbm1"]
+
+[ext_resource type="ArrayMesh" uid="uid://evlrr5ii4aov" path="res://models/main_character/preppy_pink/preppy-pink-bottom.res" id="1_4g2nt"]
+[ext_resource type="Script" uid="uid://dp57gprs43ig4" path="res://scripts/inventory_item.gd" id="1_le7nh"]
+[ext_resource type="Texture2D" uid="uid://kucgqe6q4o3t" path="res://art/inventory_icons/preppy-pink/preppy-pink-bottom.png" id="3_yjgw4"]
+
+[resource]
+script = ExtResource("1_le7nh")
+item_type = 2
+item_name = "Preppy Pink Bottom"
+item_texture = ExtResource("1_4g2nt")
+ui_texture = ExtResource("3_yjgw4")
+metadata/_custom_type_script = "uid://dp57gprs43ig4"
