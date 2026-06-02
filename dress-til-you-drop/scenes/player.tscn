@@ -2,20 +2,20 @@
 
 [ext_resource type="Script" uid="uid://ds03crob6pyyc" path="res://scripts/player.gd" id="1_3vyb7"]
 [ext_resource type="AudioStream" uid="uid://c2fxr67bliuwt" path="res://audio/sfx/Footstep Sounds/SFX/footstepReverb1.wav" id="2_a8ls1"]
-[ext_resource type="ArrayMesh" uid="uid://vvb0bo7byxw2" path="res://models/main_character/body4.res" id="2_fjrip"]
 [ext_resource type="AudioStream" uid="uid://dmykj1bp1qptl" path="res://audio/sfx/Footstep Sounds/SFX/footstepReverb2.wav" id="3_qfm1y"]
-[ext_resource type="ArrayMesh" uid="uid://bdo25x3xvmajy" path="res://models/main_character/french_preppy/frenchPreppy-hair.res" id="3_smehm"]
 [ext_resource type="AudioStream" uid="uid://b7pqvx1u88gj" path="res://audio/sfx/Footstep Sounds/SFX/footstepReverb3.wav" id="4_fulsm"]
-[ext_resource type="ArrayMesh" uid="uid://bttvpn5qe6lub" path="res://models/main_character/french_preppy/frenchPreppy-top.res" id="4_ur7pv"]
 [ext_resource type="AudioStream" uid="uid://duda3epx1gd6a" path="res://audio/sfx/Footstep Sounds/SFX/footstepReverb4.wav" id="5_4r5pv"]
-[ext_resource type="ArrayMesh" uid="uid://b0namx4xxrbnl" path="res://models/main_character/french_preppy/frenchPreppy-bottom.res" id="5_y4r1p"]
 [ext_resource type="AudioStream" uid="uid://cnmptjs2rq856" path="res://audio/sfx/Footstep Sounds/SFX/footstepReverb5.wav" id="6_60mlk"]
-[ext_resource type="ArrayMesh" uid="uid://d3knhoxg67dqn" path="res://models/main_character/french_preppy/frenchPreppy-shoes.res" id="6_d2wvv"]
 [ext_resource type="PackedScene" uid="uid://b2x3rd7m3rywc" path="res://scenes/inventory_ui.tscn" id="6_tuyoq"]
 [ext_resource type="AudioStream" uid="uid://cngqs6yyqgj5i" path="res://audio/sfx/Footstep Sounds/SFX/footstepReverb6.wav" id="7_i4ail"]
 [ext_resource type="AudioStream" uid="uid://d0mx2hiifxcav" path="res://audio/sfx/Footstep Sounds/SFX/footstepReverb7.wav" id="8_a38lo"]
 [ext_resource type="PackedScene" uid="uid://b5qx71qbk8evb" path="res://scenes/shop_ui.tscn" id="8_smehm"]
 [ext_resource type="AudioStream" uid="uid://bvj5rnlsmckb4" path="res://audio/sfx/Footstep Sounds/SFX/footstepReverb8.wav" id="9_4ni07"]
+[ext_resource type="ArrayMesh" uid="uid://cq0r1q6cvaabd" path="res://models/main_character/body.res" id="10_a8ls1"]
+[ext_resource type="ArrayMesh" uid="uid://nxivwoaaqvst" path="res://models/main_character/alt_preppy/alt-preppy-hair.res" id="11_qfm1y"]
+[ext_resource type="ArrayMesh" uid="uid://4bdwhoi15vpk" path="res://models/main_character/alt_preppy/alt-preppy-top.res" id="12_fulsm"]
+[ext_resource type="ArrayMesh" uid="uid://bg1esqtr18ki5" path="res://models/main_character/alt_preppy/alt-preppy-bottom.res" id="13_4r5pv"]
+[ext_resource type="ArrayMesh" uid="uid://duerajrg0eo3i" path="res://models/main_character/alt_preppy/alt-preppy-shoes.res" id="14_60mlk"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3vyb7"]
 
@@ -33,20 +33,20 @@ visible = false
 
 [node name="Body" type="MeshInstance3D" parent="."]
 transform = Transform3D(-8.742278e-07, 0, -20, 0, 20, 0, 20, 0, -8.742278e-07, 0, 1.1, 0)
-mesh = ExtResource("2_fjrip")
+mesh = ExtResource("10_a8ls1")
 
 [node name="Hair" type="MeshInstance3D" parent="Body"]
 transform = Transform3D(1, 0, -3.5527137e-15, 0, 1, 0, 3.5527137e-15, 0, 1, 0, 0, 0)
-mesh = ExtResource("3_smehm")
+mesh = ExtResource("11_qfm1y")
 
 [node name="Top" type="MeshInstance3D" parent="Body"]
-mesh = ExtResource("4_ur7pv")
+mesh = ExtResource("12_fulsm")
 
 [node name="Bottom" type="MeshInstance3D" parent="Body"]
-mesh = ExtResource("5_y4r1p")
+mesh = ExtResource("13_4r5pv")
 
 [node name="Shoes" type="MeshInstance3D" parent="Body"]
-mesh = ExtResource("6_d2wvv")
+mesh = ExtResource("14_60mlk")
 
 [node name="Accessory" type="MeshInstance3D" parent="Body"]
 transform = Transform3D(1, 0, -3.5527137e-15, 0, 1, 0, 3.5527137e-15, 0, 1, 0, 0, 0)
