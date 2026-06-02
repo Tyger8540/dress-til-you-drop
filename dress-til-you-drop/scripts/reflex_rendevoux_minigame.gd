@@ -1,8 +1,11 @@
 extends Control
 # Reflex Rendevoux Minigame Script
+# PK was here :P
+
 
 signal minigame_completed(currency_earned: int)
 signal minigame_failed()
+
 
 # Stores time durations for the event
 @export var time_limit_QTE = 0.5
@@ -10,6 +13,11 @@ signal minigame_failed()
 
 # Stores time duration before sprite reverts to norm
 @export var display_duration = 0.2
+
+
+# Prevents gargoyle from attacking 3 times in one go lol
+# through a cooldown timer for the atk
+@export var gargoyle_atk_cd_duration = 0.2
 
 
 # References
@@ -26,7 +34,9 @@ const GIRL_HURT = preload("uid://byb0541sjbdq2")
 const GIRL_IDLE = preload("uid://twxgmtbpdtaa")
 const GIRL_STRIKE = preload("uid://c8l2q3hn2hls0")
 
+
 # TODO implement sound
+
 
 # Holds value for how long to wait before sound plays and qte begins
 var time_before_QTE = randf_range(1.1, 6.0)
@@ -56,6 +66,10 @@ var health_gargoyle: int = 5
 
 # string displayed for health
 var health_girl_string: String = "03"
+
+
+# used to prevent gargoyle from attacking again too soon (so a bit of grace)
+var gargoyle_in_cooldown = false
 
 
 # Called when the node enters the scene tree for the first time.
@@ -126,24 +140,34 @@ func gargoyle_attack()-> void:
 	girl.texture = GIRL_IDLE
 
 
-
 # Events that occur if player is too slow
 func time_runs_out()->void:
 	exclamation.hide()
 	reset_qte_vars()
 	gargoyle_attack()
 
+
+# A cooldown for the gargoyle attack to prevent it from attacking weirdly
+func gargoyle_atk_cooldown()->void:
+	gargoyle_in_cooldown = true
+	await get_tree().create_timer(gargoyle_atk_cd_duration).timeout
+	gargoyle_in_cooldown = false
+
+
 # Interprets input: checks whether it is a success or not
 func _input(event: InputEvent) -> void:
 	if Input.is_action_pressed("ui_accept"):
-		if not qte_time && health_girl >= 1:
+		turns_completed +=1
+		if not qte_time && health_girl >= 1 && not gargoyle_in_cooldown:
 			# Strike is too early
-			gargoyle_attack()
-		elif not success:
+			gargoyle_atk_cooldown()
+			await gargoyle_attack()
+		elif qte_time && not success:
 			# Successful strike
+			gargoyle_atk_cooldown()
 			success = true
 			exclamation.hide()
-			girl_attack()
+			await girl_attack()
 		reset_qte_vars()
 
 
@@ -152,7 +176,6 @@ func _input(event: InputEvent) -> void:
 func reset_qte_vars() -> void:
 	success = false
 	qte_time = false
-	turns_completed += 1
 	check_end_condition()
 	if current_game_state == game_status.ONGOING:
 		qte_creation()
