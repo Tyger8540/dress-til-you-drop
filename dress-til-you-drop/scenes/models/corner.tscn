@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://clnfd3g5riif3"]
+
+[ext_resource type="PackedScene" uid="uid://mi5vxxs5ilhx" path="res://models/mansion/DTYDFittingExport2/DTYDFittingExport2/DTYDFittings.fbx_Corner/DTYDFittings.fbx_Corner.fbx" id="1_riclt"]
+
+[node name="DTYDFittings_fbx_Corner" instance=ExtResource("1_riclt")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="2"]
