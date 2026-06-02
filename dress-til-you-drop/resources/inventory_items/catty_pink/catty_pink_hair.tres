@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://crx24y1w7m81"]
+
+[ext_resource type="ArrayMesh" uid="uid://bh5xhbhmk857s" path="res://models/main_character/catty_pink/catty-pink-hair.res" id="1_4s2t0"]
+[ext_resource type="Script" uid="uid://dp57gprs43ig4" path="res://scripts/inventory_item.gd" id="1_ipf26"]
+[ext_resource type="Texture2D" uid="uid://dhnpct6s172ou" path="res://art/inventory_icons/catty-pink/catty-pink-hair.png" id="3_l1ka4"]
+
+[resource]
+script = ExtResource("1_ipf26")
+item_name = "Catty Pink Hair"
+item_texture = ExtResource("1_4s2t0")
+ui_texture = ExtResource("3_l1ka4")
+metadata/_custom_type_script = "uid://dp57gprs43ig4"

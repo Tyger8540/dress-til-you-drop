@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://r1lj1ikh7p5q"]
+
+[ext_resource type="Script" uid="uid://dp57gprs43ig4" path="res://scripts/inventory_item.gd" id="1_2c246"]
+[ext_resource type="ArrayMesh" uid="uid://bkduow5o8h458" path="res://models/main_character/goth_circus/goth-circus-bottom.res" id="1_5udug"]
+[ext_resource type="Texture2D" uid="uid://cirrmtkmwylud" path="res://art/inventory_icons/goth-circus/goth-circus-bottom.png" id="3_ktimy"]
+
+[resource]
+script = ExtResource("1_2c246")
+item_type = 2
+item_name = "Goth Circus Bottom"
+item_texture = ExtResource("1_5udug")
+ui_texture = ExtResource("3_ktimy")
+metadata/_custom_type_script = "uid://dp57gprs43ig4"

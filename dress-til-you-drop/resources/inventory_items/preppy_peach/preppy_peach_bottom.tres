@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=4 format=3 uid="uid://t6vsnkol2bv5"]
+
+[ext_resource type="ArrayMesh" uid="uid://l01uxalh2vhq" path="res://models/main_character/preppy_peach/preppy-peach-bottom.res" id="1_2jypx"]
+[ext_resource type="Script" uid="uid://dp57gprs43ig4" path="res://scripts/inventory_item.gd" id="1_vr4bb"]
+[ext_resource type="Texture2D" uid="uid://b2cmovqaxp4wc" path="res://art/inventory_icons/preppy-peach/preppy-peach-bottom.png" id="3_lalvc"]
+
+[resource]
+script = ExtResource("1_vr4bb")
+item_type = 2
+item_name = "Preppy Peach Bottom"
+item_texture = ExtResource("1_2jypx")
+ui_texture = ExtResource("3_lalvc")
+metadata/_custom_type_script = "uid://dp57gprs43ig4"
